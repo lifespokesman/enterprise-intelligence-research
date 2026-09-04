@@ -10,8 +10,8 @@
 
 当前阶段不继续扩展理论目录，先把手头三份研究报告读透：
 
-1. Phanish Puranam｜Human–AI collaborative decision-making as an organization design problem
-2. Amir Goldberg & Phanish Puranam｜Purpose not prediction: the role of managers in the age of AI
+1. Phanish Puranam｜Human–AI collaborative decision-making as an organization design problem ✅
+2. Amir Goldberg & Phanish Puranam｜Purpose not prediction: the role of managers in the age of AI ← 当前
 3. 吕源｜管理者—人工智能关系中的管理主体扩展
 
 目标是把每篇报告稳定映射到 Q1-Q5，并回答统一的七个理论拆解问题。
@@ -30,34 +30,49 @@
 
 详见：`research/paper-review-plan.md`
 
-## 3. 当前三篇与 Q1-Q5 的初步映射
+## 3. P-001 已得到的关键认识
 
-- **Puranam 2021**：Q1 决策权 / Q3 协调 / Q5 组织学习
-- **Goldberg & Puranam 2026**：Q1 决策权 / Q2 责任 / Q3 协调
-- **吕源**：Q1 管理主体与决策权 / Q2 主体责任 / Q3 Human-Agent关系
+Puranam 2021 主要映射 **Q1 决策权 / Q3 协调 / Q5 组织学习**。
 
-这是阅读前的初步归类，读完后允许修改。
+当前最值得保留的三点：
 
-## 4. 当前最重要判断
+1. **Human-AI Collaboration 可以首先被看作 Organization Design 问题，而不是单纯的 AI 使用问题。**
+2. **Human 与 AI 怎么分工，不能只看能力，还要同时看 Task Interdependence、Decision Rights、Coordination Cost 和 Aggregation。**
+3. **Human 和 AI 不只共同工作，还会共同塑造彼此未来的学习数据；Feedback Architecture 本身就是组织设计。**
 
-1. **企业智能不是 Agent 智能之和。**
-2. **经典组织问题可能仍然存在，AI 更可能改变主体属性和可行解法。**
-3. **不要先从 Agent、Ontology、VSM 等技术或理论对象扩展框架，先用论文回答 Q1-Q5。**
-4. **每篇论文必须进入已有判断体系：支持 / 挑战 / 修改 / 证据不足。**
-5. **VSM 是值得研究的候选理论线，但暂时放入 backlog，不抢当前三篇报告的阅读主线。**
+完整阅读卡：`research/paper-reviews/P001_puranam_2021_hacd.md`
 
-## 5. 下一步唯一动作
+## 4. 对当前 JUDGMENTS 的待处理建议
 
-**先读 Puranam 2021《Human–AI collaborative decision-making as an organization design problem》，完成七问拆解，重点更新 Q1 / Q3 / Q5。**
+当前先不直接修改 `JUDGMENTS.md`，待 P-002 / P-003 继续交叉验证。
 
-## 6. Resume Here
+- **J-001**：建议未来补充“企业智能也是主体配置、任务依赖、信息整合与反馈结构问题”；
+- **J-002**：P-001 对“AI 改变主体属性，不一定改变基本组织问题”提供较强理论支持，可考虑后续提升证据状态；
+- **J-005**：P-001 间接支持“工程应从组织问题反推”，可补充 `业务目标 → Task Decomposition → Human/AI Allocation → Interdependence → Decision Rights → Information/Feedback Architecture → 工程实现`；
+- **J-003 / J-004 / J-006**：P-001 不构成直接证据，暂不动。
+
+## 5. 当前待验证的新假设
+
+**H-P001-01｜企业智能不仅取决于“谁做决策”，还取决于企业如何设计反馈，使 Human 与 AI 的局部学习能够转化为整体组织学习。**
+
+状态：Exploring。
+
+需要在后续 Q5 / Organizational Learning 材料中继续验证。
+
+## 6. 下一步唯一动作
+
+**阅读 Goldberg & Puranam 2026《Purpose not prediction: the role of managers in the age of AI》，按七问拆解，重点回答 Q1 / Q2，并观察它是否能够补足 P-001 没有回答的 Authority / Accountability / Purpose 问题。**
+
+## 7. Resume Here
 
 如果中断后回来，从这里继续：
 
-> 当前第一轮不是“继续找更多理论”，而是先把三篇已有研究报告读透。
+> Puranam 2021 已完成。
 >
-> 第一篇：Puranam 2021。
+> 它初步支持 J-001、J-002、J-005，但目前还没有直接修改 JUDGMENTS。
 >
-> 阅读时固定回答七问，读完后再决定是否更新 JUDGMENTS。
+> 当前下一篇是 Goldberg & Puranam 2026，重点看 technical performance × normative appropriateness、manager tasks、purpose、authority、accountability。
+>
+> 目标不是继续找理论，而是看第二篇是否支持或修正 P-001 后形成的判断。
 
 _Last updated: 2026-09-04_
