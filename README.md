@@ -125,7 +125,10 @@ Academic theory is one public evidence stream, not the whole research system.
 ### Human-facing research cockpit
 
 - [`NOW.md`](NOW.md) — current research focus, progress, blockers, and the next single action
-- [`JUDGMENTS.md`](JUDGMENTS.md) — current working judgments worth preserving over time
+- [`EVOLUTION.md`](EVOLUTION.md) — major cognitive shifts, why they happened, and their origin (`User Insight / External Trigger / Co-developed / AI Proposal`)
+- [`JUDGMENTS.md`](JUDGMENTS.md) — current working judgments worth preserving and taking responsibility for over time
+
+Together they answer: **Where is the research now? Why did the thinking change? What do we currently believe?**
 
 ### Public research topics
 
@@ -160,7 +163,7 @@ The current policy is:
 
 > **Research in Chinese; publish mature ideas bilingually.**
 
-Working notes, paper walkthroughs, open hypotheses, and research state remain Chinese-first so that the research process stays cognitively efficient. Stable concepts and public-facing topics are progressively rewritten in English for international discussion.
+Working notes, `EVOLUTION.md`, paper walkthroughs, open hypotheses, and research state remain Chinese-first so that the research process stays cognitively efficient. Stable concepts and public-facing topics are progressively rewritten in English for international discussion.
 
 English versions are intended to be **conceptual and academic reframings**, not literal translations.
 
@@ -172,6 +175,7 @@ English versions are intended to be **conceptual and academic reframings**, not 
 - Do not let academic theory monopolize the project, and do not let industry marketing substitute for validation.
 - Do not create top-level frameworks around temporary technology labels such as MCP, RAG, Ontology, Agent, or Harness.
 - Separate **long-term questions, current judgments, evolutionary hypotheses, evidence, and counter-evidence**.
+- Record major cognitive changes in `EVOLUTION.md`, with origin markers where useful.
 - New technologies should first be used to update an existing research question rather than create a new conceptual tree.
 - Technical architecture should, where possible, be traceable back to organizational problems.
 - New papers are read in this order: **source walkthrough → concept reconstruction → research interpretation → human takeaways → possible judgment update**.
@@ -179,7 +183,7 @@ English versions are intended to be **conceptual and academic reframings**, not 
 
 ## Status
 
-Initialized on **2026-09-04**. The project is still building its organization-theory coordinate system while establishing a public industry roadmap around **Intelligent Subject Engineering × Governance**. The current active research question remains paper comprehension rather than broad vendor collection.
+Initialized on **2026-09-04**. The project is still building its organization-theory coordinate system while establishing a public industry roadmap around **Intelligent Subject Engineering × Governance** and a separate cognitive-evolution log. The current active research question remains paper comprehension rather than broad vendor collection.
 
 ---
 
