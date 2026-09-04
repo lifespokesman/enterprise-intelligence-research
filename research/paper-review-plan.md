@@ -4,7 +4,7 @@
 
 ## 当前三份报告
 
-### P-001｜Phanish Puranam (2021)
+### P-001｜Phanish Puranam (2021) ✅ 已完成七问拆解
 **Human–AI collaborative decision-making as an organization design problem**
 
 主要映射：
@@ -14,9 +14,19 @@
 - Q2 责任与代理：低
 - Q4 企业边界：低
 
-为什么：论文把 Human + AI 的协同决策直接视为一个 multi-agent、goal-oriented organization，核心研究分工、任务依赖、决策权顺序以及不同 learning configurations。
+已完成：[`paper-reviews/P001_puranam_2021_hacd.md`](paper-reviews/P001_puranam_2021_hacd.md)
 
-### P-002｜Amir Goldberg & Phanish Puranam (2026)
+本篇当前最重要结论：
+
+> Human-AI Collaboration 可以首先被看作 Organization Design 问题。经典的 division of labor、interdependence、integration of effort 与 learning 仍然成立，但组织成员的主体类型和可行设计空间发生了变化。
+
+对 JUDGMENTS 的初步更新建议：
+- J-001：建议补充“主体配置、任务依赖、信息整合和反馈结构”这一层；
+- J-002：获得较强理论支持，可考虑从“探索中”提升为“已有理论支持 / 继续验证”；
+- J-005：获得间接支持，可补充“组织问题 → 工程实现”的前置顺序；
+- J-003 / J-004 / J-006：不建议因本篇直接修改。
+
+### P-002｜Amir Goldberg & Phanish Puranam (2026) ← 当前下一篇
 **Purpose not prediction: the role of managers in the age of AI**
 
 主要映射：
@@ -57,19 +67,18 @@
 
 ---
 
-## 推荐阅读顺序
+## 当前阅读顺序
 
-### 1. Puranam 2021｜先建立组织设计语言
-先理解：
-- Human + AI 为什么可以被看作 organization；
+### 1. Puranam 2021 ✅
+已建立：
+- Human + AI 作为 multi-agent、goal-oriented organization；
 - division of labor；
 - task interdependence；
 - specialization vs identical decisions；
-- isolated / vicarious / coupled learning。
+- isolated / vicarious / coupled learning；
+- organization design 会反过来塑造未来可学习的数据。
 
-目标：先回答 **Q1 / Q3 / Q5**。
-
-### 2. Goldberg & Puranam 2026｜再研究人为什么仍可能保留管理角色
+### 2. Goldberg & Puranam 2026 ← 当前
 重点：
 - 五类 manager tasks；
 - technical performance × normative appropriateness；
@@ -77,9 +86,9 @@
 - purpose / goal origination；
 - accountability。
 
-目标：重点回答 **Q1 / Q2**，兼顾 Q3。
+目标：重点回答 **Q1 / Q2**，兼顾 Q3，并验证 P-001 后新增的问题：当 AI 从协同决策进一步进入管理任务时，Decision Rights 与 Accountability 是否必须被重新连接？
 
-### 3. 吕源｜再回到“管理主体是否扩展”
+### 3. 吕源
 重点：
 - 管理主体定义；
 - AI 智能主体；
@@ -102,3 +111,5 @@
 5. 最后更新 `NOW.md` 的 Resume Here 和下一步唯一动作。
 
 VSM / Stafford Beer 暂时保留在 backlog，不抢占当前第一轮阅读主线。
+
+_Last updated: 2026-09-04_
