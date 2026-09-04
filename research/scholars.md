@@ -58,6 +58,55 @@
 
 主要映射：Q1、Q4。
 
+## Organizational Cybernetics｜新增研究线
+
+> 这条线不是因为“VSM 已成为 AI 组织理论主流”，而是因为它提供了一套不以具体岗位为起点、围绕自治、协调、控制、适应和可行性展开的组织语言，值得在 Agent 时代重新压力测试。
+
+### Stafford Beer｜Management Cybernetics / VSM
+
+重点：Viability、Recursion、Autonomy、Coordination、Control、Policy、Environment。
+
+当前定位：经典理论人物。重点研究 VSM 是否能成为 Human-Agent 混合组织的候选元模型，而不是简单把 S1–S5 映射成 Agent 组件。
+
+主要映射：Q3、Q5、Q1。
+
+### W. Ross Ashby｜Cybernetics
+
+重点：Law of Requisite Variety、调节与复杂性。
+
+当前定位：理解“企业如何获得足够能力应对环境复杂性”的理论根源。
+
+主要映射：Q3、Q1。
+
+### Raul Espejo｜Organizational Cybernetics
+
+重点：VSM、Enterprise Complexity、Self-organization、Variety Management、Emerging Organizational Forms。
+
+当前定位：连接 Stafford Beer 原始 VSM 与现代复杂组织/数字协作网络的重要延伸者。
+
+优先入口：
+
+- *Organizational Systems: Managing Complexity with the Viable System Model*（与 Alfonso Reyes）
+- *The enterprise complexity model: An extension of the viable system model for emerging organizational forms*
+
+主要映射：Q3、Q4、Q5。
+
+### Jose Perez Rios｜VSM / Systems
+
+重点：VSM、组织诊断、组织病理、AI 时代组织复杂性。
+
+当前定位：2025 年已有直接将 VSM 用于 AI 时代组织病理分析的研究，作为“VSM × AI Organization”近期信号跟踪。
+
+主要映射：Q3、Q5。
+
+### Richard Sean O'Rourke｜观察线
+
+重点：Ashby、Beer、LLM、Human-AI Coupling、Autonomous Agents。
+
+当前定位：2026 年概念论文把 LLM 视作 variety transducer，并用 VSM 解释 Human–LLM coupled system。作为前沿观点观察，不把单篇概念论文等同于成熟理论流派。
+
+主要映射：Q1、Q3。
+
 ## 中国学者
 
 ### 张志学｜北京大学光华
@@ -151,3 +200,5 @@
 ## 使用规则
 
 只有当某位学者真正进入当前 Active Question 时，才展开独立学者卡。默认保持索引，不把仓库变成教授资料收藏夹。
+
+第一轮知识采集计划见 [`knowledge-seed-plan.md`](knowledge-seed-plan.md)。
