@@ -42,6 +42,29 @@ A firm may deploy highly capable agents and still remain organizationally uninte
 
 [Read the research questions →](topics/en/README.md)
 
+## Evidence Architecture: Theory × Industry × Product × Field
+
+The five questions above are the **problem map**. They are not answered by academic papers alone.
+
+This project uses four evidence streams:
+
+- **Academic Theory** — concepts, mechanisms, boundary conditions, and testable propositions;
+- **Industry Cases** — what real organizations actually change when AI enters workflows, decisions, coordination, and learning;
+- **Product / Company Philosophy** — how companies define the enterprise-AI problem and turn organizational assumptions into product mechanisms;
+- **Field Observation** — de-identified observations from real enterprise and project settings that pressure-test both theory and industry narratives.
+
+The intended research loop is:
+
+`Q1–Q5 → Theory / Industry Case / Product / Field → Hypothesis → Judgment → Engineering Implication`
+
+Evidence identities must remain distinct. In particular:
+
+> **Product Claim ≠ Validated Theory**  
+> **Vendor Case ≠ Independent Evidence**  
+> **Single Field Observation ≠ General Law**
+
+Public industry research is maintained under [`industry/`](industry/).
+
 ## Current Research Hypothesis
 
 Traditional enterprise information systems largely assume that humans interpret the business world and organize digital capabilities through applications, workflows, and organizational roles.
@@ -65,7 +88,7 @@ The current study map has six learning modules:
 5. **AI as an organizational actor** — Human-AI teams, multi-agent organizations, AI decision-making
 6. **Re-deriving Enterprise Intelligence** — using organizational questions to rethink intelligent-subject relationships, engineering, and governance
 
-The research process currently prioritizes original papers and theories before technical abstraction.
+Theory is one evidence stream, not the whole research system. Industry cases, product philosophies, and de-identified field observations are used to validate, challenge, or refine theoretical claims.
 
 ## Repository Structure
 
@@ -90,6 +113,12 @@ These remain Chinese-first because they are part of the active thinking process.
 - [`research/reading-list.md`](research/reading-list.md) — current reading path
 - `research/paper-reviews/` — source walkthroughs and research interpretations, currently Chinese-first
 
+### Industry evidence
+
+- [`industry/README.md`](industry/README.md) — evidence rules for industry research
+- [`industry/cases/`](industry/cases/) — public enterprise cases
+- [`industry/products/`](industry/products/) — product mechanisms, product philosophy, and company-level AI assumptions
+
 ### AI context
 
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md) — long-term research context and maintenance rules for AI collaborators
@@ -108,6 +137,8 @@ English versions are intended to be **conceptual and academic reframings**, not 
 
 ## Research Discipline
 
+- Treat **Q1–Q5 as the problem map** and **Theory / Industry / Product / Field as evidence streams**; do not confuse the two levels.
+- Do not let academic theory monopolize the project, and do not let industry marketing substitute for validation.
 - Do not create top-level frameworks around temporary technology labels such as MCP, RAG, Ontology, Agent, or Harness.
 - Separate **long-term questions, current judgments, evolutionary hypotheses, evidence, and counter-evidence**.
 - New technologies should first be used to update an existing research question rather than create a new conceptual tree.
@@ -117,7 +148,7 @@ English versions are intended to be **conceptual and academic reframings**, not 
 
 ## Status
 
-Initialized on **2026-09-04**. The current phase is building a classical organization-theory coordinate system and studying how AI as a new organizational actor affects decision rights, coordination, accountability, and organizational learning.
+Initialized on **2026-09-04**. The current phase is building a classical organization-theory coordinate system while broadening the research system toward industry cases, product philosophies, and field evidence.
 
 ---
 
