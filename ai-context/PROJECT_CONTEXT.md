@@ -114,9 +114,51 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 - Business Rule：业务上这件事能不能做；
 - Governance Policy：这个主体有没有权做。
 
-## 9. 研究方法｜先还原、再理解、再研究
+## 9. 研究方法｜多证据驱动，而不是论文驱动
 
 ### 9.1 核心原则
+
+Q1–Q5 是长期研究问题，不是“论文目录”。企业智能既需要理论解释，也需要产业实践和真实现场不断验证。
+
+固定使用四类证据：
+
+1. **Academic Theory｜学术理论**
+   - 用于获得概念、机制、经典问题、边界条件和可检验命题；
+   - 风险：可能滞后于最新技术实践，或者缺少企业级工程验证。
+2. **Industry Case｜产业案例**
+   - 用于观察真实企业如何重新配置 Human、AI、Software、Asset；
+   - 风险：成功案例有选择偏差，厂商案例可能只展示有利结果。
+3. **Product / Company Philosophy｜产品与公司哲学**
+   - 用于研究产业界如何定义问题，以及把哪些组织假设工程化成产品机制；
+   - 风险：产品路线和营销主张不等于理论已被验证。
+4. **Field Observation｜现场观察**
+   - 来自真实项目、业务现场和用户交流，用于压力测试理论与产业叙事；
+   - 风险：单项目、单组织、单阶段现象不能直接泛化。
+
+四类证据共同回答同一组 Q1–Q5，不新增 Q6“产业实践”。
+
+研究链条：
+
+`Q1–Q5 → Theory / Industry Case / Product / Field → Hypothesis → Judgment → Engineering Implication`
+
+### 9.2 证据身份必须标记
+
+尽量区分：
+
+- `[Theory]`：论文或理论明确支持；
+- `[Industry Case]`：公开企业案例中的事实或结果；
+- `[Product Fact]`：公开产品文档可核验的机制、能力或架构；
+- `[Product Claim]`：厂商对产品价值、优势、趋势或组织含义的主张；
+- `[Field Observation]`：已脱敏的真实业务现场观察；
+- `[Our Judgment]`：本项目在多类证据基础上形成的判断。
+
+重要纪律：
+
+> Product Claim ≠ Validated Theory  
+> Vendor Case ≠ Independent Evidence  
+> Single Field Observation ≠ General Law
+
+### 9.3 理论论文阅读｜先还原、再理解、再研究
 
 研究卡首先必须帮助用户**真正看懂论文**，其次才用于更新研究框架。
 
@@ -124,7 +166,7 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 
 固定采用四层结构：
 
-`Part A Source Walkthrough 原文精读导读`
+`Part A Source Walkthrough 原文精读`
 
 → `Part B Concept Reconstruction 关键概念/理论教学`
 
@@ -132,7 +174,7 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 
 → `Part D Human Takeaways 人类吸收层`
 
-### 9.2 Part A｜Source Walkthrough｜原文精读导读
+### 9.4 Part A｜Source Walkthrough｜原文精读导读
 
 目标不是摘要，而是**按作者自己的顺序陪用户走一遍文章**。
 
@@ -146,33 +188,25 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 6. 作者明确提出什么结论；
 7. 作者明确没有解决什么。
 
-不能只写“作者提出X”，还要解释作者“为什么提出X”。
+不能只写“作者提出 X”，还要解释作者“为什么提出 X”。
 
-### 9.3 Part B｜Concept Reconstruction｜关键概念/理论教学
+### 9.5 Part B｜Concept Reconstruction｜关键概念/理论教学
 
 遇到用户不熟悉的概念，不能只保留英文术语或一句中文翻译。
 
 每个关键概念统一回答：
 
-1. **本文语境里到底是什么意思？**
-2. **作者为什么在这一段需要它？**
-3. **用一个简单例子如何理解？**
-4. **与邻近概念有什么区别？**
-5. **最容易误解成什么？**
-6. **论文自己解释到哪里为止？**
+1. 本文语境里到底是什么意思？
+2. 作者为什么在这一段需要它？
+3. 用一个简单例子如何理解？
+4. 与邻近概念有什么区别？
+5. 最容易误解成什么？
+6. 论文自己解释到哪里为止？
 7. 如果需要经典理论补充，明确标注为 `[背景补充]`，不能冒充 `[原文]`。
 
-尤其重视“概念对”的辨析，例如：
+尤其重视概念对辨析，例如 task interdependence vs agent interdependence、coupled learning vs vicarious learning、decision rights vs accountability。
 
-- task interdependence vs agent interdependence；
-- specialization vs non-specialization；
-- parallel vs sequential；
-- independent feedback vs interdependent feedback；
-- coupled learning vs vicarious learning；
-- learning vs performance improvement；
-- decision rights vs accountability。
-
-### 9.4 Part C｜Research Interpretation｜七问
+### 9.6 Part C｜Research Interpretation｜七问
 
 只有 A/B 完成且用户能够理解论文主要概念后，才回答：
 
@@ -186,7 +220,7 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 
 七问是**研究映射层**，不是论文摘要层，也不是用户第一次接触论文时的入口。
 
-### 9.5 Part D｜Human Takeaways｜吸收层
+### 9.7 Part D｜Human Takeaways｜吸收层
 
 最后再压缩为：
 
@@ -196,26 +230,39 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 - 哪个问题还没有想清楚；
 - 下一篇为什么值得接着读。
 
-### 9.6 信息来源标记
+### 9.8 产业研究方法
 
-所有阅读卡尽量明确区分：
+产业研究不能退化成“厂商功能清单”或“成功案例摘抄”。
 
-- `[原文]`：作者文章中明确写出的内容；
-- `[作者引用]`：作者借前人研究使用的机制/结论；
-- `[背景补充]`：为了帮助理解而补充的经典理论；
-- `[我们的推论]`：结合 Enterprise Intelligence 框架进一步推导。
+Industry Case 重点回答：
 
-如果分不清来源，不得直接升级为 JUDGMENTS。
+- AI 进入哪个真实任务？
+- Human / AI 分工如何变化？
+- Decision Rights / Accountability / Coordination / Learning 是否变化？
+- 结果指标是什么，证据来源是什么？
+- 案例有哪些前提和边界？
 
-### 9.7 防止确认偏误
+Product / Company Philosophy 重点回答：
+
+- 这家公司认为企业 AI 的核心问题是什么？
+- 它把哪些机制做成了产品？
+- 背后隐含什么 Human–AI / Agent–Enterprise 组织假设？
+- 哪些是 Product Fact，哪些是 Product Claim？
+- 有哪些公开案例支撑，哪些仍是厂商叙事？
+- 对 Q1–Q5 和现有 JUDGMENTS 有什么支持、挑战或反例？
+- 如果判断成立，对工程架构有什么 Engineering Implication？
+
+产业证据统一沉淀在 `industry/`。
+
+### 9.9 防止确认偏误
 
 不得因为仓库已有 Q1-Q5 和 JUDGMENTS，就只寻找能支持已有观点的内容。
 
-如果论文原始问题与当前框架不匹配，应记录“不匹配”或“新现象”，而不是强行归类。
+如果论文、案例、产品或现场现象与当前框架不匹配，应记录“不匹配”“新现象”或“反例”，而不是强行归类。
 
 ## 10. 项目证据使用规则
 
-真实公安、海关、能源、电网、制造等项目可以用于理论压力测试，但公开仓必须脱敏。
+真实公安、海关、能源、电网、制造等项目可以用于理论和产业判断的压力测试，但公开仓必须脱敏。
 
 不要存放：
 
@@ -225,7 +272,13 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 - 招投标敏感材料；
 - 未公开公司内部产品信息。
 
-只沉淀抽象后的组织现象。
+公开仓只保存抽象后的组织现象和研究判断。
+
+默认规则：
+
+> **本地 / 公司环境保存项目本身；Private Repo 保存从项目里想到什么；Public Repo 保存项目被抽象掉以后仍然成立什么。**
+
+第一手 Field Observation 默认先进入私有研究环境，只有完成脱敏、抽象并确认无法反向识别后，才进入公开研究。
 
 ## 11. 工作台维护规则
 
@@ -235,8 +288,8 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 
 1. `NOW.md`
 2. `JUDGMENTS.md`
-3. 当前论文的 `source-walkthrough.md`
-4. 再进入七问研究卡
+3. 当前论文的 `source-walkthrough.md` 或当前产业研究卡
+4. 再进入七问 / 理论映射
 
 ### AI 默认加载
 
@@ -253,17 +306,20 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 - `NOW.md`：当前进度、卡点、下一步唯一动作、Resume Here；
 - `JUDGMENTS.md`：只有发生实质认知升级时才更新；
 - 对应 Topic：补证据或反例；
-- 如果只是新想法但证据不足，优先进入研究卡/Issue，而不是修改稳定判断。
+- `industry/`：只有与当前问题直接相关的案例/产品才建卡，不做厂商收藏；
+- 如果只是新想法但证据不足，优先进入研究卡/Private Repo，而不是修改稳定判断。
 
 ## 12. 研究纪律
 
 - 不为了追热点不断增加概念层级；
+- Q1–Q5 是问题地图，Theory / Industry / Product / Field 是证据来源，二者不要混为同一层；
+- 不让教授论文垄断研究，也不让产业营销替代理论验证；
 - 先原文还原，再概念理解，再研究解释；
 - 不用“摘要效率”牺牲学习过程；
 - 先问题，后技术；
 - 先组织问题，后工程实现；
 - 同时维护支持证据与反例；
-- 将“作者观点 / 背景理论 / 我们判断 / 当前技术条件”严格区分；
+- 将“作者观点 / 产品主张 / 案例事实 / 现场观察 / 我们判断 / 当前技术条件”严格区分；
 - 一个时期只保留一个 Active Research Question。
 
 _Last updated: 2026-09-04_
