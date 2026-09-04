@@ -6,11 +6,23 @@
 
 ### Phanish Puranam｜INSEAD
 
-重点：Organization Design、Division of Labor、Coordination、Human-AI Organization、Multi-Agent Organization。
+重点：Organization Design、Division of Labor、Coordination、Human-AI Organization、Multi-Agent Organization、Organizational Learning。
 
 当前定位：AI 时代组织设计理论主线。重点观察其“Multi-Agent AI Systems Are Organizations”等工作。
 
-主要映射：Q1 决策权、Q3 协调、Q4 企业边界。
+**已读材料 1：** *Human–AI collaborative decision-making as an organization design problem*（2021）
+
+从这篇材料目前真正学到的是：
+
+- Human + AI 可以被视为一个 **multi-agent, goal-oriented organization**；
+- Human-AI 分工不能只看“谁能力更强”，还要看 task interdependence、decision rights、coordination cost 与 aggregation；
+- 同一决策由 Human 与 AI 并行判断后聚合，也可能是一种有效组织设计，而不仅是专业化分工；
+- 组织设计不仅决定当前任务分配，还会改变每个主体未来能够获得的 feedback 与 learning opportunities；
+- 因此 AI 更像是在扩展“组织成员的主体类型和设计空间”，而不是直接推翻 division of labor、coordination、learning 等经典组织问题。
+
+主要映射：**Q1 决策权、Q3 协调、Q5 组织学习**；Q2 / Q4 在该篇中支持较弱。
+
+对应阅读卡：[`paper-reviews/P001_puranam_2021_hacd.md`](paper-reviews/P001_puranam_2021_hacd.md)
 
 ### Amir Goldberg｜Stanford GSB
 
