@@ -36,6 +36,29 @@
 
 详见 [`topics/README.md`](topics/README.md)。
 
+## 四类证据：Theory × Industry × Product × Field
+
+Q1–Q5 是**问题地图**，不是“论文目录”。未来企业智能不能只依赖教授论文来回答。
+
+当前固定使用四类证据：
+
+1. **Academic Theory｜学术理论**：提供概念、机制、经典问题、边界条件和可检验命题；
+2. **Industry Case｜产业案例**：观察真实企业中 AI 进入以后，Human、AI、Software、Asset 如何重新分工、协调、治理和学习；
+3. **Product / Company Philosophy｜产品与公司哲学**：研究产业界如何定义问题，以及把哪些组织假设工程化成产品机制；
+4. **Field Observation｜现场观察**：来自真实项目和业务现场的一手现象，用于压力测试理论和产业叙事。
+
+研究链条：
+
+`Q1–Q5 → Theory / Industry Case / Product / Field → Hypothesis → Judgment → Engineering Implication`
+
+必须区分不同证据身份：
+
+> **Product Claim ≠ 已验证理论**  
+> **Vendor Case ≠ 独立证据**  
+> **Single Field Observation ≠ 普遍规律**
+
+产业研究见 [`industry/`](industry/)。
+
 ## 六个学习模块
 
 1. 组织为什么存在：Simon、Coase、Williamson
@@ -46,6 +69,8 @@
 6. 重新推导 Enterprise Intelligence：从组织问题反推智能主体关系、工程与治理
 
 详见 [`research/theory-map.md`](research/theory-map.md)。
+
+注意：理论学习只是四类证据中的一条线，不再等同于整个研究系统。
 
 ## 当前总假设
 
@@ -70,12 +95,22 @@
 
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)：研究目标、边界、概念与研究纪律
 
-### 按需深入
+### 理论与论文
 
-- [`topics/`](topics/)：五个长期组织问题 + 企业智能定义
 - [`research/scholars.md`](research/scholars.md)：国内外重点学者地图
 - [`research/theory-map.md`](research/theory-map.md)：经典组织理论与 AI 压力测试
 - [`research/reading-list.md`](research/reading-list.md)：当前阅读路线
+- `research/paper-reviews/`：原文精读、概念还原与七问研究映射
+
+### 产业证据
+
+- [`industry/README.md`](industry/README.md)：产业证据研究原则
+- [`industry/cases/`](industry/cases/)：公开企业实践案例
+- [`industry/products/`](industry/products/)：产品机制、产品哲学与公司 AI 路线
+
+### 长期主题
+
+- [`topics/`](topics/)：五个长期组织问题 + 企业智能定义
 
 ## 双语策略
 
@@ -87,15 +122,18 @@
 
 ## 研究纪律
 
+- **Q1–Q5 是问题地图，Theory / Industry / Product / Field 是证据来源，两者不要混成一层；**
+- 不让教授论文垄断研究，也不让产业营销替代理论验证；
 - 不以 MCP、RAG、Ontology、Agent、Harness 等技术名词无限增加一级框架；
 - 区分 **长期问题 / 当前判断 / 演进假设 / 证据 / 反例**；
 - 新技术首先用于修改已有问题的答案，而不是制造新的概念树；
 - 技术架构必须尽量能够追溯到组织问题；
-- 真实项目材料必须脱敏，只保留可公开讨论的组织现象与方法论。
+- 真实项目材料必须脱敏，只保留可公开讨论的组织现象与方法论；
+- 论文阅读坚持：**原文精读 → 概念还原 → 七问研究映射 → 人类吸收 → 是否更新 Judgment**。
 
 ## 当前状态
 
-仓库于 **2026-09-04** 初始化，当前重点是建立经典组织理论坐标系，并研究 AI 作为新组织主体后对决策权、协调机制、责任与组织学习的影响。
+仓库于 **2026-09-04** 初始化。当前仍在建立组织理论坐标系，但研究方式已经从“理论论文驱动”扩展为“理论 × 产业案例 × 产品哲学 × 现场观察”的多证据体系。
 
 ---
 
