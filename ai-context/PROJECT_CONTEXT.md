@@ -89,9 +89,18 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
    - Knowledge/Experience：Document / SOP / Case / Expert Experience
    - Interface/Action：API / MCP / CLI / Tool / Action
    - Learning/Evaluation：Dataset / Eval Set / Benchmark / Trace
-3. FDE 与客户共创 Agent Definition。
+3. FDE 与业务侧共创 Agent Definition。
 4. Agent Assembly 是主体定义、Model/Harness、企业资产和 Governance Policy 的交叉点。
 5. 企业最终需要稳定的 Production + Runtime 生命周期，而不是押注某个具体 Agent 框架。
+
+产业工程路线进一步固化为：
+
+- E1 Agent Production / Harness / Runtime
+- E2 Enterprise Context / World Model / Ontology
+- E3 Capability / Action Infrastructure
+- E4 Feedback / Evaluation / Evolution
+
+详见 `industry/ROADMAP.md`。
 
 ## 8. 治理现阶段理解
 
@@ -114,49 +123,66 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 - Business Rule：业务上这件事能不能做；
 - Governance Policy：这个主体有没有权做。
 
-## 9. 研究方法｜多证据驱动，而不是论文驱动
+产业治理路线进一步固化为：
+
+- G1 Identity / Ownership
+- G2 Authority / Policy
+- G3 Human Control / Accountability
+- G4 Trace / Audit / Lifecycle
+
+详见 `industry/ROADMAP.md`。
+
+## 9. 研究方法｜公开多证据驱动，而不是论文或厂商单线驱动
 
 ### 9.1 核心原则
 
-Q1–Q5 是长期研究问题，不是“论文目录”。企业智能既需要理论解释，也需要产业实践和真实现场不断验证。
+Q1–Q5 是长期研究问题，不是“论文目录”。公开仓同时使用 Academic Theory 与 Public Industry Evidence 回答这些问题。
 
-固定使用四类证据：
+**本公开仓只研究公开世界。**
 
-1. **Academic Theory｜学术理论**
-   - 用于获得概念、机制、经典问题、边界条件和可检验命题；
-   - 风险：可能滞后于最新技术实践，或者缺少企业级工程验证。
-2. **Industry Case｜产业案例**
-   - 用于观察真实企业如何重新配置 Human、AI、Software、Asset；
-   - 风险：成功案例有选择偏差，厂商案例可能只展示有利结果。
-3. **Product / Company Philosophy｜产品与公司哲学**
-   - 用于研究产业界如何定义问题，以及把哪些组织假设工程化成产品机制；
-   - 风险：产品路线和营销主张不等于理论已被验证。
-4. **Field Observation｜现场观察**
-   - 来自真实项目、业务现场和用户交流，用于压力测试理论与产业叙事；
-   - 风险：单项目、单组织、单阶段现象不能直接泛化。
+核心边界：
 
-四类证据共同回答同一组 Q1–Q5，不新增 Q6“产业实践”。
+> **Private experience may inspire a question, but every public claim must be independently supportable by public evidence.**
+>
+> 私人经验可以启发研究问题，但公开观点必须能够仅依靠公开证据独立成立。
+
+公开仓不得保存、引用、描述或建立任何私人、客户、公司内部、非公开项目的证据链。
+
+公开证据包括：
+
+1. **Academic Theory｜学术理论**：概念、机制、经典问题、边界条件与可检验命题；
+2. **Product Fact｜产品事实**：公开产品文档可核验的机制、能力、架构与运行方式；
+3. **Product Claim｜产品主张**：厂商对价值、优势、趋势或组织含义的公开解释；
+4. **Industry Case｜产业案例**：基于公开来源、可核验的企业实践事实和结果；
+5. **Analyst View｜第三方产业分析**：咨询、投研、行业研究机构的横向分析；
+6. **Policy / Standard｜政策与标准**：公开法律、监管要求、行业标准与技术标准；
+7. **Counter Evidence｜反向证据**：失败案例、替代机制、反向数据和边界条件。
 
 研究链条：
 
-`Q1–Q5 → Theory / Industry Case / Product / Field → Hypothesis → Judgment → Engineering Implication`
+`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
 
 ### 9.2 证据身份必须标记
 
 尽量区分：
 
 - `[Theory]`：论文或理论明确支持；
-- `[Industry Case]`：公开企业案例中的事实或结果；
 - `[Product Fact]`：公开产品文档可核验的机制、能力或架构；
-- `[Product Claim]`：厂商对产品价值、优势、趋势或组织含义的主张；
-- `[Field Observation]`：已脱敏的真实业务现场观察；
-- `[Our Judgment]`：本项目在多类证据基础上形成的判断。
+- `[Product Claim]`：厂商对价值、优势、趋势或组织含义的主张；
+- `[Industry Case]`：公开企业案例中的事实或结果；
+- `[Analyst View]`：第三方机构的产业综合判断；
+- `[Policy / Standard]`：公开政策、法律、监管或标准要求；
+- `[Counter Evidence]`：与当前假设不一致的事实、案例、机制或边界；
+- `[Our Judgment]`：本项目在多类公开证据基础上形成的判断。
 
 重要纪律：
 
 > Product Claim ≠ Validated Theory  
 > Vendor Case ≠ Independent Evidence  
-> Single Field Observation ≠ General Law
+> Analyst View ≠ Academic Theory  
+> Public Success Case ≠ General Law
+
+不得机械要求每张卡凑齐所有证据类型。缺失证据应明确保留为 gap，不能由 AI 猜测补齐。
 
 ### 9.3 理论论文阅读｜先还原、再理解、再研究
 
@@ -234,6 +260,33 @@ Q1–Q5 是长期研究问题，不是“论文目录”。企业智能既需要
 
 产业研究不能退化成“厂商功能清单”或“成功案例摘抄”。
 
+产业路线由工程与治理问题定义，而不是由公司定义：
+
+**Engineering**
+- E1 Agent Production / Harness / Runtime
+- E2 Enterprise Context / World Model / Ontology
+- E3 Capability / Action Infrastructure
+- E4 Feedback / Evaluation / Evolution
+
+**Governance**
+- G1 Identity / Ownership
+- G2 Authority / Policy
+- G3 Human Control / Accountability
+- G4 Trace / Audit / Lifecycle
+
+公司、产品、框架和案例只是 Observation Targets。
+
+研究一个产品/公司时重点回答：
+
+- 它主要落在哪些 E/G Track？
+- 它对应 Q1–Q5 哪些长期问题？
+- 哪些是 Product Fact，哪些是 Product Claim？
+- 有没有公开企业案例支撑？来源是否独立？
+- Analyst View 如何评价？
+- 是否存在 Policy / Standard 约束？
+- 有哪些 Counter Evidence 或替代路线？
+- 如果判断成立，对工程或治理有什么 Implication？
+
 Industry Case 重点回答：
 
 - AI 进入哪个真实任务？
@@ -242,43 +295,29 @@ Industry Case 重点回答：
 - 结果指标是什么，证据来源是什么？
 - 案例有哪些前提和边界？
 
-Product / Company Philosophy 重点回答：
-
-- 这家公司认为企业 AI 的核心问题是什么？
-- 它把哪些机制做成了产品？
-- 背后隐含什么 Human–AI / Agent–Enterprise 组织假设？
-- 哪些是 Product Fact，哪些是 Product Claim？
-- 有哪些公开案例支撑，哪些仍是厂商叙事？
-- 对 Q1–Q5 和现有 JUDGMENTS 有什么支持、挑战或反例？
-- 如果判断成立，对工程架构有什么 Engineering Implication？
-
 产业证据统一沉淀在 `industry/`。
 
 ### 9.9 防止确认偏误
 
-不得因为仓库已有 Q1-Q5 和 JUDGMENTS，就只寻找能支持已有观点的内容。
+不得因为仓库已有 Q1-Q5、E/G Roadmap 和 JUDGMENTS，就只寻找能支持已有观点的内容。
 
-如果论文、案例、产品或现场现象与当前框架不匹配，应记录“不匹配”“新现象”或“反例”，而不是强行归类。
+如果论文、公开案例、产品机制、Analyst View 或 Policy/Standard 与当前框架不匹配，应记录“不匹配”“新现象”或“反例”，而不是强行归类。
 
-## 10. 项目证据使用规则
+如果产业界出现理论坐标无法解释的新机制，优先回到理论线寻找更合适的理论解释；只有经过充分验证，才考虑修改一级框架。
 
-真实公安、海关、能源、电网、制造等项目可以用于理论和产业判断的压力测试，但公开仓必须脱敏。
+## 10. Public Repository Boundary｜公开仓边界
 
-不要存放：
+本仓库是公开研究作品，不是工作项目知识库。
 
-- 客户真实名称与敏感身份；
-- 原始数据；
-- 内部系统地址；
-- 招投标敏感材料；
-- 未公开公司内部产品信息。
+硬规则：
 
-公开仓只保存抽象后的组织现象和研究判断。
+- 不保存私人、客户、公司内部或非公开项目材料；
+- 不记录这些项目的名称、身份、数据、架构、截图、投标材料、内部产品信息或可反向识别的描述；
+- 不把非公开项目经验标记为公共 `Field Observation`；
+- 不以“已脱敏”为理由把私人项目证据链搬入公开仓；
+- 公开 Judgment 必须能够仅使用公开来源进行论证和复核。
 
-默认规则：
-
-> **本地 / 公司环境保存项目本身；Private Repo 保存从项目里想到什么；Public Repo 保存项目被抽象掉以后仍然成立什么。**
-
-第一手 Field Observation 默认先进入私有研究环境，只有完成脱敏、抽象并确认无法反向识别后，才进入公开研究。
+私人经验如果启发了一个问题，公开仓只接收这个**抽象后的研究问题**，随后必须重新寻找公开 Theory / Product / Case / Analyst / Policy / Counter Evidence 进行独立验证。
 
 ## 11. 工作台维护规则
 
@@ -305,21 +344,23 @@ Product / Company Philosophy 重点回答：
 
 - `NOW.md`：当前进度、卡点、下一步唯一动作、Resume Here；
 - `JUDGMENTS.md`：只有发生实质认知升级时才更新；
-- 对应 Topic：补证据或反例；
-- `industry/`：只有与当前问题直接相关的案例/产品才建卡，不做厂商收藏；
-- 如果只是新想法但证据不足，优先进入研究卡/Private Repo，而不是修改稳定判断。
+- 对应 Topic：补公开证据或反例；
+- `industry/`：只有与当前问题直接相关的公开案例/产品才建卡，不做厂商收藏；
+- 如果只是新想法但公开证据不足，先保持为研究问题或 Hypothesis，不修改稳定判断。
 
 ## 12. 研究纪律
 
 - 不为了追热点不断增加概念层级；
-- Q1–Q5 是问题地图，Theory / Industry / Product / Field 是证据来源，二者不要混为同一层；
+- Q1–Q5 是问题地图，Theory + Public Industry Evidence 是公开证据线，二者不要混为同一层；
+- Industry Roadmap 是 Engineering + Governance 的问题路线，不是厂商分类；
 - 不让教授论文垄断研究，也不让产业营销替代理论验证；
 - 先原文还原，再概念理解，再研究解释；
 - 不用“摘要效率”牺牲学习过程；
 - 先问题，后技术；
 - 先组织问题，后工程实现；
 - 同时维护支持证据与反例；
-- 将“作者观点 / 产品主张 / 案例事实 / 现场观察 / 我们判断 / 当前技术条件”严格区分；
+- 将“作者观点 / 产品事实 / 产品主张 / 案例事实 / Analyst View / Policy / 我们判断 / 当前技术条件”严格区分；
+- 任何公开结论都不得依赖非公开材料才能成立；
 - 一个时期只保留一个 Active Research Question。
 
 _Last updated: 2026-09-04_
