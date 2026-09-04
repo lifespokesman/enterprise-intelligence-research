@@ -24,7 +24,7 @@ AI 压力测试：
 
 ---
 
-## M2｜组织如何分工与协调
+## M2｜组织如何分工、协调与保持可行性
 
 核心理论：
 
@@ -32,17 +32,39 @@ AI 压力测试：
 - Organization Design
 - Information Processing View of Organization
 - Division of Labor
+- W. Ross Ashby｜Law of Requisite Variety
+- Stafford Beer｜Management Cybernetics / Viable System Model (VSM)
 
 核心问题：
 
 - 为什么分工会带来协调成本？
 - 直接监督、标准化、相互调适分别解决什么问题？
+- 一个包含多个自治单元的组织，如何在环境复杂性变化时维持整体可行性（viability）？
+- 自治、协调、控制、环境适应与整体身份之间如何取得平衡？
 
 AI 压力测试：
 
 - Agent 是否改变分工颗粒度？
 - Shared Context / Enterprise World Model 是否形成新的协调基础？
 - Human-Agent 的协调是替代传统机制，还是叠加在传统机制之上？
+- Requisite Variety 在 Agent / LLM 时代意味着什么：更多模型能力、更多上下文、更多可调用能力，还是更好的复杂性过滤与调节？
+- VSM 的递归结构能否解释 Agent → Team → Department → Enterprise 的多层智能组织？
+
+### 当前新增研究线：VSM × AI Organization
+
+暂不把 VSM 直接定义为“AI 原生组织理论”。当前只保留一个待验证假设：
+
+> **VSM 可能提供企业智能的组织控制论骨架，而 Intelligent Subject、Enterprise World Model、Capability Network 与 Runtime Feedback 可能成为 AI 时代实现部分 VSM 功能的新技术载体。**
+
+需要重点验证：
+
+1. VSM 是否真的比传统人类组织理论更少预设“主体必须是人”；
+2. S1–S5 能否稳定映射 Human-Agent 混合组织，而不是事后类比；
+3. Shared World Model 在 VSM 中更接近 S2 协调基础、S3 控制信息、S4 环境智能，还是跨系统基础设施；
+4. VSM 对责任、合法授权、价值冲突和法律问责的解释是否不足，需要 Agency / Governance 理论补充；
+5. VSM 的“viability”与当前所定义的 Enterprise Intelligence 是否是同一层概念，还是前者只是后者的一个必要条件。
+
+详见 [`vsm-ai-research.md`](vsm-ai-research.md)。
 
 ---
 
@@ -127,6 +149,7 @@ AI 压力测试：
 - Human、Agent、Software、Data、Asset 如何配置？
 - Enterprise World Model 与 Capability Network 的组织意义是什么？
 - 哪些治理规则应转化为智能主体生产与 Runtime Enforcement？
+- “企业智能”与 VSM 所说的 organizational viability 是包含、交叉还是不同层级关系？
 
 目标不是直接画出一张“最终 AI 架构图”，而是形成：
 
