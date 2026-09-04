@@ -1,12 +1,203 @@
-# P-001｜Puranam 2021 七问拆解
+# P-001｜Puranam 2021 阅读卡
 
 **论文**：Phanish Puranam (2021), *Human–AI collaborative decision-making as an organization design problem*
 
-**当前定位**：这篇论文最重要的价值，不是告诉我们“人应该做什么、AI 应该做什么”，而是把 Human + AI 从“人使用工具”重新定义成一个需要进行组织设计的多主体系统。
-
-它对当前研究最大的贡献，是为 **Q1 决策权、Q3 协调、Q5 组织学习** 提供了一套较干净的组织设计语言。
+**阅读原则**：先恢复作者原文，再进入我们的研究框架。前半部分只回答“论文到底写了什么”，后半部分才回答 Q1–Q5 和七问。
 
 ---
+
+# Part A｜原文事实压缩：这篇论文到底写了什么？
+
+> 本部分尽量保持作者自己的问题、术语、结构和论证顺序，不先套入我们的 Enterprise Intelligence 框架。
+
+## A0｜论文性质与研究边界
+
+- 这是一篇 **Point of View**，发表于 *Journal of Organization Design*，不是实证研究，也没有使用数据集做检验。
+- 作者研究的对象是 **Human–AI Collaborative Decision-Making（HACD）**。
+- 作者主动限定的主要场景是：在知识工作中，Human 与 AI 通过某种协作 **共同产生一个 decision**，然后由第三方实施，例如选股、投资、量刑、候选人筛选。
+- 作者说明，这套分析可能对“人训练 AI / AI 训练人 / 算法帮助匹配人”等场景也有启发，但这些情况需要额外考虑，本文没有展开。
+- 文中为方便把 AI、algorithm、machine learning 基本混用，这是 2020–2021 年的技术语境，不能直接等同于今天完整的 LLM Agent。
+
+## A1｜作者明确提出的两个核心观点
+
+论文开篇明确说要做两件事：
+
+1. **Human 与 AI 的分工不只有“各做自己更擅长的部分”这一种形式。**
+2. **Human 与 AI 的共同学习也存在多种 learning configurations。**
+
+作者的目的不是给出唯一最佳 Human-AI 组织，而是画出一个更完整的 **design space**，帮助理论研究和实际试验更系统地比较不同组合。
+
+## A2｜作者为什么把 Human + AI 看成“组织”
+
+作者认为，从 organization design 角度看，Human 和 Algorithm 的组合可以视为一个：
+
+> **multi-agent, goal-oriented system**
+
+这个 HACD organization 的目标是：**产生一个最终 decision**。
+
+作者用组织设计语言描述这个系统：
+
+- **Division of Labor**：目标如何拆成任务，以及任务如何分配给不同主体；
+- **Integration of Effort**：如何通过信息、反馈、奖励、异常处理等方式，把多个主体的工作重新整合起来。
+
+因此，文章的起点不是“AI 是一个什么工具”，而是“多个主体怎样被组织起来完成一个共同决策”。
+
+## A3｜Figure 1：Human-AI 协同为什么可能比单独 Human 或 AI 更好
+
+作者先区分三类 decision task。这里的分类不是永久的，会随技术水平变化。
+
+### Type A｜Algorithm equal or better than Human
+
+当前技术条件下，Algorithm 已经达到或超过 Human。
+
+作者举例：当时的图像识别、手写识别。
+
+此时可以把任务交给 Algorithm。
+
+### Type B｜Human better than Algorithm
+
+Human 仍明显强于 Algorithm。
+
+作者举例：判断求职者 integrity，当时仍更适合 Human。
+
+如果一个大任务可以进一步拆成 A/B 子任务，就可以形成基于 specialization 的分工：各自做相对擅长的部分。
+
+### Type C｜Neither clearly superior, but combination may be better
+
+这是作者认为更有意思的一类。
+
+Human 和 Algorithm 可能单独都没有明显优势，但让两边 **都做同一个判断，再聚合结果**，可能因为 error cancellation 提高整体准确率。
+
+作者借用了 wisdom of crowds、Condorcet jury theorem、ensemble learning 等直觉说明这一点。
+
+**原文事实要点**：HACD 的价值不只来自 specialization，也可能来自 **redundant / parallel judgment + aggregation**。
+
+## A4｜Figure 2：作者给出的 Human-AI 分工二维设计空间
+
+作者没有把 Human-AI 分工简化成“AI 做 A、人做 B”，而是用两个维度描述。
+
+### 维度一｜任务之间的 interdependence
+
+- **Sequential**：一个主体的输出成为另一个主体的输入，最终只有序列后端的输出直接进入最终结果；
+- **Parallel**：Human 和 AI 的输出都直接对最终结果产生作用。
+
+### 维度二｜是否 specialization
+
+- **Different types of decisions**：Human 与 AI 做不同类型的判断；
+- **Same type of decision**：Human 与 AI 做相同判断。
+
+因此形成四种组合：
+
+| | Parallel | Sequential |
+| --- | --- | --- |
+| Different decisions | Human/AI分别完成不同分析，最终组合 | 一方先处理一部分信息，另一方基于前者结果形成最终判断 |
+| Same decision | Human和AI独立做同一判断，再聚合/比较 | Human和AI依次做同一判断，后者可接受、修正或否决前者 |
+
+作者用股票研究/选股作为示例说明这个四格。
+
+论文脚注还指出：**decision rights 可以被理解为谁有权接受/拒绝另一方输出，在串行结构中也可以近似看成谁位于最后。**
+
+## A5｜为什么“谁更擅长”并不足以决定分工
+
+作者强调，分工效果还取决于：
+
+- specialization gains；
+- customization / managing dependencies；
+- coordination cost；
+- task interdependence。
+
+所以即使 Human 与 AI 各有所长，也不能直接推导出“拆开做一定更优”。
+
+作者引用传统组织设计研究说明：任务怎样拆、任务之间怎样依赖，本身就会影响总体价值。
+
+## A6｜从静态分工进入动态问题：Human 与 AI 都会学习
+
+文章后半部分从“现在谁更强”转向：**两边在共同工作以后会怎么变。**
+
+作者把 learning 定义为：因为 experience 导致 belief 或 behavior 发生变化，并不要求 performance 一定提高。
+
+在 decision-making 中，如果同样的输入在两个时间点得到不同决策，可能是主体在中间根据过去的输入、输出、过程和反馈改变了决策方式。
+
+作者认为 HACD 的特殊性之一是：
+
+> Human 与基于 ML 的 Algorithm 都可以是 adaptive systems，因此不仅各自学习，还可能互相调整、互相学习。
+
+## A7｜Table 1：四种 Learning Configurations
+
+作者用两个维度划分 Human-AI 的学习环境。
+
+### 维度一｜反馈是否 interdependent
+
+- **Independent feedback**：Human 和 AI 分别得到自己的反馈；
+- **Interdependent feedback**：反馈针对共同结果，Human 与 AI 的学习彼此耦合。
+
+### 维度二｜Communication 是否 feasible
+
+这里的 communication 不只是“能不能聊天”，而是能否交换：
+
+- inputs；
+- process；
+- outputs；
+- feedback。
+
+组合以后得到四种 learning configurations：
+
+| Feedback / Communication | 交流受限 | 可以交流 |
+| --- | --- | --- |
+| Independent feedback | **Isolated Learning** | **Vicarious Learning** |
+| Interdependent feedback | **Coupled Learning** | **Coupled + Vicarious Learning** |
+
+作者用股票研究报告、木匠合作等例子说明：如果只知道整体结果，而不知道各自哪部分做得好坏，两边的学习会被绑定；如果能够看到另一方的经历、输入和反馈，就可能形成 vicarious learning。
+
+## A8｜作者特别提醒的几个动态风险
+
+这些不是我们的外部推论，而是文章引用既有 organization design / learning literature 后明确讨论的现象。
+
+### 1. Coupled Learning 可能出现错误学习
+
+当反馈只针对整体结果时，个体很难知道成功/失败究竟由谁造成，可能产生 false positive、false negative，甚至 superstitious learning。
+
+### 2. Communication constraints 会影响互相学习
+
+Human 可能因为 Algorithm 使用的信息规模太大而无法理解，也可能因为 explainability 问题无法看到 Algorithm 的 decision process。
+
+### 3. Sequential architecture 会改变学习机会
+
+如果上游主体先筛选数据/案例，下游主体只能看到经过筛选后的输入，那么组织结构本身已经改变了下游主体未来可以学习的数据。
+
+### 4. Division of labor 会反过来塑造能力
+
+作者借 Smith / Mintzberg 的传统观点提醒：分工不仅利用现有能力差异，也可能在长期运行中制造新的能力差异。
+
+## A9｜作者最后真正得出的结论
+
+作者没有声称找到了 Human-AI 最佳组织形式。
+
+最后的结论是：
+
+- Human-AI collaborative decision-making 存在一个比“专业化分工”更大的组织设计空间；
+- division of labor 与 learning configuration 应该联合考虑；
+- 现有 organization design literature 已能解释其中一些组合，但远没有覆盖全部组合；
+- 还需要更多 conceptual work 和 empirical data；
+- organization design researchers 与 HACD practitioners 之间存在很大的合作研究空间。
+
+## A10｜读完原文以后，先记住作者自己的五个关键词
+
+在进入我们的七问之前，只需要先记住：
+
+> **HACD = Organization**  
+> **Division of Labor**  
+> **Task Interdependence**  
+> **Aggregation**  
+> **Learning Configuration**
+
+这五个词是作者这篇论文真正提供的骨架。
+
+---
+
+# Part B｜七问研究拆解：这篇论文对我们的研究意味着什么？
+
+> 从这里开始才进入我们的 Q1-Q5、经典理论和 JUDGMENTS。以下内容包含研究映射和我们的解释，不再等同于作者原文。
 
 ## 1｜它对应 Q1-Q5 哪个问题？
 
@@ -255,20 +446,30 @@ Decision Rights ≠ Accountability。本篇没有足够内容支持责任配置�
 
 ---
 
-# 三条长期记忆
+# Part C｜吸收层：读完后只保留什么？
+
+## 三条长期记忆
 
 1. **Human-AI Collaboration 可以首先被看作 Organization Design 问题，而不是单纯的 AI 使用问题。**
 2. **Human 与 AI 怎么分工，不能只看能力，还要同时看 Task Interdependence、Decision Rights、Coordination Cost 和 Aggregation。**
 3. **Human 和 AI 不只共同工作，还会共同塑造彼此未来的学习数据；Feedback Architecture 本身就是组织设计。**
 
----
-
-# 新增待验证假设（暂不进入 JUDGMENTS）
+## 新增待验证假设（暂不进入 JUDGMENTS）
 
 > **H-P001-01：企业智能不仅取决于“谁做决策”，还取决于企业如何设计反馈，使 Human 与 AI 的局部学习能够转化为整体组织学习。**
 
 状态：Exploring。
 
 下一步建议在 Q5 组织学习相关论文中继续验证，而不是立即升级为稳定判断。
+
+---
+
+## 本阅读卡的层级边界
+
+- **Part A = Source Facts**：作者写了什么，尽量不加入我们的框架；
+- **Part B = Research Interpretation**：用 Q1-Q5 / 七问进行研究映射；
+- **Part C = Human Takeaways**：压缩成用户真正需要记住的少数内容。
+
+后续所有论文默认使用同样的三层结构。
 
 _Last updated: 2026-09-04_
