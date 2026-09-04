@@ -1,91 +1,123 @@
 # Enterprise Intelligence Research
 
-> 企业智能与 AI 时代组织设计的长期研究仓库
+**English** | [简体中文](README.zh-CN.md)
 
-本仓库关注一个比“如何建设 Agent”更上位的问题：
+> A living research project on Enterprise Intelligence and AI-era Organization Design.
 
-**当 AI 开始成为能够理解、判断、规划、调用能力并持续行动的非人类智能主体后，企业的认知、决策、协调、责任、边界与学习机制将如何变化？**
+This repository starts from a question that sits above “how to build an AI agent”:
 
-## 当前定义：什么是企业智能
+**What happens to cognition, decision rights, coordination, accountability, firm boundaries, and organizational learning when AI becomes a non-human actor capable of understanding, judging, planning, invoking capabilities, and acting over time?**
 
-当前暂定：
+## Working Definition: Enterprise Intelligence
 
-> **企业智能，是组织在目标、资源、制度与风险约束下，对认知能力、决策权、行动能力和学习能力进行配置，使组织能够持续感知环境、理解现实、形成判断、组织能力、采取行动，并根据现实反馈调整自身的组织能力。**
+Current working definition:
 
-可抽象为：
+> **Enterprise intelligence is an organizational capability: the ability of an organization to configure cognition, decision rights, action capacity, and learning under goals, resource constraints, institutional rules, and risk boundaries, so that it can continuously sense its environment, interpret reality, form judgments, organize capabilities, act, and adapt from feedback.**
 
-`感知 → 理解 → 判断 → 组织 → 行动 → 反馈 → 学习`
+A simplified loop:
 
-需要持续区分：
+`Sense → Understand → Judge → Organize → Act → Feedback → Learn`
 
-- **Model Intelligence**：模型自身的理解、推理、预测与生成能力；
-- **Subject Intelligence**：一个智能主体围绕目标持续判断、行动与反馈的能力；
-- **Enterprise Intelligence**：整个企业如何配置人、AI、软件、数据和资产形成组织层面的智能闭环。
+This project distinguishes three levels of intelligence:
 
-企业智能不等于企业内部所有 Agent 智能的简单相加。
+- **Model Intelligence** — the reasoning, prediction, interpretation, and generation capabilities of a model.
+- **Subject Intelligence** — the ability of an intelligent subject to pursue goals, maintain context, make judgments, act, and adapt over time.
+- **Enterprise Intelligence** — an organizational property that emerges from how humans, AI, software, data, and assets are configured into a working system of cognition, decision, action, and learning.
 
-## 五个长期组织问题
+A core proposition of this project is:
 
-1. **决策权**：Human 与 AI 的认知优势不同后，决策权应该如何重新配置？
-2. **责任与代理**：AI 可以决策但不能像人一样承担后果时，权力、风险与责任如何保持对应？
-3. **协调机制**：Human、Agent、Software、Asset 如何形成稳定协作？共享企业世界模型是否会成为新的协调基础？
-4. **企业边界**：AI 降低能力发现、协调、监督和交易成本后，哪些能力应内部化，哪些可以动态调用？
-5. **组织学习**：Agent 的运行经验怎样进入知识、Skill、Rule、World Model、Eval 与 Policy，真正转化为组织学习？
+> **Enterprise intelligence is not an additive property of individual AI agents.**
 
-详见 [`topics/`](topics/)。
+A firm may deploy highly capable agents and still remain organizationally unintelligent if decision rights are poorly allocated, semantics are inconsistent, coordination fails, accountability is unclear, or experience does not become organizational learning.
 
-## 六个学习模块
+[Read the full topic →](topics/en/enterprise-intelligence.md)
 
-1. 组织为什么存在：Simon、Coase、Williamson
-2. 组织如何分工与协调：Mintzberg、Organization Design、Information Processing
-3. 权力、委托与责任：Agency Theory、Decision Rights、Delegation、Accountability
-4. 组织如何学习：March、Argyris & Schön、Organizational Learning
-5. AI 作为新的组织主体：Human-AI Team、Multi-Agent Organization、AI Decision Making
-6. 重新推导 Enterprise Intelligence：从组织问题反推智能主体关系、工程与治理
+## Five Long-Term Research Questions
 
-详见 [`research/theory-map.md`](research/theory-map.md)。
+1. **Decision Rights** — How should decision rights be reallocated when humans and AI possess different cognitive advantages, limitations, and responsibility-bearing capacities?
+2. **Accountability & Agency** — When AI can participate in decisions but cannot bear social, professional, or legal consequences in the human sense, how should authority, risk, and accountability remain connected?
+3. **Coordination** — How should humans, agents, software, and enterprise assets coordinate? Could a shared enterprise world model become a new semantic coordination infrastructure?
+4. **Firm Boundaries** — If AI lowers the cost of discovering, negotiating with, coordinating, and monitoring capabilities, which capabilities should remain inside the firm and which can be dynamically assembled across organizational boundaries?
+5. **Organizational Learning** — How can traces, outcomes, failures, feedback, and agent experience become durable organizational knowledge, skills, rules, evaluation assets, and policies rather than disappear inside isolated AI sessions?
 
-## 当前总假设
+[Read the research questions →](topics/en/README.md)
 
-传统企业信息化主要由人理解业务世界，并通过 Application、Workflow 与组织分工组织数字能力。AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划、能力发现、能力编排、执行与学习。
+## Current Research Hypothesis
 
-由此，一个值得长期验证的假设是：
+Traditional enterprise information systems largely assume that humans interpret the business world and organize digital capabilities through applications, workflows, and organizational roles.
+
+As AI becomes a new organizational actor, part of the work of interpretation, judgment, planning, capability discovery, orchestration, execution, and learning may shift toward intelligent subjects.
+
+A long-term hypothesis being tested here is that an AI-native enterprise may increasingly be organized around the interaction of:
 
 **Intelligent Subject × Enterprise World Model × Capability Network × Real-world Feedback**
 
-可能逐步构成企业持续演化的智能运行系统。
+This is a research hypothesis, not a prediction presented as fact. The repository is designed to preserve supporting evidence, counter-evidence, and revisions over time.
 
-这只是当前研究假设，而不是既定结论。仓库会同时维护支持证据、反例和观点演进。
+## Research Architecture
 
-## 如何使用本仓库
+The current study map has six learning modules:
 
-### 给人看的“驾驶舱”
+1. **Why organizations exist** — Simon, Coase, Williamson
+2. **Division of labor and coordination** — Mintzberg, Organization Design, Information Processing
+3. **Authority, delegation, and accountability** — Agency Theory, Decision Rights, Delegation
+4. **Organizational learning** — March, Argyris & Schön, Organizational Memory
+5. **AI as an organizational actor** — Human-AI teams, multi-agent organizations, AI decision-making
+6. **Re-deriving Enterprise Intelligence** — using organizational questions to rethink intelligent-subject relationships, engineering, and governance
 
-- [`NOW.md`](NOW.md)：当前研究焦点、卡点与下一步唯一动作
-- [`JUDGMENTS.md`](JUDGMENTS.md)：目前值得保留的阶段性判断
+The research process currently prioritizes original papers and theories before technical abstraction.
 
-### 给 AI 的长期上下文
+## Repository Structure
 
-- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)：研究目标、边界、概念与研究纪律
+### Human-facing research cockpit
 
-### 按需深入
+- [`NOW.md`](NOW.md) — current research focus, progress, blockers, and the next single action
+- [`JUDGMENTS.md`](JUDGMENTS.md) — current working judgments worth preserving over time
 
-- [`topics/`](topics/)：五个长期组织问题 + 企业智能定义
-- [`research/scholars.md`](research/scholars.md)：国内外重点学者地图
-- [`research/theory-map.md`](research/theory-map.md)：经典组织理论与 AI 压力测试
-- [`research/reading-list.md`](research/reading-list.md)：当前阅读路线
+These remain Chinese-first because they are part of the active thinking process.
 
-## 研究纪律
+### Public research topics
 
-- 不以 MCP、RAG、Ontology、Agent、Harness 等技术名词无限增加一级框架；
-- 区分 **长期问题 / 当前判断 / 演进假设 / 证据 / 反例**；
-- 新技术首先用于修改已有问题的答案，而不是制造新的概念树；
-- 技术架构必须尽量能够追溯到组织问题；
-- 真实项目材料必须脱敏，只保留可公开讨论的组织现象与方法论。
+- [`topics/enterprise-intelligence.md`](topics/enterprise-intelligence.md) — 中文：企业智能
+- [`topics/en/enterprise-intelligence.md`](topics/en/enterprise-intelligence.md) — English: Enterprise Intelligence
+- [`topics/README.md`](topics/README.md) — 中文：五个长期组织问题
+- [`topics/en/README.md`](topics/en/README.md) — English: Five Long-Term Research Questions
 
-## 当前状态
+### Research workspace
 
-仓库于 **2026-09-04** 初始化，当前重点是建立经典组织理论坐标系，并研究 AI 作为新组织主体后对决策权、协调机制、责任与组织学习的影响。
+- [`research/scholars.md`](research/scholars.md) — scholar map
+- [`research/theory-map.md`](research/theory-map.md) — classical organization theory and AI pressure tests
+- [`research/reading-list.md`](research/reading-list.md) — current reading path
+- `research/paper-reviews/` — source walkthroughs and research interpretations, currently Chinese-first
+
+### AI context
+
+- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md) — long-term research context and maintenance rules for AI collaborators
+
+## Bilingual Publication Policy
+
+This repository does **not** mechanically translate every research note.
+
+The current policy is:
+
+> **Research in Chinese; publish mature ideas bilingually.**
+
+Working notes, paper walkthroughs, open hypotheses, and research state remain Chinese-first so that the research process stays cognitively efficient. Stable concepts and public-facing topics are progressively rewritten in English for international discussion.
+
+English versions are intended to be **conceptual and academic reframings**, not literal translations.
+
+## Research Discipline
+
+- Do not create top-level frameworks around temporary technology labels such as MCP, RAG, Ontology, Agent, or Harness.
+- Separate **long-term questions, current judgments, evolutionary hypotheses, evidence, and counter-evidence**.
+- New technologies should first be used to update an existing research question rather than create a new conceptual tree.
+- Technical architecture should, where possible, be traceable back to organizational problems.
+- Real enterprise cases must be de-identified before being used in public research.
+- New papers are read in this order: **source walkthrough → concept reconstruction → research interpretation → human takeaways → possible judgment update**.
+
+## Status
+
+Initialized on **2026-09-04**. The current phase is building a classical organization-theory coordinate system and studying how AI as a new organizational actor affects decision rights, coordination, accountability, and organizational learning.
 
 ---
 
