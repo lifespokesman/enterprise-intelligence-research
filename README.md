@@ -20,7 +20,7 @@ A simplified loop:
 
 This project distinguishes three levels of intelligence:
 
-- **Model Intelligence** — the reasoning, prediction, interpretation, and generation capabilities of a model.
+- **Model Intelligence** — reasoning, prediction, interpretation, and generation capabilities of a model.
 - **Subject Intelligence** — the ability of an intelligent subject to pursue goals, maintain context, make judgments, act, and adapt over time.
 - **Enterprise Intelligence** — an organizational property that emerges from how humans, AI, software, data, and assets are configured into a working system of cognition, decision, action, and learning.
 
@@ -42,28 +42,58 @@ A firm may deploy highly capable agents and still remain organizationally uninte
 
 [Read the research questions →](topics/en/README.md)
 
-## Evidence Architecture: Theory × Industry × Product × Field
+## Public Evidence Architecture: Theory × Industry Evidence
 
 The five questions above are the **problem map**. They are not answered by academic papers alone.
 
-This project uses four evidence streams:
+This public repository uses only evidence that can be independently supported by public sources:
 
 - **Academic Theory** — concepts, mechanisms, boundary conditions, and testable propositions;
-- **Industry Cases** — what real organizations actually change when AI enters workflows, decisions, coordination, and learning;
-- **Product / Company Philosophy** — how companies define the enterprise-AI problem and turn organizational assumptions into product mechanisms;
-- **Field Observation** — de-identified observations from real enterprise and project settings that pressure-test both theory and industry narratives.
+- **Product Fact** — publicly verifiable product mechanisms, architectures, and operating models;
+- **Product Claim** — a vendor's public explanation of value, trends, advantages, or organizational implications;
+- **Industry Case** — publicly verifiable enterprise practices and reported outcomes;
+- **Analyst View** — cross-company analysis from consulting, investment, or industry research organizations;
+- **Policy / Standard** — public laws, regulations, industry standards, and technical standards;
+- **Counter Evidence** — failures, alternatives, contrary data, and boundary conditions.
 
 The intended research loop is:
 
-`Q1–Q5 → Theory / Industry Case / Product / Field → Hypothesis → Judgment → Engineering Implication`
+`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
 
-Evidence identities must remain distinct. In particular:
+A core boundary is:
+
+> **Private experience may inspire a question, but every public claim must be independently supportable by public evidence.**
+
+Evidence identities must remain distinct:
 
 > **Product Claim ≠ Validated Theory**  
 > **Vendor Case ≠ Independent Evidence**  
-> **Single Field Observation ≠ General Law**
+> **Analyst View ≠ Academic Theory**  
+> **Public Success Case ≠ General Law**
 
 Public industry research is maintained under [`industry/`](industry/).
+
+## Industry Research Roadmap: Engineering × Governance
+
+The industry roadmap is not organized by vendor. It is derived from the long-term engineering and governance problems that arise when intelligent subjects enter real enterprises.
+
+### Track E — Intelligent Subject Engineering
+
+- **E1 Agent Production / Harness / Runtime** — How does AI become a continuously operating intelligent subject?
+- **E2 Enterprise Context / World Model / Ontology** — How does an intelligent subject understand a specific enterprise world?
+- **E3 Capability / Action Infrastructure** — How does it invoke software and enterprise assets to act on that world?
+- **E4 Feedback / Evaluation / Evolution** — How does agent experience become durable enterprise capability?
+
+### Track G — Intelligent Subject Governance
+
+- **G1 Identity / Ownership** — Who or what is this intelligent subject, who owns it, and who is responsible for it?
+- **G2 Authority / Policy** — What may it see, invoke, and do?
+- **G3 Human Control / Accountability** — When should humans retain control, when may AI act autonomously, and how should accountability be allocated?
+- **G4 Trace / Audit / Lifecycle** — How should intelligent subjects be traced, audited, changed, and retired?
+
+[Read the full industry roadmap →](industry/ROADMAP.md)
+
+Vendors, products, frameworks, and cases are **observation targets**, not research tracks in themselves.
 
 ## Current Research Hypothesis
 
@@ -79,7 +109,7 @@ This is a research hypothesis, not a prediction presented as fact. The repositor
 
 ## Research Architecture
 
-The current study map has six learning modules:
+The current academic study map has six learning modules:
 
 1. **Why organizations exist** — Simon, Coase, Williamson
 2. **Division of labor and coordination** — Mintzberg, Organization Design, Information Processing
@@ -88,7 +118,7 @@ The current study map has six learning modules:
 5. **AI as an organizational actor** — Human-AI teams, multi-agent organizations, AI decision-making
 6. **Re-deriving Enterprise Intelligence** — using organizational questions to rethink intelligent-subject relationships, engineering, and governance
 
-Theory is one evidence stream, not the whole research system. Industry cases, product philosophies, and de-identified field observations are used to validate, challenge, or refine theoretical claims.
+Academic theory is one public evidence stream, not the whole research system.
 
 ## Repository Structure
 
@@ -97,8 +127,6 @@ Theory is one evidence stream, not the whole research system. Industry cases, pr
 - [`NOW.md`](NOW.md) — current research focus, progress, blockers, and the next single action
 - [`JUDGMENTS.md`](JUDGMENTS.md) — current working judgments worth preserving over time
 
-These remain Chinese-first because they are part of the active thinking process.
-
 ### Public research topics
 
 - [`topics/enterprise-intelligence.md`](topics/enterprise-intelligence.md) — 中文：企业智能
@@ -106,16 +134,17 @@ These remain Chinese-first because they are part of the active thinking process.
 - [`topics/README.md`](topics/README.md) — 中文：五个长期组织问题
 - [`topics/en/README.md`](topics/en/README.md) — English: Five Long-Term Research Questions
 
-### Research workspace
+### Academic research
 
 - [`research/scholars.md`](research/scholars.md) — scholar map
 - [`research/theory-map.md`](research/theory-map.md) — classical organization theory and AI pressure tests
 - [`research/reading-list.md`](research/reading-list.md) — current reading path
 - `research/paper-reviews/` — source walkthroughs and research interpretations, currently Chinese-first
 
-### Industry evidence
+### Public industry evidence
 
-- [`industry/README.md`](industry/README.md) — evidence rules for industry research
+- [`industry/README.md`](industry/README.md) — evidence rules for public industry research
+- [`industry/ROADMAP.md`](industry/ROADMAP.md) — Intelligent Subject Engineering × Governance roadmap
 - [`industry/cases/`](industry/cases/) — public enterprise cases
 - [`industry/products/`](industry/products/) — product mechanisms, product philosophy, and company-level AI assumptions
 
@@ -137,18 +166,20 @@ English versions are intended to be **conceptual and academic reframings**, not 
 
 ## Research Discipline
 
-- Treat **Q1–Q5 as the problem map** and **Theory / Industry / Product / Field as evidence streams**; do not confuse the two levels.
+- Treat **Q1–Q5 as the problem map** and **Theory + Public Industry Evidence as public evidence streams**; do not confuse these levels.
+- This public repository does not store, cite, or describe private, customer, company-internal, or non-public project material.
+- Private experience may inspire research questions, but public claims must stand on public evidence alone.
 - Do not let academic theory monopolize the project, and do not let industry marketing substitute for validation.
 - Do not create top-level frameworks around temporary technology labels such as MCP, RAG, Ontology, Agent, or Harness.
 - Separate **long-term questions, current judgments, evolutionary hypotheses, evidence, and counter-evidence**.
 - New technologies should first be used to update an existing research question rather than create a new conceptual tree.
 - Technical architecture should, where possible, be traceable back to organizational problems.
-- Real enterprise cases must be de-identified before being used in public research.
 - New papers are read in this order: **source walkthrough → concept reconstruction → research interpretation → human takeaways → possible judgment update**.
+- Industry research follows: **Product Fact / Claim → Public Case → Analyst / Policy / Counter Evidence → Q1–Q5 → Judgment**.
 
 ## Status
 
-Initialized on **2026-09-04**. The current phase is building a classical organization-theory coordinate system while broadening the research system toward industry cases, product philosophies, and field evidence.
+Initialized on **2026-09-04**. The project is still building its organization-theory coordinate system while establishing a public industry roadmap around **Intelligent Subject Engineering × Governance**. The current active research question remains paper comprehension rather than broad vendor collection.
 
 ---
 
