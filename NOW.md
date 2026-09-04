@@ -73,7 +73,29 @@ Q1–Q5 仍然是长期问题地图。
 
 厂商、产品、框架与公开案例只是 Observation Targets，不是路线本身。
 
-## 4. 当前论文学习方法
+## 4. 认知演进开始单独记录
+
+新增：`EVOLUTION.md`
+
+它不保存聊天流水，而只记录发生了实质变化的认知节点。
+
+当前研究资产职责：
+
+- `NOW.md`：现在研究到哪里；
+- `EVOLUTION.md`：为什么认知发生变化；
+- `JUDGMENTS.md`：现在有哪些判断值得保留和承担；
+- `topics/`：成熟判断如何形成完整公开表达。
+
+重大认知节点尽量标记观点来源：
+
+- `User Insight`
+- `External Trigger`
+- `Co-developed`
+- `AI Proposal`
+
+2026-09-04 的仓库基础框架和六个关键认知转折已经作为 Baseline 写入 `EVOLUTION.md`。
+
+## 5. 当前论文学习方法
 
 原来的：
 
@@ -95,7 +117,7 @@ Q1–Q5 仍然是长期问题地图。
 
 详见：`research/paper-review-plan.md`。
 
-## 5. P-001 当前状态
+## 6. P-001 当前状态
 
 Puranam 2021 的七问已经做完，但当前不算“学习完成”。
 
@@ -123,7 +145,7 @@ Puranam 2021 的七问已经做完，但当前不算“学习完成”。
 
 `research/paper-reviews/P001_puranam_2021_hacd.md`
 
-## 6. 当前最重要原则
+## 7. 当前最重要原则
 
 1. **先理解作者，再评价作者。**
 2. **七问是研究映射，不是论文阅读入口。**
@@ -134,24 +156,27 @@ Puranam 2021 的七问已经做完，但当前不算“学习完成”。
 7. **Industry Roadmap 是 Engineering + Governance 的问题路线，不是厂商分类。**
 8. 不让教授论文垄断研究，也不让产品营销或 Analyst View 替代验证。
 9. 任何公开 Judgment 都必须能够由公开证据独立成立。
+10. 重大认知变化进入 `EVOLUTION.md`；AI 提出的漂亮表述不能自动升级为“我的判断”。
 
-## 7. 当前 JUDGMENTS 状态
+## 8. 当前 JUDGMENTS 状态
 
 P-001 对 J-001 / J-002 / J-005 已提出更新建议，但暂时不直接修改。
 
 先完成理解，再通过 P-002 / P-003 和后续公开产业证据继续交叉验证。
 
-## 8. 下一步唯一动作
+## 9. 下一步唯一动作
 
 **先读懂 P001 的 source walkthrough，重点把 Task Interdependence、Agent Interdependence、四种 Learning Configurations、Mutual Adjustment 这组概念真正吃透。**
 
-Industry Roadmap 已建立，但当前不切换 Active Question，不因为路线图完成而开始批量收集厂商、产品或案例。
+Industry Roadmap 和 EVOLUTION 机制已经建立，但当前不切换 Active Question，不因为基础框架完成而开始批量收集厂商、产品、案例或继续扩展目录。
 
-## 9. Resume Here
+## 10. Resume Here
 
 如果中断后回来，从这里继续：
 
 > 公开研究体系现在已经分清：Q1–Q5 是长期问题；Theory + Public Industry Evidence 是公开证据；Industry Roadmap 用 E1-E4 / G1-G4 追踪产业工程与治理演进。
+>
+> `EVOLUTION.md` 开始单独记录“为什么认知会变化”，并区分 `User Insight / External Trigger / Co-developed / AI Proposal`。
 >
 > 公开仓与私人工作世界已经切断证据链：私人经验只能启发问题，公开观点必须重新由公开证据验证。
 >
