@@ -417,4 +417,90 @@ Origin: `User Insight`
 
 ---
 
+## EV-007｜从“本体是企业 AI 基础”到“静态本体是语义鸿沟的阶段性桥梁”
+
+Date: 2026-09-04  
+Origin: `Co-developed`
+
+### Before｜此前认知
+
+此前较强地把 Ontology / Business Ontology 看作企业 AI 的关键基础设施，甚至倾向于把它理解成替模型承担业务推理、降低业务幻觉的重要“业务推理引擎”。这种理解抓住了企业业务知识无法仅靠通用模型获得的问题，但容易把**企业需要显式业务语义**与**今天人工预建、静态维护的 Ontology 形态**混成同一件事。
+
+### Trigger｜触发
+
+一个新的表述非常贴合当前认知：大模型的通用推理能力已经很强，但企业业务语义仍然隐性、碎片化地散落在字段、系统、流程、文档和人的经验中。模型无法凭空可靠推断“不同系统里的两个字段其实表示同一业务概念”“为什么某种条件下一定要经过某个流程”等企业内部语义。
+
+因此，本体当前之所以有价值，不是因为它是最先进的技术，而是因为它精准命中了**通用模型能力与企业隐性业务语义之间的 Semantic Gap｜语义鸿沟**。
+
+同时进一步产生疑问：如果未来模型能够直接理解高噪声、非结构化、跨系统企业信息，并且证据链、动态校验和治理机制能够解决可信性问题，那么今天这种“专家提前手工建好一套静态语义层”的必要性是否会下降？
+
+### Shift｜关键转折
+
+开始把两个问题明确拆开：
+
+1. **长期需求**：企业需要一种能够被 Human / Agent / Software 共享、理解、验证、执行和治理的业务世界表达；
+2. **当前实现**：人工建模、预先定义并相对静态维护的 Ontology，只是实现这种需求的一种当前工程形态。
+
+因此，不再把长期演进简单理解为：
+
+`Ontology → 永久基础设施`
+
+也不接受另一个极端：
+
+`模型更强 → Ontology / 显式语义不再需要`
+
+更值得验证的演进假设是：
+
+`Enterprise Hidden Semantics`
+
+→ `Human-built Static Ontology`
+
+→ `Operational Ontology（Object / Relation / State / Event / Rule / Action）`
+
+→ `AI-discovered + Runtime-validated + Human-governed Enterprise World Model ?`
+
+### Now｜当前认知
+
+当前阶段，本体可以被理解为**连接通用模型推理能力与具体企业现实之间最可工程化的桥梁之一**。它把散落在数据结构、流程、规则、文档和经验中的隐性语义显式化，使 AI 获得更稳定的业务“抓手”。
+
+但真正可能长期存在的，不一定是今天的“人工静态 Ontology 产品形态”，而是：
+
+> **可共享、可验证、可执行、可治理的 Enterprise World Representation｜企业世界表达。**
+
+Ontology 未来的价值也可能从主要帮助模型“看懂企业”，逐步扩展为帮助 Human / Agent / Software 围绕同一业务对象、状态、规则和动作形成共享认知、协调与治理基础。
+
+因此当前更谨慎的判断是：
+
+> **Human-built Static Ontology 可能带有明显的过渡期“脚手架”属性；显式业务语义以及企业世界表达本身则未必是过渡需求。**
+
+同时继续保留边界：**Not all Agents need Ontology.** 简单知识任务可能只需要 Retrieval / RAG，单一流程任务可能通过 Context + Workflow 足够；随着跨系统、跨对象、持续运行和行动闭环复杂度提高，更强的 Semantic / World Model 才可能产生更高边际价值。
+
+### Why It Matters｜为什么重要
+
+这次转折避免两个常见极端：
+
+- 因为当前 Ontology 有效，就把今天的实现形态当成 AI-native Enterprise 的永久终局；
+- 因为未来模型会更强，就假设企业不再需要任何显式业务语义和共享世界表达。
+
+研究重点因此从“企业到底要不要建本体”升级为：
+
+> **什么复杂度的企业智能任务，需要多强的显式世界表达？其中哪些能力是长期结构性需求，哪些只是当前模型与工程成熟度不足产生的阶段性脚手架？**
+
+### Impact｜影响
+
+- 将 E2 `Enterprise Context / World Model / Ontology` 从技术选型问题进一步明确为一条**演进研究线**；
+- 为后续研究 Palantir、Semantic Layer、Context Engineering、Operational Ontology 等公开产品机制提供新的比较轴；
+- 对现有“Enterprise World Model”长期假设增加重要边界：关注长期语义需求与当前实现形态的区分；
+- 暂不直接修改 `JUDGMENTS.md`，先作为 E2 的核心演进假设，等待 Theory + Public Industry Evidence 继续验证。
+
+### Open Question｜仍未解决
+
+1. 哪些任务复杂度、任务依赖度或行动风险，会使显式语义层从“可选”变成“必要”？
+2. 如果 AI 能够自动发现业务对象、关系和规则，怎样证明它发现的是企业真实语义而不是新的模型幻觉？
+3. Runtime Trace、Evidence、Dynamic Validation 是否能够替代当前 Ontology 的一部分治理与可信作用？
+4. 未来稳定存在的最小单位究竟是 Ontology、Semantic Model、Context Compiler，还是更广义的 Enterprise World Model？
+5. 需要通过哪些公开产品、案例和反例，才能把这一演进假设推进为可承担的 Judgment？
+
+---
+
 _Last updated: 2026-09-04_
