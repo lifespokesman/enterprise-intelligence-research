@@ -1,5 +1,7 @@
 # Topic｜什么是企业智能？
 
+**简体中文** | [English](en/enterprise-intelligence.md)
+
 ## 0. 核心问题
 
 在讨论 Model、Agent、Harness、Runtime、Ontology、Capability 之前，企业真正需要的“智能”到底是什么？
