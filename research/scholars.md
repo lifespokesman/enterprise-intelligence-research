@@ -12,6 +12,8 @@
 
 **已读材料 1：** *Human–AI collaborative decision-making as an organization design problem*（2021）
 
+P-001 状态：2026-09-07 本轮精读完成；企业应用选型与反馈验证（U-P001-01）仍为 Backlog，不等于已形成企业实施方法。
+
 从这篇材料目前真正学到的是：
 
 - Human + AI 可以被视为一个 **multi-agent, goal-oriented organization**；
@@ -22,7 +24,9 @@
 
 主要映射：**Q1 决策权、Q3 协调、Q5 组织学习**；Q2 / Q4 在该篇中支持较弱。
 
-对应阅读卡：[`paper-reviews/P001_puranam_2021_hacd.md`](paper-reviews/P001_puranam_2021_hacd.md)
+原文与概念入口：[`P001 source walkthrough`](paper-reviews/P001_puranam_2021_source-walkthrough.md)
+
+七问、吸收记录与应用缺口：[`P001 research review`](paper-reviews/P001_puranam_2021_hacd.md)
 
 ### Amir Goldberg｜Stanford GSB
 
@@ -31,6 +35,8 @@
 当前定位：研究 AI 承担预测/协调能力以后，管理者的 Purpose 与目标选择是否成为长期不可让渡能力。
 
 主要映射：Q1、Q3。
+
+下一篇：Goldberg & Puranam (2026), [Purpose not prediction: the role of managers in the age of AI](https://doi.org/10.1007/s41469-026-00205-y)。P-002 状态：2026-09-07 原文准备中，尚未开始正文精读。上述定位属于待检验的研究问题，不预设管理者某项能力永久不可让渡。
 
 ### Melissa Valentine｜Stanford
 

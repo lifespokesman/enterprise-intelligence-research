@@ -4,7 +4,7 @@
 
 ## 当前三份报告
 
-### P-001｜Phanish Puranam (2021) ✅ 已完成七问；正在补“原文精读导读”
+### P-001｜Phanish Puranam (2021) ✅ 本轮精读完成｜2026-09-07
 **Human–AI collaborative decision-making as an organization design problem**
 
 主要映射：
@@ -18,10 +18,13 @@
 - 原文精读：[`paper-reviews/P001_puranam_2021_source-walkthrough.md`](paper-reviews/P001_puranam_2021_source-walkthrough.md)
 - 七问研究卡：[`paper-reviews/P001_puranam_2021_hacd.md`](paper-reviews/P001_puranam_2021_hacd.md)
 
-### P-002｜Amir Goldberg & Phanish Puranam (2026)
+### P-002｜Amir Goldberg & Phanish Puranam (2026) ← 原文准备中
 **Purpose not prediction: the role of managers in the age of AI**
 
-主要映射：Q1 / Q2 / Q3。
+[期刊入口 / DOI](https://doi.org/10.1007/s41469-026-00205-y)。期刊标注：Editorial。
+截至 2026-09-07，本轮仅取得预览，尚未取得可读全文，也尚未开始正文精读。
+
+既有关注方向：Q1 / Q2 / Q3。仅作为待检验的问题关联，不作为作者结论或 A/B 的阅读入口。
 
 ### P-003｜吕源
 **管理者—人工智能关系中的管理主体扩展**
@@ -130,15 +133,15 @@
 
 ## 当前阅读顺序
 
-### 1. Puranam 2021 ← 当前仍未结束
+### 1. Puranam 2021 ← 本轮精读完成
 
-七问已经完成，但用户尚未充分吸收原文概念。
+2026-09-07 已完成恢复检查、概念补充、七问校正与吸收记录。研究者明确表示理解分类框架，并转向询问收益条件和企业应用价值；应用方法未验证不再作为本篇精读未完成的依据。
 
-当前先读：
+复习入口：
 
 `P001_puranam_2021_source-walkthrough.md`
 
-目标是先真正理解：
+本轮理解与复习范围：
 - Organization / Division of Labor / Integration of Effort；
 - Type A/B/C 与 specialization / aggregation；
 - Task Interdependence；
@@ -147,11 +150,11 @@
 - 四种 Learning Configurations；
 - Mutual Adjustment / Censored Inputs / Superstitious Learning。
 
-**只有用户认为 P-001 已经“看懂了”，才进入 P-002。**
+P-001 的理论学习条件已满足；后续如出现具体误解，可局部回看。U-P001-01 企业应用验证保持 Backlog，不重开整篇精读。
 
 ### 2. Goldberg & Puranam 2026
 
-必须同样先做 Source Walkthrough + Concept Reconstruction，再做七问。
+下一步先取得合法可读全文；取得后做 Source Walkthrough + Concept Reconstruction，再做七问。全文未取得前只记录文献信息与获取状态。
 
 ### 3. 吕源
 
@@ -170,6 +173,22 @@
 7. 最后才判断是否修改 JUDGMENTS；
 8. 更新 NOW.md。
 
+## 本轮新增停止条件｜理论理解、应用假设、企业验证分开管理
+
+| 层次 | 完成标准 | 不应被误判为 |
+|---|---|---|
+| 理论理解 | 能解释作者的问题、关键图表、主要机制与证据边界；明确概念缺口已补清 | 记住术语就算完成，或必须立即形成企业实施方法才算完成 |
+| 应用假设 | 能说明候选收益条件、失败条件和待验证问题 | 已经成立的企业选型规则 |
+| 企业验证 | 在明确任务上，以可复核证据比较质量、成本及相关运行约束 | 由虚构教学案例或 AI 推论直接证明 |
+
+执行方式：
+
+1. 恢复检查先找实际理解缺口；每次只解释必要的概念，不反复考试英文名词。
+2. 若 A/B 已理解且 C/D 已完成，可以结束本轮精读；未解决的应用问题单独保留为 Backlog。
+3. 应用问题仅在具备明确任务、现有流程、可核查样例与成功标准时启动，不为追求“完整方法论”继续无限扩展。
+4. 来源与判断责任分开：作者结论、外部证据、教学例子、AI Proposal 分别标记；阅读完成不会自动触发 JUDGMENTS 升级。
+5. 记录认知变化时保留 Origin；尚未确认为稳定研究方法的表述可先作为 EVOLUTION 候选节点。
+
 VSM / Stafford Beer 暂时保留 backlog。
 
-_Last updated: 2026-09-04_
+_Last updated: 2026-09-07_
