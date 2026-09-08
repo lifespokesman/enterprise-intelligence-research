@@ -186,6 +186,10 @@ Q1–Q5 是长期研究问题，不是“论文目录”。公开仓同时使用
 
 ### 9.3 理论论文阅读｜先还原、再理解、再研究
 
+完整可复用执行提示词及新会话短指令统一维护在 [PAPER_READING_MODE.md](PAPER_READING_MODE.md)；本节保留项目原则。进度与停止条件见 [paper-review-plan](../research/paper-review-plan.md)。
+
+按问题选择论文时使用 [reading-list](../research/reading-list.md)：记录题录、原文条件、相对增量、证据类型、候选位置与实际阅读状态。候选映射不代替 Part C，阅读数量不作为研究进度。M1–M6 是理论入口，Q1–Q5 是长期问题，二者不形成两份竞争的当前计划。
+
 研究卡首先必须帮助用户**真正看懂论文**，其次才用于更新研究框架。
 
 用户可能不会完整阅读英文原文。AI 不得把论文直接压缩成 Q1-Q5 / JUDGMENTS 结论，因为“压缩”会删除概念形成和论证所需的中间步骤，使用户只能接受 AI 的二次结论，而不能建立自己的理论理解。
@@ -334,7 +338,8 @@ Industry Case 重点回答：
 
 1. 本文件 `PROJECT_CONTEXT.md`
 2. `NOW.md`
-3. 当前任务相关文件
+3. 论文任务读取 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务再读 `research/reading-list.md`
+4. 当前任务相关文件
 
 不要每次无差别读取整个仓库。
 
@@ -343,6 +348,7 @@ Industry Case 重点回答：
 优先更新：
 
 - `NOW.md`：当前进度、卡点、下一步唯一动作、Resume Here；
+- `research/reading-list.md`：论文登记、选文价值与阅读状态；其他文件引用该目录，不维护冲突的队列；
 - `JUDGMENTS.md`：只有发生实质认知升级时才更新；
 - 对应 Topic：补公开证据或反例；
 - `industry/`：只有与当前问题直接相关的公开案例/产品才建卡，不做厂商收藏；
@@ -363,4 +369,4 @@ Industry Case 重点回答：
 - 任何公开结论都不得依赖非公开材料才能成立；
 - 一个时期只保留一个 Active Research Question。
 
-_Last updated: 2026-09-04_
+_Last updated: 2026-09-08_

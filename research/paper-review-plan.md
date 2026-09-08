@@ -1,166 +1,41 @@
-# Paper Review Plan｜第一轮研究报告阅读计划
+# Paper Review Plan｜论文学习执行计划
 
-> 当前目标不是继续扩展理论目录，而是先把手头已有的研究报告读透，并把它们稳定映射到 Q1-Q5、经典理论和 JUDGMENTS。
+> 目标：按问题选择材料，理解作者论证，再形成研究解释。完整提示词统一维护在 [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)。
 
-## 当前三份报告
+## 入口职责
 
-### P-001｜Phanish Puranam (2021) ✅ 本轮精读完成｜2026-09-07
-**Human–AI collaborative decision-making as an organization design problem**
+- [NOW](../NOW.md)：唯一当前动作与停止位置；
+- [reading-list](reading-list.md)：论文身份、来源、价值、状态与候选顺序；
+- 本文件：学习节奏与完成标准；
+- [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)：可直接供新会话执行的 A/B/C/D 完整要求；
+- [theory-map](theory-map.md)：按需回补的经典理论，不是必须全部先学完的课程。
 
-主要映射：
-- **Q1 认知与决策权配置：高**
-- **Q3 Human-Agent协调机制：高**
-- **Q5 组织学习：高**
-- Q2 责任与代理：低
-- Q4 企业边界：低
+## 当前安排｜2026-09-08
 
-材料：
-- 原文精读：[`paper-reviews/P001_puranam_2021_source-walkthrough.md`](paper-reviews/P001_puranam_2021_source-walkthrough.md)
-- 七问研究卡：[`paper-reviews/P001_puranam_2021_hacd.md`](paper-reviews/P001_puranam_2021_hacd.md)
+- **P-001**：2026-09-07 本轮精读完成；具体误解局部回看，U-P001-01 企业验证继续 Backlog。
+- **P-002**：研究者提供的 7 页全文已核验可读；唯一下一步是 Part A，尚未开始正文精读。
+- **P-003**：原三篇计划保留，先核验题录和原文。
+- **P-004 / P-005**：新材料仅完成选文筛查，未精读；P-005 优先补聚合条件、P-004 扩展到多 Agent。候选取舍见论文地图，不同时开篇。
 
-### P-002｜Amir Goldberg & Phanish Puranam (2026) ← 原文准备中
-**Purpose not prediction: the role of managers in the age of AI**
+原计划 P-001 → P-002 → P-003 保留为历史安排；P-002 后按剩余缺口与原文条件比较候选。论文编号不等于顺序。
 
-[期刊入口 / DOI](https://doi.org/10.1007/s41469-026-00205-y)。期刊标注：Editorial。
-截至 2026-09-07，本轮仅取得预览，尚未取得可读全文，也尚未开始正文精读。
+## 四阶段节奏
 
-既有关注方向：Q1 / Q2 / Q3。仅作为待检验的问题关联，不作为作者结论或 A/B 的阅读入口。
+1. **A Source Walkthrough**：按作者顺序恢复问题、论证、证据、图表和边界。
+2. **B Concept Reconstruction**：逐个解释当前概念障碍，可在 A 中局部暂停补充，再返回原文。
+3. **C Research Interpretation**：研究者表示主要概念已理解后，才进入 Q1–Q5、经典假设、七问和 JUDGMENTS 关联。
+4. **D Human Takeaways**：形成概念、长期记忆、认知变化、剩余问题与下一篇理由。
 
-### P-003｜吕源
-**管理者—人工智能关系中的管理主体扩展**
+完整七问、概念教学七项、证据标签和图表解释要求见精读模式，不在多个文件复制维护。四阶段不能在开篇一次性全部输出；有理解障碍先解释，不赶流程。
 
-主要映射：Q1 / Q2 / Q3。
+## 恢复与新材料处理
 
----
-
-# 论文阅读统一模式 v2：先还原，再理解，再研究
-
-过去“原文事实压缩 → 七问”的方式仍然过快。**压缩会删掉理解概念所需要的中间推导。**
-
-以后默认采用四层结构：
-
-`Part A Source Walkthrough 原文精读导读`
-
-→ `Part B Concept Reconstruction 关键概念/理论还原`
-
-→ `Part C Research Interpretation Q1-Q5 + 七问`
-
-→ `Part D Human Takeaways 人类吸收层`
-
-## Part A｜Source Walkthrough｜原文精读导读
-
-目标不是“摘要”，而是让没有完整阅读英文原文的人，仍能顺着作者的思路走一遍。
-
-必须按原文顺序恢复：
-
-1. 论文性质、研究边界、证据类型；
-2. 作者原始问题；
-3. 作者为什么从 A 推到 B、再推到 C；
-4. 每一张关键 Figure / Table 在文章中承担什么论证作用；
-5. 作者使用的例子；
-6. 作者真正下的结论，以及作者没有下的结论。
-
-原则：**尽量保留作者的论证过程，而不只留下结论。**
-
-## Part B｜Concept Reconstruction｜概念与理论教学
-
-遇到普通读者不熟悉的管理学概念，不能只翻译术语，必须做“教学式还原”。
-
-每个关键概念统一回答：
-
-1. **原文在这里是什么意思？**
-2. **作者为什么此处需要这个概念？**
-3. **用一个简单例子怎么理解？**
-4. **它和相邻概念有什么区别？**
-5. **最容易误解成什么？**
-6. **这篇论文自己讲到哪里为止？**
-7. 如需补经典理论背景，明确标记为“背景补充”，不能冒充论文原文。
-
-重点尤其处理：
-- organization；
-- division of labor；
-- integration of effort；
-- specialization；
-- aggregation / error cancellation；
-- task interdependence；
-- sequential / parallel；
-- decision rights；
-- learning；
-- agent interdependence；
-- coupled learning；
-- vicarious learning；
-- mutual adjustment；
-- censored inputs；
-- superstitious learning。
-
-## Part C｜Research Interpretation｜七问研究拆解
-
-只有完成 A/B 后才进入当前框架：
-
-1. 它对应 Q1-Q5 哪个问题？
-2. 它继承哪个经典理论？
-3. 原理论的关键假设是什么？
-4. AI 改变了哪个假设？
-5. 它提供的是新问题，还是旧问题的新解法？
-6. 它支持、挑战还是修改了哪些 JUDGMENTS？有没有反例？
-7. 哪些结论只是当前 AI 技术阶段成立？
-
-七问是“研究映射”，不是“论文内容替代品”。
-
-## Part D｜Human Takeaways｜人类吸收层
-
-最后只留下：
-- 3–5 个真正学会的概念；
-- 2–3 条长期记忆；
-- 哪个 Judgment 被支持/挑战；
-- 哪个问题还不懂；
-- 下一篇为什么值得读。
-
----
-
-# 信息标记纪律
-
-任何研究卡必须区分：
-
-- **[原文]**：作者文章中明确写出的内容；
-- **[作者引用]**：作者借经典/前人研究使用的机制；
-- **[背景补充]**：为了帮助理解，由研究助手补充的经典理论知识；
-- **[我们的推论]**：结合 Enterprise Intelligence 框架进一步推导的内容。
-
-如果不能区分这四类，就不能升级到 JUDGMENTS。
-
----
-
-## 当前阅读顺序
-
-### 1. Puranam 2021 ← 本轮精读完成
-
-2026-09-07 已完成恢复检查、概念补充、七问校正与吸收记录。研究者明确表示理解分类框架，并转向询问收益条件和企业应用价值；应用方法未验证不再作为本篇精读未完成的依据。
-
-复习入口：
-
-`P001_puranam_2021_source-walkthrough.md`
-
-本轮理解与复习范围：
-- Organization / Division of Labor / Integration of Effort；
-- Type A/B/C 与 specialization / aggregation；
-- Task Interdependence；
-- Decision Rights；
-- Task vs Agent Interdependence；
-- 四种 Learning Configurations；
-- Mutual Adjustment / Censored Inputs / Superstitious Learning。
-
-P-001 的理论学习条件已满足；后续如出现具体误解，可局部回看。U-P001-01 企业应用验证保持 Backlog，不重开整篇精读。
-
-### 2. Goldberg & Puranam 2026
-
-下一步先取得合法可读全文；取得后做 Source Walkthrough + Concept Reconstruction，再做七问。全文未取得前只记录文献信息与获取状态。
-
-### 3. 吕源
-
-同样执行四层阅读模式。
-
----
+- 新会话只需引用仓库、精读模式、论文 ID、原文与本次动作，不重复长提示词。
+- 从已有状态恢复；约 10 分钟检查只找实际缺口，不重复整套术语考试。
+- 新论文先登记“具体问题—相对增量—证据类型—阅读产物”，再选择精读、定向查读、保留或不纳入。
+- 候选 Q / M 定位只服务选文，不在 A 阶段套用框架。
+- 原文缺失就记录缺失，不能用标题、媒体或其他文章替代。
+- 经典理论只补阻碍当前理解的部分；VSM 等观察线保持 Backlog，除非当前问题明确需要。
 
 ## 每篇结束后的更新规则
 
@@ -173,7 +48,7 @@ P-001 的理论学习条件已满足；后续如出现具体误解，可局部�
 7. 最后才判断是否修改 JUDGMENTS；
 8. 更新 NOW.md。
 
-## 本轮新增停止条件｜理论理解、应用假设、企业验证分开管理
+## 停止条件｜理论理解、应用假设、企业验证分开管理
 
 | 层次 | 完成标准 | 不应被误判为 |
 |---|---|---|
@@ -191,4 +66,4 @@ P-001 的理论学习条件已满足；后续如出现具体误解，可局部�
 
 VSM / Stafford Beer 暂时保留 backlog。
 
-_Last updated: 2026-09-07_
+_Last updated: 2026-09-08_

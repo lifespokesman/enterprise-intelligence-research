@@ -28,6 +28,12 @@ P-001 状态：2026-09-07 本轮精读完成；企业应用选型与反馈验证
 
 七问、吸收记录与应用缺口：[`P001 research review`](paper-reviews/P001_puranam_2021_hacd.md)
 
+**新增待读材料（2026-09-08，仅完成选文筛查）：**
+
+- P-004：Arrieta、He、Puranam、Shrestha，*Multi-Agent AI Systems Are Organizations*（2026），工作论文；候选用途是把组织问题扩展到多 Agent 失败分析。
+- P-005：Choudhary、Marchetti、Shrestha、Puranam，*Human-AI Ensembles: When Can They Work?*（2023 在线首发 / 2025 卷期），规范性设计理论；候选用途是深化聚合条件。
+- 原文、版本和具体阅读价值统一见 [论文地图](reading-list.md)。这些相关作品可深化同一理论线，不能当作多个独立研究传统的交叉验证。
+
 ### Amir Goldberg｜Stanford GSB
 
 重点：Coordination、Purpose、组织行为、AI 与组织。
@@ -36,7 +42,7 @@ P-001 状态：2026-09-07 本轮精读完成；企业应用选型与反馈验证
 
 主要映射：Q1、Q3。
 
-下一篇：Goldberg & Puranam (2026), [Purpose not prediction: the role of managers in the age of AI](https://doi.org/10.1007/s41469-026-00205-y)。P-002 状态：2026-09-07 原文准备中，尚未开始正文精读。上述定位属于待检验的研究问题，不预设管理者某项能力永久不可让渡。
+下一篇：Goldberg & Puranam (2026), [Purpose not prediction: the role of managers in the age of AI](https://doi.org/10.1007/s41469-026-00205-y)。P-002 状态：2026-09-08 已核验研究者提供的完整 PDF 可读，待从 Part A 开始；尚未开始正文精读。上述定位属于待检验的研究问题，不预设管理者某项能力永久不可让渡。
 
 ### Melissa Valentine｜Stanford
 

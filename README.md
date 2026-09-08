@@ -141,7 +141,9 @@ Together they answer: **Where is the research now? Why did the thinking change? 
 
 - [`research/scholars.md`](research/scholars.md) — scholar map
 - [`research/theory-map.md`](research/theory-map.md) — classical organization theory and AI pressure tests
-- [`research/reading-list.md`](research/reading-list.md) — current reading path
+- [`research/reading-list.md`](research/reading-list.md) — paper registry, question coverage, evidence gaps, and selection criteria
+- [`research/paper-review-plan.md`](research/paper-review-plan.md) — reading sequence, pacing, and completion criteria
+- [`research/research-questions.md`](research/research-questions.md) — specific questions and application backlog
 - `research/paper-reviews/` — source walkthroughs and research interpretations, currently Chinese-first
 
 ### Public industry evidence
@@ -154,6 +156,7 @@ Together they answer: **Where is the research now? Why did the thinking change? 
 ### AI context
 
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md) — long-term research context and maintenance rules for AI collaborators
+- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md) — reusable close-reading protocol and a short prompt for new sessions (Chinese)
 
 ## Bilingual Publication Policy
 

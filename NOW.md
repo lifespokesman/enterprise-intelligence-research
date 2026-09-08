@@ -8,13 +8,15 @@
 
 **当 AI 开始成为新的组织智能主体后，企业应该如何重新设计决策权、责任、协调机制、企业边界和组织学习？**
 
-当前阶段先把手头三份研究报告真正“学懂”，不是只完成 AI 的七问提炼：
+当前阶段沿既定论文推进理解，同时用[论文地图](research/reading-list.md)登记新材料的增量与证据缺口：
 
 1. Phanish Puranam｜Human–AI collaborative decision-making as an organization design problem ← **P-001 本轮精读完成（2026-09-07）**
-2. Amir Goldberg & Phanish Puranam｜Purpose not prediction: the role of managers in the age of AI ← **P-002 原文准备中；尚未开始正文精读**
-3. 吕源｜管理者—人工智能关系中的管理主体扩展 ← 待开始
+2. Amir Goldberg & Phanish Puranam｜Purpose not prediction: the role of managers in the age of AI ← **P-002 原文已具备；下一步开始 Part A**
+3. 吕源｜管理者—人工智能关系中的管理主体扩展 ← P-003 原计划保留，题录与原文待核验
 
-当前 Active Research Question：**P-002 如何界定管理者的工作与 AI 的作用？**先取得原文，从作者自己的问题与论证顺序开始，不根据标题预设结论。
+新增候选：P-004《Multi-Agent AI Systems Are Organizations》、P-005《Human-AI Ensembles: When Can They Work?》，均已完成选文筛查、未精读。P-005 与聚合条件缺口直接相关；后续排序建议见论文地图，当前仍只开始 P-002。
+
+当前 Active Research Question：**P-002 如何界定管理者的工作与 AI 的作用？**原文已具备，从作者自己的问题与论证顺序开始，不根据标题预设结论。
 
 ## 2. 公开研究框架已稳定为“两类公开证据 + 一条产业路线”
 
@@ -117,7 +119,9 @@ Q1–Q5 仍然是长期问题地图。
 
 → `是否更新 JUDGMENTS`
 
-详见：`research/paper-review-plan.md`。
+执行节奏与停止条件见 [paper-review-plan](research/paper-review-plan.md)；完整可复用提示词与新会话短指令见 [PAPER_READING_MODE](ai-context/PAPER_READING_MODE.md)。
+
+按问题找论文见 [reading-list](research/reading-list.md)：显示 Q1–Q5 各方向的材料、缺口和新文章准入标准。M1–M6 继续作为理论入口，不增加另一套一级分类。
 
 ## 6. P-001 当前状态｜本轮精读完成
 
@@ -168,13 +172,14 @@ P-001 对 J-001 / J-002 / J-005 已提出更新建议，但暂时不直接修改
 
 ## 9. 下一步唯一动作
 
-**取得 P-002 的合法可读全文，按 Part A Source Walkthrough 开始精读。**
+**使用已提供的 P-002 原文，从 Part A Source Walkthrough 开始精读。**
 
 - 论文：Amir Goldberg & Phanish Puranam (2026), *Purpose not prediction: the role of managers in the age of AI*。
-- [期刊入口 / DOI](https://doi.org/10.1007/s41469-026-00205-y)；期刊标注为 Editorial。
-- 2026-09-07 本轮访问仅取得期刊预览，未取得全文；公开检索未找到可读的作者稿。此处描述本次获取状态，不宣称全文不存在。
-- 可使用研究者合法持有的 PDF 或作者公开稿；获取合法阅读权限不代表有权把订阅 PDF 上传到公开仓。
-- 全文未取得前，不用标题、媒体报道、作者其他文章替代原文精读，不生成完成态的 A/B/C/D 记录。
+- [期刊入口 / DOI](https://doi.org/10.1007/s41469-026-00205-y)；期刊标注为 Editorial，15:1–7。
+- 2026-09-07 仅取得预览；2026-09-08 已核验研究者提供的 7 页完整 PDF 可读，获取阻碍解除。
+- 当前只完成题录与研究范围核对，正文尚未开始互动精读，不生成完成态 A/B/C/D。
+- 新会话需核对附件是否仍可读取；不可读时重新提供 PDF。公开仓保存题录与原创笔记，不转载未经授权的全文。
+- 先讲文章性质、研究边界与开篇问题，等研究者回应后继续；本轮目录整理不代替论文教学。
 
 ## 10. Resume Here
 
@@ -182,8 +187,8 @@ P-001 对 J-001 / J-002 / J-005 已提出更新建议，但暂时不直接修改
 >
 > 企业应用验证仍是 Backlog（U-P001-01）；这不构成重开 P-001 概念补课的理由。
 >
-> 当前唯一下一步：取得 P-002 原文，再从作者自己的问题、文章性质与论证顺序开始 Part A。
+> 当前唯一下一步：P-002 原文已具备，按 PAPER_READING_MODE 从 Part A 开始；尚未开始正文精读。
 >
-> P-001 的应用建议仍是 AI Proposal；EVOLUTION 新增候选方法节点，JUDGMENTS 未升级。公开仓不接收私人项目证据链。
+> 论文选择与缺口见 reading-list；新材料不自动改变当前精读对象。本轮仅整理目录与执行入口，JUDGMENTS 未升级。公开仓不接收私人项目证据链。
 
-_Last updated: 2026-09-07_
+_Last updated: 2026-09-08_

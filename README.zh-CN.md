@@ -127,12 +127,15 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 ### 给 AI 的长期上下文
 
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)：研究目标、边界、概念与研究纪律
+- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)：可复用论文精读提示词与新会话短指令
 
 ### 理论与论文
 
 - [`research/scholars.md`](research/scholars.md)：国内外重点学者地图
 - [`research/theory-map.md`](research/theory-map.md)：经典组织理论与 AI 压力测试
-- [`research/reading-list.md`](research/reading-list.md)：当前阅读路线
+- [`research/reading-list.md`](research/reading-list.md)：按 Q1–Q5 展示论文位置、研究缺口、选文标准与候选顺序
+- [`research/paper-review-plan.md`](research/paper-review-plan.md)：四阶段执行节奏与完成标准
+- [`research/research-questions.md`](research/research-questions.md)：具体问题与应用待办
 - `research/paper-reviews/`：原文精读、概念还原与七问研究映射
 
 ### 产业证据
