@@ -102,7 +102,7 @@ P-001 本轮理论理解完成。核心增量包括：
 - Task Interdependence、Agent / Feedback Interdependence、Censored Inputs、Superstitious Learning 要分开；
 - 组织结构会改变未来学习机会，而不只是利用当前能力差异。
 
-但 P-001 只完成了“理解机制”。R-001 仍需工程翻译与验证。
+P-001 已完成机制理解，并形成了明确标记为 AI Proposal 的 Engineering Hypothesis；R-001 仍需用比较任务完成验证，验证前不升级为正式架构原则。
 
 相关：
 

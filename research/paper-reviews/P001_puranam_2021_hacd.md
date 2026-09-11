@@ -506,7 +506,7 @@ Decision Rights ≠ Accountability。本篇没有足够内容支持责任配置�
 - **[背景补充｜Academic Empirical Evidence / Counter Evidence]** Choi、Zhu 与 Li (2025) 在七个 NLP 基准上的实验发现，多数投票解释了通常归于多 Agent 辩论的大部分收益。[Debate or Vote](https://arxiv.org/abs/2508.17536)。结论受模型、任务、协议与实验设置约束，不代表交流永远无用。
 - **[背景补充｜Product Fact / 厂商自述]** Anthropic (2025-06-13) 公开说明其研究系统采用主 Agent 协调、子 Agent 分头搜索。[工程报告](https://www.anthropic.com/engineering/multi-agent-research-system)。**[Product Claim / 厂商经验]** 其关于适合广泛并行研究、紧密依赖任务协调困难和额外成本的描述，保留为特定系统经验，不等同于独立验证的组织规律。
 
-这些补充只服务当前缺口，不改变 P-002 → P-003 的阅读顺序，不批量新增论文或产业卡。
+这些补充只服务 R-001 的证据缺口，不改变当前唯一动作，也不把补充材料自动升级为核心精读对象。
 
 ### 5. R-001｜企业决策协作选型与反馈验证
 
@@ -563,7 +563,7 @@ Decision Rights ≠ Accountability。本篇没有足够内容支持责任配置�
 
 - 候选方法节点：[EV-008](../../EVOLUTION.md)；Origin 为 Co-developed，研究者提出应用价值问题，AI 协助提出分层停止条件。
 - J-001 / J-002 获得的是有限范围内的机制解释；J-005 获得工程启发。本文不足以验证整个企业智能或治理体系。
-- **本轮 JUDGMENTS.md 内容与状态均不修改。**应用建议、U-P001-01 和 H-P001-01 均不自动变成研究者的稳定判断。
+- **本轮 JUDGMENTS.md 内容与状态均不修改。**应用建议、R-001 的工程假设和 H-P001-01 均不自动变成研究者的稳定判断。
 
 ## 尚未解决与下一篇
 
