@@ -1,194 +1,146 @@
 # NOW｜当前研究驾驶舱
 
-> 这个文件只服务于“快速恢复研究状态”。无论中断多久，重新开始时先读这里。
+> 这个文件只服务于“快速恢复研究状态”。现在的研究单位是 **Active Problem**，不是 Active Paper。
 
-## 1. 我现在研究什么
+Updated: 2026-09-11
 
-当前主问题：
+## 1. 当前方法已经切换：从“论文驱动”到“问题驱动”
 
-**当 AI 开始成为新的组织智能主体后，企业应该如何重新设计决策权、责任、协调机制、企业边界和组织学习？**
+过去一周暴露的问题是：按 P-001 → P-002 → P-003 一篇篇读，容易把“读论文”本身当成任务。一篇论文即使理解很深，也不等于真实问题得到解释、工程翻译或验证。
 
-当前阶段沿既定论文推进理解，同时用[论文地图](research/reading-list.md)登记新材料的增量与证据缺口：
+现在采用主闭环：
 
-1. Phanish Puranam｜Human–AI collaborative decision-making as an organization design problem ← **P-001 本轮精读完成（2026-09-07）**
-2. Amir Goldberg & Phanish Puranam｜Purpose not prediction: the role of managers in the age of AI ← **P-002 原文已具备；下一步开始 Part A**
-3. 吕源｜管理者—人工智能关系中的管理主体扩展 ← P-003 原计划保留，题录与原文待核验
+> **真实问题 → 理论 / 产业搜索 → 理解 → 工程翻译 → 小规模验证 → 架构 / 方法原则 → 新问题**
 
-新增候选：P-004《Multi-Agent AI Systems Are Organizations》、P-005《Human-AI Ensembles: When Can They Work?》，均已完成选文筛查、未精读。P-005 与聚合条件缺口直接相关；后续排序建议见论文地图，当前仍只开始 P-002。
+研究进度优先看：
 
-当前 Active Research Question：**P-002 如何界定管理者的工作与 AI 的作用？**原文已具备，从作者自己的问题与论证顺序开始，不根据标题预设结论。
+- 解决了几个真实问题；
+- 形成了哪些 Engineering Hypothesis；
+- 哪些假设被验证 / 否定；
+- 形成或修正了哪些 Architecture / Method Principle。
 
-## 2. 公开研究框架已稳定为“两类公开证据 + 一条产业路线”
+完整方法：[`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)。
 
-Q1–Q5 仍然是长期问题地图。
+---
 
-公开仓从两类公开证据寻找答案：
+## 2. 当前 Active Problem｜R-001
 
-### Academic Theory
+**给定一个高价值企业判断任务，Human 与 AI 应何时单主体、专业化分工或判断聚合？最终决策权和反馈怎样设计，才能既获得能力收益，又保持责任、学习与可验证性？**
 
-用于理解概念、机制、经典问题和边界条件。
+关联：Q1 / Q3 / Q5；并与 G3 Human Control / Accountability 相连。
 
-### Public Industry Evidence
+为什么现在值得研究：
 
-包括：
+- P-001 已经提供了分工、Task Interdependence、学习配置等理论语言；
+- 但“理解分类”还没有自动变成企业任务的设计原则；
+- 这个问题可以把论文知识真正桥接到任务设计、反馈架构和验证方法。
 
-- `[Product Fact]`
-- `[Product Claim]`
-- `[Industry Case]`
-- `[Analyst View]`
-- `[Policy / Standard]`
-- `[Counter Evidence]`
+具体问题地图见 [`research/research-questions.md`](research/research-questions.md)。
 
-研究链条：
+---
 
-`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
+## 3. 当前论文不再按编号顺序推进
 
-公开仓硬边界：
+论文按当前 Problem 动态分 A / B / C：
 
-> **私人经验可以启发研究问题，但公开观点必须能够仅依靠公开证据独立成立。**
+- **A 类**：直接改变当前问题的工程设计，需要精读；
+- **B 类**：只提供长期原则或局部机制，定向理解即可；
+- **C 类**：当前没有问题承接，只登记候选。
 
-公开仓不保存、引用或描述私人、客户、公司内部或非公开项目材料，也不使用公共 `[Field Observation]` 标签。
+当前材料：
 
-## 3. Industry Roadmap 已建立
+- **P-001**：对 R-001 属于 A 类，2026-09-07 已完成本轮理论理解；不重复整篇精读。
+- **P-002**：先按 **B → 可升级 A** 处理。它可能补“管理者工作、目的、规范适当性、决策权边界”；如果这些内容确实改变 R-001 的设计，再升级为 A 类继续完整 A–E。
+- **P-005**：对 R-001 的“判断聚合何时值得”更直接，进入该子问题时可升级为 A 类。
+- **P-003 / P-004**：保持候选，不因编号或已收集就自动开启。
 
-产业路线不按厂商划分，而从智能主体进入企业必须解决的 Engineering + Governance 问题反推。
+`reading-list.md` 是材料索引，不是待读清单。
 
-### Track E｜Intelligent Subject Engineering
+---
 
-- E1 Agent Production / Harness / Runtime
-- E2 Enterprise Context / World Model / Ontology
-- E3 Capability / Action Infrastructure
-- E4 Feedback / Evaluation / Evolution
+## 4. 论文阅读现在增加 Part E｜Engineering Bridge
 
-### Track G｜Intelligent Subject Governance
+重要论文不能停在摘要、七问或 Human Takeaways。
 
-- G1 Identity / Ownership
-- G2 Authority / Policy
-- G3 Human Control / Accountability
-- G4 Trace / Audit / Lifecycle
+最终至少回答：
 
-完整路线：`industry/ROADMAP.md`
+1. 它解释了什么现实问题？
+2. 它改变了我什么旧判断？
+3. 如果成立，对工程设计意味着什么？
+4. 可以在哪里、用什么方式验证？
+5. 验证后可能沉淀成什么架构 / 方法原则？
 
-记忆方式：
+完整模式：[`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)。
 
-> **主体成立 → 理解企业 → 作用企业 → 企业学习**
->
-> 治理同步经历：**身份 → 权限 → 人类控制与责任 → 追溯与生命周期**
+---
 
-厂商、产品、框架与公开案例只是 Observation Targets，不是路线本身。
+## 5. 新的长期沉淀对象｜PRINCIPLES
 
-## 4. 认知演进开始单独记录
-
-新增：`EVOLUTION.md`
-
-它不保存聊天流水，而只记录发生了实质变化的认知节点。
+新增：[`PRINCIPLES.md`](PRINCIPLES.md)。
 
 当前研究资产职责：
 
-- `NOW.md`：现在研究到哪里；
-- `EVOLUTION.md`：为什么认知发生变化；
-- `JUDGMENTS.md`：现在有哪些判断值得保留和承担；
-- `topics/`：成熟判断如何形成完整公开表达。
+- `NOW.md`：当前 Active Problem 与下一步；
+- `research/research-questions.md`：具体问题、证据缺口、工程翻译和验证；
+- `EVOLUTION.md`：认知为什么变化；
+- `JUDGMENTS.md`：目前认为“世界怎样”；
+- `PRINCIPLES.md`：工程 / 研究应该怎样做；
+- `topics/`：成熟观点的体系化公开表达。
 
-重大认知节点尽量标记观点来源：
+原则状态区分 Candidate / Supported / Stable / Revised / Deprecated，不因论文写得好就自动升级。
 
-- `User Insight`
-- `External Trigger`
-- `Co-developed`
-- `AI Proposal`
+---
 
-2026-09-04 的仓库基础框架和六个关键认知转折已经作为 Baseline 写入 `EVOLUTION.md`。
+## 6. P-001 当前状态
 
-## 5. 当前论文学习方法
+P-001 本轮理论理解完成。核心增量包括：
 
-原来的：
-
-`论文 → 原文压缩 → 七问 → Judgment`
-
-仍然太快，因为压缩会丢掉概念形成和作者论证过程。
-
-现在固定改为：
-
-`Source Walkthrough 原文精读`
-
-→ `Concept Reconstruction 概念/理论教学`
-
-→ `Q1-Q5 + 七问研究映射`
-
-→ `Human Takeaways`
-
-→ `是否更新 JUDGMENTS`
-
-执行节奏与停止条件见 [paper-review-plan](research/paper-review-plan.md)；完整可复用提示词与新会话短指令见 [PAPER_READING_MODE](ai-context/PAPER_READING_MODE.md)。
-
-按问题找论文见 [reading-list](research/reading-list.md)：显示 Q1–Q5 各方向的材料、缺口和新文章准入标准。M1–M6 继续作为理论入口，不增加另一套一级分类。
-
-## 6. P-001 当前状态｜本轮精读完成
-
-**完成的是理论理解与本轮研究解释，不是企业应用方法的验证。**
-
-2026-09-07 的恢复检查发现并补清了以下混淆：
-
-- 专业化收益 / 聚合收益是收益机制，不是 Figure 2 的两个分类维度；
+- 专业化收益 / 聚合收益是收益机制，不是 Figure 2 的分类维度；
 - Figure 2：相同 / 不同决策任务 × 并行 / 串行；
-- Table 1：独立 / 相互依赖的反馈 × 交流受限 / 交流可行；
-- 任务依赖不等于反馈依赖；Coupled 不以“看不清对方”为必要条件；Vicarious 不能只凭“独立反馈”判定；
-- Learning Configuration 描述学习信息条件；Censored Inputs 描述可见样本受筛选；Superstitious Learning 涉及错误归因形成或强化错误认识；
-- 理解分类之后仍需收益条件、失败条件与比较验证，才能形成应用方法。
+- Table 1：独立 / 相互依赖反馈 × 交流受限 / 可行；
+- Task Interdependence、Agent / Feedback Interdependence、Censored Inputs、Superstitious Learning 要分开；
+- 组织结构会改变未来学习机会，而不只是利用当前能力差异。
 
-本轮已完成 A/B 概念理解、C 七问校正和 D 吸收记录。以后恢复时先读导航与吸收记录；只有出现具体概念缺口才回看原文，不重复整套分类检查。
+但 P-001 只完成了“理解机制”。R-001 仍需工程翻译与验证。
 
-- 原文与概念导读：[P001 source walkthrough](research/paper-reviews/P001_puranam_2021_source-walkthrough.md)
-- 七问、吸收记录与应用缺口：[P001 research review](research/paper-reviews/P001_puranam_2021_hacd.md)
+相关：
 
-### 应用验证待办｜暂不启动
+- [`P001 source walkthrough`](research/paper-reviews/P001_puranam_2021_source-walkthrough.md)
+- [`P001 research review`](research/paper-reviews/P001_puranam_2021_hacd.md)
 
-**U-P001-01：给定一个具体企业决策任务，怎样选择单主体、专业化分工或判断聚合，并设计能验证整体收益的反馈？**
+---
 
-状态：Backlog。不是 P-001 精读未完成，也不新增一级问题。
+## 7. 公开研究边界不变
 
-启动条件：明确任务、现有流程、可公开核查或明确标记为合成的样例，以及质量、成本、责任与运行约束。公开结论最终必须由公开证据独立支撑；合成例子只验证机制可行性，不代表企业效果。
+公开仓只研究公开世界。
 
-详细候选方法与证据缺口见 P-001 阅读卡。当前不建设通用企业选型方法，也不批量搜集厂商案例。
+> **私人经验可以启发研究问题，但公开观点必须能够仅依靠公开证据独立成立。**
 
-## 7. 当前最重要原则
+公开验证优先使用 Theory、Product Fact / Claim、Industry Case、Analyst View、Policy / Standard、Counter Evidence、开源实现、合成 Demo 与公开 Benchmark。
 
-1. **先理解作者，再评价作者。**
-2. **七问是研究映射，不是论文阅读入口。**
-3. 不熟悉的管理学概念必须解释，不允许只保留术语。
-4. 必须区分 `[原文] / [作者引用] / [背景补充] / [我们的推论]`。
-5. 用户没有形成自己的理解以前，不急着用论文修改 JUDGMENTS。
-6. **Q1–Q5 是问题，Theory + Public Industry Evidence 是公开证据。**
-7. **Industry Roadmap 是 Engineering + Governance 的问题路线，不是厂商分类。**
-8. 不让教授论文垄断研究，也不让产品营销或 Analyst View 替代验证。
-9. 任何公开 Judgment 都必须能够由公开证据独立成立。
-10. 重大认知变化进入 `EVOLUTION.md`；AI 提出的漂亮表述不能自动升级为“我的判断”。
+---
 
-## 8. 当前 JUDGMENTS 状态
+## 8. 下一步唯一动作
 
-P-001 对 J-001 / J-002 / J-005 已提出更新建议，但暂时不直接修改。
+**围绕 R-001，对 P-002 做一次 B 类定向阅读，而不是默认整篇精读。**
 
-本轮理论理解已完成，但没有新增足以支持判断升级的企业验证证据。J-001 / J-002 / J-005 的关联解释保留在阅读卡；JUDGMENTS.md 的内容与状态均不修改。后续通过 P-002 / P-003 和公开产业证据继续交叉验证。
+本轮只回答：
 
-## 9. 下一步唯一动作
+1. 作者怎样划分管理者工作？
+2. “technical performance” 与 “normative appropriateness” 是否改变我们对 Human / AI 决策权配置的理解？
+3. “purpose” 在作者论证里到底是什么，是否真的意味着某类工作必须由人承担？
+4. 这些内容对 R-001 是否形成新的 Engineering Hypothesis？
 
-**使用已提供的 P-002 原文，从 Part A Source Walkthrough 开始精读。**
+如果答案是“有重大直接增量”，P-002 升级为 A 类并继续完整 Part A–E；如果只是原则性补充，就在获得 Engineering Bridge 后停止。
 
-- 论文：Amir Goldberg & Phanish Puranam (2026), *Purpose not prediction: the role of managers in the age of AI*。
-- [期刊入口 / DOI](https://doi.org/10.1007/s41469-026-00205-y)；期刊标注为 Editorial，15:1–7。
-- 2026-09-07 仅取得预览；2026-09-08 已核验研究者提供的 7 页完整 PDF 可读，获取阻碍解除。
-- 当前只完成题录与研究范围核对，正文尚未开始互动精读，不生成完成态 A/B/C/D。
-- 新会话需核对附件是否仍可读取；不可读时重新提供 PDF。公开仓保存题录与原创笔记，不转载未经授权的全文。
-- 先讲文章性质、研究边界与开篇问题，等研究者回应后继续；本轮目录整理不代替论文教学。
+---
 
-## 10. Resume Here
+## 9. Resume Here
 
-> P-001 于 2026-09-07 完成本轮精读。核心是两种收益机制、两套二维分类，以及组织结构对学习机会和归因的影响。
+> 研究方法已从“按论文顺序推进”切换为“问题牵引研究”。
 >
-> 企业应用验证仍是 Backlog（U-P001-01）；这不构成重开 P-001 概念补课的理由。
+> 当前 Active Problem 是 R-001：高价值企业判断任务中 Human / AI 的分工、决策权与反馈怎样设计。
 >
-> 当前唯一下一步：P-002 原文已具备，按 PAPER_READING_MODE 从 Part A 开始；尚未开始正文精读。
+> P-001 已完成理论理解；P-002 不再是“必须读完的第二篇”，而是 R-001 的候选证据。先按 B 类定向阅读，只有真正影响设计时才升级 A 类。
 >
-> 论文选择与缺口见 reading-list；新材料不自动改变当前精读对象。本轮仅整理目录与执行入口，JUDGMENTS 未升级。公开仓不接收私人项目证据链。
-
-_Last updated: 2026-09-08_
+> 长期终点是 `PRINCIPLES.md`：论文知识 → Engineering Hypothesis → Validation → Principle，而不是论文 → 笔记 → 更多论文。
