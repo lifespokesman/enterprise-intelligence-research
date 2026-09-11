@@ -10,72 +10,84 @@ This repository starts from a question that sits above “how to build an AI age
 
 ## Working Definition: Enterprise Intelligence
 
-Current working definition:
-
 > **Enterprise intelligence is an organizational capability: the ability of an organization to configure cognition, decision rights, action capacity, and learning under goals, resource constraints, institutional rules, and risk boundaries, so that it can continuously sense its environment, interpret reality, form judgments, organize capabilities, act, and adapt from feedback.**
 
 A simplified loop:
 
 `Sense → Understand → Judge → Organize → Act → Feedback → Learn`
 
-This project distinguishes three levels of intelligence:
+This project distinguishes:
 
-- **Model Intelligence** — reasoning, prediction, interpretation, and generation capabilities of a model.
-- **Subject Intelligence** — the ability of an intelligent subject to pursue goals, maintain context, make judgments, act, and adapt over time.
-- **Enterprise Intelligence** — an organizational property that emerges from how humans, AI, software, data, and assets are configured into a working system of cognition, decision, action, and learning.
+- **Model Intelligence** — model-level reasoning, prediction, interpretation, and generation;
+- **Subject Intelligence** — an intelligent subject’s ability to pursue goals, maintain context, judge, act, and adapt over time;
+- **Enterprise Intelligence** — an organizational property emerging from how humans, AI, software, data, and assets are configured into a working system of cognition, decision, action, and learning.
 
-A core proposition of this project is:
+A core proposition is:
 
 > **Enterprise intelligence is not an additive property of individual AI agents.**
 
-A firm may deploy highly capable agents and still remain organizationally unintelligent if decision rights are poorly allocated, semantics are inconsistent, coordination fails, accountability is unclear, or experience does not become organizational learning.
-
-[Read the full topic →](topics/en/enterprise-intelligence.md)
-
 ## Five Long-Term Research Questions
 
-1. **Decision Rights** — How should decision rights be reallocated when humans and AI possess different cognitive advantages, limitations, and responsibility-bearing capacities?
-2. **Accountability & Agency** — When AI can participate in decisions but cannot bear social, professional, or legal consequences in the human sense, how should authority, risk, and accountability remain connected?
-3. **Coordination** — How should humans, agents, software, and enterprise assets coordinate? Could a shared enterprise world model become a new semantic coordination infrastructure?
-4. **Firm Boundaries** — If AI lowers the cost of discovering, negotiating with, coordinating, and monitoring capabilities, which capabilities should remain inside the firm and which can be dynamically assembled across organizational boundaries?
-5. **Organizational Learning** — How can traces, outcomes, failures, feedback, and agent experience become durable organizational knowledge, skills, rules, evaluation assets, and policies rather than disappear inside isolated AI sessions?
+1. **Decision Rights** — How should decision rights be reallocated when humans and AI have different cognitive advantages, limitations, and responsibility-bearing capacities?
+2. **Accountability & Agency** — How should authority, risk, and accountability remain connected when AI participates in decisions but cannot bear consequences in the human sense?
+3. **Coordination** — How should humans, agents, software, and enterprise assets coordinate? Could a shared enterprise world model become semantic coordination infrastructure?
+4. **Firm Boundaries** — If AI lowers discovery, coordination, monitoring, and transaction costs, which capabilities should remain internal and which can be dynamically assembled externally?
+5. **Organizational Learning** — How can traces, outcomes, failures, feedback, and agent experience become durable organizational knowledge, skills, rules, evaluation assets, and policies?
 
 [Read the research questions →](topics/en/README.md)
 
-## Public Evidence Architecture: Theory × Industry Evidence
+## Research Method: Problem-driven, not Paper-driven
 
-The five questions above are the **problem map**. They are not answered by academic papers alone.
+Q1–Q5 are the long-term problem map. The actual unit of research is a **concrete problem**, not a paper.
 
-This public repository uses only evidence that can be independently supported by public sources:
+The main loop is:
 
-- **Academic Theory** — concepts, mechanisms, boundary conditions, and testable propositions;
-- **Product Fact** — publicly verifiable product mechanisms, architectures, and operating models;
-- **Product Claim** — a vendor's public explanation of value, trends, advantages, or organizational implications;
-- **Industry Case** — publicly verifiable enterprise practices and reported outcomes;
-- **Analyst View** — cross-company analysis from consulting, investment, or industry research organizations;
-- **Policy / Standard** — public laws, regulations, industry standards, and technical standards;
-- **Counter Evidence** — failures, alternatives, contrary data, and boundary conditions.
+> **Real Problem → Theory / Industry Search → Understanding → Engineering Translation → Small-scale Validation → Architecture / Method Principle → New Problem**
 
-The intended research loop is:
+or, more compactly:
 
-`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
+`Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle → New Problem`
+
+The point is not to read papers for their own sake. The method is to let real problems pull in theory, translate mechanisms into engineering hypotheses, use validation to filter those hypotheses, and accumulate reusable principles.
+
+Papers are classified dynamically relative to the current problem:
+
+- **A — Problem papers**: directly affect the current engineering decision; close-read and complete an Engineering Bridge.
+- **B — Principle papers**: extract the core mechanism, changed judgment, and principle-level implication without full walkthrough.
+- **C — Inspiration papers**: keep as candidates until a concrete problem gives them a reason to be read.
+
+Research progress is therefore measured less by the number of papers read and more by **problems clarified, engineering hypotheses formed, hypotheses tested, and principles revised**.
+
+[Read the full research loop →](research/RESEARCH_LOOP.md)
+
+## Public Evidence Architecture
+
+This public repository only uses claims that can be independently supported by public evidence:
+
+- **Academic Theory**
+- **Product Fact**
+- **Product Claim**
+- **Industry Case**
+- **Analyst View**
+- **Policy / Standard**
+- **Counter Evidence**
+- open-source implementations, synthetic demos, and public benchmarks where appropriate
 
 A core boundary is:
 
 > **Private experience may inspire a question, but every public claim must be independently supportable by public evidence.**
 
-Evidence identities must remain distinct:
+Evidence identities remain distinct:
 
 > **Product Claim ≠ Validated Theory**  
 > **Vendor Case ≠ Independent Evidence**  
 > **Analyst View ≠ Academic Theory**  
-> **Public Success Case ≠ General Law**
-
-Public industry research is maintained under [`industry/`](industry/).
+> **Public Success Case ≠ General Law**  
+> **Synthetic Demo ≠ Enterprise Outcome**
 
 ## Industry Research Roadmap: Engineering × Governance
 
-The industry roadmap is not organized by vendor. It is derived from the long-term engineering and governance problems that arise when intelligent subjects enter real enterprises.
+The industry roadmap is organized around durable engineering and governance problems, not vendors.
 
 ### Track E — Intelligent Subject Engineering
 
@@ -101,93 +113,73 @@ Traditional enterprise information systems largely assume that humans interpret 
 
 As AI becomes a new organizational actor, part of the work of interpretation, judgment, planning, capability discovery, orchestration, execution, and learning may shift toward intelligent subjects.
 
-A long-term hypothesis being tested here is that an AI-native enterprise may increasingly be organized around the interaction of:
+A long-term hypothesis being tested is that an AI-native enterprise may increasingly be organized around the interaction of:
 
 **Intelligent Subject × Enterprise World Model × Capability Network × Real-world Feedback**
 
-This is a research hypothesis, not a prediction presented as fact. The repository is designed to preserve supporting evidence, counter-evidence, and revisions over time.
-
-## Research Architecture
-
-The current academic study map has six learning modules:
-
-1. **Why organizations exist** — Simon, Coase, Williamson
-2. **Division of labor and coordination** — Mintzberg, Organization Design, Information Processing
-3. **Authority, delegation, and accountability** — Agency Theory, Decision Rights, Delegation
-4. **Organizational learning** — March, Argyris & Schön, Organizational Memory
-5. **AI as an organizational actor** — Human-AI teams, multi-agent organizations, AI decision-making
-6. **Re-deriving Enterprise Intelligence** — using organizational questions to rethink intelligent-subject relationships, engineering, and governance
-
-Academic theory is one public evidence stream, not the whole research system.
+This is a research hypothesis, not a prediction presented as fact.
 
 ## Repository Structure
 
 ### Human-facing research cockpit
 
-- [`NOW.md`](NOW.md) — current research focus, progress, blockers, and the next single action
-- [`EVOLUTION.md`](EVOLUTION.md) — major cognitive shifts, why they happened, and their origin (`User Insight / External Trigger / Co-developed / AI Proposal`)
-- [`JUDGMENTS.md`](JUDGMENTS.md) — current working judgments worth preserving and taking responsibility for over time
+- [`NOW.md`](NOW.md) — current **Active Problem**, blocker, and next single action
+- [`research/research-questions.md`](research/research-questions.md) — concrete problems, evidence gaps, engineering translation, and validation state
+- [`EVOLUTION.md`](EVOLUTION.md) — major cognitive shifts and their origin
+- [`JUDGMENTS.md`](JUDGMENTS.md) — what the project currently believes about the world
+- [`PRINCIPLES.md`](PRINCIPLES.md) — reusable architecture and method principles, with validation status
 
-Together they answer: **Where is the research now? Why did the thinking change? What do we currently believe?**
+A useful distinction:
 
-### Public research topics
+> **Judgment = a current belief about how the world works. Principle = a reusable design rule for engineering or research.**
 
-- [`topics/enterprise-intelligence.md`](topics/enterprise-intelligence.md) — 中文：企业智能
-- [`topics/en/enterprise-intelligence.md`](topics/en/enterprise-intelligence.md) — English: Enterprise Intelligence
-- [`topics/README.md`](topics/README.md) — 中文：五个长期组织问题
-- [`topics/en/README.md`](topics/en/README.md) — English: Five Long-Term Research Questions
+### Problem, theory, and papers
 
-### Academic research
-
-- [`research/scholars.md`](research/scholars.md) — scholar map
+- [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md) — canonical problem-driven research loop
+- [`research/research-questions.md`](research/research-questions.md) — concrete problem map
 - [`research/theory-map.md`](research/theory-map.md) — classical organization theory and AI pressure tests
-- [`research/reading-list.md`](research/reading-list.md) — paper registry, question coverage, evidence gaps, and selection criteria
-- [`research/paper-review-plan.md`](research/paper-review-plan.md) — reading sequence, pacing, and completion criteria
-- [`research/research-questions.md`](research/research-questions.md) — specific questions and application backlog
-- `research/paper-reviews/` — source walkthroughs and research interpretations, currently Chinese-first
+- [`research/scholars.md`](research/scholars.md) — scholar map
+- [`research/reading-list.md`](research/reading-list.md) — paper registry and evidence index, not a mandatory reading queue
+- [`research/paper-review-plan.md`](research/paper-review-plan.md) — A/B/C classification, Part A–E, and stop conditions
+- `research/paper-reviews/` — necessary source walkthroughs, concept reconstruction, interpretation, and Engineering Bridges
 
 ### Public industry evidence
 
-- [`industry/README.md`](industry/README.md) — evidence rules for public industry research
-- [`industry/ROADMAP.md`](industry/ROADMAP.md) — Intelligent Subject Engineering × Governance roadmap
-- [`industry/cases/`](industry/cases/) — public enterprise cases
-- [`industry/products/`](industry/products/) — product mechanisms, product philosophy, and company-level AI assumptions
+- [`industry/README.md`](industry/README.md)
+- [`industry/ROADMAP.md`](industry/ROADMAP.md)
+- [`industry/cases/`](industry/cases/)
+- [`industry/products/`](industry/products/)
 
 ### AI context
 
-- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md) — long-term research context and maintenance rules for AI collaborators
-- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md) — reusable close-reading protocol and a short prompt for new sessions (Chinese)
+- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)
+- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)
 
 ## Bilingual Publication Policy
 
-This repository does **not** mechanically translate every research note.
-
-The current policy is:
-
 > **Research in Chinese; publish mature ideas bilingually.**
 
-Working notes, `EVOLUTION.md`, paper walkthroughs, open hypotheses, and research state remain Chinese-first so that the research process stays cognitively efficient. Stable concepts and public-facing topics are progressively rewritten in English for international discussion.
-
-English versions are intended to be **conceptual and academic reframings**, not literal translations.
+Working notes, cognitive evolution, paper walkthroughs, and active research state remain Chinese-first. Stable public concepts are progressively rewritten in English rather than mechanically translated.
 
 ## Research Discipline
 
-- Treat **Q1–Q5 as the problem map** and **Theory + Public Industry Evidence as public evidence streams**; do not confuse these levels.
-- This public repository does not store, cite, or describe private, customer, company-internal, or non-public project material.
-- Private experience may inspire research questions, but public claims must stand on public evidence alone.
+- **Problem first, material second; mechanism before engineering; hypothesis before principle.**
+- The unit of work is an **Active Problem**, not an Active Paper.
+- Papers are dynamically classified A / B / C; not every important paper deserves the same reading depth.
+- Treat Q1–Q5 as the long-term problem map and public theory / industry evidence as evidence streams.
+- Private experience may inspire a question, but public claims must stand on public evidence alone.
 - Do not let academic theory monopolize the project, and do not let industry marketing substitute for validation.
+- Maintain counter-evidence so that problem-driven research does not become confirmation bias.
 - Do not create top-level frameworks around temporary technology labels such as MCP, RAG, Ontology, Agent, or Harness.
-- Separate **long-term questions, current judgments, evolutionary hypotheses, evidence, and counter-evidence**.
-- Record major cognitive changes in `EVOLUTION.md`, with origin markers where useful.
-- New technologies should first be used to update an existing research question rather than create a new conceptual tree.
-- Technical architecture should, where possible, be traceable back to organizational problems.
-- New papers are read in this order: **source walkthrough → concept reconstruction → research interpretation → human takeaways → possible judgment update**.
-- Industry research follows: **Product Fact / Claim → Public Case → Analyst / Policy / Counter Evidence → Q1–Q5 → Judgment**.
+- Record major cognitive changes in `EVOLUTION.md`.
+- Technical architecture should be traceable back to organizational and business problems where possible.
+- A-class papers follow: **Source Walkthrough → Concept Reconstruction → Research Interpretation → Human Takeaways → Engineering Bridge**.
+- An AI Proposal does not automatically become a Judgment or a Stable Principle.
 
 ## Status
 
-Initialized on **2026-09-04**. The project is still building its organization-theory coordinate system while establishing a public industry roadmap around **Intelligent Subject Engineering × Governance** and a separate cognitive-evolution log. The current active research question remains paper comprehension rather than broad vendor collection.
+Initialized on **2026-09-04**. On **2026-09-11**, the research method shifted from sequential paper progression toward a **problem-driven research loop**. The current Active Problem is R-001: how to design Human–AI division of labor, decision rights, and feedback around high-value enterprise judgment tasks. P-002 is now treated as candidate evidence for that problem rather than a mandatory “second paper.”
 
 ---
 
-This repository is a living research system rather than a finished framework. Claims will be revised as evidence changes.
+This repository is a living research system rather than a finished framework. Claims and principles will be revised as evidence changes.
