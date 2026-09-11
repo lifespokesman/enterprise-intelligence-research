@@ -50,7 +50,7 @@ Q4 企业边界：AI 降低交易与协调成本后，哪些 Capability 内部�
 
 Q5 组织学习：Agent 的运行经验怎样进入 Knowledge、Skill、Rule、World Model、Eval、Policy，真正变成企业能力？
 
-不要轻易增加新的一级问题。新观点先映射到 Q1-Q5。
+不要轻易增加新的一级问题。新观点先映射到 Q1–Q5。
 
 ## 5. 当前关键判断
 
@@ -132,11 +132,34 @@ AI 时代开始出现新的智能主体，逐渐承担理解、判断、规划�
 
 详见 `industry/ROADMAP.md`。
 
-## 9. 研究方法｜公开多证据驱动，而不是论文或厂商单线驱动
+## 9. 研究方法｜Problem-driven Research，不是 Paper-driven Learning
 
-### 9.1 核心原则
+### 9.1 主原则
 
-Q1–Q5 是长期研究问题，不是“论文目录”。公开仓同时使用 Academic Theory 与 Public Industry Evidence 回答这些问题。
+研究的基本单位是**Concrete Problem**，不是论文、厂商或技术名词。
+
+核心闭环：
+
+> **真实问题 → 理论 / 产业搜索 → 理解 → 工程翻译 → 小规模验证 → 架构 / 方法原则 → 新问题**
+
+展开为：
+
+`Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle → New Problem`
+
+完整方法见：`research/RESEARCH_LOOP.md`。
+
+Q1–Q5 是长期问题地图；真正执行时使用 `research/research-questions.md` 把它们拆成可研究、可工程翻译的问题。
+
+论文、开源项目、产品、公开案例、Analyst View、Policy / Standard 都只是 Evidence Source。
+
+研究进度不以“读了多少论文”衡量，而优先看：
+
+- 解决了几个具体问题；
+- 形成了哪些 Engineering Hypothesis；
+- 哪些假设被支持、否定或修正；
+- 形成或修改了哪些 Architecture / Method Principle。
+
+### 9.2 公开多证据原则
 
 **本公开仓只研究公开世界。**
 
@@ -150,121 +173,64 @@ Q1–Q5 是长期研究问题，不是“论文目录”。公开仓同时使用
 
 公开证据包括：
 
-1. **Academic Theory｜学术理论**：概念、机制、经典问题、边界条件与可检验命题；
-2. **Product Fact｜产品事实**：公开产品文档可核验的机制、能力、架构与运行方式；
-3. **Product Claim｜产品主张**：厂商对价值、优势、趋势或组织含义的公开解释；
-4. **Industry Case｜产业案例**：基于公开来源、可核验的企业实践事实和结果；
-5. **Analyst View｜第三方产业分析**：咨询、投研、行业研究机构的横向分析；
-6. **Policy / Standard｜政策与标准**：公开法律、监管要求、行业标准与技术标准；
-7. **Counter Evidence｜反向证据**：失败案例、替代机制、反向数据和边界条件。
+1. **Academic Theory｜学术理论**；
+2. **Product Fact｜产品事实**；
+3. **Product Claim｜产品主张**；
+4. **Industry Case｜公开产业案例**；
+5. **Analyst View｜第三方产业分析**；
+6. **Policy / Standard｜政策与标准**；
+7. **Counter Evidence｜反向证据**；
+8. 开源实现、合成 Demo、公开 Benchmark 等可复核验证材料。
 
-研究链条：
-
-`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
-
-### 9.2 证据身份必须标记
-
-尽量区分：
-
-- `[Theory]`：论文或理论明确支持；
-- `[Product Fact]`：公开产品文档可核验的机制、能力或架构；
-- `[Product Claim]`：厂商对价值、优势、趋势或组织含义的主张；
-- `[Industry Case]`：公开企业案例中的事实或结果；
-- `[Analyst View]`：第三方机构的产业综合判断；
-- `[Policy / Standard]`：公开政策、法律、监管或标准要求；
-- `[Counter Evidence]`：与当前假设不一致的事实、案例、机制或边界；
-- `[Our Judgment]`：本项目在多类公开证据基础上形成的判断。
-
-重要纪律：
+必须区分：
 
 > Product Claim ≠ Validated Theory  
 > Vendor Case ≠ Independent Evidence  
 > Analyst View ≠ Academic Theory  
-> Public Success Case ≠ General Law
+> Public Success Case ≠ General Law  
+> Synthetic Demo ≠ Enterprise Outcome
 
-不得机械要求每张卡凑齐所有证据类型。缺失证据应明确保留为 gap，不能由 AI 猜测补齐。
+不得机械要求每个问题凑齐所有证据类型。缺口可以保留，不能由 AI 猜测补齐。
 
-### 9.3 理论论文阅读｜先还原、再理解、再研究
+### 9.3 论文 A / B / C 分级
 
-完整可复用执行提示词及新会话短指令统一维护在 [PAPER_READING_MODE.md](PAPER_READING_MODE.md)；本节保留项目原则。进度与停止条件见 [paper-review-plan](../research/paper-review-plan.md)。
+论文等级相对于当前 Problem 动态判断，不是论文永久属性。
 
-按问题选择论文时使用 [reading-list](../research/reading-list.md)：记录题录、原文条件、相对增量、证据类型、候选位置与实际阅读状态。候选映射不代替 Part C，阅读数量不作为研究进度。M1–M6 是理论入口，Q1–Q5 是长期问题，二者不形成两份竞争的当前计划。
+- **A 类｜问题型论文**：直接改变当前工程设计，需要精读；
+- **B 类｜原则型论文**：只需理解核心机制和原则性增量；
+- **C 类｜启发型论文**：没有当前问题承接，只登记，不制造学习债务。
 
-研究卡首先必须帮助用户**真正看懂论文**，其次才用于更新研究框架。
+执行细节见：
 
-用户可能不会完整阅读英文原文。AI 不得把论文直接压缩成 Q1-Q5 / JUDGMENTS 结论，因为“压缩”会删除概念形成和论证所需的中间步骤，使用户只能接受 AI 的二次结论，而不能建立自己的理论理解。
+- `research/paper-review-plan.md`
+- `ai-context/PAPER_READING_MODE.md`
 
-固定采用四层结构：
+A 类采用：
 
-`Part A Source Walkthrough 原文精读`
+`Part A Source Walkthrough`
+→ `Part B Concept Reconstruction`
+→ `Part C Research Interpretation`
+→ `Part D Human Takeaways`
+→ `Part E Engineering Bridge`
 
-→ `Part B Concept Reconstruction 关键概念/理论教学`
+Part E 必须回答：现实问题、改变的旧判断、Engineering Hypothesis、Validation Plan、Candidate Principle、Boundary / Counterexample。
 
-→ `Part C Research Interpretation Q1-Q5 + 七问`
+B 类不要求完整 walkthrough；C 类不进入多轮精读。
 
-→ `Part D Human Takeaways 人类吸收层`
+### 9.4 Judgment 与 Principle 分开
 
-### 9.4 Part A｜Source Walkthrough｜原文精读导读
+- `JUDGMENTS.md`：我们目前认为“世界可能是怎样的”；
+- `PRINCIPLES.md`：如果这些判断与证据成立，工程 / 方法应该怎样设计。
 
-目标不是摘要，而是**按作者自己的顺序陪用户走一遍文章**。
+Principle 状态：Candidate / Supported / Stable / Revised / Deprecated。
 
-必须恢复：
+论文逻辑完整不等于 Principle 已验证。AI Proposal 不能自动升级为 Judgment 或 Stable Principle。
 
-1. 论文性质、证据类型、适用边界；
-2. 作者原始研究问题；
-3. 文章的论证链：作者为什么从 A 推到 B，再推到 C；
-4. Figure / Table / Typology 在论证中的作用；
-5. 作者使用的例子；
-6. 作者明确提出什么结论；
-7. 作者明确没有解决什么。
-
-不能只写“作者提出 X”，还要解释作者“为什么提出 X”。
-
-### 9.5 Part B｜Concept Reconstruction｜关键概念/理论教学
-
-遇到用户不熟悉的概念，不能只保留英文术语或一句中文翻译。
-
-每个关键概念统一回答：
-
-1. 本文语境里到底是什么意思？
-2. 作者为什么在这一段需要它？
-3. 用一个简单例子如何理解？
-4. 与邻近概念有什么区别？
-5. 最容易误解成什么？
-6. 论文自己解释到哪里为止？
-7. 如果需要经典理论补充，明确标注为 `[背景补充]`，不能冒充 `[原文]`。
-
-尤其重视概念对辨析，例如 task interdependence vs agent interdependence、coupled learning vs vicarious learning、decision rights vs accountability。
-
-### 9.6 Part C｜Research Interpretation｜七问
-
-只有 A/B 完成且用户能够理解论文主要概念后，才回答：
-
-1. 它对应 Q1-Q5 哪个问题？
-2. 它继承哪个经典理论？
-3. 原理论的关键假设是什么？
-4. AI 改变了哪个假设？
-5. 它提供的是新问题，还是旧问题的新解法？
-6. 它支持、挑战还是修改了哪些 JUDGMENTS？有没有反例？
-7. 哪些结论只是当前 AI 技术阶段成立？
-
-七问是**研究映射层**，不是论文摘要层，也不是用户第一次接触论文时的入口。
-
-### 9.7 Part D｜Human Takeaways｜吸收层
-
-最后再压缩为：
-
-- 真正学会的 3–5 个概念；
-- 2–3 条长期记忆；
-- 哪个 Judgment 被支持/挑战；
-- 哪个问题还没有想清楚；
-- 下一篇为什么值得接着读。
-
-### 9.8 产业研究方法
+### 9.5 产业研究方法
 
 产业研究不能退化成“厂商功能清单”或“成功案例摘抄”。
 
-产业路线由工程与治理问题定义，而不是由公司定义：
+产业路线由 Engineering + Governance 问题定义，而不是公司定义：
 
 **Engineering**
 - E1 Agent Production / Harness / Runtime
@@ -280,34 +246,29 @@ Q1–Q5 是长期研究问题，不是“论文目录”。公开仓同时使用
 
 公司、产品、框架和案例只是 Observation Targets。
 
-研究一个产品/公司时重点回答：
+研究一个产品 / 公司时重点回答：
 
-- 它主要落在哪些 E/G Track？
-- 它对应 Q1–Q5 哪些长期问题？
+- 它落在哪些 E/G Track？
+- 它对应哪个 Concrete Problem / Q1–Q5？
 - 哪些是 Product Fact，哪些是 Product Claim？
-- 有没有公开企业案例支撑？来源是否独立？
-- Analyst View 如何评价？
-- 是否存在 Policy / Standard 约束？
-- 有哪些 Counter Evidence 或替代路线？
-- 如果判断成立，对工程或治理有什么 Implication？
+- 有哪些公开案例与独立来源？
+- Analyst View / Policy / Counter Evidence 怎么说？
+- 能形成什么 Engineering Hypothesis？
+- 是否影响某条 Candidate Principle？
 
-Industry Case 重点回答：
+### 9.6 防止确认偏误
 
-- AI 进入哪个真实任务？
-- Human / AI 分工如何变化？
-- Decision Rights / Accountability / Coordination / Learning 是否变化？
-- 结果指标是什么，证据来源是什么？
-- 案例有哪些前提和边界？
+问题驱动不等于“只找支持直觉的材料”。
 
-产业证据统一沉淀在 `industry/`。
+每个重要 Problem 都主动寻找：
 
-### 9.9 防止确认偏误
+- 替代解释；
+- 失败案例；
+- 反向数据；
+- 不需要该机制也能工作的场景；
+- 技术阶段性解释。
 
-不得因为仓库已有 Q1-Q5、E/G Roadmap 和 JUDGMENTS，就只寻找能支持已有观点的内容。
-
-如果论文、公开案例、产品机制、Analyst View 或 Policy/Standard 与当前框架不匹配，应记录“不匹配”“新现象”或“反例”，而不是强行归类。
-
-如果产业界出现理论坐标无法解释的新机制，优先回到理论线寻找更合适的理论解释；只有经过充分验证，才考虑修改一级框架。
+如果材料与当前框架不匹配，记录“不匹配 / 新现象 / 反例”，不要强行归类。
 
 ## 10. Public Repository Boundary｜公开仓边界
 
@@ -319,9 +280,9 @@ Industry Case 重点回答：
 - 不记录这些项目的名称、身份、数据、架构、截图、投标材料、内部产品信息或可反向识别的描述；
 - 不把非公开项目经验标记为公共 `Field Observation`；
 - 不以“已脱敏”为理由把私人项目证据链搬入公开仓；
-- 公开 Judgment 必须能够仅使用公开来源进行论证和复核。
+- 公开 Judgment 与 Principle 必须能够仅使用公开来源进行论证和复核。
 
-私人经验如果启发了一个问题，公开仓只接收这个**抽象后的研究问题**，随后必须重新寻找公开 Theory / Product / Case / Analyst / Policy / Counter Evidence 进行独立验证。
+私人经验如果启发了一个问题，公开仓只接收这个**抽象后的研究问题**，随后重新寻找公开 Theory / Product / Case / Analyst / Policy / Counter Evidence 进行独立验证。
 
 ## 11. 工作台维护规则
 
@@ -330,16 +291,20 @@ Industry Case 重点回答：
 优先级：
 
 1. `NOW.md`
-2. `JUDGMENTS.md`
-3. 当前论文的 `source-walkthrough.md` 或当前产业研究卡
-4. 再进入七问 / 理论映射
+2. `research/research-questions.md`
+3. `PRINCIPLES.md` / `JUDGMENTS.md`（按当前问题需要）
+4. 当前 A 类论文、产业卡或验证记录
+5. 再进入 theory-map / reading-list
 
 ### AI 默认加载
 
 1. 本文件 `PROJECT_CONTEXT.md`
 2. `NOW.md`
-3. 论文任务读取 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务再读 `research/reading-list.md`
-4. 当前任务相关文件
+3. `research/RESEARCH_LOOP.md`
+4. `research/research-questions.md`
+5. 当前任务相关文件
+
+论文任务再读 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务再读 `research/reading-list.md`。
 
 不要每次无差别读取整个仓库。
 
@@ -347,26 +312,27 @@ Industry Case 重点回答：
 
 优先更新：
 
-- `NOW.md`：当前进度、卡点、下一步唯一动作、Resume Here；
-- `research/reading-list.md`：论文登记、选文价值与阅读状态；其他文件引用该目录，不维护冲突的队列；
-- `JUDGMENTS.md`：只有发生实质认知升级时才更新；
-- 对应 Topic：补公开证据或反例；
-- `industry/`：只有与当前问题直接相关的公开案例/产品才建卡，不做厂商收藏；
-- 如果只是新想法但公开证据不足，先保持为研究问题或 Hypothesis，不修改稳定判断。
+- `NOW.md`：Active Problem、当前状态、下一步唯一动作；
+- `research/research-questions.md`：Problem / Evidence Gap / Engineering Translation / Validation；
+- `PRINCIPLES.md`：只有 Candidate Principle 或原则状态发生变化时；
+- `EVOLUTION.md`：只有实质认知变化时；
+- `JUDGMENTS.md`：只有研究者明确认可且证据足够时；
+- `research/reading-list.md`：论文 / 材料身份与实际增量；
+- `industry/`：只有与当前 Problem 直接相关的公开案例 / 产品才建卡。
 
 ## 12. 研究纪律
 
-- 不为了追热点不断增加概念层级；
-- Q1–Q5 是问题地图，Theory + Public Industry Evidence 是公开证据线，二者不要混为同一层；
-- Industry Roadmap 是 Engineering + Governance 的问题路线，不是厂商分类；
-- 不让教授论文垄断研究，也不让产业营销替代理论验证；
-- 先原文还原，再概念理解，再研究解释；
-- 不用“摘要效率”牺牲学习过程；
-- 先问题，后技术；
-- 先组织问题，后工程实现；
-- 同时维护支持证据与反例；
-- 将“作者观点 / 产品事实 / 产品主张 / 案例事实 / Analyst View / Policy / 我们判断 / 当前技术条件”严格区分；
-- 任何公开结论都不得依赖非公开材料才能成立；
-- 一个时期只保留一个 Active Research Question。
+- **先问题，后材料；先机制，后工程；先假设，后原则。**
+- 研究单位是 Active Problem，不是 Active Paper。
+- 一次只保留一个 Active Problem；可以有多个 Evidence Candidate，但不要同时深读多篇。
+- 论文按 A / B / C 动态分级，不默认所有重要论文都精读。
+- 不用“论文阅读数量”或“笔记长度”衡量研究进度。
+- Q1–Q5 是问题地图，Theory + Public Industry Evidence 是证据线，二者不要混为同一层。
+- Industry Roadmap 是 Engineering + Governance 的问题路线，不是厂商分类。
+- 不让教授论文垄断研究，也不让产业营销替代理论验证。
+- 同时维护支持证据与反例，防止问题驱动退化为确认偏误。
+- 将作者观点 / 产品事实 / 产品主张 / 案例事实 / Analyst View / Policy / Engineering Hypothesis / Principle / Judgment 严格区分。
+- 任何公开结论都不得依赖非公开材料才能成立。
+- AI Proposal 不自动变成研究者 Judgment 或 Stable Principle。
 
-_Last updated: 2026-09-08_
+_Last updated: 2026-09-11_
