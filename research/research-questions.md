@@ -35,8 +35,8 @@ Q1–Q5 仍然是长期问题地图；本文件负责把大问题落到**可以�
 
 | ID | Concrete Problem | Q1–Q5 | 当前证据 / 候选材料 | Engineering Translation | Principle Link | 状态 |
 |---|---|---|---|---|---|---|
-| **R-001** | 给定一个高价值判断任务，Human 与 AI 应何时单主体、专业化分工或判断聚合？最终决策权和反馈怎样设计？ | Q1 / Q3 / Q5 | P-001 已提供分工、依赖与学习框架；P-002 可补管理者工作与目的/规范边界；P-005 可补聚合条件 | 任务分解、串并行结构、决策权、反馈架构与评价基线 | MP-001；未来候选 AP | **Candidate** |
-| **R-002** | 当企业语义隐性、碎片化、跨系统不一致时，AI 到底需要多强的显式 Enterprise Context / Semantic Model / Ontology？ | Q3；关联 Q1 | EV-007；E2；当前理论与公开比较案例仍不足 | Retrieval → Context → Semantic Model → Operational Ontology / World Model 的分级选择 | AP-002 | **Candidate** |
+| **R-001** | 给定一个高价值判断任务，Human 与 AI 应何时单主体、专业化分工或判断聚合？最终决策权和反馈怎样设计？ | Q1 / Q3 / Q5 | P-001 已提供分工、依赖与学习框架；P-002 可补管理者工作与目的/规范边界；P-005 可补聚合条件 | 任务分解、串并行结构、决策权、反馈架构与评价基线 | MP-001；未来候选 AP | **Active** |
+| **R-002** | 当企业语义隐性、碎片化、跨系统不一致时，AI 到底需要多强的显式 Enterprise Context / Semantic Model / Ontology？ | Q3；关联 Q1 | EV-007；E2；P-006 提供路线图候选但没有企业比较验证；当前理论与公开案例仍不足 | Retrieval → Context → Semantic Model → Operational Ontology / World Model 的分级选择 | AP-002 | **Candidate** |
 | **R-003** | Agent 的局部运行经验如何变成可保留、可复用、可验证的组织长期能力？ | Q5 | P-001 只解释部分反馈/学习条件；组织学习理论与长期案例仍缺 | Trace → Eval → Candidate Change → Validation → Governed Promotion | AP-004 | **Candidate** |
 | **R-004** | Agent 有能力调用工具后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？ | Q2 / Q1 | J-004；G2/G3/G4；公开治理产品、Policy / Standard 与案例待补 | Action Policy、审批、授权、审计、例外与生命周期 | AP-003 | **Candidate** |
 | **R-005** | AI 降低发现、调用和协调能力的成本后，哪些能力仍应企业内部化，哪些可以动态外部调用？ | Q4 | 当前核心论文证据薄弱；需要 Coase / Williamson 与公开产业证据 | Capability Registry、外部 Agent / Service 调用、风险与交易成本边界 | 尚无 | **Backlog** |
