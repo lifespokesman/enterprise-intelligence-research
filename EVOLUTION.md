@@ -554,4 +554,81 @@ P-001 本轮精读完成，U-P001-01 保留为企业应用验证问题。该状�
 
 ---
 
-_Last updated: 2026-09-07_
+## EV-009｜从“论文驱动学习”转向“问题驱动的工程研究闭环”
+
+Date: 2026-09-11  
+Origin: `User Insight`
+
+### Before｜此前认知
+
+虽然已经建立了 P-001 / P-002 / P-003 的精读流程和 A/B/C/D 四阶段，但实际执行仍然隐含着一条“按论文顺序推进”的路线：找到重要论文 → 深度理解 → 再判断如何进入企业智能框架。
+
+这种方式提高了理论理解质量，却也暴露出新的瓶颈：一周可能仍停留在一篇论文，论文越来越像学习任务本身，而不是解决真实问题的证据工具。理论理解与工程问题之间仍有一段距离。
+
+### Trigger｜触发
+
+研究者重新明确自己的真实思考方式：并不是“先读论文，再寻找能应用的地方”，而是**先遇到一个真实、反复出现、解释不清或设计不清的问题，再需要理论支撑，随后把理论桥接成架构假设和工程验证。**
+
+因此提出新的主闭环：
+
+> **真实问题 → 理论搜索 → 理解 → 工程翻译 → 小规模验证 → 架构原则 → 新问题**
+
+同时指出，真正应该长期积累的不是论文库，而是“企业级问题 ↔ 理论 / 论文 ↔ 架构知识与方法原则 ↔ 工程实践”的关联逻辑。
+
+### Shift｜关键转折
+
+研究的基本单位从 **Paper** 改为 **Concrete Problem**。
+
+论文不再默认全部精读，而按当前问题动态分为：
+
+- **A 类｜问题型论文**：直接改变当前工程设计，精读；
+- **B 类｜原则型论文**：理解核心机制和原则性增量即可；
+- **C 类｜启发型论文**：没有真实问题承接时只进入候选池，不制造学习债务。
+
+同时在原 A/B/C/D 阅读流程后增加：
+
+> **Part E｜Engineering Bridge**
+
+用于回答论文解释了什么现实问题、改变什么旧判断、意味着什么工程设计、如何验证、可能沉淀成什么原则。
+
+### Now｜当前认知
+
+当前长期研究方法正式变为：
+
+`Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle → New Problem`
+
+论文、开源项目、产品、产业案例、Analyst View、Policy / Standard 都只是 Evidence Source。
+
+研究进度不再主要衡量“读了多少篇论文”，而更看：
+
+- 解决了几个真实问题；
+- 形成了几个 Engineering Hypothesis；
+- 哪些假设被公开 / 合成验证支持或推翻；
+- 形成、修正了哪些 Architecture / Method Principle。
+
+### Why It Matters｜为什么重要
+
+这把“理论学习”重新放回企业 AI 架构研究应该处的位置：理论负责提高解释力，而不是占据研究主线。
+
+它也解决了此前的一个结构性矛盾：既希望真正理解论文，又不希望所有研究时间都被论文阅读吞掉。通过 A/B/C 分级，深度只服务于当前问题，而不是服务于“完整读完”。
+
+### Impact｜影响
+
+- 新增 `research/RESEARCH_LOOP.md`，成为问题驱动研究的主方法；
+- `research/research-questions.md` 从问题清单升级为 Problem → Evidence → Engineering Translation → Validation → Principle 的工作地图；
+- `research/paper-review-plan.md` 改为 A / B / C 动态分级，并增加 Part E；
+- `ai-context/PAPER_READING_MODE.md` 升级到问题驱动模式；
+- 新增 `PRINCIPLES.md`，开始区分 Judgment 与 Architecture / Method Principle；
+- `NOW.md` 不再以“下一篇论文”作为 Active Research，而以 R-001 Concrete Problem 驱动后续材料；
+- 原 `P-001 → P-002 → P-003` 顺序降级为历史安排，不再承担研究执行逻辑。
+
+### Open Question｜仍未解决
+
+1. 一条 Candidate Principle 至少需要什么验证强度，才能升级为 Supported / Stable？
+2. 如何避免“问题驱动”变成只读支持既有直觉的材料，而忽略反例和不同理论？
+3. 怎样选择最小验证，使工程反馈足够真实，又不把研究变成重交付项目？
+4. R-001 是否是当前最值得继续投入的 Problem，需要在下一轮研究后继续检验，而不是因为已经写进 NOW 就固化。
+
+---
+
+_Last updated: 2026-09-11_
