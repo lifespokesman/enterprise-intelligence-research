@@ -4,146 +4,180 @@
 
 Updated: 2026-09-11
 
-## 1. 当前方法已经切换：从“论文驱动”到“问题驱动”
+## 1. 当前研究方法：问题驱动，而不是材料驱动
 
-过去一周暴露的问题是：按 P-001 → P-002 → P-003 一篇篇读，容易把“读论文”本身当成任务。一篇论文即使理解很深，也不等于真实问题得到解释、工程翻译或验证。
+主闭环保持为：
 
-现在采用主闭环：
+> **现象 / 真实问题 → 认知问题 → 架构问题 → 工程 / 验证问题 → 定向寻找证据 → 机制解释 → Engineering Hypothesis → Validation → Architecture / Method Principle → 新问题**
 
-> **真实问题 → 理论 / 产业搜索 → 理解 → 工程翻译 → 小规模验证 → 架构 / 方法原则 → 新问题**
+论文、产品、公开案例、开源项目、标准和分析报告都是 Evidence Provider，不构成独立学习队列。
 
-研究进度优先看：
+当前判断研究是否推进，不看“读了多少篇”，而看：
 
-- 解决了几个真实问题；
-- 形成了哪些 Engineering Hypothesis；
-- 哪些假设被验证 / 否定；
-- 形成或修正了哪些 Architecture / Method Principle。
+- 问题是否从现象变成了可解释的问题；
+- 是否形成了更清楚的架构选择；
+- 是否知道还缺什么证据；
+- 是否形成了可以验证的 Engineering Hypothesis；
+- 是否最终沉淀 / 修正了 Principle。
 
-完整方法：[`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)。
-
----
-
-## 2. 当前 Active Problem｜R-001
-
-**给定一个高价值企业判断任务，Human 与 AI 应何时单主体、专业化分工或判断聚合？最终决策权和反馈怎样设计，才能既获得能力收益，又保持责任、学习与可验证性？**
-
-关联：Q1 / Q3 / Q5；并与 G3 Human Control / Accountability 相连。
-
-为什么现在值得研究：
-
-- P-001 已经提供了分工、Task Interdependence、学习配置等理论语言；
-- 但“理解分类”还没有自动变成企业任务的设计原则；
-- 这个问题可以把论文知识真正桥接到任务设计、反馈架构和验证方法。
-
-具体问题地图见 [`research/research-questions.md`](research/research-questions.md)。
+完整方法见 [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)。
 
 ---
 
-## 3. 当前论文不再按编号顺序推进
+## 2. 当前 Active Problem｜RP-002 Enterprise Data–Model Relationship
 
-论文按当前 Problem 动态分 A / B / C：
+> **企业已有的数据资产，与大模型之间到底应该建立什么关系？企业真实世界究竟通过哪些机制进入 Model / Agent？**
 
-- **A 类**：直接改变当前问题的工程设计，需要精读；
-- **B 类**：只提供长期原则或局部机制，定向理解即可；
-- **C 类**：当前没有问题承接，只登记候选。
+这个问题由真实工作现象启发，但公开仓只保留抽象后的问题，不记录私人项目来源或证据链。
 
-当前材料：
+当前之所以切换到 RP-002，是因为它直接影响正在形成的企业 AI 数据 / Context / World Model 架构判断；RP-001 暂停在已有明确停止点，不丢失已有成果。
 
-- **P-001**：对 R-001 属于 A 类，2026-09-07 已完成本轮理论理解；不重复整篇精读。
-- **P-002**：先按 **B → 可升级 A** 处理。已完成文献类型、开场问题与五类管理者工作的初步梳理；接下来只定向处理 technical performance、normative appropriateness、purpose 及其决策权含义。如果形成重大工程增量，再升级为 A 类继续完整 A–E。
-- **P-005**：对 R-001 的“判断聚合何时值得”更直接，进入该子问题时可升级为 A 类。
-- **P-003 / P-004**：保持候选，不因编号或已收集就自动开启。
-- **P-006**：世界模型 Position / roadmap paper；对 R-001 为 C 类登记，不打断 P-002。只有问题转向 Enterprise Context / World Model、Agent 自主性或跨主体编排时再升级 B 类。
-
-`reading-list.md` 是材料索引，不是待读清单。
+完整问题树见 [`research/research-questions.md`](research/research-questions.md)。
 
 ---
 
-## 4. 论文阅读现在增加 Part E｜Engineering Bridge
+## 3. RP-002 当前已经想清楚到哪里
 
-重要论文不能停在摘要、七问或 Human Takeaways。
+### 3.1 认知层｜CQ
 
-最终至少回答：
+当前不是直接问“应该选 Ontology 还是 RAG”，而是先确认几个更上位的问题：
 
-1. 它解释了什么现实问题？
-2. 它改变了我什么旧判断？
-3. 如果成立，对工程设计意味着什么？
-4. 可以在哪里、用什么方式验证？
-5. 验证后可能沉淀成什么架构 / 方法原则？
+1. **企业数据对模型到底扮演哪些不同角色？**  
+   当前候选包括：Learning Material、External Knowledge、Current Facts、Business Semantics、Task Context、Evaluation Evidence、Runtime Feedback。
+2. **为什么传统数据治理完成不等于 AI-ready？**  
+   当前需要区分 Data Availability 与 Context Usability、Schema 与 Business Semantics、历史数据与当前状态、数据质量错误与模型 / Context / Tool 错误。
+3. **模型真正需要的是更多数据，还是更好的企业世界表达？**
+4. **哪些模型错误可以通过数据治理改善，哪些不能？**
 
-完整模式：[`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)。
+当前 Working Hypothesis：
 
----
+> `Data Availability ≠ Context Usability`。
 
-## 5. 新的长期沉淀对象｜PRINCIPLES
+以及：
 
-新增：[`PRINCIPLES.md`](PRINCIPLES.md)。
+> 企业数据服务 Model / Agent 时，可能不是一种单一“数据接口”，而是多种不同目的、不同生命周期的数据—模型关系。
 
-当前研究资产职责：
-
-- `NOW.md`：当前 Active Problem 与下一步；
-- `research/research-questions.md`：具体问题、证据缺口、工程翻译和验证；
-- `EVOLUTION.md`：认知为什么变化；
-- `JUDGMENTS.md`：目前认为“世界怎样”；
-- `PRINCIPLES.md`：工程 / 研究应该怎样做；
-- `topics/`：成熟观点的体系化公开表达。
-
-原则状态区分 Candidate / Supported / Stable / Revised / Deprecated，不因论文写得好就自动升级。
+两者都只是 Hypothesis，不升级为 Judgment / Principle。
 
 ---
 
-## 6. P-001 当前状态
+## 4. 下一轮优先研究的三个架构问题
 
-P-001 本轮理论理解完成。核心增量包括：
+下一次恢复研究时，不先继续读论文，也不先设计完整 AI 数据平台。围绕下面三个问题定向寻找理论与工程证据。
 
-- 专业化收益 / 聚合收益是收益机制，不是 Figure 2 的分类维度；
-- Figure 2：相同 / 不同决策任务 × 并行 / 串行；
-- Table 1：独立 / 相互依赖反馈 × 交流受限 / 可行；
-- Task Interdependence、Agent / Feedback Interdependence、Censored Inputs、Superstitious Learning 要分开；
-- 组织结构会改变未来学习机会，而不只是利用当前能力差异。
+### RQ-002-A｜Relationship Types
 
-P-001 已完成机制理解，并形成了明确标记为 AI Proposal 的 Engineering Hypothesis；R-001 仍需用比较任务完成验证，验证前不升级为正式架构原则。
+> **业界现在真实存在几种 Data → Model / Agent 关系？**
 
-相关：
+重点检验当前候选：Dataset / Training、Knowledge / RAG、SQL / API / Query、Tool / Action、Semantic / Ontology、Context、Eval、Feedback。
 
-- [`P001 source walkthrough`](research/paper-reviews/P001_puranam_2021_source-walkthrough.md)
-- [`P001 research review`](research/paper-reviews/P001_puranam_2021_hacd.md)
+目标不是继续增加名词，而是确认：
 
----
+- 哪些真的是不同关系；
+- 哪些只是实现手段；
+- 哪些处于不同生命周期；
+- 当前分类遗漏了什么。
 
-## 7. 公开研究边界不变
+**预期产物：`Enterprise Data–Model Relationship Map v0.1`**。
 
-公开仓只研究公开世界。
+### RQ-002-B｜Mechanism Boundaries
 
-> **私人经验可以启发研究问题，但公开观点必须能够仅依靠公开证据独立成立。**
+> **Dataset、Knowledge Base、SQL、API、Tool、Ontology、Context、Eval、Feedback 的边界到底是什么，又怎样组合？**
 
-公开验证优先使用 Theory、Product Fact / Claim、Industry Case、Analyst View、Policy / Standard、Counter Evidence、开源实现、合成 Demo 与公开 Benchmark。
+需要明确每一种机制主要回答什么问题，例如：模型长期学什么、运行时查什么、当前事实是什么、事实在业务上意味着什么、当前任务该给什么、输出是否正确、运行经验如何回流。
 
----
+**预期产物：`Data–Model Mechanism Boundary Table v0.1`**。
 
-## 8. 下一步唯一动作
+### RQ-002-C｜Architecture Evolution
 
-**围绕 R-001，对 P-002 做一次 B 类定向阅读，而不是默认整篇精读。**
+> **哪些仍属于传统数据治理 / 数据平台问题，哪些是 Model / Agent 成为新消费者后显著新增的 Context / Semantic / Evidence 问题？**
 
-从已经完成的文献身份、开场问题与五类管理者工作继续，不重复开篇。
+重点研究传统链路：
 
-本轮只回答：
+`Source → Integration → Governance → Warehouse / Lake → Data Service → Application`
 
-1. 作者怎样划分管理者工作？
-2. “technical performance” 与 “normative appropriateness” 是否改变我们对 Human / AI 决策权配置的理解？
-3. “purpose” 在作者论证里到底是什么，是否真的意味着某类工作必须由人承担？
-4. 这些内容对 R-001 是否形成新的 Engineering Hypothesis？
+与候选 AI 链路之间到底是继承、扩展还是重构，而不是先假设一定需要一个全新的“AI 数据平台”。
 
-如果答案是“有重大直接增量”，P-002 升级为 A 类并继续完整 Part A–E；如果只是原则性补充，就在获得 Engineering Bridge 后停止。
+**预期产物：`Traditional Data Platform → AI-ready Context Architecture v0.1`**，其中必须标记“继承能力 / 新增能力 / 待验证能力”。
 
 ---
 
-## 9. Resume Here
+## 5. 下一轮如何找证据
 
-> 研究方法已从“按论文顺序推进”切换为“问题牵引研究”。
+三个问题分别选择合适证据，不默认“找论文就是研究”。
+
+优先证据类型：
+
+- **[Product Fact]**：主流数据 / AI 平台公开架构和产品文档，观察实际怎样把数据提供给模型；
+- **[Open-source Implementation]**：RAG、结构化数据查询、Context、Semantic / Knowledge Graph、Eval 等工程实现；
+- **[Theory]**：解释语义、知识表示、Context、信息整合、数据与推理关系的理论 / 论文；
+- **[Industry Case]**：公开企业案例，看这些机制是否真的进入业务闭环；
+- **[Analyst View] / [Policy / Standard]**：帮助判断产业共性和治理约束；
+- **[Counter Evidence]**：简单任务不需要复杂语义层的案例，以及复杂本体建设仍无法解决模型错误的反例。
+
+研究顺序：
+
+`Question → Evidence Search → Evidence Identity → Mechanism Synthesis → Architecture Hypothesis`
+
+不要先画一个完整答案，再只寻找支持它的资料。
+
+---
+
+## 6. 本轮预期成果，不要求今天完成
+
+这一轮 RP-002 暂时只追求四类成果：
+
+1. **关系地图**：Data 与 Model / Agent 到底有哪些结构性关系；
+2. **边界表**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么；
+3. **架构演进图**：传统数据能力哪些继续有效，AI 时代新增哪些 Semantic / Context / Evidence 能力；
+4. **问题收敛结果**：研究后哪些 Hypothesis 得到支持 / 修正，是否足以提出 Candidate Architecture Principle。
+
+暂时不要求：
+
+- 一次性形成完整企业 AI 数据平台方案；
+- 把所有厂商收集齐；
+- 为了完整性批量读论文；
+- 现在就新增稳定 Principle。
+
+只有证据能够支撑，才从 Working Hypothesis 推进到 Candidate Principle。
+
+---
+
+## 7. 后续工程层还没有启动
+
+当前 EQ / VQ 已登记，但先不抢跑：
+
+- 比较 RAG、SQL/API、Semantic Model / Ontology、组合 Context；
+- 把治理后的数据转换成 Dataset / Knowledge / Eval / Semantic Asset；
+- 让 Context 携带 Source / Lineage / Freshness / Permission / Evidence；
+- 处理历史知识、实时 State、Event；
+- 验证人工本体、AI 自动发现、动态语义模型的成本和收益。
+
+这些要等前面的关系与边界更清楚后，再决定最小 Demo / Benchmark。
+
+---
+
+## 8. 其他问题状态
+
+- **RP-001 Human–AI Decision Structure**：Paused / Candidate。P-001 已完成本轮理论理解；P-002 / P-005 保持证据候选。需要时从已有状态继续，不重开论文队列。
+- **RP-003 Agent Experience → Organizational Learning**：Candidate。
+- **RP-004 Effective Agency / Authority / Accountability**：Candidate。
+- **RP-005 AI 与企业边界**：Backlog。
+
+一个时期仍只保留一个主要 Active Problem。
+
+---
+
+## 9. Resume Here｜下次从这里继续
+
+> 当前 Active Problem 已切换为 **RP-002 Enterprise Data–Model Relationship**。
 >
-> 当前 Active Problem 是 R-001：高价值企业判断任务中 Human / AI 的分工、决策权与反馈怎样设计。
+> 当前不是要直接“给出 AI 数据平台答案”，而是围绕三个架构问题做证据研究：
 >
-> P-001 已完成理论理解；P-002 不再是“必须读完的第二篇”，而是 R-001 的候选证据。先按 B 类定向阅读，只有真正影响设计时才升级 A 类。
+> **A. Data → Model / Agent 有哪些真实关系？**  
+> **B. Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 的机制边界是什么？**  
+> **C. 哪些是传统数据平台能力，哪些是 AI 时代新增的 Semantic / Context / Evidence 问题？**
 >
-> 长期终点是 `PRINCIPLES.md`：论文知识 → Engineering Hypothesis → Validation → Principle，而不是论文 → 笔记 → 更多论文。
+> 下一步：围绕 A / B / C 定向搜索公开 Theory、Product Fact、Open-source、Industry Case 与 Counter Evidence；先形成 Relationship Map、Boundary Table、Architecture Evolution v0.1，再判断是否能沉淀 Architecture Principle。
+>
+> 不按论文编号继续读，不预设 Ontology / Context 一定是答案。
