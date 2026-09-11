@@ -1,69 +1,174 @@
-# Paper Review Plan｜论文学习执行计划
+# Paper Review Plan｜问题驱动的论文学习执行计划
 
-> 目标：按问题选择材料，理解作者论证，再形成研究解释。完整提示词统一维护在 [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)。
+> 论文不是研究主线，只是回答具体问题的一类证据。
+>
+> 先有 Problem，再决定论文是否值得读、读多深。完整研究闭环见 [`RESEARCH_LOOP.md`](RESEARCH_LOOP.md)；新会话执行规则见 [`PAPER_READING_MODE.md`](../ai-context/PAPER_READING_MODE.md)。
 
-## 入口职责
+## 1. 入口职责
 
-- [NOW](../NOW.md)：唯一当前动作与停止位置；
-- [reading-list](reading-list.md)：论文身份、来源、价值、状态与候选顺序；
-- 本文件：学习节奏与完成标准；
-- [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)：可直接供新会话执行的 A/B/C/D 完整要求；
-- [theory-map](theory-map.md)：按需回补的经典理论，不是必须全部先学完的课程。
+- [`NOW.md`](../NOW.md)：当前唯一动作与停止位置；
+- [`research-questions.md`](research-questions.md)：当前具体 Problem、证据缺口、工程翻译与验证状态；
+- [`reading-list.md`](reading-list.md)：论文身份、来源、相对增量与可读性索引；
+- 本文件：论文 A/B/C 分级、完成标准与 Part E；
+- [`PAPER_READING_MODE.md`](../ai-context/PAPER_READING_MODE.md)：新会话实际执行方式；
+- [`PRINCIPLES.md`](../PRINCIPLES.md)：最终要沉淀的架构 / 方法原则。
 
-## 当前安排｜2026-09-08
+论文编号不是顺序，reading-list 不是必须读完的队列。
 
-- **P-001**：2026-09-07 本轮精读完成；具体误解局部回看，U-P001-01 企业验证继续 Backlog。
-- **P-002**：研究者提供的 7 页全文已核验可读；唯一下一步是 Part A，尚未开始正文精读。
-- **P-003**：原三篇计划保留，先核验题录和原文。
-- **P-004 / P-005**：新材料仅完成选文筛查，未精读；P-005 优先补聚合条件、P-004 扩展到多 Agent。候选取舍见论文地图，不同时开篇。
+---
 
-原计划 P-001 → P-002 → P-003 保留为历史安排；P-002 后按剩余缺口与原文条件比较候选。论文编号不等于顺序。
+## 2. 先分类，再阅读：A / B / C
 
-## 四阶段节奏
+论文类别是相对于当前 Problem 动态判断的，同一篇论文在不同问题下可以改变等级。
 
-1. **A Source Walkthrough**：按作者顺序恢复问题、论证、证据、图表和边界。
-2. **B Concept Reconstruction**：逐个解释当前概念障碍，可在 A 中局部暂停补充，再返回原文。
-3. **C Research Interpretation**：研究者表示主要概念已理解后，才进入 Q1–Q5、经典假设、七问和 JUDGMENTS 关联。
-4. **D Human Takeaways**：形成概念、长期记忆、认知变化、剩余问题与下一篇理由。
+### A 类｜问题型论文——精读
 
-完整七问、概念教学七项、证据标签和图表解释要求见精读模式，不在多个文件复制维护。四阶段不能在开篇一次性全部输出；有理解障碍先解释，不赶流程。
+直接解释当前核心问题，且作者的完整论证可能改变工程设计。
 
-## 恢复与新材料处理
+执行：
 
-- 新会话只需引用仓库、精读模式、论文 ID、原文与本次动作，不重复长提示词。
-- 从已有状态恢复；约 10 分钟检查只找实际缺口，不重复整套术语考试。
-- 新论文先登记“具体问题—相对增量—证据类型—阅读产物”，再选择精读、定向查读、保留或不纳入。
-- 候选 Q / M 定位只服务选文，不在 A 阶段套用框架。
-- 原文缺失就记录缺失，不能用标题、媒体或其他文章替代。
-- 经典理论只补阻碍当前理解的部分；VSM 等观察线保持 Backlog，除非当前问题明确需要。
+`A Source Walkthrough → B Concept Reconstruction → C Research Interpretation → D Human Takeaways → E Engineering Bridge`
 
-## 每篇结束后的更新规则
+停止条件：已经足以形成清晰的 Engineering Hypothesis，并知道还缺什么验证。**不要求为了“学术完整”把所有旁支都读完。**
 
-1. 完成 Source Walkthrough；
-2. 完成 Concept Reconstruction；
-3. 用户确认已经理解论文主要内容；
-4. 再完成/校正七问；
-5. 再形成 Human Takeaways；
-6. 再更新 scholar map；
-7. 最后才判断是否修改 JUDGMENTS；
-8. 更新 NOW.md。
+### B 类｜原则型论文——定向理解
 
-## 停止条件｜理论理解、应用假设、企业验证分开管理
+当前不会直接改变工程方案，但可能修正长期判断或原则。
 
-| 层次 | 完成标准 | 不应被误判为 |
-|---|---|---|
-| 理论理解 | 能解释作者的问题、关键图表、主要机制与证据边界；明确概念缺口已补清 | 记住术语就算完成，或必须立即形成企业实施方法才算完成 |
-| 应用假设 | 能说明候选收益条件、失败条件和待验证问题 | 已经成立的企业选型规则 |
-| 企业验证 | 在明确任务上，以可复核证据比较质量、成本及相关运行约束 | 由虚构教学案例或 AI 推论直接证明 |
+执行只需：
 
-执行方式：
+1. 核实论文类型、边界与核心问题；
+2. 理解 1–3 个真正有增量的机制 / 概念；
+3. 说明改变了什么旧判断；
+4. 说明影响哪条 Candidate Principle；
+5. 写一个简版 Engineering Bridge；
+6. 满足当前增量后停止。
 
-1. 恢复检查先找实际理解缺口；每次只解释必要的概念，不反复考试英文名词。
-2. 若 A/B 已理解且 C/D 已完成，可以结束本轮精读；未解决的应用问题单独保留为 Backlog。
-3. 应用问题仅在具备明确任务、现有流程、可核查样例与成功标准时启动，不为追求“完整方法论”继续无限扩展。
-4. 来源与判断责任分开：作者结论、外部证据、教学例子、AI Proposal 分别标记；阅读完成不会自动触发 JUDGMENTS 升级。
-5. 记录认知变化时保留 Origin；尚未确认为稳定研究方法的表述可先作为 EVOLUTION 候选节点。
+不要求完整逐段 walkthrough，不制造“以后必须补完”的学习债务。
 
-VSM / Stafford Beer 暂时保留 backlog。
+### C 类｜启发型论文——候选池
 
-_Last updated: 2026-09-08_
+感觉重要或有趣，但当前没有具体 Problem 承接。
+
+只登记：题录、一句话潜在价值、可能关联问题、未来升级条件。**不精读、不强行内化。**
+
+---
+
+## 3. A 类论文五阶段
+
+### Part A｜Source Walkthrough
+
+按作者顺序恢复：文章类型、原始问题、论证链、证据、图表、例子、结论和未解决问题。
+
+### Part B｜Concept Reconstruction
+
+只解释阻碍当前理解的关键概念，保留英文术语并区分 `[原文] / [作者引用] / [背景补充] / [我们的推论]`。
+
+### Part C｜Research Interpretation
+
+主要概念理解后，再回答 Q1–Q5、经典理论、关键假设、AI 改变了什么、对 JUDGMENTS 的支持/挑战及阶段性边界。
+
+### Part D｜Human Takeaways
+
+形成真正掌握的概念、长期记忆、认知变化、EVOLUTION 候选和剩余问题。
+
+### Part E｜Engineering Bridge
+
+重要论文必须继续回答：
+
+1. 它解释了什么现实问题？
+2. 它改变了什么旧判断？
+3. 如果成立，对工程设计意味着什么？
+4. 在哪里、用什么方式验证？
+5. 验证后可能沉淀成什么架构 / 方法原则？
+
+Part E 的结果首先是 **Engineering Hypothesis / Candidate Principle**，不能因为论文逻辑完整就直接升级为稳定原则。
+
+---
+
+## 4. 当前材料的处理方式｜2026-09-11
+
+- **P-001**：理论理解已完成。它不再因为“编号最前”被重复精读；已转化出的具体问题见 R-001 / R-003。
+- **P-002**：原文已具备，但不再自动作为“下一篇必须读完”。只有在当前 Problem 需要判断管理者工作、目的、规范适当性或决策权边界时，才作为 A / B 类进入。
+- **P-003**：题录与原文待核验；没有当前问题承接时保持 C / Backlog。
+- **P-004**：多 Agent 组织方向候选；只有 R-001 / Q3 需要扩展到多 Agent 失效机制时升级。
+- **P-005**：与 R-001 的“聚合何时值得”直接相关，若 R-001 进入 Active，可优先升级为 A 类。
+
+原计划 `P-001 → P-002 → P-003` 只保留为历史记录，不再作为研究执行顺序。
+
+---
+
+## 5. 每篇重要论文最终产物
+
+终点不是“论文总结”，而是**工程桥接卡**。
+
+```markdown
+## Engineering Bridge
+
+Problem:
+
+What the paper explains:
+
+Changed judgment:
+
+Engineering hypothesis:
+
+Validation plan:
+
+Candidate principle:
+
+Boundary / counterexample:
+```
+
+允许结论是：
+
+- 当前只能解释机制，尚不能工程化；
+- 工程含义存在，但没有验证方法；
+- 对当前 Problem 没有足够增量，应停止阅读。
+
+---
+
+## 6. 阅读与研究停止条件
+
+| 情况 | 正确动作 |
+|---|---|
+| Problem 还不清楚 | 停止搜论文，先定义问题 |
+| C 类论文 | 登记后停止 |
+| B 类已经获得原则性增量 | 停止，不补全文 |
+| A 类已形成 Engineering Hypothesis | 结束阅读，转向验证 |
+| 理论理解完成但企业应用仍缺证据 | 分开管理，不继续用更多论文假装完成验证 |
+| Candidate Principle 缺验证 | 保持 Candidate，不升级 |
+| 新证据推翻假设 | 记录 Counter Evidence / EVOLUTION，修改原则 |
+
+**阅读速度不是目标，但深度也不等于把每篇论文都读到同一深度。**
+
+---
+
+## 7. 新材料准入
+
+发现新论文时先问：
+
+1. 当前具体 Problem 是什么？
+2. 它相比已有材料新增什么机制、数据、边界或反例？
+3. 它是 A、B 还是 C？
+4. 读后要得到什么 Engineering Bridge？
+
+不能回答以上问题，就先不读。
+
+---
+
+## 8. 仓库更新规则
+
+一次研究结束后按需更新：
+
+1. `research-questions.md`：Problem、Evidence Gap、Engineering Translation、Validation；
+2. 当前 paper review：原文理解 / Engineering Bridge；
+3. `reading-list.md`：材料身份与实际增量；
+4. `PRINCIPLES.md`：只有形成明确 Candidate Principle 或原则状态变化时更新；
+5. `EVOLUTION.md`：只有认知发生实质变化时更新；
+6. `JUDGMENTS.md`：只有研究者明确认可且证据足够时更新；
+7. `NOW.md`：保存唯一下一步。
+
+公开仓不记录私人项目证据链。
+
+_Last updated: 2026-09-11_
