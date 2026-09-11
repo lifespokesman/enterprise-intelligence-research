@@ -1,19 +1,19 @@
 # Problem Map｜企业 AI 问题地图
 
 Updated: 2026-09-11  
-本文件不再只是“研究问题清单”，而是用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
+本文件用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
 
-> **知识管理的基本单位从“论文 / 对话 / 资料”逐步切换为“问题”。**
+> **知识管理的基本单位从“论文 / 对话 / 资料”切换为“问题”。**
 
-完整研究闭环见 [`RESEARCH_LOOP.md`](RESEARCH_LOOP.md)。论文、产品、案例和开源项目都只是问题的 Evidence Provider，不构成独立阅读队列。
+完整研究闭环见 [`RESEARCH_LOOP.md`](RESEARCH_LOOP.md)。论文、产品、案例、开源项目、标准和分析报告都是 Evidence Provider，不构成独立阅读队列。
 
 ---
 
-## 1. 问题地图的四层结构
+## 1. Problem Map 的基本结构
 
 ```text
-Q1–Q5 Long-term Questions
-长期组织问题
+Phenomenon / Signal
+现实刺激
         ↓
 RP｜Research Problem
 阶段性母问题 / 问题域
@@ -21,7 +21,17 @@ RP｜Research Problem
 CQ / AQ / EQ / VQ
 认知 / 架构 / 工程 / 验证问题
         ↓
-Evidence → Mechanism → Engineering Hypothesis → Validation → Principle
+Theory + Public Industry Evidence
+        ↓
+Mechanism
+        ↓
+Engineering Hypothesis
+        ↓
+Validation
+        ↓
+Architecture / Method Principle
+        ↓
+New Problem
 ```
 
 四类子问题：
@@ -31,9 +41,13 @@ Evidence → Mechanism → Engineering Hypothesis → Validation → Principle
 - **EQ｜Engineering Question**：这个架构怎样实现、运行、治理和观测？
 - **VQ｜Validation Question**：怎样用公开案例、开源实现、合成实验或 Benchmark 判断它是否真的成立？
 
-这些不是四个文件夹，而是同一个 Research Problem 的不同纵深阶段。一个问题通常会经历：
+这些不是四个文件夹，而是同一个 Research Problem 的不同纵深阶段。
+
+一个问题通常经历：
 
 `现象 → CQ → AQ → EQ / VQ → Principle → 新现象 / 新问题`
+
+Q1–Q5 仍然是长期组织问题地图；RP 是真正执行研究时的阶段性母问题。一个 RP 可以跨多个 Q 和 E/G Track。
 
 ---
 
@@ -41,17 +55,17 @@ Evidence → Mechanism → Engineering Hypothesis → Validation → Principle
 
 | RP | Research Problem｜母问题 | 主要 Q1–Q5 | 主要 E/G Track | Principle Link | 状态 |
 |---|---|---|---|---|---|
-| **RP-001** | Human 与 AI 的决策结构如何设计？何时单主体、专业化分工或判断聚合，最终决策权和反馈怎样配置？ | Q1 / Q3 / Q5 | E1 / E4；G3 | MP-001；未来候选 AP | **Active** |
-| **RP-002** | 企业已有的数据资产，与大模型之间到底应该建立什么关系？怎样从“有数据”走向模型可理解、可调用、可验证的企业上下文？ | 主 Q3；强关联 Q5；关联 Q1 | 主 E2；关联 E3 / E4 | AP-002；未来新增候选 | **Candidate｜High Priority** |
+| **RP-001** | Human 与 AI 的决策结构如何设计？何时单主体、专业化分工或判断聚合，最终决策权和反馈怎样配置？ | Q1 / Q3 / Q5 | E1 / E4；G3 | MP-001；未来候选 AP | Paused / Candidate |
+| **RP-002** | 企业已有的数据资产，与大模型之间到底应该建立什么关系？怎样从“有数据”走向模型可理解、可调用、可验证的企业上下文？ | 主 Q3；强关联 Q5；关联 Q1 | 主 E2；关联 E3 / E4 | AP-002；未来新增候选 | **Active** |
 | **RP-003** | Agent 的局部运行经验如何变成可保留、可复用、可验证的组织长期能力？ | Q5 | E4 / G4 | AP-004 | Candidate |
 | **RP-004** | Agent 有能力调用工具以后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？ | Q2 / Q1 | E3；G2 / G3 / G4 | AP-003 | Candidate |
 | **RP-005** | AI 降低发现、调用和协调能力的成本后，哪些能力仍应企业内部化，哪些可以动态外部调用？ | Q4 | E3；G2 | 尚无 | Backlog |
 
-说明：
+原则：
 
-- 一个 RP 可以同时关联多个 Q 和 E/G Track，不强行单归属；
-- 只有反复出现、影响架构设计、需要外部证据支撑的问题才升级为 RP；
-- 临时灵感先作为 Signal，不为了“地图完整”批量创建母问题。
+- 只有反复出现、影响架构设计、需要持续外部证据的问题才升级为 RP；
+- 临时灵感先作为 Signal，不为了“地图完整”批量创建母问题；
+- 一个时期原则上只保留一个主要 Active Problem。
 
 ---
 
@@ -60,13 +74,13 @@ Evidence → Mechanism → Engineering Hypothesis → Validation → Principle
 **Core Problem**  
 给定一个高价值判断任务，Human 与 AI 应何时单主体、专业化分工或判断聚合？最终决策权和反馈怎样设计，才能既获得能力收益，又保持责任、学习与可验证性？
 
-**Mappings**  
-Q1 / Q3 / Q5；E1 / E4；G3。
+**Mappings**：Q1 / Q3 / Q5；E1 / E4；G3。  
+**Status**：Paused / Candidate。
 
 ### Cognitive Questions
 
 - **CQ-001-01**：单主体、专业化分工、判断聚合分别依靠什么机制产生收益？
-- **CQ-001-02**：Task Interdependence、Agent Interdependence、反馈结构如何改变 Human–AI 协作效果？
+- **CQ-001-02**：Task Interdependence、Agent / Feedback Interdependence 如何改变 Human–AI 协作？
 - **CQ-001-03**：能力更强是否等于应拥有最终 Decision Rights？
 
 ### Architecture Questions
@@ -82,10 +96,10 @@ Q1 / Q3 / Q5；E1 / E4；G3。
 ### Current Evidence
 
 - P-001：分工、任务依赖、学习结构；已完成本轮精读；
-- P-002：管理者工作、purpose / normative appropriateness；待按当前问题判断 A/B 阅读深度；
+- P-002：管理者工作、purpose / normative appropriateness；保留为定向证据候选；
 - P-005：聚合何时可能有效；候选理论证据。
 
-旧条目 `U-P001-01` 并入本 RP。
+旧条目 `U-P001-01` 并入本 RP。当前暂停不代表关闭，后续有明确业务 / 架构问题时从已有状态继续。
 
 ---
 
@@ -93,7 +107,7 @@ Q1 / Q3 / Q5；E1 / E4；G3。
 
 ## 企业已有的数据资产，与大模型之间到底应该建立什么关系？
 
-**Status**：Candidate｜High Priority  
+**Status**：**Active**  
 **Origin**：`User Insight`（由真实工作现象触发后抽象为公开研究问题）
 
 ## Trigger｜抽象后的现象
@@ -110,7 +124,7 @@ Q1 / Q3 / Q5；E1 / E4；G3。
 - 什么历史数据应该成为 Eval / Benchmark？
 - Agent 运行结果怎样重新回到数据与学习体系？
 
-因此真正的母问题不是“怎样做一套新的数据治理平台”，而是：
+真正的母问题不是“怎样做一套新的数据治理平台”，而是：
 
 > **企业真实世界究竟通过哪些机制进入模型？企业数据资产应该分别以什么关系服务 Model / Agent？**
 
@@ -120,7 +134,7 @@ Q1 / Q3 / Q5；E1 / E4；G3。
 
 ### CQ-002-01｜企业数据对模型到底扮演哪些不同角色？
 
-当前先形成一个待验证的角色地图：
+当前先形成待验证的角色地图：
 
 ```text
 Enterprise Data / Enterprise Reality
@@ -132,7 +146,7 @@ Enterprise Data / Enterprise Reality
 │  → Knowledge Base / RAG
 │
 ├─ Current Facts
-│  → SQL / API / Tool / Query
+│  → SQL / API / Query
 │
 ├─ Business Semantics
 │  → Semantic Layer / Ontology / World Representation
@@ -147,18 +161,18 @@ Enterprise Data / Enterprise Reality
    → Trace / Outcome / Human Feedback / Learning Asset
 ```
 
-这不是最终分类，后续需要用公开理论、产品架构与案例验证边界和遗漏。
+这不是最终分类。后续要用公开 Theory、Product Fact、Open-source、Industry Case 和 Counter Evidence 检验边界与遗漏。
 
 ### CQ-002-02｜为什么“数据治理完成”不等于“AI-ready”？
 
-需要区分至少几组容易混淆的概念：
+需要持续区分：
 
-- Data Availability ≠ Context Usability
-- Schema ≠ Business Semantics
-- 数据集成 ≠ 模型理解业务关系
-- 指标口径统一 ≠ Agent 知道当前任务应使用哪个指标
-- 历史数据存在 ≠ 当前事实新鲜、可信、可追溯
-- 数据质量问题 ≠ 所有模型错误的来源
+- Data Availability ≠ Context Usability；
+- Schema ≠ Business Semantics；
+- 数据集成 ≠ 模型理解业务关系；
+- 指标口径统一 ≠ Agent 知道当前任务应使用哪个指标；
+- 历史数据存在 ≠ 当前事实新鲜、可信、可追溯；
+- 数据质量问题 ≠ 所有模型错误的来源。
 
 **Working Hypothesis H-RP002-01**：
 
@@ -176,7 +190,7 @@ Enterprise Data / Enterprise Reality
 
 ### CQ-002-04｜哪些模型错误能够靠数据治理解决，哪些不能？
 
-至少需要区分：
+至少区分：
 
 - 源数据错误 / 缺失；
 - 口径冲突；
@@ -186,20 +200,24 @@ Enterprise Data / Enterprise Reality
 - 模型推理错误；
 - 工具调用 / 权限 / 执行错误。
 
-否则“减少幻觉”会成为无法验证的总目标。
+否则“通过数据治理减少模型错误 / 幻觉”会成为无法验证的总目标。
 
 ---
 
-## 2.2 Architecture Questions｜架构问题
+## 2.2 Architecture Questions｜当前第一轮研究重点
 
-### AQ-002-01｜企业数据进入 Model / Agent 有哪些主要接口模式？
+认知问题说明“为什么值得研究”；下一轮实际研究先围绕三个架构问题寻找证据。
 
-当前先建立 **Data-to-Model Interface Map v0.1**：
+### RQ-002-A / AQ-002-01｜Data–Model Relationship Types
+
+> **业界现在真实存在几种 Data → Model / Agent 关系？**
+
+当前候选 **Data-to-Model Interface Map v0.1**：
 
 | Interface Pattern | 核心关系 | 典型机制 | 主要解决的问题 |
 |---|---|---|---|
 | **Training Interface** | 数据进入模型学习过程 | Dataset / Pretrain / Fine-tune | 模型长期学会什么 |
-| **Knowledge Interface** | 数据作为外部可检索知识 | RAG / Knowledge Base / Vector Search | 模型临时查什么知识 |
+| **Knowledge Interface** | 数据作为外部可检索知识 | RAG / Knowledge Base / Vector Search | 模型运行时查什么知识 |
 | **Fact Query Interface** | 模型读取当前结构化事实 | SQL / Query / Data API | 当前事实是什么 |
 | **Tool / Action Interface** | 模型通过工具访问或操作企业系统 | API / MCP / Tool | 如何获取或改变企业状态 |
 | **Semantic Interface** | 显式描述对象、关系、状态、规则 | Semantic Layer / Ontology | 数据在业务上意味着什么 |
@@ -207,53 +225,116 @@ Enterprise Data / Enterprise Reality
 | **Evaluation Interface** | 数据作为正确性与质量基线 | Eval Set / Benchmark / Ground Truth | 模型做得对不对 |
 | **Feedback Interface** | 运行结果重新成为学习材料 | Trace / Outcome / Human Feedback | 系统如何持续改进 |
 
-后续研究重点不是继续增加名词，而是验证：这些 Pattern 是否互斥、互补、分层，哪些可以被统一，哪些必须独立。
+研究目标不是增加名词，而是验证：
 
-### AQ-002-02｜Dataset / Knowledge Base / SQL / Tool / Ontology / Context / Eval 到底处于什么层次？
+- 哪些真的是不同关系；
+- 哪些只是实现方式；
+- 哪些处于不同生命周期；
+- 哪些应该合并 / 拆分；
+- 当前分类遗漏什么。
 
-当前需要避免把这些组件并列堆在一张 AI 架构图里。
+**预期产物：`Enterprise Data–Model Relationship Map v0.1`**。
 
-候选区分：
+### RQ-002-B / AQ-002-02｜Mechanism Boundaries
+
+> **Dataset、Knowledge Base、SQL、API、Tool、Ontology、Context、Eval、Feedback 的边界是什么，又怎样组合？**
+
+当前候选区分：
 
 - Dataset：模型学习什么；
-- Knowledge Base：模型需要时查什么；
+- Knowledge Base：模型运行时查什么知识；
 - SQL / API：当前事实从哪里来；
-- Ontology / Semantic Layer：事实在业务上是什么意思；
+- Tool：如何读取或改变企业状态；
+- Ontology / Semantic Layer：事实在业务上意味着什么；
 - Context Engineering：当前任务到底给模型什么；
 - Eval：如何判断输出是否正确；
 - Trace / Feedback：运行经验如何重新进入资产体系。
 
-### AQ-002-03｜传统 Data Service 是否需要演化出 AI Context / Semantic / Evidence Service？
+需要特别判断：
+
+- Ontology 是“接口关系”还是“语义机制”？
+- Context 是独立架构层，还是对多种资产的动态编译过程？
+- Tool / API 属于 Data–Model 关系，还是更上位的 Capability / Action 关系？
+- Knowledge、Fact、Semantic、Context 是否应该按运行时角色而不是产品形态区分？
+
+**预期产物：`Data–Model Mechanism Boundary Table v0.1`**。
+
+### RQ-002-C / AQ-002-03｜Traditional Data Platform → AI-ready Context Architecture
+
+> **哪些仍属于传统数据治理 / 数据平台问题，哪些是 Model / Agent 成为新消费者后显著新增的 Context / Semantic / Evidence 问题？**
+
+传统数据平台候选链路：
+
+`Source → Integration → Governance → Warehouse / Lake → Data Service → Application`
+
+当前 AI 时代候选扩展：
+
+`Source → Governance → Semantic / Context / Evidence → AI-ready Asset → Model / Agent`
 
 **Working Hypothesis H-RP002-02**：
 
-传统数据平台主要围绕 Human / Application 消费数据构建：
+> 原有 Data Service 之上，可能逐步增加面向智能主体的 Semantic / Context / Evidence 能力；但这不等于传统数据平台被替代，也不预设一定需要一个独立的“AI 数据平台”。
 
-`Source → Integration → Governance → Warehouse/Lake → Data Service → Application`
+研究必须区分：
 
-AI 时代可能新增一条面向 Model / Agent 的服务链：
+- **Inherited Capability**：传统数据治理仍然必须解决的数据质量、标准、集成、血缘、权限等能力；
+- **Extended Capability**：为模型消费而增强的检索、结构化查询、AI-ready Asset 等能力；
+- **AI-native / Newly Salient Capability**：Context Assembly、Semantic / World Representation、Evidence Packaging、Eval / Runtime Feedback 等因 Model / Agent 成为新消费者而显著上升的问题；
+- **To Be Validated**：只是当前假设、尚无充分证据证明必须成为独立平台能力的部分。
 
-`Source → Governance → Semantic / Context → AI-ready Asset → Model / Agent`
+**预期产物：`Traditional Data Platform → AI-ready Context Architecture v0.1`**。
 
-这并不意味着传统数据平台必须被替代。需要研究的是：
+### AQ-002-04｜历史数据与实时业务状态如何同时进入 Agent？
 
-> **原有 Data Service 之上，是否需要增加面向智能主体的 Semantic / Context / Evidence 能力，以及边界应该在哪里。**
-
-### AQ-002-04｜历史数据与实时业务状态应该如何同时进入 Agent？
-
-历史知识、当前状态和事件流不能简单都塞入 RAG。需要研究：
+这一问题暂不作为第一轮主研究对象，但保留为后续架构深化：
 
 - Historical Knowledge；
 - Operational State；
 - Event / Change；
 - Rule / Policy；
-- Evidence / Freshness；
+- Evidence / Freshness。
 
-在 Enterprise Context 中怎样组合。
+需要判断它们在 Enterprise Context 中如何组合，而不是全部塞入 RAG。
 
 ---
 
-## 2.3 Engineering Questions｜工程问题
+## 2.3 Evidence Plan｜下一步怎么研究，而不是直接给答案
+
+下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据。
+
+### 优先证据类型
+
+- **[Product Fact]**：数据平台 / Lakehouse / Data Cloud / AI Platform 的公开架构与产品文档；
+- **[Open-source Implementation]**：RAG、structured query、semantic / knowledge graph、context、eval 的真实工程实现；
+- **[Theory]**：知识表示、语义、信息整合、Context、数据与推理关系等理论 / 论文；
+- **[Industry Case]**：公开企业实践，看机制是否进入实际业务闭环；
+- **[Analyst View] / [Policy / Standard]**：判断产业共性、标准和治理要求；
+- **[Counter Evidence]**：简单任务无需复杂语义层、复杂本体仍不能解决模型错误的反例。
+
+### 研究顺序
+
+```text
+Research Question
+        ↓
+Evidence Search
+        ↓
+Evidence Identity
+Theory / Product Fact / Claim / Case / Open-source / Counter Evidence
+        ↓
+Mechanism Synthesis
+        ↓
+Architecture Hypothesis
+        ↓
+后续才进入 Engineering / Validation
+```
+
+不要先画一个完整答案，再只寻找支持已有判断的材料。
+
+---
+
+## 2.4 Engineering Questions｜第二阶段，不抢跑
+
+当 Relationship Map 与 Boundary Table 更清楚以后，再决定哪些工程问题值得做 Demo / Benchmark：
 
 - **EQ-002-01**：同一任务分别使用 RAG、SQL/API、Semantic Model / Ontology、组合 Context 时，效果和成本如何比较？
 - **EQ-002-02**：如何把既有治理后的数据转换成 Dataset、Knowledge Asset、Eval Set、Semantic Asset 等不同 AI-ready Asset？
@@ -263,31 +344,29 @@ AI 时代可能新增一条面向 Model / Agent 的服务链：
 
 ---
 
-## 2.4 Validation Questions｜验证问题
+## 2.5 Validation Questions｜第二阶段
 
-- **VQ-002-01**：能否用一个公开 / 合成业务任务，对比 `RAG only`、`RAG + structured facts`、`RAG + semantic/world context` 三种方案？
-- **VQ-002-02**：评价指标除了回答准确率，还应该包含哪些 Context 指标：Consistency、Freshness、Traceability、Action Success、Maintenance Cost？
-- **VQ-002-03**：公开产品与架构中，哪些已经把 Data Service 扩展为 Semantic / Context / Evidence 能力？哪些只是产品主张？
-- **VQ-002-04**：有没有公开反例证明更强的显式语义层在某些任务中成本高于收益？
-
----
-
-## 2.5 当前 Evidence Gap
-
-当前**不立即进入论文队列**。先需要建立公开产业和理论证据地图：
-
-1. 数据平台 / Lakehouse / Data Cloud 如何定义 AI-ready data；
-2. Knowledge / RAG 产品怎样处理结构化事实与实时状态；
-3. Semantic Layer / Ontology / World Model 产品怎样解决业务语义；
-4. Context Engineering / Context Platform 怎样组织任务上下文；
-5. Eval / Observability 怎样把企业数据变成验证资产；
-6. 找 Counter Evidence：哪些简单任务无需显式语义层，哪些复杂任务即使做了本体也不能解决模型错误。
-
-任何厂商主张先标记 `[Product Claim]`，不能直接升级成架构原则。
+- **VQ-002-01**：能否用公开 / 合成业务任务对比 `RAG only`、`RAG + structured facts`、`RAG + semantic/world context`？
+- **VQ-002-02**：除了回答准确率，还应比较哪些指标：Consistency、Freshness、Traceability、Action Success、Maintenance Cost？
+- **VQ-002-03**：公开产品和案例中，哪些已将 Data Service 扩展为 Semantic / Context / Evidence 能力？哪些只是 Product Claim？
+- **VQ-002-04**：有没有公开反例说明更强显式语义层在某些任务中成本高于收益？
 
 ---
 
-## 2.6 当前与已有认知的关系
+## 2.6 当前成果定义｜这轮研究最终要留下什么
+
+RP-002 当前一轮不以“读完多少论文”结束，而暂定形成四类成果：
+
+1. **Relationship Map**：Data 与 Model / Agent 到底存在多少种结构性关系；
+2. **Mechanism Boundary Table**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么、怎样组合；
+3. **Architecture Evolution Map**：传统数据平台哪些能力延续，哪些因 Model / Agent 成为新消费者而需要增强 / 新增；
+4. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
+
+候选 Principle 现在不预写结论。只有 Theory + Public Industry Evidence 和必要的工程 / 反例验证足以支撑时，才收敛。
+
+---
+
+## 2.7 与已有认知的关系
 
 ### Related Evolution
 
@@ -299,29 +378,27 @@ AI 时代可能新增一条面向 Model / Agent 的服务链：
 
 ### Derived / Absorbed Question
 
-原来的 **R-002｜AI 需要多强显式 Enterprise Context / Semantic Model / Ontology？** 不再单独作为母问题，正式并入 RP-002，成为 `CQ-002-03 / AQ-002-02 / EQ-002-05` 等子问题。
+原来的“AI 需要多强显式 Enterprise Context / Semantic Model / Ontology？”不再单独作为母问题，而并入 RP-002。
 
-这次调整避免把“Ontology”本身误当成问题入口。更上位的问题是：
+这避免把 Ontology 本身误当成问题入口。更上位的问题是：
 
 > **企业真实世界怎样通过数据、知识、语义、上下文、工具、评价和反馈机制进入 Model / Agent。**
 
 ---
 
-## 2.7 RP-002 的下一步最小动作
+## 2.8 Resume Point｜下次继续研究的位置
 
-先不要搜一堆论文，也不要立即设计完整“AI 数据平台”。
+下一次恢复 RP-002 时，从这里开始：
 
-第一步只产出一张：
-
-> **Enterprise Data-to-Model Interface Map v0.1**
-
-目标回答三件事：
-
-1. 业界公开架构中实际存在几种 Data → Model / Agent 关系？
-2. Dataset / Knowledge Base / SQL / API / Ontology / Context / Eval / Feedback 的边界与组合关系是什么？
-3. 哪些问题属于传统数据治理，哪些是 AI 时代新增的 Context / Semantic / Evidence 问题？
-
-完成这张地图后，再决定需要哪些 Theory、Product Fact、Public Case 和 Counter Evidence。
+> 不先继续论文，也不直接给出“AI 数据平台标准答案”。
+>
+> 先围绕三个架构问题找公开证据：
+>
+> **RQ-002-A：业界真实存在几种 Data → Model / Agent 关系？**  
+> **RQ-002-B：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 的机制边界与组合关系是什么？**  
+> **RQ-002-C：哪些是传统数据平台能力，哪些是 AI 时代新增 / 显著上升的 Semantic / Context / Evidence 问题？**
+>
+> 第一轮先形成 Relationship Map、Boundary Table、Architecture Evolution v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
 
 ---
 
@@ -392,7 +469,7 @@ Existing RP ?
 
 ## 4. Active Problem 规则
 
-一个时期原则上只保留一个主要 Active Problem；其他高价值问题允许标记 `Candidate｜High Priority`，防止真实工作中的重要信号丢失。
+一个时期原则上只保留一个主要 Active Problem；其他高价值问题允许标记 `Candidate` 或 `Paused`。
 
 **论文编号不能充当 Active Problem。**例如“下一步读 P-002”不是研究问题；必须先写清“P-002 被用来解释哪个 RP / CQ / AQ”。
 
@@ -400,6 +477,8 @@ Existing RP ?
 
 1. 新问题是否比当前问题更直接影响正在形成的架构判断？
 2. 当前问题是否已经达到一个可暂停的明确停止点？
+
+当前答案：RP-001 已达到可暂停点；RP-002 因直接影响企业 AI 数据 / Context 架构判断，成为当前 Active Problem。
 
 ---
 
