@@ -36,9 +36,35 @@
 
 详见 [`topics/README.md`](topics/README.md)。
 
-## 公开证据架构：Theory × Industry Evidence
+## 研究方法：Problem-driven，而不是 Paper-driven
 
-Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学术理论和公开产业证据寻找答案。
+Q1–Q5 是长期问题地图，但真正执行研究时，基本单位是一个**具体问题**，不是一篇论文。
+
+主闭环：
+
+> **真实问题 → 理论 / 产业搜索 → 理解 → 工程翻译 → 小规模验证 → 架构 / 方法原则 → 新问题**
+
+进一步写成：
+
+`Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle → New Problem`
+
+核心不是“为了读论文而读论文”，而是：
+
+> **以真实问题牵引理论，以工程翻译连接研究，以验证筛选假设，以架构与方法原则沉淀认知。**
+
+论文、产品、开源项目、公开案例、Analyst View、Policy / Standard 都只是 Evidence Source。
+
+论文按当前问题动态分三层：
+
+- **A 类｜问题型论文**：直接影响当前工程设计，精读并做到 Part E Engineering Bridge；
+- **B 类｜原则型论文**：只理解核心机制、判断变化和原则性增量；
+- **C 类｜启发型论文**：没有当前问题承接时只进入候选池，不制造学习债务。
+
+研究进度优先看：**解决了几个问题、形成了哪些 Engineering Hypothesis、验证了什么、沉淀或修正了哪些 Principle**，而不是读了多少论文。
+
+完整方法见 [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)。
+
+## 公开证据架构：Theory × Industry Evidence
 
 公开仓只接受能够由公开来源独立支持的证据：
 
@@ -50,10 +76,6 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 - **Policy / Standard｜政策与标准**：公开法律、监管要求、行业与技术标准；
 - **Counter Evidence｜反向证据**：失败案例、替代机制、反向数据和边界条件。
 
-研究链条：
-
-`Q1–Q5 → Theory + Public Industry Evidence → Hypothesis → Judgment → Engineering / Governance Implication`
-
 核心边界：
 
 > **私人经验可以启发研究问题，但公开观点必须能够仅依靠公开证据独立成立。**
@@ -63,11 +85,12 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 > **Product Claim ≠ 已验证理论**  
 > **Vendor Case ≠ 独立证据**  
 > **Analyst View ≠ Academic Theory**  
-> **Public Success Case ≠ 普遍规律**
+> **Public Success Case ≠ 普遍规律**  
+> **Synthetic Demo ≠ Enterprise Outcome**
 
 产业证据见 [`industry/`](industry/)。
 
-## 六个学习模块
+## 六个理论学习模块
 
 1. 组织为什么存在：Simon、Coase、Williamson
 2. 组织如何分工与协调：Mintzberg、Organization Design、Information Processing
@@ -76,9 +99,7 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 5. AI 作为新的组织主体：Human-AI Team、Multi-Agent Organization、AI Decision Making
 6. 重新推导 Enterprise Intelligence：从组织问题反推智能主体关系、工程与治理
 
-详见 [`research/theory-map.md`](research/theory-map.md)。
-
-理论学习是公开证据线之一，不等于整个研究系统。
+详见 [`research/theory-map.md`](research/theory-map.md)。理论学习是 Evidence Source，不是整个研究系统的执行主线。
 
 ## 产业研究路线：Engineering × Governance
 
@@ -98,9 +119,7 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 - **G3 Human Control / Accountability**：人何时保留控制权、AI 何时自主、责任怎样配置？
 - **G4 Trace / Audit / Lifecycle**：如何追溯、审计、变更和退役？
 
-完整路线见 [`industry/ROADMAP.md`](industry/ROADMAP.md)。
-
-厂商、产品、框架和案例只是路线上的观察样本，不是路线本身。
+完整路线见 [`industry/ROADMAP.md`](industry/ROADMAP.md)。厂商、产品、框架和案例只是路线上的观察样本，不是路线本身。
 
 ## 当前总假设
 
@@ -116,27 +135,32 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 
 ## 如何使用本仓库
 
-### 给人看的“驾驶舱”
+### 人类研究驾驶舱
 
-- [`NOW.md`](NOW.md)：当前研究焦点、卡点与下一步唯一动作
-- [`EVOLUTION.md`](EVOLUTION.md)：重要认知如何形成、被挑战和被修正，以及观点的 Origin
-- [`JUDGMENTS.md`](JUDGMENTS.md)：目前值得保留和承担的阶段性判断
+- [`NOW.md`](NOW.md)：当前 **Active Problem**、卡点与下一步唯一动作
+- [`research/research-questions.md`](research/research-questions.md)：具体问题、证据缺口、工程翻译与验证状态
+- [`EVOLUTION.md`](EVOLUTION.md)：重要认知如何形成、被挑战和被修正，以及观点 Origin
+- [`JUDGMENTS.md`](JUDGMENTS.md)：目前认为“世界可能是怎样的”
+- [`PRINCIPLES.md`](PRINCIPLES.md)：工程 / 研究应该怎样做，以及原则的验证状态
 
-三者分别回答：**现在想到哪里？为什么发生变化？现在相信什么？**
+其中：
+
+> **Judgment = 对世界的阶段判断；Principle = 对工程与方法的可复用设计原则。**
 
 ### 给 AI 的长期上下文
 
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)：研究目标、边界、概念与研究纪律
-- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)：可复用论文精读提示词与新会话短指令
+- [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)：A/B/C 论文阅读模式与 Part E Engineering Bridge
 
-### 理论与论文
+### 问题、理论与论文
 
+- [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)：问题驱动的七步研究闭环
+- [`research/research-questions.md`](research/research-questions.md)：Concrete Problem 工作地图
 - [`research/scholars.md`](research/scholars.md)：国内外重点学者地图
 - [`research/theory-map.md`](research/theory-map.md)：经典组织理论与 AI 压力测试
-- [`research/reading-list.md`](research/reading-list.md)：按 Q1–Q5 展示论文位置、研究缺口、选文标准与候选顺序
-- [`research/paper-review-plan.md`](research/paper-review-plan.md)：四阶段执行节奏与完成标准
-- [`research/research-questions.md`](research/research-questions.md)：具体问题与应用待办
-- `research/paper-reviews/`：原文精读、概念还原与七问研究映射
+- [`research/reading-list.md`](research/reading-list.md)：论文身份、证据增量与候选索引，不是必须读完的队列
+- [`research/paper-review-plan.md`](research/paper-review-plan.md)：A/B/C 分级、Part A–E 与停止条件
+- `research/paper-reviews/`：必要的原文精读、概念还原、研究解释与 Engineering Bridge
 
 ### 产业证据
 
@@ -159,22 +183,24 @@ Q1–Q5 是**问题地图**，不是“论文目录”。本项目同时从学�
 
 ## 研究纪律
 
-- **Q1–Q5 是问题地图；Theory 与 Public Industry Evidence 是公开证据线；不要混成一层。**
+- **先问题，后材料；先机制，后工程；先假设，后原则。**
+- 研究单位是 Active Problem，不是 Active Paper；一次只保留一个 Active Problem。
+- 论文按 A / B / C 动态分级，不默认所有重要论文都深读。
+- Q1–Q5 是问题地图；Theory 与 Public Industry Evidence 是公开证据线；不要混成一层。
 - 本公开仓不保存、引用或描述私人、客户、公司内部或非公开项目材料。
 - 私人经验可以启发问题，但公开结论必须由公开来源独立支持。
 - 不让教授论文垄断研究，也不让产业营销替代理论验证。
+- 同时维护支持证据与 Counter Evidence，防止问题驱动退化为确认偏误。
 - 不以 MCP、RAG、Ontology、Agent、Harness 等技术名词无限增加一级框架。
-- 区分 **长期问题 / 当前判断 / 演进假设 / 证据 / 反例**。
 - 重大认知变化记录在 `EVOLUTION.md`，并尽量标注 `User Insight / External Trigger / Co-developed / AI Proposal`。
-- 新技术首先用于修改已有问题的答案，而不是制造新的概念树。
-- 技术架构必须尽量能够追溯到组织问题。
-- 论文阅读坚持：**原文精读 → 概念还原 → 七问研究映射 → 人类吸收 → 是否更新 Judgment**。
-- 产业研究坚持：**Product Fact / Claim → Public Case → Analyst / Policy / Counter Evidence → Q1–Q5 → Judgment**。
+- 技术架构必须尽量能够追溯到组织与业务问题。
+- A 类论文采用：**Source Walkthrough → Concept Reconstruction → Research Interpretation → Human Takeaways → Engineering Bridge**。
+- AI Proposal 不自动变成 Judgment 或 Stable Principle。
 
 ## 当前状态
 
-仓库于 **2026-09-04** 初始化。当前仍在建立组织理论坐标系，同时已经形成以 **Intelligent Subject Engineering × Governance** 为主轴的公开产业研究路线，并开始用 `EVOLUTION.md` 保存重要认知转折。当前 Active Research Question 仍以论文理解为主，不因路线图建立而批量收集厂商案例。
+仓库于 **2026-09-04** 初始化。2026-09-11 研究方法从“按论文顺序推进”进一步转向 **Problem-driven Research Loop**。当前 Active Problem 是 R-001：高价值企业判断任务中 Human / AI 的分工、决策权与反馈如何设计。P-002 是该问题的候选证据，而不是必须按编号读完的“第二篇论文”。
 
 ---
 
-This repository is a living research system rather than a finished framework. Claims will be revised as evidence changes.
+This repository is a living research system rather than a finished framework. Claims and principles will be revised as evidence changes.
