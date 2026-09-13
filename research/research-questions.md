@@ -343,6 +343,56 @@ Enterprise Data / Enterprise Reality
 
 状态：Hypothesis，不进入 JUDGMENTS / PRINCIPLES。
 
+### Working Hypothesis H-RP002-04｜Business Reality → Dynamic Context → Action → Feedback Loop
+
+三种起点虽然可能采取不同建设路径，但它们是否会逐步收敛到一条相似的**逻辑能力链**，值得单独验证。当前先记录如下候选闭环：
+
+```text
+业务事实
+↓
+业务对象与统一身份
+↓
+状态 / 事件 / 关系
+↓
+规则 / 知识 / 风险基线
+↓
+角色 / 任务 / 权限
+↓
+证据 / 历史 / 当前环境
+↓
+【动态上下文组装】
+↓
+模型 / Agent
+↓
+建议 / 行动
+↓
+人工确认 / 真实结果
+↓
+反馈更新
+```
+
+当前理解不是把它当成固定技术栈或强制建设顺序，而是把它视为一个**待验证的 Enterprise Context 逻辑闭环**：
+
+- 上半段负责把企业现实转成可被机器引用的事实、对象、状态、关系、规则、权限和证据；
+- `动态上下文组装` 负责根据当前任务把必要信息编译成 Model / Agent 可消费的 Context；
+- Model / Agent 负责判断、建议或行动，但不是新的事实权威源；
+- 人工确认与真实结果提供 Ground Truth / Outcome；
+- 反馈更新使事实、知识、风险基线、规则、Eval 或后续 Context 有机会被修正。
+
+与三条起点路径的关系当前暂定为：
+
+- **Path A｜有业务系统无数据平台**：更可能从已有 System of Record / API / SQL / 文档抽取“业务事实”开始，逐步补对象统一、语义、证据和动态 Context；
+- **Path B｜已有数据平台**：更可能复用治理后的数据、元数据、指标、血缘和权限，重点补业务对象 / 状态 / 事件表达、动态 Context、Evidence 与 Feedback；
+- **Path C｜业务系统尚不完整**：更可能先建立业务对象、状态、事件和真实记录机制，使业务事实能够持续产生，再建设 Context 与 Agent 闭环。
+
+需要重点验证三个问题：
+
+1. 这条链中的哪些环节是企业 AI 的结构性需求，哪些只是当前工程阶段的实现形态？
+2. 是否所有高价值 Agent 场景都需要完整经过这条链，还是应按任务复杂度裁剪？
+3. `人工确认 / 真实结果 → 反馈更新` 是否足以形成可靠学习闭环，还是还需要 Eval、治理审批和版本化 Promotion 机制？
+
+**状态：Hypothesis / Architecture Sketch，不进入 JUDGMENTS / PRINCIPLES。**
+
 **预期产物：`AI Context Starting-State Pathway Matrix v0.1`**，至少比较：
 
 - 企业起点；
@@ -352,7 +402,8 @@ Enterprise Data / Enterprise Reality
 - 最小公共能力；
 - 何时需要共享平台化；
 - 主要风险；
-- 目标 Context 能力。
+- 目标 Context 能力；
+- 各路径从哪一段进入 H-RP002-04 的逻辑闭环，以及哪些环节可以复用 / 跳过 / 延后。
 
 ### AQ-002-05｜历史数据与实时业务状态如何同时进入 Agent？
 
@@ -370,7 +421,7 @@ Enterprise Data / Enterprise Reality
 
 ## 2.3 Evidence Plan｜下一步怎么研究，而不是直接给答案
 
-下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据；在机制边界基本清楚后，用 RQ-002-D 检查三种不同企业起点的建设路径。
+下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据；在机制边界基本清楚后，用 RQ-002-D 检查三种不同企业起点的建设路径，并验证 H-RP002-04 是否真的是不同路径可以共同收敛的逻辑闭环。
 
 ### 优先证据类型
 
@@ -412,6 +463,7 @@ Architecture Hypothesis
 - **EQ-002-04**：实时业务状态怎样进入 Agent Runtime，而不是只依赖历史知识？
 - **EQ-002-05**：Semantic Model / Ontology 应由专家预建、AI 自动发现还是 Human-governed 动态生成？怎样校验？
 - **EQ-002-06**：三种起点下，怎样定义“最小可行 Context Foundation”，既不重复造数据平台，又不把场景能力做成新烟囱？
+- **EQ-002-07**：如何把 H-RP002-04 的“事实 → 对象 / 状态 / 规则 / 权限 / 证据 → 动态 Context → Agent → Outcome → Feedback”做成可运行、可观测、可版本化的最小闭环？
 
 ---
 
@@ -422,18 +474,20 @@ Architecture Hypothesis
 - **VQ-002-03**：公开产品和案例中，哪些已将 Data Service 扩展为 Semantic / Context / Evidence 能力？哪些只是 Product Claim？
 - **VQ-002-04**：有没有公开反例说明更强显式语义层在某些任务中成本高于收益？
 - **VQ-002-05**：能否找到三类不同起点的公开案例，比较其首个建设动作、复用资产、平台化时机和最终上下文能力，验证“三条路径”是否真实存在且具有解释力？
+- **VQ-002-06**：不同成熟度企业是否都能找到“事实 → Context → Agent → Outcome → Feedback”的可观察闭环？哪些环节缺失时会导致模型判断不可验证或无法形成持续改进？
 
 ---
 
 ## 2.6 当前成果定义｜这轮研究最终要留下什么
 
-RP-002 当前一轮不以“读完多少论文”结束，而暂定形成五类成果：
+RP-002 当前一轮不以“读完多少论文”结束，而暂定形成六类成果：
 
 1. **Relationship Map**：Data 与 Model / Agent 到底存在多少种结构性关系；
 2. **Mechanism Boundary Table**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么、怎样组合；
 3. **Architecture Evolution Map**：传统数据平台哪些能力延续，哪些因 Model / Agent 成为新消费者而需要增强 / 新增；
 4. **Starting-State Pathway Matrix**：有业务系统无数据平台、已有数据平台、业务系统尚不完整三种起点下，AI Context 的复用资产、首个动作、公共能力与迁移路径如何不同；
-5. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
+5. **Context Assembly Loop Sketch**：验证 H-RP002-04 这条“业务现实 → 动态 Context → Agent → Outcome → Feedback”逻辑链是否成立，以及三条路径从哪里进入这条链；
+6. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
 
 候选 Principle 现在不预写结论。只有 Theory + Public Industry Evidence 和必要的工程 / 反例验证足以支撑时，才收敛。
 
@@ -459,6 +513,8 @@ RP-002 当前一轮不以“读完多少论文”结束，而暂定形成五类�
 
 本次新增的“三类企业起点”也不单独升级为新的 RP，而作为 RP-002 的路径型 Architecture Question：它研究的不是第三套问题，而是**相同 Data–Model / Context 问题在不同既有信息化基础下怎样落地**。
 
+H-RP002-04 进一步把“三条起点路径”与一个候选目标闭环连接起来：**路径可能不同，但长期需要验证它们是否都在解决“如何把真实业务世界稳定编译成可执行 Context，并用真实结果持续校正”这一共同问题。**
+
 ---
 
 ## 2.8 Resume Point｜下次继续研究的位置
@@ -475,7 +531,9 @@ RP-002 当前一轮不以“读完多少论文”结束，而暂定形成五类�
 >
 > 在 A / B / C 基本清楚后，用 **RQ-002-D** 检查三类不同企业起点：①有业务系统无数据平台；②已有数据平台；③业务系统尚不完整。比较可复用资产、首个建设动作、最小公共能力、平台化时机和风险。
 >
-> 第一轮形成 Relationship Map、Boundary Table、Architecture Evolution Map、Starting-State Pathway Matrix v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
+> 同时把 **H-RP002-04** 当成待验证的目标闭环，而不是既定答案：检查三条路径是否都能映射到“业务事实 → 对象 / 状态 / 规则 / 权限 / 证据 → 动态 Context → Model / Agent → 行动 → 真实结果 → 反馈更新”，以及哪些环节可以按任务复杂度裁剪。
+>
+> 第一轮形成 Relationship Map、Boundary Table、Architecture Evolution Map、Starting-State Pathway Matrix、Context Assembly Loop Sketch v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
 
 ---
 
