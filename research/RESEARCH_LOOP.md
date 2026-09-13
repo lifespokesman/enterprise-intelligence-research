@@ -1,141 +1,243 @@
-# Enterprise AI Research Loop｜企业 AI 问题驱动研究闭环
+# Enterprise AI Research Loop｜企业 AI 问题驱动的假设—验证研究闭环
 
-> 研究的基本单位不是“论文”，而是**一个真实、可解释、可工程化的问题**。
+Version: **v2.0**  
+Updated: 2026-09-13
+
+> 研究的基本单位不再只是“一个问题”，而是一个 **Problem + Hypothesis Package｜问题—假设包**。
 >
-> 核心原则：**以真实问题牵引理论，以工程翻译连接研究，以小规模验证筛选假设，以架构与方法原则沉淀认知。**
+> 核心原则：**现实负责出题，Human–AI 共创先形成候选解释与解决路径，理论与产业证据负责压力测试，工程实践负责验证，原则只保存经得起检验的结果。**
 
-## 1. 主闭环
+---
 
-`真实问题 → 理论 / 产业搜索 → 理解 → 工程翻译 → 小规模验证 → 架构 / 方法原则 → 新问题`
+## 1. 为什么从 v1 升级到 v2
 
-对应七步：
+v1 的主闭环是：
 
-1. **真实问题｜Problem**  
-   先回答：到底什么地方解释不了、设计不清、反复出现、或者现有架构原则无法解释？
-2. **理论 / 产业搜索｜Search**  
-   论文、开源项目、产品机制、公开案例、Analyst View、Policy / Standard 中，谁研究或工程化过类似问题？
-3. **理解｜Understand**  
-   材料真正提出了什么机制、变量、因果关系、条件、反例或新视角？
-4. **工程翻译｜Translate**  
-   如果这个机制成立，对架构、组件、流程、治理、角色和评价意味着什么？形成 Engineering Hypothesis，而不是直接升级为原则。
-5. **小规模验证｜Validate**  
-   通过公开案例、开源实现、合成 Demo、公开 Benchmark 或其他可复核方式验证关键假设。私人工作可以启发问题，但不进入本公开仓的证据链。
-6. **架构 / 方法原则｜Principle**  
-   只有经过足够理解与验证后，才沉淀为可复用原则，并明确适用条件、反例和证据来源。
-7. **新问题｜Next Problem**  
-   问：原则在哪些边界下失效？又暴露出什么新的工程或组织问题？进入下一轮。
+`Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle → New Problem`
+
+它解决了“论文驱动学习”的问题，但仍隐含一个假设：遇到问题以后，先去外部材料里寻找答案。
+
+实际研究过程往往不是这样。现实问题出现后，研究者通常已经会基于经验、已有认知和 Human–AI 讨论形成一个**初始解释**，甚至一个**候选解决办法**。真正的研究任务不是假装自己没有想法，而是把这个想法明确降级为 Hypothesis，再主动寻找支持、限制、修正和反驳它的证据。
+
+因此 v2 增加“研究前状态”和“假设演进状态”。
+
+---
+
+## 2. v2 主闭环
+
+```text
+Phenomenon / Signal
+现实刺激
+        ↓
+Problem Abstraction
+问题抽象
+        ↓
+Initial Hypothesis / Candidate Solution Path
+初始假设 / 候选解决路径
+        ↓
+Evidence Search
+Theory / Product / Open Source / Case / Standard / Counter Evidence
+        ↓
+Mechanism Understanding
+机制理解
+        ↓
+Hypothesis Update
+Support / Revise / Reject / Split
+        ↓
+Engineering Hypothesis
+可工程验证的设计主张
+        ↓
+Validation
+Demo / Benchmark / Public Case / Comparative Test
+        ↓
+Architecture / Method Principle
+        ↓
+Boundary / New Problem
+```
 
 一句话：
 
-> **问题牵引研究，理论支撑解释，工程完成翻译，实践负责验证，原则负责沉淀，新问题推动下一轮。**
+> **先把“我现在怎么猜”保存下来，再研究“这个猜测到底对不对”，最后才决定“工程上应该怎么做”。**
 
 ---
 
-## 2. 仓库中的层级关系
+## 3. Problem + Hypothesis Package｜最小研究包
 
-Q1–Q5 仍然是长期问题地图，但真正执行研究时需要把它们拆成更具体的问题。
+一个值得持续研究的问题，最先沉淀的不是长篇资料，而是下面五项。
 
-```text
-Q1–Q5 Long-term Questions
-          ↓
-Concrete Research Problem
-          ↓
-Theory + Public Industry Evidence
-          ↓
-Engineering Hypothesis
-          ↓
-Validation
-          ↓
-Architecture / Method Principle
-          ↓
-New Problem
-```
+### 3.1 Phenomenon｜现象
 
-各类资产职责：
+现实中看到了什么反常、重复、解释不清或设计困难的现象？
 
-- `research/research-questions.md`：当前具体问题、证据缺口、工程翻译与验证状态；
-- `research/reading-list.md`：论文与材料索引，不承担“必须依次读完”的队列职责；
-- `research/paper-reviews/`：必要的原文理解、概念还原与研究解释；
-- `industry/`：公开产品、案例与产业机制证据；
-- `PRINCIPLES.md`：已形成或正在验证的架构 / 方法原则；
-- `JUDGMENTS.md`：关于企业智能本身的阶段判断；
-- `EVOLUTION.md`：记录为什么认知发生变化。
+公开仓只保留可公开表达的抽象现象，不保存私人项目来源、客户身份或非公开证据链。
 
-`Judgment` 与 `Principle` 不同：
+### 3.2 Problem｜问题
 
-- **Judgment**：我们目前认为“世界可能是怎样的”；
-- **Principle**：如果这些判断和证据成立，“工程上应该怎样设计”。
+真正解释不了、设计不清或需要做选择的是什么？
+
+Problem 应尽量能映射到现有 RP / CQ / AQ / EQ / VQ，而不是因为出现新名词就建立新问题域。
+
+### 3.3 Initial Hypothesis｜初始假设 H0
+
+基于当前认知，我们暂时认为：
+
+- 为什么会出现这个现象？
+- 哪个机制可能最关键？
+- 哪些变量可能决定结果？
+
+H0 是研究起点，不是结论。
+
+### 3.4 Candidate Solution Path｜候选解决路径 S0
+
+如果 H0 大体成立，当前可能的解决方向是什么？
+
+它可以是一条架构链、方法、建设路径、分类框架或诊断模型。允许暂时粗糙，但必须明确标记为 Candidate / Hypothesis，不能直接写成 Principle。
+
+并非所有问题一开始都有 Solution Path；没有就留空，不强行补答案。
+
+### 3.5 Evidence Needed｜需要什么证据
+
+至少考虑：
+
+- 什么证据会**支持**这个假设？
+- 什么证据会**限制 / 修正**这个假设？
+- 什么证据会**直接反驳**它？
+- 有没有合理的 **Alternative Hypothesis｜替代解释**？
+
+这一步用于防止问题驱动退化成“给自己的直觉找论据”。
 
 ---
 
-## 3. 论文不是默认都精读：A / B / C 三层
+## 4. 假设状态与演进
 
-论文等级是**相对于当前问题动态判断**的，不是论文永久属性。同一篇论文在不同问题下可以从 C 升为 B，也可以从 B 升为 A。
+建议对重要假设使用以下状态：
 
-### A 类｜问题型论文——精读
+- **Initial**：现实刺激 + Human–AI 讨论形成，尚未系统检验；
+- **Exploring**：正在寻找理论 / 产品 / 案例 / 反例；
+- **Supported**：多源证据支持，但仍有边界；
+- **Revised**：原假设部分成立，已被证据修改；
+- **Rejected**：关键预测或机制被证据否定；
+- **Split**：发现原来把多个不同机制混成了一个假设。
 
-直接影响当前核心问题或工程设计。
+研究价值不只来自“证明 H0 正确”。
 
-适用条件：
+> **H0 → H1 的变化本身就是研究成果。**
 
-- 当前已经有清晰问题；
-- 论文的核心机制可能改变设计选择；
-- 需要理解作者完整论证、条件和边界才能工程翻译。
+因此 Evidence 进入以后，要明确记录它对当前假设的作用：
 
-处理方式：
+`Supports / Challenges / Narrows / Revises / Rejects / Opens Alternative`
+
+而不是只记录“这篇材料讲了什么”。
+
+---
+
+## 5. 从 Initial Hypothesis 到 Engineering Hypothesis
+
+二者必须区分。
+
+### Initial Hypothesis
+
+回答：
+
+> 世界为什么可能是这样？问题可能由什么机制产生？
+
+例如：AI Context Readiness 可能主要受真实事实捕获、对象 / 流程稳定度和反馈闭环影响。
+
+### Candidate Solution Path
+
+回答：
+
+> 如果这个解释大体成立，目前可以怎样设计？
+
+例如：业务事实 → 对象 / 状态 / 规则 / 权限 / 证据 → 动态 Context → Agent → Outcome → Feedback。
+
+### Engineering Hypothesis
+
+回答：
+
+> 哪个具体设计选择能够被比较、测量或推翻？
+
+例如：在某类任务中，`RAG + structured facts + task context` 是否比 `RAG only` 在 Freshness / Traceability / Accuracy 上显著更好。
+
+只有到了这一层，才进入 Demo、Benchmark、公开案例对比或其他工程验证。
+
+---
+
+## 6. Evidence Search｜证据不是为了“证明自己对”
+
+公开研究优先使用：
+
+- **[Theory]** Academic Theory；
+- **[Product Fact]** 可核验产品机制；
+- **[Product Claim]** 厂商自身主张；
+- **[Open-source Implementation]** 可检查的工程实现；
+- **[Industry Case]** 公开企业实践；
+- **[Analyst View]** 第三方分析；
+- **[Policy / Standard]** 政策与标准；
+- **[Counter Evidence]** 失败案例、反例、替代实现；
+- Synthetic / public benchmark 等可复核验证。
+
+证据搜索时优先问：
+
+1. 它支持 H0 的哪一部分？
+2. 它要求给 H0 增加什么条件？
+3. 它是否说明我们混淆了两个机制？
+4. 有没有另一条更简单的解释同样能解释现象？
+5. 有没有不采用当前 Solution Path 也能成功的反例？
+
+纪律：
+
+> **研究不是寻找支持假设的证据，而是寻找足以判断假设是否成立的证据。**
+
+---
+
+## 7. 论文仍按 A / B / C 动态分级
+
+论文等级相对于当前 Problem / Hypothesis 动态判断，不是论文永久属性。
+
+### A 类｜问题型论文
+
+直接改变当前 H0、机制解释或 Engineering Hypothesis，需要精读。
+
+处理：
 
 `Source Walkthrough → Concept Reconstruction → Research Interpretation → Human Takeaways → Engineering Bridge`
 
-目标不是“读完”，而是足够形成可验证的 Engineering Hypothesis。
+### B 类｜原则型论文
 
-### B 类｜原则型论文——理解核心机制即可
+提供长期机制或边界，但暂不直接决定当前设计。理解核心即可。
 
-当前不能马上解决问题，但可能改变长期架构或方法原则。
+### C 类｜启发型论文
 
-只保留：
+当前没有 Problem / Hypothesis 承接，只登记，不制造学习债务。
 
-- 核心观点 / 机制；
-- 它改变了什么旧判断；
-- 可能影响哪条 Principle；
-- 未来什么条件下需要重新升级精读。
+论文不再只回答“它说了什么”，还要回答：
 
-不要求完整逐段 walkthrough，不制造“以后必须补完”的学习债务。
-
-### C 类｜启发型论文——候选池
-
-有意思、可能重要，但当前没有真实问题承接。
-
-只登记：
-
-- 题录；
-- 一句话可能价值；
-- 可能关联的问题；
-- 升级条件。
-
-不精读、不强行内化、不因为收藏而形成待办压力。
+> **它对当前哪个 Hypothesis 产生了 Supports / Challenges / Revises / Rejects？**
 
 ---
 
-## 4. Part E｜Engineering Bridge｜工程桥接卡
+## 8. Engineering Bridge｜工程桥接卡 v2
 
-每篇真正重要的论文，不以“论文总结”为终点。至少回答五件事：
-
-1. **它解释了什么现实问题？**
-2. **它改变了我什么旧判断？**
-3. **如果成立，对工程设计意味着什么？**
-4. **我可以在哪里、用什么方式验证？**
-5. **验证后可能沉淀成什么架构 / 方法原则？**
-
-建议模板：
+重要论文、产品或案例的桥接记录至少回答：
 
 ```markdown
 ## Engineering Bridge
 
 Problem:
 
-What the paper explains:
+Current hypothesis (H0/H1):
 
-Changed judgment:
+Candidate solution path:
+
+What this evidence explains:
+
+Effect on hypothesis:
+Supports / Challenges / Narrows / Revises / Rejects / Alternative
+
+Mechanism learned:
+
+Revised hypothesis:
 
 Engineering hypothesis:
 
@@ -146,20 +248,33 @@ Candidate principle:
 Boundary / counterexample:
 ```
 
-工程桥接卡允许答案是“当前还不能翻译成工程原则”。没有工程含义不等于论文没有价值，但不应为了填表而虚构设计结论。
+允许结论是：
+
+- H0 暂时不成立；
+- 只能形成 Revised Hypothesis；
+- 暂时没有工程含义；
+- 还不足以提出 Principle。
+
+不要为了填表制造结论。
 
 ---
 
-## 5. 从论文知识到原则库
+## 9. 从假设到原则
 
-长期资产链应逐渐形成：
+长期资产链调整为：
 
 ```text
-Enterprise Problem
+Real-world Signal
    ↓
-Theory / Paper / Product / Case
+Problem
+   ↓
+Initial Hypothesis / Candidate Path
+   ↓
+Theory + Public Industry Evidence + Counter Evidence
    ↓
 Mechanism Understanding
+   ↓
+Revised Hypothesis
    ↓
 Engineering Hypothesis
    ↓
@@ -170,46 +285,96 @@ Architecture / Method Principle
 Applicable Conditions + Counter Evidence
 ```
 
-研究进度不以“读了多少论文”衡量，而优先看：
+原则不是“一个看起来合理的解决办法”。
 
-- 解决了几个真实问题；
-- 形成了几个清晰 Engineering Hypothesis；
-- 哪些假设得到了验证或被否定；
-- 形成了几条可复用原则；
-- 哪些旧原则被新证据修正。
+只有当一个解决思路经过足够的机制理解和验证后，才考虑进入 `PRINCIPLES.md`。
 
----
+研究进度优先看：
 
-## 6. 公开仓边界
-
-真实工作、私人或公司内部经验可以触发研究问题，但公开仓只保留**抽象后的问题**。
-
-公开验证优先使用：
-
-- Academic Theory；
-- Product Fact / Product Claim；
-- Public Industry Case；
-- Analyst View；
-- Policy / Standard；
-- Counter Evidence；
-- Open-source implementation；
-- Synthetic / public benchmark。
-
-本仓库不记录私人项目的来源、行业身份、数据、系统、客户或验证细节。私人验证不会自动成为公开结论的证据。
+- 形成了几个清晰 Problem + Hypothesis Package；
+- 哪些 H0 被支持、修改、拆分或否定；
+- 哪些 Solution Path 被工程证据支持或淘汰；
+- 形成了哪些可验证 Engineering Hypothesis；
+- 哪些最终成为 Architecture / Method Principle。
 
 ---
 
-## 7. 停止条件
+## 10. 与 Problem Map 的关系
 
-一轮研究可以在任何环节停止，不要求七步一次走完。
+Q1–Q5 仍是长期问题地图；RP / CQ / AQ / EQ / VQ 负责组织问题纵深。
 
-- 问题不够清楚：停止搜索，先定义问题；
-- 材料只是 C 类：登记后停止；
-- B 类已获得原则性增量：停止，不补完整精读；
-- A 类已足以形成 Engineering Hypothesis：可以结束论文阅读，进入验证；
-- 验证证据不足：保留 Candidate Principle，不升级；
-- 原则边界已经暴露：形成新问题，进入下一轮。
+每个 RP 内部允许存在多个 Hypothesis 和 Candidate Solution Path。
 
-> **研究闭环的完成标志不是“读完材料”，而是问题获得了更好的解释、设计或验证。**
+```text
+Q1–Q5
+  ↓
+RP
+  ↓
+CQ / AQ / EQ / VQ
+  ↓
+H0 / Candidate Path
+  ↓
+Evidence
+  ↓
+H1 / Engineering Hypothesis
+  ↓
+Validation
+  ↓
+Principle
+```
 
-_Last updated: 2026-09-11_
+因此“问题分类”和“假设验证”是两套正交结构：
+
+- Problem Map 回答：**我们在研究什么问题？**
+- Hypothesis Loop 回答：**我们现在怎么猜？怎样知道这个猜测靠不靠谱？**
+
+---
+
+## 11. 公开仓边界
+
+真实工作、私人或公司内部经验可以触发 Signal / Problem / H0，但公开仓只保留抽象后的问题与假设。
+
+公开 Hypothesis、Principle 和 Judgment 的论证不得依赖私人项目来源才能成立。
+
+私人工作可以帮助发现“什么值得研究”，但公开验证重新依赖公开 Theory / Product / Case / Open-source / Standard / Counter Evidence。
+
+---
+
+## 12. 停止条件
+
+一轮研究不要求走完整个闭环。
+
+- 现象尚未抽象成清楚问题：停止搜索；
+- 有 Problem 但没有合理 H0：允许保持 Open Problem；
+- H0 已有但没有证据：保持 Initial，不伪装成结论；
+- 证据足以修改 H0：先记录 H1，不急于进入工程；
+- Engineering Hypothesis 已可验证：进入最小 Demo / Benchmark；
+- 验证不足：停在 Candidate，不升级 Principle；
+- 假设被否定：记录 Rejected / Revised，本轮仍然是有效研究成果；
+- 新边界出现：形成 New Problem，进入下一轮。
+
+> **研究闭环的完成标志，不是“证明最初想法是对的”，而是问题、假设和解决路径经过证据与实践后变得更接近真实。**
+
+---
+
+## 13. 版本与回滚
+
+本文件采用可回滚的方法版本管理。
+
+- **v1.0**：Problem-driven Evidence Research  
+  `Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle`
+- **v2.0**：Problem-driven Hypothesis–Validation Research  
+  `Signal → Problem → H0 / Candidate Path → Evidence → Mechanism → H1 → Engineering Validation → Principle`
+
+v2.0 是当前试运行方法，不宣称永久优于 v1.0。
+
+如果后续发现 v2.0 导致以下问题，可以回退或收缩：
+
+- 初始假设让研究确认偏误更强；
+- 为每个小问题维护 H0/H1 产生过重管理成本；
+- 很多探索型问题在研究前根本不适合提出 Solution Path；
+- 方法记录开始压过真实研究本身。
+
+**升级前仓库回滚基线：** `b56caf344de02cfef30b9a7d607baf9d609615b5`。
+
+如需回滚方法，不代表要丢弃升级后形成的研究内容；优先恢复 v1 的执行规则，再人工保留已经证明有价值的 Hypothesis 资产。
