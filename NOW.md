@@ -1,26 +1,33 @@
 # NOW｜当前研究驾驶舱
 
-> 这个文件只服务于“快速恢复研究状态”。现在的研究单位是 **Active Problem**，不是 Active Paper。
+> 本文件只服务于“快速恢复研究状态”。当前研究单位是 **Active Problem + Hypothesis Package**，不是 Active Paper。
 
-Updated: 2026-09-11
+Updated: 2026-09-13
 
-## 1. 当前研究方法：问题驱动，而不是材料驱动
+---
 
-主闭环保持为：
+## 1. 当前研究方法｜v2.0 Hypothesis–Validation
 
-> **现象 / 真实问题 → 认知问题 → 架构问题 → 工程 / 验证问题 → 定向寻找证据 → 机制解释 → Engineering Hypothesis → Validation → Architecture / Method Principle → 新问题**
+研究方法已从“问题驱动证据研究”进一步升级为“问题驱动的假设—验证研究”。
 
-论文、产品、公开案例、开源项目、标准和分析报告都是 Evidence Provider，不构成独立学习队列。
+当前主闭环：
 
-当前判断研究是否推进，不看“读了多少篇”，而看：
+> **现实刺激 → 问题抽象 → Initial Hypothesis / Candidate Solution Path → 定向找证据 → 机制理解 → Revised Hypothesis → Engineering Hypothesis → Validation → Principle → 新问题**
 
-- 问题是否从现象变成了可解释的问题；
-- 是否形成了更清楚的架构选择；
-- 是否知道还缺什么证据；
-- 是否形成了可以验证的 Engineering Hypothesis；
-- 是否最终沉淀 / 修正了 Principle。
+结构化表达：
 
-完整方法见 [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)。
+`Signal → Problem → H0 / Candidate Path → Evidence → Mechanism → H1 → Engineering Validation → Principle`
+
+核心纪律：
+
+> **研究不是寻找支持假设的证据，而是寻找足以判断假设是否成立的证据。**
+
+v2.0 是试运行方法，不是永久规则。升级原因、试用标准与回滚方式见：
+
+- [`research/RESEARCH_LOOP.md`](research/RESEARCH_LOOP.md)
+- [`research/METHOD_CHANGELOG.md`](research/METHOD_CHANGELOG.md)
+
+升级前回滚基线：`b56caf344de02cfef30b9a7d607baf9d609615b5`。
 
 ---
 
@@ -28,156 +35,119 @@ Updated: 2026-09-11
 
 > **企业已有的数据资产，与大模型之间到底应该建立什么关系？企业真实世界究竟通过哪些机制进入 Model / Agent？**
 
-这个问题由真实工作现象启发，但公开仓只保留抽象后的问题，不记录私人项目来源或证据链。
+公开仓只保留抽象后的问题与假设，不记录私人项目来源、客户身份或非公开证据链。
 
-当前之所以切换到 RP-002，是因为它直接影响正在形成的企业 AI 数据 / Context / World Model 架构判断；RP-001 暂停在已有明确停止点，不丢失已有成果。
-
-完整问题树见 [`research/research-questions.md`](research/research-questions.md)。
+完整问题树与 H-RP002 系列见 [`research/research-questions.md`](research/research-questions.md)。
 
 ---
 
-## 3. RP-002 当前已经想清楚到哪里
+## 3. RP-002 当前 Problem + Hypothesis Package
 
-### 3.1 认知层｜CQ
+### Problem
 
-当前不是直接问“应该选 Ontology 还是 RAG”，而是先确认几个更上位的问题：
+企业长期积累的数据、文档、系统和经验，并不会因为“已经治理过”就自动成为 Model / Agent 可以可靠理解、调用、验证和持续更新的 Context。
 
-1. **企业数据对模型到底扮演哪些不同角色？**  
-   当前候选包括：Learning Material、External Knowledge、Current Facts、Business Semantics、Task Context、Evaluation Evidence、Runtime Feedback。
-2. **为什么传统数据治理完成不等于 AI-ready？**  
-   当前需要区分 Data Availability 与 Context Usability、Schema 与 Business Semantics、历史数据与当前状态、数据质量错误与模型 / Context / Tool 错误。
-3. **模型真正需要的是更多数据，还是更好的企业世界表达？**
-4. **哪些模型错误可以通过数据治理改善，哪些不能？**
+### 当前 Initial Hypotheses / Candidate Paths
 
-当前 Working Hypothesis：
+- **H-RP002-01**：`Data Availability ≠ Context Usability`。AI 数据瓶颈可能从“有没有数据”扩展到“能否把正确、相关、新鲜、可解释的数据编译成当前任务可用 Context”。
+- **H-RP002-02**：传统 Data Service 之上，可能逐步出现面向智能主体的 Semantic / Context / Evidence 能力，但不预设一定形成独立“AI 数据平台”。
+- **H-RP002-03**：AI Context 更可能是一组目标能力，而不是所有企业按同一顺序建设的一套平台；System of Record、数据平台成熟度与业务数字化程度可能决定不同建设路径。
+- **H-RP002-04｜Candidate Solution Path**：不同起点可能收敛到一个候选逻辑闭环：`业务事实 → 对象 / 身份 → 状态 / 事件 / 关系 → 规则 / 知识 / 风险基线 → 角色 / 任务 / 权限 → 证据 / 历史 / 当前环境 → 动态 Context → Model / Agent → 建议 / 行动 → 真实结果 → 反馈更新`。
+- **H-RP002-05**：AI Context Readiness 不能简单由“有没有大数据平台”代理，可能更取决于 `Reality Capture × Object / Process Stability × Feedback Closure`。该表达只是短板效应假设，不是数学公式。
 
-> `Data Availability ≠ Context Usability`。
-
-以及：
-
-> 企业数据服务 Model / Agent 时，可能不是一种单一“数据接口”，而是多种不同目的、不同生命周期的数据—模型关系。
-
-两者都只是 Hypothesis，不升级为 Judgment / Principle。
+以上均为 Working Hypothesis，不进入 JUDGMENTS / PRINCIPLES。
 
 ---
 
-## 4. 下一轮优先研究的三个架构问题
-
-下一次恢复研究时，不先继续读论文，也不先设计完整 AI 数据平台。围绕下面三个问题定向寻找理论与工程证据。
+## 4. 当前第一轮研究问题
 
 ### RQ-002-A｜Relationship Types
 
-> **业界现在真实存在几种 Data → Model / Agent 关系？**
+> 业界真实存在几种 Data → Model / Agent 关系？
 
-重点检验当前候选：Dataset / Training、Knowledge / RAG、SQL / API / Query、Tool / Action、Semantic / Ontology、Context、Eval、Feedback。
+候选包括：Training / Dataset、Knowledge / RAG、Fact Query / SQL / API、Tool / Action、Semantic / Ontology、Context、Eval、Feedback。
 
-目标不是继续增加名词，而是确认：
-
-- 哪些真的是不同关系；
-- 哪些只是实现手段；
-- 哪些处于不同生命周期；
-- 当前分类遗漏了什么。
-
-**预期产物：`Enterprise Data–Model Relationship Map v0.1`**。
+目标：`Enterprise Data–Model Relationship Map v0.1`。
 
 ### RQ-002-B｜Mechanism Boundaries
 
-> **Dataset、Knowledge Base、SQL、API、Tool、Ontology、Context、Eval、Feedback 的边界到底是什么，又怎样组合？**
+> Dataset、Knowledge Base、SQL、API、Tool、Ontology、Context、Eval、Feedback 的边界与组合关系是什么？
 
-需要明确每一种机制主要回答什么问题，例如：模型长期学什么、运行时查什么、当前事实是什么、事实在业务上意味着什么、当前任务该给什么、输出是否正确、运行经验如何回流。
-
-**预期产物：`Data–Model Mechanism Boundary Table v0.1`**。
+目标：`Data–Model Mechanism Boundary Table v0.1`。
 
 ### RQ-002-C｜Architecture Evolution
 
-> **哪些仍属于传统数据治理 / 数据平台问题，哪些是 Model / Agent 成为新消费者后显著新增的 Context / Semantic / Evidence 问题？**
+> 哪些仍是传统数据治理 / 数据平台能力，哪些因 Model / Agent 成为新消费者而显著新增或强化？
 
-重点研究传统链路：
+目标：`Traditional Data Platform → AI-ready Context Architecture v0.1`。
 
-`Source → Integration → Governance → Warehouse / Lake → Data Service → Application`
+### RQ-002-D｜Starting-State Pathways
 
-与候选 AI 链路之间到底是继承、扩展还是重构，而不是先假设一定需要一个全新的“AI 数据平台”。
+> 不同企业起点下，AI Context 应怎样建设？
 
-**预期产物：`Traditional Data Platform → AI-ready Context Architecture v0.1`**，其中必须标记“继承能力 / 新增能力 / 待验证能力”。
+当前三类待验证路径：
 
----
+1. 有业务系统，无统一数据平台；
+2. 已有业务系统 + 大数据 / 数据平台；
+3. 业务系统本身尚不完整。
 
-## 5. 下一轮如何找证据
-
-三个问题分别选择合适证据，不默认“找论文就是研究”。
-
-优先证据类型：
-
-- **[Product Fact]**：主流数据 / AI 平台公开架构和产品文档，观察实际怎样把数据提供给模型；
-- **[Open-source Implementation]**：RAG、结构化数据查询、Context、Semantic / Knowledge Graph、Eval 等工程实现；
-- **[Theory]**：解释语义、知识表示、Context、信息整合、数据与推理关系的理论 / 论文；
-- **[Industry Case]**：公开企业案例，看这些机制是否真的进入业务闭环；
-- **[Analyst View] / [Policy / Standard]**：帮助判断产业共性和治理约束；
-- **[Counter Evidence]**：简单任务不需要复杂语义层的案例，以及复杂本体建设仍无法解决模型错误的反例。
-
-研究顺序：
-
-`Question → Evidence Search → Evidence Identity → Mechanism Synthesis → Architecture Hypothesis`
-
-不要先画一个完整答案，再只寻找支持它的资料。
+目标：`AI Context Starting-State Pathway Matrix v0.1`。
 
 ---
 
-## 6. 本轮预期成果，不要求今天完成
+## 5. 下一步证据研究怎么做
 
-这一轮 RP-002 暂时只追求四类成果：
+不先继续论文编号，也不先画完整解决方案。
 
-1. **关系地图**：Data 与 Model / Agent 到底有哪些结构性关系；
-2. **边界表**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么；
-3. **架构演进图**：传统数据能力哪些继续有效，AI 时代新增哪些 Semantic / Context / Evidence 能力；
-4. **问题收敛结果**：研究后哪些 Hypothesis 得到支持 / 修正，是否足以提出 Candidate Architecture Principle。
+围绕 RQ-002-A / B / C 优先寻找：
 
-暂时不要求：
+- **[Theory]**：Knowledge Representation、Semantic / Context、Information Integration、Data–Reasoning 关系；
+- **[Product Fact]**：主流 Data / Lakehouse / AI Platform 如何真实向 Model / Agent 提供数据；
+- **[Open-source Implementation]**：RAG、structured query、semantic graph、context、eval 的工程实现；
+- **[Industry Case]**：公开企业实践，尤其是不同数字化成熟度起点；
+- **[Policy / Standard] / [Analyst View]**：行业共性与治理边界；
+- **[Counter Evidence]**：不需要复杂语义层也能工作的场景、复杂本体仍失败的案例、不同于当前路径的成功方式。
 
-- 一次性形成完整企业 AI 数据平台方案；
-- 把所有厂商收集齐；
-- 为了完整性批量读论文；
-- 现在就新增稳定 Principle。
+每条 Evidence 不只问“讲了什么”，而要标记它对当前 H 的作用：
 
-只有证据能够支撑，才从 Working Hypothesis 推进到 Candidate Principle。
-
----
-
-## 7. 后续工程层还没有启动
-
-当前 EQ / VQ 已登记，但先不抢跑：
-
-- 比较 RAG、SQL/API、Semantic Model / Ontology、组合 Context；
-- 把治理后的数据转换成 Dataset / Knowledge / Eval / Semantic Asset；
-- 让 Context 携带 Source / Lineage / Freshness / Permission / Evidence；
-- 处理历史知识、实时 State、Event；
-- 验证人工本体、AI 自动发现、动态语义模型的成本和收益。
-
-这些要等前面的关系与边界更清楚后，再决定最小 Demo / Benchmark。
+`Supports / Challenges / Narrows / Revises / Rejects / Opens Alternative`。
 
 ---
 
-## 8. 其他问题状态
+## 6. 当前预期成果
 
-- **RP-001 Human–AI Decision Structure**：Paused / Candidate。P-001 已完成本轮理论理解；P-002 / P-005 保持证据候选。需要时从已有状态继续，不重开论文队列。
-- **RP-003 Agent Experience → Organizational Learning**：Candidate。
-- **RP-004 Effective Agency / Authority / Accountability**：Candidate。
-- **RP-005 AI 与企业边界**：Backlog。
+RP-002 第一轮暂定形成：
 
-一个时期仍只保留一个主要 Active Problem。
+1. **Relationship Map**；
+2. **Mechanism Boundary Table**；
+3. **Architecture Evolution Map**；
+4. **Starting-State Pathway Matrix**；
+5. **Context Assembly Loop Sketch**；
+6. **AI Context Readiness Diagnostic v0.1**（若 H-RP002-05 获得足够支持）；
+7. **Hypothesis Decision**：H-RP002-01～05 分别被支持、修正、拆分还是否定；
+8. **Principle Decision**：只有证据与必要验证足够时，才考虑进入 `PRINCIPLES.md`。
 
 ---
 
-## 9. Resume Here｜下次从这里继续
+## 7. 当前不要做什么
 
-> 当前 Active Problem 已切换为 **RP-002 Enterprise Data–Model Relationship**。
+- 不因为已经有 H0 就只找支持材料；
+- 不默认 Ontology、RAG、Context Platform 或 Data Platform 是答案；
+- 不为了完整性收集所有厂商；
+- 不按论文编号顺序继续阅读；
+- 不把 Human–AI 初步讨论直接升级成 Principle；
+- 不让方法记录的维护成本超过研究本身。
+
+---
+
+## 8. Resume Here｜下次从这里继续
+
+> 当前 Active Problem：**RP-002 Enterprise Data–Model Relationship**。
 >
-> 当前不是要直接“给出 AI 数据平台答案”，而是围绕三个架构问题做证据研究：
+> 当前方法：**Problem-driven Hypothesis–Validation v2.0**。
 >
-> **A. Data → Model / Agent 有哪些真实关系？**  
-> **B. Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 的机制边界是什么？**  
-> **C. 哪些是传统数据平台能力，哪些是 AI 时代新增的 Semantic / Context / Evidence 问题？**
+> 下一步优先从 RQ-002-A / B / C 开始公开证据研究；每个证据明确判断它对 H-RP002-01～05 的作用，而不是只做资料摘要。
 >
-> 下一步：围绕 A / B / C 定向搜索公开 Theory、Product Fact、Open-source、Industry Case 与 Counter Evidence；先形成 Relationship Map、Boundary Table、Architecture Evolution v0.1，再判断是否能沉淀 Architecture Principle。
+> A / B / C 基本清楚后，再用 RQ-002-D 检验三类企业起点，并判断 H-RP002-04 / 05 是否需要修正。
 >
-> 不按论文编号继续读，不预设 Ontology / Context 一定是答案。
+> 最终目标不是证明最初想法正确，而是得到更接近真实的 H1、可验证的 Engineering Hypothesis，以及少量真正站得住的 Architecture Principle。
