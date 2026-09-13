@@ -1,6 +1,6 @@
 # Problem Map｜企业 AI 问题地图
 
-Updated: 2026-09-11  
+Updated: 2026-09-13  
 本文件用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
 
 > **知识管理的基本单位从“论文 / 对话 / 资料”切换为“问题”。**
@@ -202,11 +202,25 @@ Enterprise Data / Enterprise Reality
 
 否则“通过数据治理减少模型错误 / 幻觉”会成为无法验证的总目标。
 
+### CQ-002-05｜AI Context 建设是否应该由企业既有数字化 / 数据基础决定？
+
+同一个“企业上下文”目标，在不同企业起点下可能不是同一条建设路径。需要先验证三种常见起点是否足以构成有解释力的路径模型：
+
+1. **业务系统存在，但没有统一大数据 / 数据平台**；
+2. **业务系统与大数据 / 数据平台都已经存在**；
+3. **业务系统本身都不完整或尚未建立**。
+
+核心认知问题是：
+
+> **AI Context 是一套固定平台能力，还是一组目标能力，其建设顺序与承载位置应由企业当前的 System of Record、数据治理成熟度和业务数字化程度决定？**
+
+该问题暂不预设三种类型已经穷尽所有企业形态，也不预设三条路径最终一定收敛到同一技术平台。
+
 ---
 
 ## 2.2 Architecture Questions｜当前第一轮研究重点
 
-认知问题说明“为什么值得研究”；下一轮实际研究先围绕三个架构问题寻找证据。
+认知问题说明“为什么值得研究”；下一轮实际研究先围绕四个架构问题寻找证据。其中 A / B / C 先澄清机制，D 再把机制映射到不同企业起点。
 
 ### RQ-002-A / AQ-002-01｜Data–Model Relationship Types
 
@@ -284,7 +298,63 @@ Enterprise Data / Enterprise Reality
 
 **预期产物：`Traditional Data Platform → AI-ready Context Architecture v0.1`**。
 
-### AQ-002-04｜历史数据与实时业务状态如何同时进入 Agent？
+### RQ-002-D / AQ-002-04｜AI Context Starting-State Pathways
+
+> **企业在不同数字化 / 数据基础下，AI Context 应该沿什么路径建设？**
+
+当前先保留三种典型起点作为待验证的路径假设，而不是直接给出标准答案：
+
+#### Path A｜有业务系统，但没有统一大数据 / 数据平台
+
+典型条件：业务事实已经存在于若干业务系统中，但缺少统一的数据汇聚、治理、语义和服务层。
+
+需要研究：
+
+- AI Context 是否应该围绕高价值业务任务，直接连接 System of Record / API / SQL / 文档，先构建任务级 Context，而不是先补齐一套完整大数据平台？
+- 哪些最小公共能力必须先补：数据目录、权限、标识映射、数据质量、主数据、事件、Evidence / Lineage？
+- 场景级 Context 如何避免重新制造新的数据烟囱和重复 ETL？
+- 当场景增多到什么程度，才需要上升为共享 Data / Semantic / Context Foundation？
+
+#### Path B｜已经有大数据 / 数据平台
+
+典型条件：已有数据湖 / 仓、治理、指标、元数据、血缘、权限和数据服务，但主要消费者过去是报表、分析和应用系统。
+
+需要研究：
+
+- 哪些既有能力可以直接复用，哪些不能直接等同于 AI Context？
+- 是否应该在现有 Data Service 之上增加 Semantic / Context / Evidence / Eval 能力，而不是重新建设第二套 AI 数据底座？
+- 如何把历史批数据、实时事实、文档知识、业务语义和权限共同编译成任务上下文？
+- 现有数据平台的元数据 / 语义层能否直接被 Agent 使用，还是需要新的机器可消费表达？
+
+#### Path C｜业务系统本身都不完整或尚未建立
+
+典型条件：缺少稳定 System of Record，业务对象、状态、事件和流程还没有被信息系统持续记录。
+
+需要研究：
+
+- 此时“先建数据平台再做 AI”是否成立，还是应该先把业务对象、事件、状态、规则和责任链数字化？
+- 能否采用业务建模 / World Model / Ontology 牵引 Application + Data + AI 协同设计，而不是先复制传统“应用建完再汇数据”的路径？
+- 哪些事实必须由业务系统 / 事务系统成为权威记录，不能让 LLM / Agent Context 代替 System of Record？
+- 在绿地场景中，怎样避免为 AI 预建过重语义体系，仍以最小业务闭环形成真实数据与反馈？
+
+**Working Hypothesis H-RP002-03**：
+
+> AI Context 更可能是一组目标能力，而不是所有企业都按同一顺序建设的一套固定平台。企业的 System of Record 完整度、数据平台成熟度与业务数字化程度，可能决定不同的迁移路径；但不同路径是否最终收敛到相似的 Context / Semantic / Evidence 能力，仍需公开案例和工程实践验证。
+
+状态：Hypothesis，不进入 JUDGMENTS / PRINCIPLES。
+
+**预期产物：`AI Context Starting-State Pathway Matrix v0.1`**，至少比较：
+
+- 企业起点；
+- 可复用资产；
+- 当前缺口；
+- 首个建设动作；
+- 最小公共能力；
+- 何时需要共享平台化；
+- 主要风险；
+- 目标 Context 能力。
+
+### AQ-002-05｜历史数据与实时业务状态如何同时进入 Agent？
 
 这一问题暂不作为第一轮主研究对象，但保留为后续架构深化：
 
@@ -300,16 +370,16 @@ Enterprise Data / Enterprise Reality
 
 ## 2.3 Evidence Plan｜下一步怎么研究，而不是直接给答案
 
-下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据。
+下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据；在机制边界基本清楚后，用 RQ-002-D 检查三种不同企业起点的建设路径。
 
 ### 优先证据类型
 
 - **[Product Fact]**：数据平台 / Lakehouse / Data Cloud / AI Platform 的公开架构与产品文档；
 - **[Open-source Implementation]**：RAG、structured query、semantic / knowledge graph、context、eval 的真实工程实现；
 - **[Theory]**：知识表示、语义、信息整合、Context、数据与推理关系等理论 / 论文；
-- **[Industry Case]**：公开企业实践，看机制是否进入实际业务闭环；
+- **[Industry Case]**：公开企业实践，看机制是否进入实际业务闭环；特别关注不同数字化成熟度企业的路径差异；
 - **[Analyst View] / [Policy / Standard]**：判断产业共性、标准和治理要求；
-- **[Counter Evidence]**：简单任务无需复杂语义层、复杂本体仍不能解决模型错误的反例。
+- **[Counter Evidence]**：简单任务无需复杂语义层、复杂本体仍不能解决模型错误的反例，以及“先补完整数据平台”或“完全绕过数据平台”失败的路径反例。
 
 ### 研究顺序
 
@@ -334,13 +404,14 @@ Architecture Hypothesis
 
 ## 2.4 Engineering Questions｜第二阶段，不抢跑
 
-当 Relationship Map 与 Boundary Table 更清楚以后，再决定哪些工程问题值得做 Demo / Benchmark：
+当 Relationship Map、Boundary Table 与 Starting-State Pathway 更清楚以后，再决定哪些工程问题值得做 Demo / Benchmark：
 
 - **EQ-002-01**：同一任务分别使用 RAG、SQL/API、Semantic Model / Ontology、组合 Context 时，效果和成本如何比较？
 - **EQ-002-02**：如何把既有治理后的数据转换成 Dataset、Knowledge Asset、Eval Set、Semantic Asset 等不同 AI-ready Asset？
 - **EQ-002-03**：Context 如何携带 Source、Lineage、Freshness、Permission、Evidence，让模型结果可追溯？
 - **EQ-002-04**：实时业务状态怎样进入 Agent Runtime，而不是只依赖历史知识？
 - **EQ-002-05**：Semantic Model / Ontology 应由专家预建、AI 自动发现还是 Human-governed 动态生成？怎样校验？
+- **EQ-002-06**：三种起点下，怎样定义“最小可行 Context Foundation”，既不重复造数据平台，又不把场景能力做成新烟囱？
 
 ---
 
@@ -350,17 +421,19 @@ Architecture Hypothesis
 - **VQ-002-02**：除了回答准确率，还应比较哪些指标：Consistency、Freshness、Traceability、Action Success、Maintenance Cost？
 - **VQ-002-03**：公开产品和案例中，哪些已将 Data Service 扩展为 Semantic / Context / Evidence 能力？哪些只是 Product Claim？
 - **VQ-002-04**：有没有公开反例说明更强显式语义层在某些任务中成本高于收益？
+- **VQ-002-05**：能否找到三类不同起点的公开案例，比较其首个建设动作、复用资产、平台化时机和最终上下文能力，验证“三条路径”是否真实存在且具有解释力？
 
 ---
 
 ## 2.6 当前成果定义｜这轮研究最终要留下什么
 
-RP-002 当前一轮不以“读完多少论文”结束，而暂定形成四类成果：
+RP-002 当前一轮不以“读完多少论文”结束，而暂定形成五类成果：
 
 1. **Relationship Map**：Data 与 Model / Agent 到底存在多少种结构性关系；
 2. **Mechanism Boundary Table**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么、怎样组合；
 3. **Architecture Evolution Map**：传统数据平台哪些能力延续，哪些因 Model / Agent 成为新消费者而需要增强 / 新增；
-4. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
+4. **Starting-State Pathway Matrix**：有业务系统无数据平台、已有数据平台、业务系统尚不完整三种起点下，AI Context 的复用资产、首个动作、公共能力与迁移路径如何不同；
+5. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
 
 候选 Principle 现在不预写结论。只有 Theory + Public Industry Evidence 和必要的工程 / 反例验证足以支撑时，才收敛。
 
@@ -384,6 +457,8 @@ RP-002 当前一轮不以“读完多少论文”结束，而暂定形成四类�
 
 > **企业真实世界怎样通过数据、知识、语义、上下文、工具、评价和反馈机制进入 Model / Agent。**
 
+本次新增的“三类企业起点”也不单独升级为新的 RP，而作为 RP-002 的路径型 Architecture Question：它研究的不是第三套问题，而是**相同 Data–Model / Context 问题在不同既有信息化基础下怎样落地**。
+
 ---
 
 ## 2.8 Resume Point｜下次继续研究的位置
@@ -392,13 +467,15 @@ RP-002 当前一轮不以“读完多少论文”结束，而暂定形成四类�
 
 > 不先继续论文，也不直接给出“AI 数据平台标准答案”。
 >
-> 先围绕三个架构问题找公开证据：
+> 先围绕三个机制问题找公开证据：
 >
 > **RQ-002-A：业界真实存在几种 Data → Model / Agent 关系？**  
 > **RQ-002-B：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 的机制边界与组合关系是什么？**  
 > **RQ-002-C：哪些是传统数据平台能力，哪些是 AI 时代新增 / 显著上升的 Semantic / Context / Evidence 问题？**
 >
-> 第一轮先形成 Relationship Map、Boundary Table、Architecture Evolution v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
+> 在 A / B / C 基本清楚后，用 **RQ-002-D** 检查三类不同企业起点：①有业务系统无数据平台；②已有数据平台；③业务系统尚不完整。比较可复用资产、首个建设动作、最小公共能力、平台化时机和风险。
+>
+> 第一轮形成 Relationship Map、Boundary Table、Architecture Evolution Map、Starting-State Pathway Matrix v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
 
 ---
 
@@ -418,7 +495,7 @@ Agent 的局部运行经验如何变成可保留、可复用、可验证的组�
 # RP-004｜Effective Agency / Authority / Accountability
 
 **Core Problem**  
-Agent 有能力调用工具后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？
+Agent 有能力调用工具以后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？
 
 **Mappings**：Q2 / Q1；E3；G2 / G3 / G4。  
 **Engineering Direction**：Action Policy、审批、授权、审计、例外与生命周期。  
