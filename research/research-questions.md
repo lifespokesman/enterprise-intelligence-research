@@ -393,6 +393,68 @@ Enterprise Data / Enterprise Reality
 
 **状态：Hypothesis / Architecture Sketch，不进入 JUDGMENTS / PRINCIPLES。**
 
+### Working Hypothesis H-RP002-05｜AI Context Readiness 不能由“有没有大数据平台”直接判断
+
+面向企业 AI 的前期判断，不宜先把“是否建设过大数据平台”当成成熟度入口。更值得验证的是三个更靠近企业真实运行的问题：
+
+#### ① Reality Capture｜真实业务事实在哪里？
+
+先问：业务事实当前主要存在于哪里？
+
+- 数据库 / 业务系统；
+- Excel / 文件；
+- 纸质材料；
+- 人脑 / 经验；
+- 其他无法稳定机器读取的载体。
+
+核心不是“有没有数据平台”，而是：**真实业务事实是否被持续、稳定、可追溯地记录下来，并能够被机器访问。**
+
+#### ② Object & Process Stability｜有没有稳定的业务对象与流程？
+
+继续问：
+
+- 企业、商品、设备、任务等核心对象有没有稳定身份 / 统一标识？
+- 同一个对象能否跨系统、跨流程被识别为同一个业务实体？
+- 状态、事件、关系和流程是否足够稳定，可以被持续描述和追踪？
+
+核心不是“表和字段是否齐全”，而是：**企业现实是否已经形成可以被 Human / Software / Agent 共同引用的稳定业务结构。**
+
+#### ③ Feedback Closure｜最终结果有没有反馈回来？
+
+再问：
+
+- 上一次 Human / AI 的判断后来到底对不对？
+- 建议是否被采纳？行动是否执行？
+- 真实结果是什么？
+- 结果能否回到事实、案例、规则、风险基线、Eval 或后续 Context 中？
+
+核心不是“有没有模型调用记录”，而是：**企业是否拥有从判断 / 行动回到真实结果的闭环反馈。**
+
+当前候选判断可以抽象为：
+
+> **AI Context Readiness ≈ Reality Capture × Object / Process Stability × Feedback Closure**
+
+这里的“×”表示三者可能存在明显短板效应，而不是已经建立的数学模型。
+
+因此，一个拥有完整大数据平台的企业，如果事实虽然集中，但业务对象 / 流程语义不稳定，或者判断与行动之后没有真实结果反馈，其面向**闭环企业 AI / Agent** 的基础成熟度仍可能较弱；反过来，一个没有大型数据平台、但事实记录稳定、对象清楚、反馈闭环完整的组织，可能更适合先从任务级 AI Context 和 Agent 场景起步。
+
+这个假设与三条 Starting-State Pathway 的关系是：
+
+- “有没有大数据平台”用于判断**可复用技术资产与建设路径**；
+- Reality Capture / Object & Process Stability / Feedback Closure 用于判断**AI Context / 闭环智能的基础成熟度**；
+- 两者不是同一个维度，不能互相替代。
+
+如果后续获得足够公开证据，这一假设可能进一步沉淀为一个面向售前 / FDE 的 **AI Context Readiness Diagnostic**，用于在进入产品和平台讨论之前判断企业真正缺的是：事实数字化、业务结构化、上下文能力，还是反馈学习闭环。
+
+需要验证：
+
+1. 这三个维度是否足够，是否还需要单独加入权限 / 治理、Evidence / Traceability 等第四维度？
+2. “流程稳定”是否对所有 AI 场景都必要，还是探索型 / 知识型任务可以在流程不稳定时成立？
+3. Feedback Closure 对知识问答类 AI 与行动型 Agent 的重要性是否不同？
+4. 三个维度如何与三种企业起点路径组合，形成可操作而不过度复杂的诊断矩阵？
+
+**状态：Hypothesis / Diagnostic Sketch，不进入 JUDGMENTS / PRINCIPLES。**
+
 **预期产物：`AI Context Starting-State Pathway Matrix v0.1`**，至少比较：
 
 - 企业起点；
@@ -403,7 +465,8 @@ Enterprise Data / Enterprise Reality
 - 何时需要共享平台化；
 - 主要风险；
 - 目标 Context 能力；
-- 各路径从哪一段进入 H-RP002-04 的逻辑闭环，以及哪些环节可以复用 / 跳过 / 延后。
+- 各路径从哪一段进入 H-RP002-04 的逻辑闭环，以及哪些环节可以复用 / 跳过 / 延后；
+- 用 H-RP002-05 的 Reality Capture / Object & Process Stability / Feedback Closure 对每条路径判断 AI Context Readiness。
 
 ### AQ-002-05｜历史数据与实时业务状态如何同时进入 Agent？
 
@@ -421,7 +484,7 @@ Enterprise Data / Enterprise Reality
 
 ## 2.3 Evidence Plan｜下一步怎么研究，而不是直接给答案
 
-下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据；在机制边界基本清楚后，用 RQ-002-D 检查三种不同企业起点的建设路径，并验证 H-RP002-04 是否真的是不同路径可以共同收敛的逻辑闭环。
+下一轮不先继续论文队列，也不先画完整平台架构。围绕 RQ-002-A / B / C 定向找证据；在机制边界基本清楚后，用 RQ-002-D 检查三种不同企业起点的建设路径，并验证 H-RP002-04 / H-RP002-05 是否能分别解释“目标闭环”与“基础成熟度”。
 
 ### 优先证据类型
 
@@ -464,6 +527,7 @@ Architecture Hypothesis
 - **EQ-002-05**：Semantic Model / Ontology 应由专家预建、AI 自动发现还是 Human-governed 动态生成？怎样校验？
 - **EQ-002-06**：三种起点下，怎样定义“最小可行 Context Foundation”，既不重复造数据平台，又不把场景能力做成新烟囱？
 - **EQ-002-07**：如何把 H-RP002-04 的“事实 → 对象 / 状态 / 规则 / 权限 / 证据 → 动态 Context → Agent → Outcome → Feedback”做成可运行、可观测、可版本化的最小闭环？
+- **EQ-002-08**：如何把 H-RP002-05 的三个成熟度问题做成轻量诊断，不把它演化成一个无法执行的大型成熟度模型？
 
 ---
 
@@ -475,19 +539,21 @@ Architecture Hypothesis
 - **VQ-002-04**：有没有公开反例说明更强显式语义层在某些任务中成本高于收益？
 - **VQ-002-05**：能否找到三类不同起点的公开案例，比较其首个建设动作、复用资产、平台化时机和最终上下文能力，验证“三条路径”是否真实存在且具有解释力？
 - **VQ-002-06**：不同成熟度企业是否都能找到“事实 → Context → Agent → Outcome → Feedback”的可观察闭环？哪些环节缺失时会导致模型判断不可验证或无法形成持续改进？
+- **VQ-002-07**：公开案例中，是否存在“数据平台成熟但反馈闭环弱”与“平台不完整但事实 / 对象 / 反馈闭环强”的对照，以检验 H-RP002-05 是否比“是否建设大数据平台”更能解释 AI Context Readiness？
 
 ---
 
 ## 2.6 当前成果定义｜这轮研究最终要留下什么
 
-RP-002 当前一轮不以“读完多少论文”结束，而暂定形成六类成果：
+RP-002 当前一轮不以“读完多少论文”结束，而暂定形成七类成果：
 
 1. **Relationship Map**：Data 与 Model / Agent 到底存在多少种结构性关系；
 2. **Mechanism Boundary Table**：Dataset / KB / SQL / API / Tool / Ontology / Context / Eval / Feedback 分别解决什么、怎样组合；
 3. **Architecture Evolution Map**：传统数据平台哪些能力延续，哪些因 Model / Agent 成为新消费者而需要增强 / 新增；
 4. **Starting-State Pathway Matrix**：有业务系统无数据平台、已有数据平台、业务系统尚不完整三种起点下，AI Context 的复用资产、首个动作、公共能力与迁移路径如何不同；
 5. **Context Assembly Loop Sketch**：验证 H-RP002-04 这条“业务现实 → 动态 Context → Agent → Outcome → Feedback”逻辑链是否成立，以及三条路径从哪里进入这条链；
-6. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
+6. **AI Context Readiness Diagnostic v0.1**：验证“事实是否可持续获取、对象 / 流程是否稳定、结果是否反馈”是否比“有没有大数据平台”更适合作为企业 AI 基础判断入口；
+7. **Principle Decision**：研究后哪些 Working Hypothesis 被支持、修改或否定，是否足以进入 `PRINCIPLES.md` 成为 Candidate Architecture Principle。
 
 候选 Principle 现在不预写结论。只有 Theory + Public Industry Evidence 和必要的工程 / 反例验证足以支撑时，才收敛。
 
@@ -515,6 +581,8 @@ RP-002 当前一轮不以“读完多少论文”结束，而暂定形成六类�
 
 H-RP002-04 进一步把“三条起点路径”与一个候选目标闭环连接起来：**路径可能不同，但长期需要验证它们是否都在解决“如何把真实业务世界稳定编译成可执行 Context，并用真实结果持续校正”这一共同问题。**
 
+H-RP002-05 再增加一条不同维度：**平台形态用于判断建设起点；Reality Capture / Object & Process Stability / Feedback Closure 用于判断 AI Context / 闭环智能的基础成熟度。** 两者需要联合使用，而不是把“有无大数据平台”当作 AI 成熟度代理指标。
+
 ---
 
 ## 2.8 Resume Point｜下次继续研究的位置
@@ -531,9 +599,9 @@ H-RP002-04 进一步把“三条起点路径”与一个候选目标闭环连接
 >
 > 在 A / B / C 基本清楚后，用 **RQ-002-D** 检查三类不同企业起点：①有业务系统无数据平台；②已有数据平台；③业务系统尚不完整。比较可复用资产、首个建设动作、最小公共能力、平台化时机和风险。
 >
-> 同时把 **H-RP002-04** 当成待验证的目标闭环，而不是既定答案：检查三条路径是否都能映射到“业务事实 → 对象 / 状态 / 规则 / 权限 / 证据 → 动态 Context → Model / Agent → 行动 → 真实结果 → 反馈更新”，以及哪些环节可以按任务复杂度裁剪。
+> 同时把 **H-RP002-04** 当成待验证的目标闭环，把 **H-RP002-05** 当成待验证的成熟度诊断：检查“业务事实在哪里 / 业务对象和流程是否稳定 / 真实结果是否反馈”是否能比“有没有大数据平台”更好地解释企业 AI Context Readiness。
 >
-> 第一轮形成 Relationship Map、Boundary Table、Architecture Evolution Map、Starting-State Pathway Matrix、Context Assembly Loop Sketch v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
+> 第一轮形成 Relationship Map、Boundary Table、Architecture Evolution Map、Starting-State Pathway Matrix、Context Assembly Loop Sketch、AI Context Readiness Diagnostic v0.1；再判断需要哪些理论深化、工程验证和 Candidate Principle。
 
 ---
 
