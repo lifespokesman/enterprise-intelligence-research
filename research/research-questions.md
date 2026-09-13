@@ -289,6 +289,18 @@ Enterprise Data / Enterprise Reality
 
 > 原有 Data Service 之上，可能逐步增加面向智能主体的 Semantic / Context / Evidence 能力；但这不等于传统数据平台被替代，也不预设一定需要一个独立的“AI 数据平台”。
 
+### Candidate Mechanism｜Model / Agent 作为新的企业数据消费者
+
+H-RP002-02 背后需要额外验证一个更基础的因果机制。
+
+传统企业数据平台长期主要面向 `Human / BI / Application`；Model / Agent 正在成为新的数据消费者。不同于传统应用按预定义 Schema、API 和业务逻辑消费数据，Model / Agent 更依赖动态任务 Context、业务语义、Evidence、Freshness、Permission 和运行时选择。
+
+因此需要验证：
+
+> **AI-ready Data Architecture 的新增能力，是否主要源于“消费者类型发生变化”，而不是传统数据治理本身失效？**
+
+如果这一机制成立，Semantic / Context / Evidence 等能力更适合理解为传统 Data Platform 面向新消费者的扩展，而不必天然推导出一套独立的“AI Data Platform”。
+
 研究必须区分：
 
 - **Inherited Capability**：传统数据治理仍然必须解决的数据质量、标准、集成、血缘、权限等能力；
@@ -302,7 +314,21 @@ Enterprise Data / Enterprise Reality
 
 > **企业在不同数字化 / 数据基础下，AI Context 应该沿什么路径建设？**
 
-当前先保留三种典型起点作为待验证的路径假设，而不是直接给出标准答案：
+当前先保留三种典型起点作为待验证的路径假设，而不是直接给出标准答案。
+
+#### 横向诊断维度｜Machine-accessible Capability
+
+三种起点之外，还需要记录一个不完全由“有没有数据平台”决定的横向变量：企业已有数据与业务能力能否被机器安全访问和调用。
+
+| Level | 当前主要存在形态 | 对 AI / Agent 的含义 |
+|---|---|---|
+| **L0** | 能力封闭在 UI / 人工操作中 | Agent 无法直接访问，只能依赖人工中转或界面自动化 |
+| **L1** | 数据库 / SQL 可访问 | 可以读取部分事实，但语义、权限和动作接口仍弱 |
+| **L2** | 已有 Data API / Service | 事实访问开始服务化，但未必适合 Agent 动态发现与组合 |
+| **L3** | 已有 API Gateway / Event / Workflow | 具备较完整的机器接口与流程连接基础 |
+| **L4** | Agent 可发现、可授权、可调用的 Tool / Capability | 能力可在策略、身份、审计约束下被智能主体使用 |
+
+这不是第四条 Starting-State Path，也不在 RP-002 中展开完整 Tool / Capability 架构；它只用于解释：数字化和数据成熟度相近的企业，为什么 AI Context 的接入成本与可行动边界仍可能显著不同。更完整的行动能力问题仍交给 E3 / RP-004。
 
 #### Path A｜有业务系统，但没有统一大数据 / 数据平台
 
@@ -339,7 +365,7 @@ Enterprise Data / Enterprise Reality
 
 **Working Hypothesis H-RP002-03**：
 
-> AI Context 更可能是一组目标能力，而不是所有企业都按同一顺序建设的一套固定平台。企业的 System of Record 完整度、数据平台成熟度与业务数字化程度，可能决定不同的迁移路径；但不同路径是否最终收敛到相似的 Context / Semantic / Evidence 能力，仍需公开案例和工程实践验证。
+> AI Context 更可能是一组目标能力，而不是所有企业都按同一顺序建设的一套固定平台。企业的 System of Record 完整度、数据平台成熟度、业务数字化程度，以及既有数据与能力的机器可调用性，可能共同决定不同的迁移路径；但不同路径是否最终收敛到相似的 Context / Semantic / Evidence 能力，仍需公开案例和工程实践验证。
 
 状态：Hypothesis，不进入 JUDGMENTS / PRINCIPLES。
 
@@ -458,6 +484,7 @@ Enterprise Data / Enterprise Reality
 **预期产物：`AI Context Starting-State Pathway Matrix v0.1`**，至少比较：
 
 - 企业起点；
+- 机器可调用性等级，以及数据访问与业务行动之间的差异；
 - 可复用资产；
 - 当前缺口；
 - 首个建设动作；

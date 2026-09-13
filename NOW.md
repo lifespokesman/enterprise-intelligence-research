@@ -50,8 +50,8 @@ v2.0 是试运行方法，不是永久规则。升级原因、试用标准与回
 ### 当前 Initial Hypotheses / Candidate Paths
 
 - **H-RP002-01**：`Data Availability ≠ Context Usability`。AI 数据瓶颈可能从“有没有数据”扩展到“能否把正确、相关、新鲜、可解释的数据编译成当前任务可用 Context”。
-- **H-RP002-02**：传统 Data Service 之上，可能逐步出现面向智能主体的 Semantic / Context / Evidence 能力，但不预设一定形成独立“AI 数据平台”。
-- **H-RP002-03**：AI Context 更可能是一组目标能力，而不是所有企业按同一顺序建设的一套平台；System of Record、数据平台成熟度与业务数字化程度可能决定不同建设路径。
+- **H-RP002-02**：传统 Data Service 之上，可能逐步出现面向智能主体的 Semantic / Context / Evidence 能力；候选机制是 Model / Agent 成为不同于 Human / BI / Application 的新消费者，而不是传统数据治理本身失效。
+- **H-RP002-03**：AI Context 更可能是一组目标能力，而不是所有企业按同一顺序建设的一套平台；System of Record、数据平台成熟度、业务数字化程度与既有数据 / 能力的机器可调用性可能共同决定不同建设路径。
 - **H-RP002-04｜Candidate Solution Path**：不同起点可能收敛到一个候选逻辑闭环：`业务事实 → 对象 / 身份 → 状态 / 事件 / 关系 → 规则 / 知识 / 风险基线 → 角色 / 任务 / 权限 → 证据 / 历史 / 当前环境 → 动态 Context → Model / Agent → 建议 / 行动 → 真实结果 → 反馈更新`。
 - **H-RP002-05**：AI Context Readiness 不能简单由“有没有大数据平台”代理，可能更取决于 `Reality Capture × Object / Process Stability × Feedback Closure`。该表达只是短板效应假设，不是数学公式。
 
@@ -79,6 +79,12 @@ v2.0 是试运行方法，不是永久规则。升级原因、试用标准与回
 
 > 哪些仍是传统数据治理 / 数据平台能力，哪些因 Model / Agent 成为新消费者而显著新增或强化？
 
+本轮额外验证一个候选机制：
+
+> **Semantic / Context / Evidence 等新增能力，是否可以主要解释为 Model / Agent 成为新的企业数据消费者后，对 Data Service 提出了不同于 Human / BI / Application 的消费要求？**
+
+如果该机制不成立，需要寻找更好的解释，而不是把新能力直接归因于“AI 时代”。
+
 目标：`Traditional Data Platform → AI-ready Context Architecture v0.1`。
 
 ### RQ-002-D｜Starting-State Pathways
@@ -90,6 +96,8 @@ v2.0 是试运行方法，不是永久规则。升级原因、试用标准与回
 1. 有业务系统，无统一数据平台；
 2. 已有业务系统 + 大数据 / 数据平台；
 3. 业务系统本身尚不完整。
+
+矩阵横向增加 **Machine-accessible Capability** 维度（L0：封闭于 UI / 人工操作 → L4：Agent 可发现、可授权、可调用的 Tool / Capability），用于解释相同数据成熟度下不同的接入成本与行动边界；不在 RP-002 中展开完整 E3 问题。
 
 目标：`AI Context Starting-State Pathway Matrix v0.1`。
 

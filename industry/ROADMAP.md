@@ -27,6 +27,29 @@
 
 这八条不是八个独立产品模块，而是长期研究问题。具体技术名称会变化，问题本身需要持续验证。
 
+## 1.1 Existing Enterprise IT Evolution Lens｜既有企业 IT 演进视角
+
+E1–E4 / G1–G4 主要从“智能主体需要什么”反推长期基础设施与治理问题。大型企业和政府组织通常不是从零开始建设，因此还需要一个镜像视角：
+
+> **企业已经有什么；当 Model / Agent 成为新的能力消费者与行动主体后，这些既有 IT 资产需要怎样演进？**
+
+| 既有企业 IT | 对应研究路线 | 需要持续验证的演进问题 |
+|---|---|---|
+| Cloud / IaaS / K8s | **E1 Runtime** | 除了运行 Application，怎样承载 Model / Agent 的状态、沙箱、恢复与长任务？ |
+| Data Platform / Data Governance | **E2 Context** | 除了服务 Human / BI / Application，怎样形成机器可消费的 Semantic / Context / Evidence？ |
+| PaaS / API / ESB / Workflow | **E3 Capability** | 既有服务怎样成为 Agent 可发现、可授权、可调用的 Tool / Capability？ |
+| Business Application | **E3 Capability** | 除了 Human Interface，是否需要增加 Agent Interface，并保持业务校验与责任边界？ |
+| Business Outcome / Operations / Data Return | **E4 Feedback** | Agent 运行结果怎样回到 Eval、知识、规则与组织学习体系？ |
+| IAM / Policy / Audit | **G1 / G2 / G4** | 怎样从管理人和应用扩展到智能主体的身份、权限、审计与生命周期？ |
+| Portal / Workspace | **E3 / G3** | 怎样从“人找应用”演进为任务入口与 Human–Agent 控制关系？ |
+
+这不是新增 Research Track，也不是预设所有企业必须进行同一种平台重构，而是观察 E/G Track 的 **Brownfield Enterprise IT Evolution Lens**：
+
+- E/G Track：从 `Intelligent Subject → 需要什么` 看问题；
+- 本视角：从 `Existing Enterprise IT → 为新的智能主体如何演进` 看问题。
+
+两者观察的是同一个企业 AI 架构。该映射当前只作为候选观察框架，需要通过主流产品架构、公开企业案例和反例继续验证。
+
 ---
 
 # Track E｜Intelligent Subject Engineering
@@ -421,15 +444,16 @@ Retire
 
 每个产业对象优先回答：
 
-1. 它主要落在哪些 E/G Track？
-2. 对应 Q1–Q5 哪些长期问题？
-3. `[Product Fact]`：它实际上做了什么？
-4. `[Product Claim]`：它为什么认为应该这样做？
-5. `[Industry Case]`：公开企业实践中发生了什么？
-6. `[Analyst View]`：独立分析机构如何评价？
-7. `[Policy / Standard]`：存在什么制度或标准约束？
-8. `[Counter Evidence]`：哪里失败、哪里不需要、哪里有替代路线？
-9. 是否足以影响 Hypothesis / Judgment？
+1. 它主要解决智能主体的哪一项长期问题，对应哪些 E/G Track？
+2. 它正在改造或扩展传统企业 IT 的哪一部分？
+3. 对应 Q1–Q5 哪些长期问题？
+4. `[Product Fact]`：它实际上做了什么？
+5. `[Product Claim]`：它为什么认为应该这样做？
+6. `[Industry Case]`：公开企业实践中发生了什么？
+7. `[Analyst View]`：独立分析机构如何评价？
+8. `[Policy / Standard]`：存在什么制度或标准约束？
+9. `[Counter Evidence]`：哪里失败、哪里不需要、哪里有替代路线？
+10. 是否足以影响 Hypothesis / Judgment？
 
 不按厂商热度批量建卡，只在某个对象能帮助回答当前问题时研究。
 
@@ -478,4 +502,4 @@ Engineering / Governance Implication
 7. 当前技术名词可以作为实现机制，但不得自动升级为长期架构层。
 8. 任何产业结论最终都应回到 Q1–Q5，而不是另建一套顶层问题体系。
 
-_Status: v0.1 / 2026-09-04_
+_Status: v0.2 / 2026-09-13_

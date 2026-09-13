@@ -631,4 +631,80 @@ Origin: `User Insight`
 
 ---
 
-_Last updated: 2026-09-11_
+## EV-010｜从“Agent 需要什么”到“既有企业 IT 如何演进”
+
+Date: 2026-09-13  
+Origin: `Co-developed`
+
+### Before｜此前认知
+
+产业研究主要从智能主体自身出发：
+
+- Agent 要持续工作 → E1 Runtime；
+- Agent 要理解企业 → E2 Context；
+- Agent 要采取行动 → E3 Capability；
+- Agent 要从结果中演化 → E4 Feedback；
+- 身份、权限、人类控制与追溯 → G1–G4。
+
+因此 E/G Track 主要是一条从 Intelligent Subject 反推基础设施与治理需求的路线。
+
+### Trigger｜触发
+
+在抽象企业 AI 方案结构时发现，现实中的大型企业和政府组织并不是从零建设“AI 企业”，而是已经长期运行 Cloud、Data Platform、PaaS、Application、Portal、IAM 与 Operations。
+
+如果只问“Agent 需要哪些新组件”，容易得到一套与存量系统并列的 AI 平台清单；但更现实的问题是：
+
+> **当 Model / Agent 成为新的能力消费者与行动主体后，已有 IT 资产分别需要发生什么变化？**
+
+### Shift｜关键转折
+
+同一个企业 AI 架构需要同时从两个方向观察：
+
+1. `Intelligent Subject → 需要什么基础设施与治理能力？`
+2. `Existing Enterprise IT → 为新的智能主体如何演进？`
+
+两者不是两套架构。前者保持 E1–E4 / G1–G4 的长期问题结构，后者增加一个面向 Brownfield Enterprise 的迁移观察镜头。
+
+### Now｜当前认知
+
+当前形成待验证的候选映射：
+
+- Cloud / IaaS / K8s → Agent Runtime；
+- Data Platform / Data Governance → AI Context / Semantic / Evidence；
+- PaaS / API / Workflow → Agent-callable Capability；
+- Business Application → Human Interface + Agent Interface；
+- Portal / Workspace → Human–Agent Task Entry / Control；
+- IAM / Policy / Audit → Agent Identity / Authority / Trace；
+- Business Outcome / Operations → Feedback / Evaluation / Evolution。
+
+因此，企业 AI 架构不一定表现为在传统 IT 之外再建设一套孤立的“AI 平台”；也可能表现为既有企业 IT 逐步增加面向智能主体的 Runtime、Context、Capability 与 Governance 能力。
+
+这仍是候选解释，不进入 `JUDGMENTS.md` 或 `PRINCIPLES.md`。
+
+### Why It Matters｜为什么重要
+
+这一转折为 E1–E4 / G1–G4 增加了更贴近存量政企架构的解释方式，也让每次产业对象研究同时回答两个问题：
+
+1. 它解决智能主体的什么长期问题？
+2. 它正在改造传统企业 IT 的哪一部分？
+
+### Impact｜影响
+
+- RP-002：增加“Model / Agent 作为新数据消费者”的候选机制；
+- RQ-002-D：增加 Machine-accessible Capability 横向诊断维度；
+- E1：观察 Cloud / Computing 向 Agent Runtime 的变化；
+- E2：观察 Data Platform 向 AI Context 的变化；
+- E3：观察 PaaS / Application 向 Agent-callable Capability 的变化；
+- E4 / G Track：观察既有运营反馈、IAM、Policy 与 Audit 如何扩展到智能主体；
+- `industry/ROADMAP.md`：新增 Existing Enterprise IT Evolution Lens，不新增 Track。
+
+### Open Question｜仍未解决
+
+1. 这种演进是否是广泛产业趋势，还是主要适用于存量 IT 成熟的大型组织？
+2. 哪些能力应演进既有平台，哪些更适合形成独立的新运行平面？
+3. 主流厂商的公开产品架构与企业案例，是否真正支持这一映射？
+4. “机器可调用”与“业务上可授权、可负责地行动”之间还缺少哪些机制？
+
+---
+
+_Last updated: 2026-09-13_
