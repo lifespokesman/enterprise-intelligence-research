@@ -19,11 +19,12 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 
 > **企业数据在什么情况下是训练材料、知识、当前事实、业务语义、任务上下文、评价依据或运行反馈？不同关系需要不同的架构机制。**
 
-进一步研究 Ontology / Semantic Layer 后，又出现了一个新的方向：
+进一步研究 Ontology / Semantic Layer 后，又出现了两个继续向下的问题：
 
-> **企业真实世界不仅需要进入模型，还可能被 Agent 改变。能够描述世界，并不等于已经具备安全、稳定地改变世界的机制。**
+1. **企业真实世界不仅需要进入模型，还可能被 Agent 改变。能够描述世界，并不等于已经具备安全、稳定地改变世界的机制。**
+2. **即使 Semantic / Operational / Evolution Model 有价值，如果仍要求业务人员从零人工建模，企业级生产使用门槛可能仍然过高。**
 
-因此 RP-002 当前逐渐出现两个相互关联、但暂不合并的方向：
+因此 RP-002 当前逐渐形成三个相互关联的方向：
 
 ```text
 World → Model / Agent
@@ -31,11 +32,16 @@ World → Model / Agent
 
 Model / Agent → World
 AI 如何通过受治理的业务动作改变企业世界
+
+Semantic Sources / Runtime Evidence → World Model
+企业世界模型如何被低门槛地构建与持续维护
 ```
 
-第二个方向已经登记为独立子问题：
+对应已登记的子问题：
 
+- [`RP-002-01｜Enterprise World Model Conflict & Evolution`](RP-002-01-world-model-conflict-evolution.md)
 - [`RP-002-02｜Business Action Layer：企业 AI 如何安全地改变企业世界`](RP-002-02-business-action-layer.md)
+- [`RP-002-03｜Semantic-to-Executable World Model`](RP-002-03-semantic-to-executable-world-model.md)
 
 公开仓只保留抽象问题，不记录私人项目来源、客户身份、系统细节或非公开证据。
 
@@ -50,7 +56,7 @@ AI 如何通过受治理的业务动作改变企业世界
 三类问题不是并列分类，而是一条纵向推导链：
 
 - **Cognitive**：先搞清楚现实机制和概念边界；
-- **Architecture**：如果认知成立，企业 AI 架构应该怎样组织；
+- **Architecture**：如果这个认知成立，企业 AI 架构应该怎样组织；
 - **Engineering**：这些架构关系如何实现、比较和验证。
 
 工程结果反过来修正架构判断和认知判断。
@@ -91,8 +97,6 @@ AI 如何通过受治理的业务动作改变企业世界
 
 ### CQ-002-06｜企业世界模型只需要描述“是什么”，还是还需要表达“允许怎样被改变”？
 
-该问题由 Ontology → Agent Execution 的研究继续推导而来。
-
 当前候选区分：
 
 ```text
@@ -107,11 +111,21 @@ Action / State Transition / Permission / Effect
 
 这里暂不预设 `Operational Ontology` 是业界标准术语，也不预设 Action 必须直接属于 Ontology 产品。详细问题见 `RP-002-02`。
 
+### CQ-002-07｜企业世界模型是否必须主要依赖人工显式建模？
+
+新的认知不是“不再需要结构化模型”，而是：
+
+> **结构化模型可能仍是生产运行的必要表示，但人工从零建模未必应该继续作为主要建设入口。**
+
+需要验证：自然语言、制度、Schema、API、Workflow、权限、Trace 等既有企业语义，是否足以让 AI 自动发现并生成可用的候选 `Object / Relation / State / Rule / Action / Permission / Effect`，并把人的工作集中到冲突、规范性规则、授权和高风险变更审核。
+
+详细问题见 `RP-002-03`。
+
 ---
 
 ## 4. Architecture Questions｜当前第一轮重点
 
-当前下一轮主研究仍先聚焦前三个架构问题，不因为新增 Action 子问题而打断当前 Active 路线。
+当前下一轮主研究仍先聚焦前三个架构问题，不因为新增子问题而打断当前 Active 路线。
 
 ### AQ-002-01｜业界真实存在几种 Data → Model / Agent 关系？
 
@@ -190,6 +204,29 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 
 该问题已拆入 `RP-002-02`，本文件只保留索引和与 RP-002 主线的关系。
 
+### AQ-002-07｜Semantic-to-Executable World Model 是否可以成为企业世界模型的主要建设机制？
+
+候选结构：
+
+```text
+Enterprise Semantic Sources
+Natural Language / Documents / Schema / API / Workflow / Trace
+                         ↓
+               AI World Model Compiler
+                         ↓
+      Evidence-backed Candidate World Model
+                         ↓
+          Conflict / Exception Review
+                         ↓
+            Production World Model
+```
+
+核心不是用自然语言替代模型，而是形成：
+
+> **Semantic-first, Model-backed：Semantic 作为主要的人机建设入口，Structured World Model 作为生产运行表示。**
+
+该问题已拆入 `RP-002-03`。
+
 ---
 
 ## 5. Engineering Questions｜架构收敛后再启动
@@ -202,6 +239,7 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 - **EQ-002-04**：实时业务状态怎样进入 Agent Runtime，而不是只依赖历史知识？
 - **EQ-002-05**：Ontology / Semantic Model 应由专家建设、AI 自动发现还是运行时动态生成？如何校验？
 - **EQ-002-06**：Direct Tool / API 与 Business Action Runtime 两种执行模式，在 Prompt 复杂度、接口变更影响、权限治理、多 Agent 复用和 Trace 可解释性上有什么差异？
+- **EQ-002-07**：从 SOP + Schema + API + Permission + Trace 自动生成 Semantic / Operational 候选模型，与人工建模相比在成本、准确率、治理风险和维护成本上有什么差异？
 
 ---
 
@@ -250,6 +288,16 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 - Durable Execution、Policy Engine、IAM、Approval、Audit 等 Runtime 实现；
 - 不需要独立 Action Layer 的反例。
 
+### 对 AQ-002-07 / EQ-002-07
+
+优先证据：
+
+- Ontology Learning / Ontology Evolution / Schema Matching / Semantic Parsing / Process Mining 等理论与方法；
+- 企业语义层、Knowledge Graph、Process Intelligence 产品中的 AI-assisted modeling；
+- 从 Schema / API / Code / Log 自动发现领域模型、流程或工具语义的开源实现；
+- 自动建模在对象边界、权限、规范性规则和高风险 Action 上的反例；
+- Manual Modeling 与 AI-assisted Compilation 的小规模对照验证。
+
 证据身份继续区分 `[Theory] / [Product Fact] / [Product Claim] / [Industry Case] / [Analyst View] / [Policy / Standard] / [Counter Evidence]`。
 
 ---
@@ -276,6 +324,24 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 
 详细定义、反例与验证方案见 [`RP-002-02-business-action-layer.md`](RP-002-02-business-action-layer.md)。
 
+### H-RP002-07｜Semantic-first World Model Compilation
+
+> **企业级世界模型的主要生产方式可能从“人工显式建模”逐渐转向“AI 从自然语言、企业系统和运行证据中自动编译候选结构，人主要处理冲突、授权、高风险规则和最终责任确认”。**
+
+这里不是用自然语言替代结构化模型，而是区分：
+
+```text
+Human-facing
+Semantic Interface
+
+      ↓ compile
+
+Machine-facing
+Structured / Executable World Model
+```
+
+详细定义、自动化边界与验证方案见 [`RP-002-03-semantic-to-executable-world-model.md`](RP-002-03-semantic-to-executable-world-model.md)。
+
 以上均不升级为 Architecture Principle。
 
 ---
@@ -298,7 +364,10 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 4. **Business Action Architecture v0.1**  
    说明 Semantic World、Action Contract、Action Runtime、Function / Workflow、MCP / API 与 Agent 的边界和组合关系。
 
-这几个成果完成后，再判断：
+5. **Semantic-to-Executable World Model Compiler v0.1**  
+   说明企业既有语义 / 系统 / 运行证据如何生成 Evidence-backed Candidate World Model，以及人工 Review / Governance 应保留在哪些边界。
+
+这些成果完成后，再判断：
 
 - 是否已经形成清晰 Engineering Hypothesis；
 - 是否值得启动小规模工程验证；
@@ -320,9 +389,11 @@ Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不�
 5. 再进入 AQ-002-02 做边界表；
 6. 最后处理 AQ-002-03 的传统数据架构与 AI 架构演进关系。
 
-`RP-002-02 Business Action Layer` 作为已经注册的派生研究方向保存，不要求当前立即展开。真正继续它时，优先验证：
+`RP-002-02 Business Action Layer` 与 `RP-002-03 Semantic-to-Executable World Model` 都作为已经注册的派生研究方向保存，不要求当前立即展开。
 
-> **Business Action Layer 到底是 AI 时代新增的架构层，还是 DDD / Application Service / Command / Workflow 等既有企业应用能力在 Agent 时代的重新显性化和资产化？**
+真正继续 `RP-002-03` 时，先做一个最小验证：
+
+> **选一个真实小流程，比较“人工建模”与“AI 从 SOP + Schema + API + Permission + Trace 编译候选 Semantic / Operational Model”两种方式，验证是否真的降低建模成本，同时保持关键规则、权限与高风险动作可治理。**
 
 当前时间不足时，停在这里即可。后续新会话只需要读取 `PROJECT_CONTEXT.md`、`NOW.md`、`research/research-questions.md`、本文件及相关子问题文件即可继续。
 
