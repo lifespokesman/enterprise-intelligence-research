@@ -1,6 +1,6 @@
 # Problem Map｜企业 AI 问题地图
 
-Updated: 2026-09-13  
+Updated: 2026-09-17  
 本文件用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
 
 > **知识管理的基本单位从“论文 / 对话 / 资料”切换为“问题”。**
@@ -654,6 +654,37 @@ Agent 有能力调用工具以后，Business Validity、Capability、Authority�
 **Engineering Direction**：Action Policy、审批、授权、审计、例外与生命周期。  
 **Principle Link**：AP-003。  
 **Status**：Candidate。
+
+### AQ-004-01｜Probabilistic Judgment vs. Deterministic Control
+
+> **企业级模型 / Agent 安全护栏应该如何在概率性 AI 风险判断与确定性安全控制之间分工？**
+
+该问题由模型安全交流触发。当前不把“安全模型准确率”视为完整安全架构，而重点研究：当 Prompt Injection、越狱、敏感语义、异常任务意图等风险需要依赖模型进行开放语义判断时，最终权限、行为边界和高影响动作是否应由外部确定性控制机制决定。
+
+**Working Hypothesis H-RP004-01｜Probabilistic Detection × Deterministic Control**：
+
+> 企业级 AI 安全可能需要拆分为两个不同性质的控制平面：
+>
+> - **概率性感知 / 判断平面**：利用模型理解开放语义、上下文、意图与未知风险，输出风险类型、分值、置信度与证据；
+> - **确定性决策 / 执行平面**：利用 Policy、IAM、Gateway、Sandbox、审批、权限与审计机制决定行为是否允许，并在运行时强制执行。
+>
+> 随着行为权限、不可逆性和业务影响提高，最终安全控制权应越来越少依赖模型自主判断，而更多落在可验证、可审计、不可绕过的确定性控制机制上。
+
+状态：**Hypothesis / Architecture Sketch**，不进入 `JUDGMENTS.md` / `PRINCIPLES.md`。
+
+当前候选责任链：
+
+`Sensor / Judge → Policy → Enforcer → Evidence → Feedback`
+
+与当前模型安全护栏卡的关系：PMVAEB 六维模型可视为 AQ-004-01 的当前工程表达，而不是独立的问题入口；后续应通过公开标准、产品事实、开源实现、攻击 / 防御测试与反例验证其边界。
+
+### Engineering / Validation Direction
+
+- **EQ-004-01**：Input、Context、Model、Tool、Data、Action、Output 等不同控制点，哪些适合模型判断，哪些必须落到确定性 Policy / IAM / Gateway / Sandbox / Approval？
+- **VQ-004-01**：如何比较“主要依赖安全模型”与“概率判断 + 确定控制”两种架构在误报、漏报、绕过、权限越界、不可逆行为与审计可追溯性上的差异？
+
+**Related Evolution**：EV-011。  
+**Problem File**：[`problems/RP-004-01-probabilistic-judgment-deterministic-control.md`](problems/RP-004-01-probabilistic-judgment-deterministic-control.md)。
 
 ---
 
