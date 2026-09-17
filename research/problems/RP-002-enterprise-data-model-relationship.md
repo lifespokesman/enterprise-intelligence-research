@@ -1,9 +1,9 @@
 # RP-002｜Enterprise Data–Model Relationship
 
 Status: Active  
-Updated: 2026-09-11  
+Updated: 2026-09-17  
 Primary Track: E2 Enterprise Context / World Model  
-Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-Evolution
+Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-Evolution / E3 Agent-callable Capability
 
 > 核心母问题：**企业已有的数据资产，与 Model / Agent 到底应该建立什么关系？企业真实世界究竟通过哪些机制进入模型？**
 
@@ -19,7 +19,25 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 
 > **企业数据在什么情况下是训练材料、知识、当前事实、业务语义、任务上下文、评价依据或运行反馈？不同关系需要不同的架构机制。**
 
-公开仓只保留这一抽象问题，不记录私人项目来源、客户身份、系统细节或非公开证据。
+进一步研究 Ontology / Semantic Layer 后，又出现了一个新的方向：
+
+> **企业真实世界不仅需要进入模型，还可能被 Agent 改变。能够描述世界，并不等于已经具备安全、稳定地改变世界的机制。**
+
+因此 RP-002 当前逐渐出现两个相互关联、但暂不合并的方向：
+
+```text
+World → Model / Agent
+企业世界如何被 AI 理解
+
+Model / Agent → World
+AI 如何通过受治理的业务动作改变企业世界
+```
+
+第二个方向已经登记为独立子问题：
+
+- [`RP-002-02｜Business Action Layer：企业 AI 如何安全地改变企业世界`](RP-002-02-business-action-layer.md)
+
+公开仓只保留抽象问题，不记录私人项目来源、客户身份、系统细节或非公开证据。
 
 ---
 
@@ -71,11 +89,29 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 
 该假设需要理论、产品与工程证据共同验证。
 
+### CQ-002-06｜企业世界模型只需要描述“是什么”，还是还需要表达“允许怎样被改变”？
+
+该问题由 Ontology → Agent Execution 的研究继续推导而来。
+
+当前候选区分：
+
+```text
+Semantic Ontology
+Object / Relation / State / Rule
+企业世界是什么
+
+Operational Layer / Operational Ontology（研究概念）
+Action / State Transition / Permission / Effect
+企业世界允许怎样被改变
+```
+
+这里暂不预设 `Operational Ontology` 是业界标准术语，也不预设 Action 必须直接属于 Ontology 产品。详细问题见 `RP-002-02`。
+
 ---
 
 ## 4. Architecture Questions｜当前第一轮重点
 
-当前下一轮研究先聚焦以下三个架构问题，不继续扩框架。
+当前下一轮主研究仍先聚焦前三个架构问题，不因为新增 Action 子问题而打断当前 Active 路线。
 
 ### AQ-002-01｜业界真实存在几种 Data → Model / Agent 关系？
 
@@ -113,6 +149,7 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 - 是否负责动态上下文组装；
 - 是否用于评价或反馈；
 - 与其他机制如何组合；
+- Tool / API 属于 Data–Model 关系，还是更上位的 Capability / Action 关系；
 - 哪些常见架构图把不同层级混在了一起。
 
 ### AQ-002-03｜哪些仍是传统数据治理问题，哪些是 AI 时代新增或显著放大的问题？
@@ -126,6 +163,33 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 - “AI-ready Data Foundation”是否只是传统治理升级，还是出现了新的架构层；
 - 新层与原数据平台是替代、叠加还是能力重构关系。
 
+### AQ-002-06｜Business Action Layer 是否是 Semantic Layer 与 Agent Execution 之间需要独立存在的架构层？
+
+当前工作问题：
+
+> **Object、Rule、Action、Function、Workflow、API、MCP 与 Agent 应是什么关系？**
+
+当前工作模型：
+
+```text
+Business World
+Object / Relation / State / Rule
+        ↓
+Business Action Contract
+        ↓
+Business Action Runtime
+        ↓
+Function / Workflow / Adapter
+        ↓
+API / Event / RPA / DB / Human Task
+        ↓
+Enterprise Systems
+```
+
+Agent 侧通过 MCP / API / SDK 等暴露机制调用 Business Action，而不是把 MCP Tool 本身等同于 Business Action。
+
+该问题已拆入 `RP-002-02`，本文件只保留索引和与 RP-002 主线的关系。
+
 ---
 
 ## 5. Engineering Questions｜架构收敛后再启动
@@ -137,6 +201,7 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 - **EQ-002-03**：Source、Lineage、Freshness、Permission、Evidence 如何随 Context 一起交给 Agent？
 - **EQ-002-04**：实时业务状态怎样进入 Agent Runtime，而不是只依赖历史知识？
 - **EQ-002-05**：Ontology / Semantic Model 应由专家建设、AI 自动发现还是运行时动态生成？如何校验？
+- **EQ-002-06**：Direct Tool / API 与 Business Action Runtime 两种执行模式，在 Prompt 复杂度、接口变更影响、权限治理、多 Agent 复用和 Trace 可解释性上有什么差异？
 
 ---
 
@@ -174,6 +239,17 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 - Synthetic comparison；
 - Counter Evidence。
 
+### 对 AQ-002-06 / EQ-002-06
+
+优先证据：
+
+- Palantir Ontology Actions / Functions 等 Product Fact；
+- Salesforce / ServiceNow / SAP / Microsoft 等企业 Agent 与业务动作设计；
+- DDD Application Service / Command、CQRS、BPM / Workflow、Capability API 等传统架构模式；
+- MCP / Tool-use 协议边界；
+- Durable Execution、Policy Engine、IAM、Approval、Audit 等 Runtime 实现；
+- 不需要独立 Action Layer 的反例。
+
 证据身份继续区分 `[Theory] / [Product Fact] / [Product Claim] / [Industry Case] / [Analyst View] / [Policy / Standard] / [Counter Evidence]`。
 
 ---
@@ -194,13 +270,19 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 
 > “数据服务 AI”不是单一接口关系，而是 Training、Knowledge、Fact、Semantic、Context、Evaluation、Feedback 等多种关系的组合。
 
-当前不升级为 Architecture Principle。
+### H-RP002-06｜Business Action as Governed Mutation Contract
+
+> **企业 AI 要从“理解企业世界”进入“运行企业世界”，可能需要把具有业务状态改变、组织责任或外部副作用的操作抽象为受治理的 Business Action；Action Contract 描述允许发生什么，Action Runtime 负责怎样安全可靠地执行，MCP / API / SDK 负责把能力暴露给调用者。**
+
+详细定义、反例与验证方案见 [`RP-002-02-business-action-layer.md`](RP-002-02-business-action-layer.md)。
+
+以上均不升级为 Architecture Principle。
 
 ---
 
 ## 8. Planned Outputs｜第一轮预期成果
 
-第一轮研究只追求三个成果：
+第一轮主研究仍只追求三个成果：
 
 1. **Data–Model Relationship Map v0.1**  
    说明企业数据与 Model / Agent 存在哪些不同关系。
@@ -211,7 +293,12 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 3. **Traditional Data → AI Architecture Evolution v0.1**  
    说明哪些能力继承传统数据治理，哪些是 AI 时代新增或显著增强的 Semantic / Context / Evidence / Eval / Feedback 能力。
 
-这三个成果完成后，再判断：
+新增但不抢占当前 Active 顺序的后续产物：
+
+4. **Business Action Architecture v0.1**  
+   说明 Semantic World、Action Contract、Action Runtime、Function / Workflow、MCP / API 与 Agent 的边界和组合关系。
+
+这几个成果完成后，再判断：
 
 - 是否已经形成清晰 Engineering Hypothesis；
 - 是否值得启动小规模工程验证；
@@ -222,7 +309,7 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 
 ## 9. Next Action｜恢复研究时从这里开始
 
-**先研究 AQ-002-01：业界真实存在几种 Data → Model / Agent 关系。**
+**RP-002 当前主线仍先研究 AQ-002-01：业界真实存在几种 Data → Model / Agent 关系。**
 
 执行顺序：
 
@@ -233,7 +320,11 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 5. 再进入 AQ-002-02 做边界表；
 6. 最后处理 AQ-002-03 的传统数据架构与 AI 架构演进关系。
 
-当前时间不足时，停在这里即可。后续新会话只需要读取 `PROJECT_CONTEXT.md`、`NOW.md`、`research/research-questions.md` 和本文件，即可继续。
+`RP-002-02 Business Action Layer` 作为已经注册的派生研究方向保存，不要求当前立即展开。真正继续它时，优先验证：
+
+> **Business Action Layer 到底是 AI 时代新增的架构层，还是 DDD / Application Service / Command / Workflow 等既有企业应用能力在 Agent 时代的重新显性化和资产化？**
+
+当前时间不足时，停在这里即可。后续新会话只需要读取 `PROJECT_CONTEXT.md`、`NOW.md`、`research/research-questions.md`、本文件及相关子问题文件即可继续。
 
 ---
 
