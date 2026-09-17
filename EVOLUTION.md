@@ -707,4 +707,96 @@ Origin: `Co-developed`
 
 ---
 
-_Last updated: 2026-09-13_
+## EV-011｜从“安全模型 / 内容护栏”上移到“概率判断 × 确定控制”的运行时安全结构
+
+Date: 2026-09-17  
+Origin: `Co-developed`
+
+### Before｜此前认知
+
+模型安全护栏首先容易被理解成一组围绕 Prompt、输入输出内容、安全小模型、敏感词、越狱识别、鉴伪和安全测评构成的产品能力集合。
+
+这种视角能够解释“模型怎样发现有害内容或异常提示词”，但容易把三个不同问题混在一起：
+
+1. 风险是否被识别；
+2. 系统是否允许当前行为；
+3. 即使模型判断错误，危险行为是否仍能被强制阻断。
+
+当 AI 主要输出文本时，这三个问题的差异还不明显；当 Agent 开始读取企业数据、调用工具、写入系统、触发流程时，差异迅速放大。
+
+### Trigger｜触发
+
+一次 AI 安全交流首先触发了对“安全小参数模型 + AI 网关 + 内审 / 鉴伪 / 测评”路线的重新观察。
+
+研究者进一步提出：
+
+> **企业级模型安全护栏应该如何在概率性 AI 判断与确定性安全控制之间分工？**
+
+问题的关键不再是继续增加“安全模型能识别多少类风险”，而是：如果 Judge 本身是概率模型，企业能否把 Authority 与最终 Enforcement 同时交给这个 Judge？
+
+### Shift｜关键转折
+
+模型安全开始被拆成不同性质的责任：
+
+```text
+开放语义 / 上下文 / 意图
+        ↓
+概率性 Sensor / Judge
+        ↓
+风险类型 / 分值 / 置信度 / Evidence
+        ↓
+确定性 Policy
+        ↓
+Enforcer
+        ↓
+Audit / Feedback
+```
+
+因此形成一个待验证的架构区分：
+
+- **概率性感知 / 判断**解决“不确定环境中发生了什么风险”；
+- **确定性策略 / 授权**解决“在当前身份、任务、资源和条件下允许做什么”；
+- **运行时强制执行**解决“即使模型判断错误，哪些边界也不能被绕过”。
+
+这使安全问题从单一的 **Model Safety / Content Guardrail** 上移为更广义的 **AI / Agent Runtime Safety & Control**。
+
+### Now｜当前认知
+
+当前形成 Working Hypothesis：
+
+> **企业级 AI 安全可能需要采用“Probabilistic Detection × Deterministic Control”的混合结构：模型负责发现和解释开放风险，Policy / IAM / Gateway / Sandbox / Approval 等机制负责定义边界并强制执行。随着行为权限、不可逆性和业务影响提高，最终控制权应越来越少依赖模型自主判断。**
+
+当前候选责任链为：
+
+> **Sensor / Judge → Policy → Enforcer → Evidence → Feedback**
+
+此前形成的 PMVAEB 模型安全护栏卡，也因此不再被视为一个孤立的安全功能分类，而更适合作为这一研究问题当前的一版工程表达。
+
+该判断仍处于 Hypothesis 阶段，不进入 `JUDGMENTS.md` / `PRINCIPLES.md`。
+
+### Why It Matters｜为什么重要
+
+这个变化把安全架构从“检测能力堆叠”转向“控制权如何配置”。
+
+它也与仓库长期的 Q1 / Q2 问题发生连接：模型是否更擅长理解风险，不等于模型应该拥有最终 Authority；判断能力、授权能力和执行能力可以被拆开设计。
+
+因此 AI Security 不再只是模型外围的一组过滤功能，而可能成为 RP-004 中 Effective Agency / Authority / Accountability 的核心工程问题之一。
+
+### Impact｜影响
+
+- `research/research-questions.md`：RP-004 新增 `AQ-004-01｜Probabilistic Judgment vs. Deterministic Control`、`H-RP004-01` 以及 EQ / VQ 方向；
+- 新增 `research/problems/RP-004-01-probabilistic-judgment-deterministic-control.md`；
+- PMVAEB 六维模型安全护栏卡被定位为 AQ-004-01 的当前工程表达，而不是新建独立 Security Problem Family；
+- RP-002 仍保持当前唯一 Active Problem，RP-004 继续为 Candidate，不因一次安全交流打断当前研究主线。
+
+### Open Question｜仍未解决
+
+1. Judge / Policy / Enforcer 是否真的是跨主流产品、标准和开源实现都稳定存在的结构，还是当前阶段的一种方便抽象？
+2. Semantic Openness、Privilege Impact、Reversibility、Error Cost 是否足以决定概率判断与确定控制的分工边界？
+3. Prompt / Context / Tool / Data / Action / Output 各控制点应分别使用什么机制，哪些控制必须位于模型之外？
+4. “概率判断 + 确定控制”是否能够在真实攻击中显著降低绕过与越权风险，还是只是把风险转移到 Policy 配置和 Enforcement 实现？
+5. 随着模型可靠性提高，哪些当前确定性控制仍属于长期结构性需求，哪些会逐步弱化？
+
+---
+
+_Last updated: 2026-09-17_
