@@ -1,4 +1,4 @@
-version: "0.2"
+version: "0.4"
 updated: "2026-09-18"
 
 runner:
@@ -44,17 +44,36 @@ active_hypothesis:
     加 Tool Schema 直接承担。
   proposed_revision:
     from: "H1"
-    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014"]
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020"]
     change: >
-      跨平台证据将 H1 进一步收窄为面向模型的受治理状态变更契约：
-      ServiceNow、Salesforce、SAP 都把 Agent 可见的 action/skill schema、权限/审批约束放在既有 Flow、API、Function 或 Workflow runtime 之上；
-      但不证明必须形成独立、可移植的 Action Runtime，也不提供跨系统副作用的原子回滚。
+      v0.4 多证据域研究进一步把 H1 从“受治理的 Action Contract”提升为候选战略判断：
+      模型能力增强会逐步吸收工具选择、参数生成、部分流程编排与 glue code，
+      但 Agent Identity、Delegated Authority、Policy、State Constraint、Approval、Audit 与 Provenance
+      属于企业授权与状态治理的结构性约束，不会因为模型更聪明而自然消失。
+      因此长期稳定资产更可能是“受治理能力契约（Governed Capability Contract，候选概念）”，
+      独立 Action Runtime 仍只是条件性的工程选择。
     boundary_conditions:
-      - "高影响、需要统一提交条件/权限/审计的业务突变"
-      - "多个 Agent/应用/Workflow 需要共享与对象/状态模型绑定的稳定契约"
+      - "Governed Capability Contract 仅为候选战略概念，不得自动升级为独立 Layer / Platform / Runtime"
+      - "高影响、需要统一提交条件/权限/审计的业务状态变化更需要显式治理边界"
       - "跨系统副作用仍需 Workflow/Durable Runtime、幂等与补偿机制"
       - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
-    unresolved_gap: "Ontology-native contract 相对 Service/Command/Workflow 组合的可测收益，以及跨系统补偿/运行时的工程阈值"
+      - "若未来 Agent Identity + Policy Engine + 通用 API Schema 能覆盖高影响场景，则独立 Capability Contract 的价值应被下调"
+    unresolved_gap: "通用 API + Policy 与显式 Governed Capability Contract 在高影响、多 Agent 场景中的可测收益差异" 
+  strategic_thesis_candidate:
+    id: "ST-RP002-01"
+    maturity: "Strategic Thesis (Candidate)"
+    statement: >
+      随着模型能力增强，Business Action 的执行编排会越来越动态和自动生成，
+      但企业对真实世界改变权的治理不会被模型吸收；长期稳定资产更可能围绕
+      Agent Identity、Delegated Authority、Policy、State Constraint、Approval、Audit 与 Provenance
+      形成受治理能力契约，而是否需要独立 Action Runtime 仍取决于工程场景。
+    alternative_hypothesis: >
+      Agent Identity + Policy Engine + 通用 API / MCP Schema 已足够，
+      独立 Capability / Action Contract 最终会成为不必要的中间层。
+    falsifiable_predictions:
+      - "模型与自动生成 Workflow 越成熟，平台仍持续强化 Agent Identity、细粒度授权、审批、审计与 provenance。"
+      - "高影响生产 Agent 不会普遍获得未经显式授权和确定性策略仲裁的原始 API 自由调用权。"
+      - "若主流平台取消显式 Capability/Action 契约，仅靠通用 API Schema + Policy 仍能稳定治理高影响动作，则该 Thesis 应被收窄。"
 
 evidence_gaps:
   - id: "GAP-001"
@@ -122,17 +141,49 @@ evidence_gaps:
         按 next_action 进入高影响跨系统流程的工程验证设计，但当前没有可复核的工程实现、公开基准或可运行测试环境；
         未新增 Material Evidence，保留既有 H1 -> proposed H1.1，不制造伪进展。
 
+  - id: "GAP-004"
+    priority: "P0"
+    status: "provisionally_saturated"
+    maturity: "Strategic Thesis (Candidate)"
+    question: >
+      当模型推理、工具调用和长程执行能力显著增强后，今天的 Action/Skill/Workflow 绑定中，
+      哪些是结构性企业约束，哪些只是当前 AI 能力不足形成的过渡架构？
+      企业长期稳定资产更可能是独立 Action Runtime、受治理能力契约，还是 Policy + API 组合？
+    evidence_needed:
+      - "theory_paper"
+      - "product_implementation"
+      - "case_engineering"
+      - "counter_evidence"
+    evidence_domain_coverage:
+      theory_paper: true
+      product_implementation: true
+      case_engineering: true
+      counter_evidence: true
+    material_evidence_count: 6
+    last_result:
+      date: "2026-09-18"
+      outcome: "Pattern -> Strategic Thesis (Candidate)"
+      summary: >
+        Toolformer 提供模型可吸收工具选择/参数生成的反证；Agent 安全论文把 least privilege、
+        complete mediation、delegated authority 与可执行工具约束识别为模型外的系统安全要求；
+        Microsoft Entra Agent ID 将 Agent 身份与授权治理产品化；Engine 案例显示退款/交易/账户更新仍依赖严格测试与安全；
+        SAP Joule Studio 同时展示“执行逻辑自动生成”与“权限/策略/隔离/审计继续强化”。
+        因此当前候选战略判断是：执行编排更可能变得自动生成，治理 authority 的边界更可能长期存在。
+
 next_action:
   type: "validation"
-  gap: "GAP-003"
+  gap: "GAP-004"
   instruction: >
-    获取或构建一个高影响跨系统流程的最小双组工程对照：审批后修改订单状态并同步库存与通知；
-    比较“既有 Service/Command/Workflow + Tool Schema”与“显式 Action Contract/Registry”在权限覆盖、审计完整性、失败补偿、幂等冲突、第二调用者复用、维护工时和延迟上的差异；
-    在取得可运行实现或公开基准前保持 NO_MATERIAL_UPDATE，不再扩展平台清单。
+    不再继续扩展厂商清单。选择一个高影响跨系统业务动作，建立两条最小工程路线：
+    A = Agent Identity + Policy Engine + 通用 API/MCP Schema；
+    B = 显式 Governed Capability Contract + 相同底层 Service/Workflow。
+    比较授权表达、状态前置条件、审计/provenance、失败补偿、第二 Agent 复用、变更影响面与维护成本，
+    用结果检验 ST-RP002-01 与 Alternative Hypothesis。
 
 candidate_questions:
-  - "什么样的风险、跨系统协调和调用者复用阈值，足以证明独立 Action Registry/Runtime 优于既有 Service/Command/Workflow 组合？"
-  - "Agent 的 consent/authority/audit 治理要求应由 MCP 适配器、既有 Workflow/Policy 层还是专门的治理边界承担？"
+  - "什么样的风险、跨系统协调和调用者复用阈值，足以证明显式 Governed Capability Contract 优于通用 API + Policy？"
+  - "Agent 的 consent/authority/audit 治理要求应由 MCP 适配器、Agent Identity/Policy、既有 Workflow 还是专门的治理边界承担？"
+  - "随着模型自动生成 Workflow/代码能力增强，企业软件长期资产单位会从 Application/API 转向 Capability 吗？"
 
 research_history:
   - date: "2026-09-18"
@@ -168,6 +219,25 @@ research_history:
       当前环境未提供可复核工程实现、公开基准或可运行测试，故不新增证据、不改变 H1.1 提案，
       下一轮继续寻找最小原型或公开实现对照。
 
+  - date: "2026-09-18"
+    gap: "GAP-004"
+    result: "Pattern -> Strategic Thesis (Candidate)"
+    material_evidence: ["E-015", "E-016", "E-017", "E-018", "E-019", "E-020"]
+    note: >
+      首次按 v0.4 使用 Theory/Paper + Product/Implementation + Case/Engineering + Counter Evidence 四域研究；
+      区分了结构性治理约束与可能被模型吸收的执行编排，并提出 ST-RP002-01、Alternative Hypothesis 与可证伪预测。
+      下一步进入双路线工程验证，不继续堆产品清单。
+
+research_depth:
+  framework: "WHAT -> WHY -> STRUCTURAL/TRANSITIONAL/EMERGING -> FUTURE"
+  strategic_thesis_min_domains: 3
+  conclusion_maturity:
+    - "Observation"
+    - "Pattern"
+    - "Mechanism"
+    - "Strategic Thesis"
+    - "Architecture Principle"
+
 stop_condition:
   gap:
     - "major_claims_tested"
@@ -183,7 +253,8 @@ automation_notes:
   recommended_cadence:
     research_heartbeat: "Mon/Wed/Fri"
     weekly_synthesis: "Once per week"
-  current_phase: "ready-for-automation-pilot"
+  current_phase: "v0.4-strategic-thesis-pilot"
   note: >
-    GAP-001 与 GAP-002 已完成概念层首轮研究。v0.2 起 Research Heartbeat 只写 Evidence Ledger + RESEARCH_STATE；
-    Problem / NOW 的正式认知变化由 Weekly Synthesis 或人工审核完成。下一轮由自动化试跑 GAP-003。
+    Research Runner 已升级到 v0.4。Heartbeat 除可读 Finding 外，对战略级 Gap 必须进行 WHAT/WHY/STRUCTURAL/TRANSITIONAL/EMERGING/FUTURE 分析，
+    Strategic Thesis 至少覆盖 3 个证据域并保留 Alternative Hypothesis 与可证伪预测。
+    RP-002-02 已完成首轮 v0.4 战略研究，下一步进入 ST-RP002-01 的工程验证。
