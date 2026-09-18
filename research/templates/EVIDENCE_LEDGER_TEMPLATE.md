@@ -205,3 +205,90 @@ High / Medium / Low
 - 为什么是这一步；
 - 需要什么 Evidence / Validation；
 - 什么结果会让研究前进或停止。
+
+
+---
+
+## 11. Strategic Thesis Extension｜战略级研究扩展
+
+当当前 Gap 的目标不只是识别 Pattern，而是形成战略级判断时，追加以下结构。
+
+### Maturity Level
+
+`Observation / Pattern / Mechanism / Strategic Thesis`
+
+### WHAT｜当前发生了什么
+
+- 论文 / 理论：
+- 产品 / 实现：
+- 案例 / 工程：
+- 反证 / 替代：
+
+### WHY｜为什么会形成这个模式
+
+写清底层机制，不接受“因为厂商都这么做”。
+
+### STRUCTURAL｜结构性约束
+
+即使模型能力显著增强，仍可能存在：
+
+- 权限 / Authority
+- 责任 / Accountability
+- 审批 / Consent
+- 事务 / State Consistency
+- 审计 / Provenance
+- 其他：
+
+### TRANSITIONAL｜过渡性机制
+
+可能随模型能力、自动编程或工具成熟而弱化：
+
+- 手工编排：
+- 手工 Schema：
+- 固定工具注册：
+- 其他：
+
+### EMERGING｜AI 新增机制
+
+AI 成为行动主体后新增或显著强化：
+
+- 动态能力发现：
+- Agent Identity：
+- Delegated Authority：
+- Model-facing Contract：
+- 其他：
+
+### Alternative Hypothesis｜替代假设
+
+> 如果当前 Strategic Thesis 不成立，最有竞争力的另一种解释是什么？
+
+### Future Scenario｜未来能力情景
+
+假设 3–5 年后模型在推理、工具调用、长程执行上明显增强：
+
+- 哪些机制会被模型吸收？
+- 哪些边界仍需要确定性系统承担？
+- 企业软件资产单位会如何变化？
+
+### Falsifiable Predictions｜可证伪预测
+
+- P1：
+- P2：
+- （可选）P3：
+
+同时写清：出现什么事实会削弱或否定当前 Thesis。
+
+### Strategic Implication｜战略含义
+
+回答：
+
+> 对企业 AI 总体架构、平台产品、建设顺序和投资优先级意味着什么？
+
+### Evidence Domain Coverage
+
+- [ ] Theory / Paper
+- [ ] Product / Implementation
+- [ ] Case / Engineering
+- [ ] Counter Evidence / Alternative
+
+Strategic Thesis 至少勾选 3 个域，否则最高只能标记为 `Pattern` 或 `Mechanism`。
