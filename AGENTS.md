@@ -1,4 +1,4 @@
-# AGENTS.md｜Enterprise AI Research Runner v0.2.2
+# AGENTS.md｜Enterprise AI Research Runner v0.3
 
 本仓库不是资料收藏库，而是一个**问题驱动、假设演进、证据约束**的企业 AI 研究系统。
 
@@ -20,15 +20,22 @@ Active Problem
 → Evidence Gap
 → Targeted Research
 → Evidence Evaluation
+→ Cross-source Synthesis
+→ Research Finding
 → Proposed Hypothesis Change
 → Synthesis
 → Next Evidence Gap
 ```
 
-v0.2 将“找证据”和“改正式认知”拆成两个节奏：
+v0.3 在“找证据”和“改正式认知”的两种节奏之间，新增 **Research Finding｜研究发现** 这一人类可读层：
 
-- **Research Heartbeat**：搜证据、评估证据、更新研究状态；
-- **Weekly Synthesis**：综合多轮证据后，才更新 Problem / NOW 中的正式认知。
+- **Research Heartbeat**：围绕一个 Gap 研究多个来源，先形成跨来源判断，再用 Material Evidence 支撑该判断；
+- **Research Finding**：回答“所以呢？这对原问题和原假设意味着什么？”；
+- **Weekly Synthesis**：综合多轮 Finding 与 Evidence 后，才更新 Problem / NOW 中的正式认知。
+
+默认原则：
+
+> **结论先行、证据后置；先回答问题，再记录证据。**
 
 ---
 
@@ -40,8 +47,11 @@ v0.2 将“找证据”和“改正式认知”拆成两个节奏：
 
 - 读取当前研究状态；
 - 只推进一个 Evidence Gap；
-- 搜索 3–5 条 Material Evidence；
-- 判断 Evidence 对 Hypothesis 的作用；
+- 先回答当前 Gap，再决定哪些证据值得保留；
+- 从多个来源中识别重复模式、差异、反例和边界；
+- 形成一条人类可读的 Research Finding；
+- 最多保留 3–5 条真正支撑该 Finding 的 Material Evidence，不要求凑满；
+- 判断 Finding / Evidence 对 Hypothesis 的作用；
 - 更新 Evidence Ledger；
 - 更新 RESEARCH_STATE；
 - 提出 proposed_revision；
@@ -139,7 +149,11 @@ Principle 只能由人工审核后升级。
 
 ---
 
-## 6. 每条 Evidence 必须回答
+## 6. Evidence 是支撑材料，不是前台结论
+
+Evidence 的职责是提供可追溯、可审计的依据，不承担“替人解释研究结果”的职责。
+
+每轮首先要形成 Research Finding；Evidence Card 放在后面支撑 Finding。
 
 每条保留证据至少记录：
 
@@ -168,7 +182,7 @@ Principle 只能由人工审核后升级。
 
 ## 7. 研究纪律
 
-每轮最多保留 3–5 条**真正改变判断**的高价值证据。
+每轮最多保留 3–5 条**真正改变判断**的高价值证据，不得把“凑满 3–5 条”当成任务目标。若更少的高质量证据已经足以形成稳定 Finding，可以少于 3 条；若没有高价值增量，应明确记录 `NO_MATERIAL_UPDATE`。
 
 禁止：
 
@@ -294,8 +308,9 @@ Heartbeat 可以提出：
 至少更新：
 
 1. 当前 evidence ledger；
-2. `research/RESEARCH_STATE.yaml`；
-3. 明确 `next_action`。
+2. 在 ledger 前部写入或更新本轮 Research Finding；
+3. `research/RESEARCH_STATE.yaml`；
+4. 明确 `next_action`。
 
 如果证据暗示 Hypothesis 应改变：
 
@@ -306,17 +321,17 @@ Heartbeat 可以提出：
 
 ## 13. 当前试运行范围
 
-Research Runner v0.2 只围绕：
+Research Runner v0.3 试运行仍只围绕：
 
 `RP-002-02｜Business Action Layer`
 
 运行。
 
-在 v0.2 验证完成前，不自动切换到其他正式问题。
+在 v0.3 验证完成前，不自动切换到其他正式问题。
 
 成功标准：
 
-> 在用户不持续贡献新观点的情况下，AI 能基于外部证据持续推进 Evidence Gap，提出可审计的 Hypothesis 修正，并通过 Weekly Synthesis 将成熟变化写回正式 Problem。
+> 在用户不持续贡献新观点的情况下，AI 能基于外部证据持续推进 Evidence Gap，把多来源证据加工成用户能直接理解的 Research Finding，再提出可审计的 Hypothesis 修正，并通过 Weekly Synthesis 将成熟变化写回正式 Problem。
 
 
 ---
@@ -543,10 +558,12 @@ AI 不得：
 2. 是否读取了最新 `RESEARCH_STATE.yaml`；
 3. 是否只执行了 `next_action` 指向的一个当前任务；
 4. 是否遵守当前任务的 allow-list / deny-list；
-5. 是否只保留高价值 Evidence，或明确记录 `NO_MATERIAL_UPDATE`；
-6. 是否包含 Counter Evidence / Boundary Condition / Alternative Hypothesis（适用时）；
-7. 是否明确留下 `next_action`；
-8. 是否遵守 Language Policy。
+5. 是否先形成了人类可读的 Research Finding，而不是只堆 Evidence Card；
+6. Research Finding 是否明确回答“发现了什么、改变了什么、有什么用、还缺什么”；
+7. 是否只保留高价值 Evidence，或明确记录 `NO_MATERIAL_UPDATE`；
+8. 是否包含 Counter Evidence / Boundary Condition / Alternative Hypothesis（适用时）；
+9. 是否明确留下 `next_action`；
+10. 是否遵守 Language Policy。
 
 ### 16.2 File Scope Check
 
@@ -597,16 +614,25 @@ AI 不得：
 
 ### 16.5 最终报告固定格式
 
-自动任务最终报告至少包含：
+自动任务最终报告必须**先给用户可读结论，再给运行与 Git 信息**：
 
 ```text
+Research Finding
+- 本轮问题
+- 一句话结论
+- 跨来源关键发现
+- 对原 Hypothesis 的影响
+- 对架构 / 工程的意义
+- 当前最大未知量
+- next_action
+- Supporting Evidence IDs
+
 Run Contract
 - AGENTS version
 - Active Problem
 - Executed Gap / Task
 - Evidence Count
 - proposed_revision
-- next_action
 
 File Scope
 - Changed Files
@@ -624,12 +650,108 @@ Acceptance
 - Notes
 ```
 
-对于 Research Heartbeat，还应保留：
-
-- Material Evidence 摘要；
-- 当前最大未知量；
-- 是否形成 proposed_revision。
+Research Heartbeat 不再以“Material Evidence 摘要”作为第一输出；Evidence 只作为 Finding 的依据与附录。
 
 默认目标：
 
 > 用户只需要审核 Pull Request，而不是维护 Git 操作流程。
+
+
+---
+
+## 17. Research Finding Policy｜研究发现规则
+
+Research Runner v0.3 引入三层研究产物，解决“证据很多，但人看不懂它们对问题有什么帮助”的问题。
+
+### 17.1 三层结构
+
+每轮 Heartbeat 的产物按以下顺序组织：
+
+```text
+Level 1｜Research Finding
+给人读：这轮研究到底发现了什么？
+
+Level 2｜Cross-source Synthesis
+给人和 AI 都能读：不同论文 / 产品 / 案例之间的共同模式、差异和反例是什么？
+
+Level 3｜Evidence Ledger
+给 AI 审计和追溯：每条结论由哪些来源、事实和机制支撑？
+```
+
+用户默认只需要阅读 Level 1；需要比较时看 Level 2；只有需要追溯来源时才进入 Level 3。
+
+### 17.2 Research Finding 必须回答七个问题
+
+每个完成的 Gap，都必须在 Evidence Ledger 前部形成一个 Research Finding，建议控制在约 300–800 个中文字符，回答：
+
+1. **本轮问题是什么？**
+2. **一句话结论是什么？**
+3. **多个来源共同说明了什么？**
+4. **有没有关键差异、反例或边界？**
+5. **它改变了原来的哪个 Hypothesis / 判断？**
+6. **对企业 AI 架构、产品或工程意味着什么？**
+7. **还有什么没有搞清楚，为什么下一步值得继续？**
+
+Finding 必须引用支撑它的 Evidence ID，但不得把 Evidence Card 原样搬到前台。
+
+### 17.3 Cross-source Synthesis 优先于单条卡片
+
+当研究对象包含多个论文、产品、开源项目或案例时，优先形成比较关系，例如：
+
+| 对象 | 它提供了什么 | 真正由谁执行 | 治理 / 权限在哪里 | 对当前 Hypothesis 的意义 |
+|---|---|---|---|---|
+
+目标不是“分别总结 A、B、C”，而是回答：
+
+> **A、B、C 放在一起后，出现了什么稳定模式、关键差异和反例？**
+
+### 17.4 Heartbeat 的研究顺序
+
+禁止默认采用：
+
+```text
+搜索 → 找 3–5 条资料 → 填证据卡 → 总结
+```
+
+默认采用：
+
+```text
+当前 Gap
+→ 研究多个来源
+→ 找重复模式 / 差异 / 反例
+→ 形成 Research Finding
+→ 选择最能支撑该 Finding 的 Material Evidence
+→ 判断对 Hypothesis 的影响
+→ 留下 next_action
+```
+
+### 17.5 Finding 与 Evidence 的关系
+
+- Finding 可以被后续研究修正或推翻；
+- Evidence 必须保留可追溯来源；
+- Finding 不得超出 Evidence 能支持的范围；
+- Evidence 之间冲突时，Finding 必须明确写出冲突，而不是强行统一；
+- 单一厂商的产品设计不得直接上升为行业稳定规律；
+- Finding 是“当前最好的解释”，不是 Principle。
+
+### 17.6 Weekly Synthesis 的阅读顺序
+
+Weekly Synthesis 默认先读取：
+
+1. 本周新增 Research Findings；
+2. 对应的 Cross-source Synthesis；
+3. 只有需要核验时再深入 Evidence Detail。
+
+Weekly Synthesis 的目标不是重新读一遍所有证据卡，而是判断：
+
+> 多轮 Finding 合在一起后，Hypothesis 是否应该正式变化？
+
+### 17.7 可读性验收
+
+Research Finding 必须满足：
+
+> 用户即使不展开 Evidence Detail，也能理解“研究了什么、发现了什么、为什么重要、下一步是什么”。
+
+如果做不到，即使 Evidence 数量和格式都完整，也必须标记：
+
+`RUN_STATUS: NEEDS_REVIEW`
