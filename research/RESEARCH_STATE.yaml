@@ -43,14 +43,18 @@ active_hypothesis:
     长时运行或多调用者需要稳定契约时具有成立条件；简单低风险单系统动作可由强 Domain API/Command
     加 Tool Schema 直接承担。
   proposed_revision:
-    from: "H0"
-    triggered_by: ["E-001", "E-002", "E-003", "E-004", "E-005"]
-    change: "传统架构已覆盖核心业务语义与可靠执行；Agent 增量集中在模型控制调用的治理与安全边界。"
+    from: "H1"
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010"]
+    change: >
+      Palantir 证据将 H1 进一步收窄为 Ontology-native governed mutation contract：
+      Action 将对象、状态、提交条件、权限、Function/Rule binding、side effect 与版本化审计组合为跨应用复用的 operational contract，
+      但不证明必须形成独立 Action Runtime，也不提供跨系统副作用的原子回滚。
     boundary_conditions:
-      - "高影响、跨系统、审批密集或长时运行的业务突变"
-      - "多个 Agent/应用/Workflow 需要共享稳定业务契约"
+      - "高影响、需要统一提交条件/权限/审计的业务突变"
+      - "多个 Agent/应用/Workflow 需要共享与对象/状态模型绑定的稳定契约"
+      - "跨系统副作用仍需 Workflow/Durable Runtime、幂等与补偿机制"
       - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
-    unresolved_gap: "独立 Action Registry/Runtime 相对 Service/Command/Workflow 组合的可测收益阈值"
+    unresolved_gap: "Ontology-native contract 相对 Service/Command/Workflow 组合的可测收益，以及跨系统补偿/运行时的工程阈值"
 
 evidence_gaps:
   - id: "GAP-001"
@@ -81,7 +85,7 @@ evidence_gaps:
 
   - id: "GAP-002"
     priority: "P0"
-    status: "active"
+    status: "provisionally_saturated"
     question: >
       Palantir Ontology Actions / Functions 与传统 Application Service / Command / Workflow
       的实质差异是什么？为什么 Action 被放到 Ontology / operational layer 中？
@@ -90,12 +94,18 @@ evidence_gaps:
       - "official_docs"
       - "mechanism_comparison"
       - "counter_evidence"
-    material_evidence_count: 0
-    last_result: null
+    material_evidence_count: 5
+    last_result:
+      date: "2026-09-18"
+      outcome: "H1 -> proposed H1.1"
+      summary: >
+        Palantir 官方文档显示 Ontology Action 是绑定对象/状态的单事务 mutation contract，
+        由提交条件、权限/读写授权、Rule/Function binding、side effects 与版本化 Action Log/metrics 共同形成跨应用复用的 operational surface；
+        但 Function 仍是执行绑定，Action revert 不回滚 webhook/notification，不能把该机制解释为独立 Agent Control Plane 或跨系统原子 Runtime。
 
   - id: "GAP-003"
     priority: "P1"
-    status: "queued"
+    status: "active"
     question: >
       ServiceNow、Salesforce、SAP 等企业平台如何让 Agent 执行受治理的业务状态修改？
       这些产品是否存在稳定业务动作契约、权限治理、审批、事务、补偿、审计和 runtime binding？
@@ -109,10 +119,11 @@ evidence_gaps:
 
 next_action:
   type: "research"
-  gap: "GAP-002"
+  gap: "GAP-003"
   instruction: >
-    对照 Palantir Ontology Actions / Functions 与传统 Application Service / Command / Workflow，
-    只保留真正能判断 Operational/Ontology 层是否提供新增稳定机制的 3–5 条证据，并主动寻找反证。
+    对照 ServiceNow、Salesforce、SAP 等企业平台如何让 Agent 执行受治理的业务状态修改，
+    只保留 3–5 条真正能判断稳定业务动作契约、权限/审批、事务/补偿、审计和 runtime binding 是否跨平台重复出现的证据，
+    优先使用官方产品文档、开发者文档或公开实现，并主动寻找不需要独立 Action Layer 的反证。
 
 candidate_questions:
   - "什么样的风险、跨系统协调和调用者复用阈值，足以证明独立 Action Registry/Runtime 优于既有 Service/Command/Workflow 组合？"
@@ -127,6 +138,15 @@ research_history:
       完成传统架构同构、model-facing governance requirements 增量及直接 Tool/API 反证的首轮研究；
       GAP-001 概念层证据暂时充分，但工程阈值仍未知，因此状态调整为 provisionally_saturated；
       下一轮转 GAP-002。
+  - date: "2026-09-18"
+    gap: "GAP-002"
+    result: "H1 -> proposed H1.1"
+    material_evidence: ["E-006", "E-007", "E-008", "E-009", "E-010"]
+    note: >
+      Palantir 官方 Action/Function 文档支持 Ontology-native governed mutation contract：
+      对象/状态绑定、提交条件、权限、函数执行绑定、side effects、审计和 metrics 是可复用机制；
+      但外部 side effects 不随 object revert 回滚，且 Action Log 不是所有写路径的通用审计，因此 GAP-002 调整为 provisionally_saturated，
+      正式 H1.1 仍待 Weekly Synthesis，下一轮转 GAP-003。
 
 stop_condition:
   gap:
@@ -145,5 +165,5 @@ automation_notes:
     weekly_synthesis: "Once per week"
   current_phase: "ready-for-automation-pilot"
   note: >
-    第一轮手工 GAP-001 已完成。v0.2 起 Research Heartbeat 只写 Evidence Ledger + RESEARCH_STATE；
-    Problem / NOW 的正式认知变化由 Weekly Synthesis 或人工审核完成。下一轮由自动化试跑 GAP-002。
+    GAP-001 与 GAP-002 已完成概念层首轮研究。v0.2 起 Research Heartbeat 只写 Evidence Ledger + RESEARCH_STATE；
+    Problem / NOW 的正式认知变化由 Weekly Synthesis 或人工审核完成。下一轮由自动化试跑 GAP-003。
