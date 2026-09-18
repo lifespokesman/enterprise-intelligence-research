@@ -757,6 +757,31 @@ Audit / Evidence
 
 ---
 
+## 15A. GAP-001 Evidence Update｜H0 → H1
+
+本轮证据显示，Business Action 的核心职责并非全部由 AI 时代新创造：
+
+- DDD Application/Domain Service 已承担业务操作边界、领域过程契约、事务协调与领域规则委托；
+- CQRS Command 已把业务意图表达为高于字段更新的写操作，并由 Handler 调用领域模型；
+- BPMN 与 Durable Workflow 已承担流程语义、状态持久化、检查点、重试与恢复；
+- Agent 时代显著强化的是模型控制调用带来的授权范围发现、Typed Schema、人工确认/权限、显式状态句柄、非可信元数据、输入输出校验、限流和审计控制面。
+
+### H1｜Conditional Action Layer / Agent Control Plane
+
+> **Business Action 更准确地应被视为一种有条件的、跨调用者的受治理业务变更契约，而不是在所有企业系统中都必须新增的独立领域层。**
+
+当动作具有高影响、跨系统、审批密集、长时运行或需要在多个 Agent/应用/Workflow 之间保持稳定语义时，独立 Action Registry/Control Plane 可能值得存在，用来统一绑定、权限/确认、审计和运行时策略。对于低风险、单系统、可逆的 CRUD 类动作，强 Domain API 或 Command 加 Typed Tool Schema 仍可能足够；新增 Action Layer 可能只是重复包装。
+
+### H0 → H1 变化记录
+
+- 旧假设：Agent 与 IT 之间可能需要独立 Business Action 抽象与 Action Runtime；
+- 触发证据：GAP-001 的 E-001 至 E-005；
+- 变化原因：传统架构已覆盖大部分业务语义与可靠执行机制，Agent 的新增量集中在模型控制调用的治理与安全边界；
+- 新边界：不能把独立 Action Layer 作为普遍架构要求，必须证明跨系统稳定性、高影响治理或多调用者复用带来的增量价值；
+- 尚未解决：什么样的风险/协调阈值使独立 Action Registry/Runtime 相比既有 Service/Command/Workflow 组合产生可测收益。
+
+本轮不修改 `PRINCIPLES.md`，也不把 H1 升级为 Architecture Principle。
+
 ## 16. Candidate Architecture Principle｜暂不升级
 
 当前最接近原则的表达是：
@@ -795,10 +820,12 @@ Audit / Evidence
 5. 分离 Action Contract 与 Action Runtime；
 6. 初步划分 Action / Function / Workflow / Agent Planning；
 7. 提出 Action 粒度、Read / Write Path 和最小验证假设；
-8. 暂不把任何判断升级为正式 Principle。
+8. 通过 GAP-001 对照 DDD、CQRS、BPMN、Durable Workflow 与 MCP，形成 H0 → H1；
+9. 明确独立 Action Layer 的适用边界，以及直接 Domain API + Tool Schema 的反例条件；
+10. 暂不把任何判断升级为正式 Principle。
 
 下次继续本问题时，优先从：
 
 > **对照 Palantir / ServiceNow / Salesforce / SAP 与 DDD / CQRS / Workflow 等传统架构，验证“Business Action Layer”究竟是 AI 时代新增层，还是已有企业应用能力在 Agent 时代的重新显性化与资产化。**
 
-开始。
+开始；下一轮具体执行 `GAP-002`，核验 Palantir Ontology Actions / Functions 是否提供超出传统 Service / Command / Workflow 的稳定机制。
