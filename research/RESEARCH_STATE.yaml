@@ -1,0 +1,104 @@
+version: "0.1"
+updated: "2026-09-18"
+
+runner:
+  name: "Research Runner"
+  mode: "single-active-problem"
+  scope: "RP-002-02"
+  rule_source: "AGENTS.md"
+
+active_problem:
+  id: "RP-002-02"
+  title: "Business Action Layer"
+  path: "research/problems/RP-002-02-business-action-layer.md"
+  status: "exploring"
+
+active_hypothesis:
+  id: "H-RP002-06"
+  version: "H0"
+  status: "initial"
+  statement: >
+    企业 AI 要从理解企业世界进入运行企业世界，可能需要在 Agent 与现有 IT 系统之间
+    建立独立的 Business Action 抽象，使高影响业务状态变化不直接耦合底层 API、系统和数据库；
+    Action 应表达业务意图、状态迁移、权限、风险、审批、预期效果和审计契约，
+    Action Runtime 负责安全可靠地落实执行。
+  proposed_revision: null
+
+evidence_gaps:
+  - id: "GAP-001"
+    priority: "P0"
+    status: "active"
+    question: >
+      DDD Application Service、Domain Service、CQRS Command、Workflow/BPM 等传统企业架构，
+      是否已经承担了 Business Action 的核心职责？
+      如果是，Agent 时代真正新增或显著强化的机制是什么？
+    evidence_needed:
+      - "architecture_pattern"
+      - "implementation"
+      - "counter_evidence"
+      - "boundary_condition"
+    completion_criteria:
+      - "至少 2 个独立高质量来源"
+      - "至少 1 个 Primary / Implementation 级来源"
+      - "能明确指出 Business Action 与既有模式的同构部分和新增部分"
+      - "至少找到 1 个反例或替代解释"
+    material_evidence_count: 0
+    last_result: null
+
+  - id: "GAP-002"
+    priority: "P0"
+    status: "queued"
+    question: >
+      Palantir Ontology Actions / Functions 与传统 Application Service / Command / Workflow
+      的实质差异是什么？为什么 Action 被放到 Ontology / operational layer 中？
+    evidence_needed:
+      - "product_fact"
+      - "official_docs"
+      - "mechanism_comparison"
+      - "counter_evidence"
+    material_evidence_count: 0
+    last_result: null
+
+  - id: "GAP-003"
+    priority: "P1"
+    status: "queued"
+    question: >
+      ServiceNow、Salesforce、SAP 等企业平台如何让 Agent 执行受治理的业务状态修改？
+      这些产品是否存在稳定业务动作契约、权限治理、审批、事务、补偿、审计和 runtime binding？
+    evidence_needed:
+      - "product_fact"
+      - "industry_case"
+      - "implementation"
+      - "counter_evidence"
+    material_evidence_count: 0
+    last_result: null
+
+next_action:
+  type: "research"
+  gap: "GAP-001"
+  instruction: >
+    研究 DDD Application Service、Domain Service、CQRS Command、Workflow/BPM 与 Business Action
+    的关系，只保留真正会改变 H-RP002-06 判断的 3–5 条证据，并更新 evidence ledger 与本文件。
+
+candidate_questions: []
+
+research_history: []
+
+stop_condition:
+  gap:
+    - "major_claims_tested"
+    - "counter_evidence_found"
+    - "boundary_conditions_known"
+    - "no_material_update_twice"
+  problem:
+    - "major_gaps_resolved"
+    - "hypothesis_revised_or_rejected"
+    - "engineering_hypothesis_defined"
+
+automation_notes:
+  recommended_cadence:
+    research_heartbeat: "Mon/Wed/Fri"
+    weekly_synthesis: "Once per week"
+  current_phase: "manual-first-run"
+  note: >
+    第一轮先手工运行 GAP-001，确认研究质量后再开启周期性自动任务。
