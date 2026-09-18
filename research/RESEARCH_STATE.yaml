@@ -117,17 +117,18 @@ evidence_gaps:
     material_evidence_count: 4
     last_result:
       date: "2026-09-18"
-      outcome: "H1 -> proposed H1.1"
+      outcome: "NO_MATERIAL_UPDATE"
       summary: >
-        ServiceNow、Salesforce、SAP 官方文档均显示面向 Agent 的 action/skill schema 与既有 Flow/API/Workflow、权限和审批 runtime 绑定；
-        三个平台没有共同的独立 Action Runtime 或跨系统原子补偿证据，工程收益阈值仍待验证。
+        按 next_action 进入高影响跨系统流程的工程验证设计，但当前没有可复核的工程实现、公开基准或可运行测试环境；
+        未新增 Material Evidence，保留既有 H1 -> proposed H1.1，不制造伪进展。
 
 next_action:
   type: "validation"
   gap: "GAP-003"
   instruction: >
-    选择一个高影响跨系统流程，比较“既有 Service/Command/Workflow + Tool Schema”与“显式 Action Contract/Registry”在权限覆盖、审计完整性、失败补偿、调用者复用和维护成本上的可测差异；
-    在没有工程验证材料时明确记录 NO_MATERIAL_UPDATE，不再扩展平台清单。
+    获取或构建一个高影响跨系统流程的最小双组工程对照：审批后修改订单状态并同步库存与通知；
+    比较“既有 Service/Command/Workflow + Tool Schema”与“显式 Action Contract/Registry”在权限覆盖、审计完整性、失败补偿、幂等冲突、第二调用者复用、维护工时和延迟上的差异；
+    在取得可运行实现或公开基准前保持 NO_MATERIAL_UPDATE，不再扩展平台清单。
 
 candidate_questions:
   - "什么样的风险、跨系统协调和调用者复用阈值，足以证明独立 Action Registry/Runtime 优于既有 Service/Command/Workflow 组合？"
@@ -158,6 +159,14 @@ research_history:
     note: >
       ServiceNow、Salesforce、SAP 的官方产品/开发文档重复显示面向 Agent 的 action/skill schema、权限/审批与既有 Flow/API/Workflow runtime 绑定；
       反证显示事务、补偿和审计仍是平台特定能力，未证明通用独立 Action Runtime。GAP-003 概念层暂时充分，转入工程验证。
+  - date: "2026-09-18"
+    gap: "GAP-003"
+    result: "NO_MATERIAL_UPDATE"
+    material_evidence: []
+    note: >
+      已登记审批后订单状态变更、库存同步与通知的双组工程验证设计及指标；
+      当前环境未提供可复核工程实现、公开基准或可运行测试，故不新增证据、不改变 H1.1 提案，
+      下一轮继续寻找最小原型或公开实现对照。
 
 stop_condition:
   gap:
