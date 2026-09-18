@@ -1,4 +1,4 @@
-# AGENTS.md｜Enterprise AI Research Runner v0.2
+# AGENTS.md｜Enterprise AI Research Runner v0.2.1
 
 本仓库不是资料收藏库，而是一个**问题驱动、假设演进、证据约束**的企业 AI 研究系统。
 
@@ -317,3 +317,76 @@ Research Runner v0.2 只围绕：
 成功标准：
 
 > 在用户不持续贡献新观点的情况下，AI 能基于外部证据持续推进 Evidence Gap，提出可审计的 Hypothesis 修正，并通过 Weekly Synthesis 将成熟变化写回正式 Problem。
+
+
+---
+
+## 14. Language Policy｜语言规则
+
+本仓库面向中文研究与长期认知沉淀。
+
+除非任务明确要求其他语言，否则所有 Research Heartbeat、Weekly Synthesis、Evidence Ledger 和正式研究认知输出，默认使用中文完成。
+
+### 14.1 必须使用中文的内容
+
+以下内容默认使用中文：
+
+- Research Heartbeat Report；
+- Evidence Ledger 中的研究分析；
+- Observed Fact；
+- Mechanism；
+- Why it matters；
+- Boundary / Limitation；
+- Research implication；
+- Hypothesis 影响判断；
+- proposed_revision；
+- candidate_questions；
+- next_action；
+- research_history 中的自然语言说明；
+- Weekly Synthesis；
+- Problem 文件中的正式认知更新；
+- PR 摘要中的研究结论与认知变化说明。
+
+### 14.2 保留原文的内容
+
+以下内容保留原文，不强制翻译：
+
+- 产品名、框架名、协议名、标准名；
+- 官方技术术语，例如 Application Service、Command、Ontology Action、Submission Criteria；
+- 论文标题、官方文档标题；
+- URL；
+- YAML key；
+- Evidence ID、Gap ID、Hypothesis ID；
+- branch、commit、PR title 中的技术标识；
+- 必须精确引用的字段名、接口名、API 名称。
+
+### 14.3 英文来源处理规则
+
+对于英文来源：
+
+1. 不生成完整英文研究稿后再翻译；
+2. 直接以中文完成研究分析和仓库沉淀；
+3. 证据事实必须以中文准确转述；
+4. 必要的英文术语首次出现时可使用：
+   `中文解释（Original Term）`；
+5. 不为了中文化而改变官方概念含义；
+6. 不大段翻译原文，只保留必要的原始术语和引用信息。
+
+默认原则：
+
+> **Source 保持原貌，Research Thinking 与 Knowledge Asset 使用中文。**
+
+### 14.4 自动化任务语言验收
+
+每次 Research Heartbeat / Weekly Synthesis 结束前必须检查：
+
+- 新增研究正文是否以中文为主；
+- proposed_revision 是否为中文；
+- next_action 是否为中文；
+- candidate_questions 是否为中文；
+- 最终报告是否为中文；
+- 是否避免先写完整英文版本再二次翻译。
+
+若语言规则未满足，任务不得标记为完整通过，应标记：
+
+`RUN_STATUS: NEEDS_REVIEW`
