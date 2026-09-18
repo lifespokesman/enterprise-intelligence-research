@@ -50,7 +50,7 @@ v0.3 在“找证据”和“改正式认知”的两种节奏之间，新增 **
 - 先回答当前 Gap，再决定哪些证据值得保留；
 - 从多个来源中识别重复模式、差异、反例和边界；
 - 形成一条人类可读的 Research Finding；
-- 最多保留 3–5 条真正支撑该 Finding 的 Material Evidence，不要求凑满；
+- 普通 Heartbeat 通常保留 3–5 条真正支撑该 Finding 的 Material Evidence；战略级 Gap 为覆盖多证据域可保留 4–6 条，但都必须真正影响判断；
 - 判断 Finding / Evidence 对 Hypothesis 的作用；
 - 更新 Evidence Ledger；
 - 更新 RESEARCH_STATE；
@@ -182,7 +182,7 @@ Evidence 的职责是提供可追溯、可审计的依据，不承担“替人�
 
 ## 7. 研究纪律
 
-每轮最多保留 3–5 条**真正改变判断**的高价值证据，不得把“凑满 3–5 条”当成任务目标。若更少的高质量证据已经足以形成稳定 Finding，可以少于 3 条；若没有高价值增量，应明确记录 `NO_MATERIAL_UPDATE`。
+普通研究轮次通常保留 3–5 条**真正改变判断**的高价值证据；战略级 Gap 为满足多证据域覆盖可保留 4–6 条。数量不是 KPI：若更少的高质量证据已足够形成稳定 Finding，可以更少；若没有高价值增量，应明确记录 `NO_MATERIAL_UPDATE`。
 
 禁止：
 
