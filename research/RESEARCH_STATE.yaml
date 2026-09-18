@@ -1,4 +1,4 @@
-version: "0.1"
+version: "0.2"
 updated: "2026-09-18"
 
 runner:
@@ -6,6 +6,23 @@ runner:
   mode: "single-active-problem"
   scope: "RP-002-02"
   rule_source: "AGENTS.md"
+  write_policy:
+    heartbeat:
+      allow:
+        - "research/evidence/*.md"
+        - "research/RESEARCH_STATE.yaml"
+      deny:
+        - "research/problems/*.md"
+        - "NOW.md"
+        - "JUDGMENTS.md"
+        - "PRINCIPLES.md"
+    weekly_synthesis:
+      allow:
+        - "research/RESEARCH_STATE.yaml"
+        - "research/problems/*.md"
+        - "NOW.md"
+      deny:
+        - "PRINCIPLES.md"
 
 active_problem:
   id: "RP-002-02"
@@ -15,19 +32,30 @@ active_problem:
 
 active_hypothesis:
   id: "H-RP002-06"
-  version: "H0"
-  status: "initial"
+  version: "H1"
+  status: "revised"
   statement: >
-    企业 AI 要从理解企业世界进入运行企业世界，可能需要在 Agent 与现有 IT 系统之间
-    建立独立的 Business Action 抽象，使高影响业务状态变化不直接耦合底层 API、系统和数据库；
-    Action 应表达业务意图、状态迁移、权限、风险、审批、预期效果和审计契约，
-    Action Runtime 负责安全可靠地落实执行。
-  proposed_revision: null
+    DDD Application/Domain Service、CQRS Command 与 Workflow/Durable Runtime 已经承担
+    Business Action 的大部分业务语义和可靠执行职责；Agent 时代新增或显著强化的是围绕
+    模型控制调用的一组治理与安全要求，包括授权范围发现、Typed Schema、权限/人工确认、显式状态句柄、
+    非可信元数据处理、输入输出校验、限流和审计。当前证据只能支持存在一个 model-facing governance boundary，
+    不能证明必须形成独立 Agent Control Plane。独立 Business Action Layer 只在高影响、跨系统、审批密集、
+    长时运行或多调用者需要稳定契约时具有成立条件；简单低风险单系统动作可由强 Domain API/Command
+    加 Tool Schema 直接承担。
+  proposed_revision:
+    from: "H0"
+    triggered_by: ["E-001", "E-002", "E-003", "E-004", "E-005"]
+    change: "传统架构已覆盖核心业务语义与可靠执行；Agent 增量集中在模型控制调用的治理与安全边界。"
+    boundary_conditions:
+      - "高影响、跨系统、审批密集或长时运行的业务突变"
+      - "多个 Agent/应用/Workflow 需要共享稳定业务契约"
+      - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
+    unresolved_gap: "独立 Action Registry/Runtime 相对 Service/Command/Workflow 组合的可测收益阈值"
 
 evidence_gaps:
   - id: "GAP-001"
     priority: "P0"
-    status: "active"
+    status: "provisionally_saturated"
     question: >
       DDD Application Service、Domain Service、CQRS Command、Workflow/BPM 等传统企业架构，
       是否已经承担了 Business Action 的核心职责？
@@ -42,12 +70,18 @@ evidence_gaps:
       - "至少 1 个 Primary / Implementation 级来源"
       - "能明确指出 Business Action 与既有模式的同构部分和新增部分"
       - "至少找到 1 个反例或替代解释"
-    material_evidence_count: 0
-    last_result: null
+    material_evidence_count: 5
+    last_result:
+      date: "2026-09-18"
+      outcome: "H0 -> H1"
+      summary: >
+        DDD/Application/Domain Service、CQRS Command 与 BPMN/Durable Workflow 已覆盖大部分
+        业务语义、命令边界和可靠执行；MCP 证据显示 Agent 时代强化了模型控制调用的发现、
+        schema、确认、授权、校验和审计控制面；简单低风险动作仍可直接使用 Domain API/Tool。
 
   - id: "GAP-002"
     priority: "P0"
-    status: "queued"
+    status: "active"
     question: >
       Palantir Ontology Actions / Functions 与传统 Application Service / Command / Workflow
       的实质差异是什么？为什么 Action 被放到 Ontology / operational layer 中？
@@ -75,14 +109,24 @@ evidence_gaps:
 
 next_action:
   type: "research"
-  gap: "GAP-001"
+  gap: "GAP-002"
   instruction: >
-    研究 DDD Application Service、Domain Service、CQRS Command、Workflow/BPM 与 Business Action
-    的关系，只保留真正会改变 H-RP002-06 判断的 3–5 条证据，并更新 evidence ledger 与本文件。
+    对照 Palantir Ontology Actions / Functions 与传统 Application Service / Command / Workflow，
+    只保留真正能判断 Operational/Ontology 层是否提供新增稳定机制的 3–5 条证据，并主动寻找反证。
 
-candidate_questions: []
+candidate_questions:
+  - "什么样的风险、跨系统协调和调用者复用阈值，足以证明独立 Action Registry/Runtime 优于既有 Service/Command/Workflow 组合？"
+  - "Agent 的 consent/authority/audit 治理要求应由 MCP 适配器、既有 Workflow/Policy 层还是专门的治理边界承担？"
 
-research_history: []
+research_history:
+  - date: "2026-09-18"
+    gap: "GAP-001"
+    result: "H0 -> H1"
+    material_evidence: ["E-001", "E-002", "E-003", "E-004", "E-005"]
+    note: >
+      完成传统架构同构、model-facing governance requirements 增量及直接 Tool/API 反证的首轮研究；
+      GAP-001 概念层证据暂时充分，但工程阈值仍未知，因此状态调整为 provisionally_saturated；
+      下一轮转 GAP-002。
 
 stop_condition:
   gap:
@@ -99,6 +143,7 @@ automation_notes:
   recommended_cadence:
     research_heartbeat: "Mon/Wed/Fri"
     weekly_synthesis: "Once per week"
-  current_phase: "manual-first-run"
+  current_phase: "ready-for-automation-pilot"
   note: >
-    第一轮先手工运行 GAP-001，确认研究质量后再开启周期性自动任务。
+    第一轮手工 GAP-001 已完成。v0.2 起 Research Heartbeat 只写 Evidence Ledger + RESEARCH_STATE；
+    Problem / NOW 的正式认知变化由 Weekly Synthesis 或人工审核完成。下一轮由自动化试跑 GAP-002。

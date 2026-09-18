@@ -1,4 +1,4 @@
-# AGENTS.md｜Enterprise AI Research Runner v0.1
+# AGENTS.md｜Enterprise AI Research Runner v0.2
 
 本仓库不是资料收藏库，而是一个**问题驱动、假设演进、证据约束**的企业 AI 研究系统。
 
@@ -8,11 +8,11 @@ Codex / 自动化任务在本仓库执行研究时，必须遵循以下规则。
 
 ## 1. 研究目标
 
-每次自动研究的目标不是“搜更多资料”，而是：
+自动研究的目标不是“搜更多资料”，而是：
 
-> **推进当前 Active Problem 的一个最高优先级 Evidence Gap，并判断新证据是否改变当前 Hypothesis。**
+> **推进当前 Active Problem 的一个最高优先级 Evidence Gap，并让证据持续改变或约束 Hypothesis。**
 
-研究闭环：
+主闭环：
 
 ```text
 Active Problem
@@ -20,13 +20,76 @@ Active Problem
 → Evidence Gap
 → Targeted Research
 → Evidence Evaluation
-→ Hypothesis Update
+→ Proposed Hypothesis Change
+→ Synthesis
 → Next Evidence Gap
 ```
 
+v0.2 将“找证据”和“改正式认知”拆成两个节奏：
+
+- **Research Heartbeat**：搜证据、评估证据、更新研究状态；
+- **Weekly Synthesis**：综合多轮证据后，才更新 Problem / NOW 中的正式认知。
+
 ---
 
-## 2. 每轮开始前必须读取
+## 2. 两类自动任务及写权限
+
+### 2.1 Research Heartbeat
+
+职责：
+
+- 读取当前研究状态；
+- 只推进一个 Evidence Gap；
+- 搜索 3–5 条 Material Evidence；
+- 判断 Evidence 对 Hypothesis 的作用；
+- 更新 Evidence Ledger；
+- 更新 RESEARCH_STATE；
+- 提出 proposed_revision；
+- 留下 next_action。
+
+**Heartbeat 允许写：**
+
+- `research/evidence/*.md`
+- `research/RESEARCH_STATE.yaml`
+
+**Heartbeat 禁止写：**
+
+- `research/problems/*.md`
+- `NOW.md`
+- `JUDGMENTS.md`
+- `PRINCIPLES.md`
+
+Heartbeat 即使发现 H0/H1 需要变化，也只能把变化写入：
+
+`active_hypothesis.proposed_revision`
+
+不得直接把 Problem 主文件改成新的正式版本。
+
+### 2.2 Weekly Synthesis
+
+职责：
+
+- 读取一周内新增 Evidence；
+- 判断 Hypothesis 是否应保持、修正、拆分或否定；
+- 消除 Problem、State、Evidence 之间的冲突；
+- 确定下一 Evidence Gap。
+
+**Weekly Synthesis 允许写：**
+
+- `research/RESEARCH_STATE.yaml`
+- 当前 `research/problems/*.md`
+- `NOW.md`
+- 必要时整理 Evidence Ledger 的 Current Judgment
+
+**Weekly Synthesis 禁止写：**
+
+- `PRINCIPLES.md`
+
+Principle 只能由人工审核后升级。
+
+---
+
+## 3. 每轮开始前必须读取
 
 按顺序读取：
 
@@ -34,29 +97,31 @@ Active Problem
 2. `research/RESEARCH_STATE.yaml`
 3. 当前 active problem 文件
 4. 对应 evidence ledger
-5. 必要时再读取 `research/RESEARCH_LOOP.md`
+5. 必要时读取 `research/RESEARCH_LOOP.md`
 
-如果这些文件之间存在冲突，以 `research/RESEARCH_STATE.yaml` 的当前运行状态为准，并在本轮结果中记录冲突。
+如果文件之间存在冲突：
+
+- Heartbeat 以 `RESEARCH_STATE.yaml` 的运行状态为准，并记录冲突；
+- Weekly Synthesis 负责决定是否消除冲突并更新正式 Problem / NOW。
 
 ---
 
-## 3. 每轮只推进一个 Evidence Gap
+## 4. 每次 Heartbeat 只推进一个 Evidence Gap
 
 只研究：
 
-- `status: active`
-- 且优先级最高
-- 且由 `next_action` 指向
+- 由 `next_action` 指向；
+- 且 `status: active` 的 Evidence Gap。
 
-的 Evidence Gap。
+若 next_action 指向 `queued` Gap，Heartbeat 可在本轮开始时将其切换为 `active`。
 
 禁止为了“完整”同时扩展多个主题。
 
-如果当前 Gap 太大，允许拆成更小的 research task，但不要直接创建新的正式 Research Problem。
+如果当前 Gap 太大，允许拆成更小的 research task，但不得直接创建新的正式 Research Problem。
 
 ---
 
-## 4. 证据搜索优先级
+## 5. 证据搜索优先级
 
 优先顺序：
 
@@ -74,7 +139,7 @@ Active Problem
 
 ---
 
-## 5. 每条 Evidence 必须回答
+## 6. 每条 Evidence 必须回答
 
 每条保留证据至少记录：
 
@@ -101,20 +166,20 @@ Active Problem
 
 ---
 
-## 6. 研究纪律
+## 7. 研究纪律
 
 每轮最多保留 3–5 条**真正改变判断**的高价值证据。
 
 禁止：
 
-- 批量堆论文
-- 批量堆产品链接
-- 为支持既有观点而选择性找材料
-- 把 Product Claim 写成 Architecture Fact
-- 把 Working Hypothesis 升级为 Principle
-- 自动修改 `PRINCIPLES.md`
-- 自动创建新的正式 Research Problem
-- 因出现新名词就扩展研究范围
+- 批量堆论文；
+- 批量堆产品链接；
+- 为支持既有观点而选择性找材料；
+- 把 Product Claim 写成 Architecture Fact；
+- 因为发现一组需求就立即创造新的“Layer / Plane / Platform”并把它当成既定架构；
+- 自动修改 `PRINCIPLES.md`；
+- 自动创建新的正式 Research Problem；
+- 因出现新名词就扩展研究范围。
 
 必须主动寻找：
 
@@ -123,19 +188,39 @@ Active Problem
 - Boundary Condition
 - Existing Architecture Pattern
 
+### 新概念命名纪律
+
+如果证据只证明“一组需求或控制机制存在”，只能写成：
+
+- candidate mechanism
+- governance requirement
+- control requirement
+- possible boundary
+
+除非有多源产品 / 工程实现证据证明其稳定独立存在，否则不得直接升级成：
+
+- 独立 Layer
+- Control Plane
+- Platform
+- Runtime
+
 ---
 
-## 7. Hypothesis 更新规则
+## 8. Hypothesis 更新规则
 
-当前假设必须保留版本演进。
-
-允许：
+Hypothesis 必须保留版本演进：
 
 ```text
 H0 → H1 → H2
 ```
 
-每次变化必须写清：
+Heartbeat 可以提出：
+
+`proposed_revision`
+
+但正式的 H0 → H1 / H1 → H2 版本变化，由 Weekly Synthesis 或人工审核完成。
+
+每次正式变化必须写清：
 
 - 旧假设
 - 触发变化的 Evidence
@@ -144,13 +229,27 @@ H0 → H1 → H2
 - 新增边界条件
 - 尚未解决的 Gap
 
-不允许为了“有进展”而强行修改假设。
-
 如果证据不足，保持原状态。
 
 ---
 
-## 8. 新问题处理
+## 9. Evidence Gap 状态
+
+使用以下状态：
+
+- `queued`：待研究；
+- `active`：当前正在研究；
+- `provisionally_saturated`：概念层证据已足够，暂时停止继续搜，但仍可能被后续工程证据重新打开；
+- `saturated`：多源理论 / 产品 / 工程证据已较充分；
+- `closed`：问题已被验证、否定或转入 Engineering Validation。
+
+对只有理论、标准、产品文档支撑、但尚缺工程验证的 Gap，优先使用：
+
+`provisionally_saturated`
+
+---
+
+## 10. 新问题处理
 
 研究中发现的新问题只进入：
 
@@ -168,16 +267,21 @@ H0 → H1 → H2
 
 ---
 
-## 9. 停止条件
+## 11. 停止条件
 
-某个 Evidence Gap 满足以下任一条件时可设为 `saturated` 或 `closed`：
+某个 Evidence Gap 可设为 `provisionally_saturated`：
 
 1. 已有 2–3 个独立来源，且至少 1 个 Primary / Implementation 级证据；
 2. 已同时获得支持证据、限制条件和至少一种反例 / 替代解释；
-3. 连续两轮没有 Material Update；
-4. 已足以形成下一步 Engineering Hypothesis。
+3. 已能解释主要概念边界，但工程阈值仍未知。
 
-没有高价值增量时，明确记录：
+可进一步设为 `saturated` / `closed`：
+
+- 已有真实工程 / 产品实现对照；
+- 或已经形成可验证 Engineering Hypothesis；
+- 或连续两轮 `NO_MATERIAL_UPDATE` 且无关键未知量。
+
+没有高价值增量时明确记录：
 
 `NO_MATERIAL_UPDATE`
 
@@ -185,37 +289,31 @@ H0 → H1 → H2
 
 ---
 
-## 10. 每轮结束必须更新
+## 12. 每轮 Heartbeat 结束必须更新
 
 至少更新：
 
-1. 当前 evidence ledger
-2. `research/RESEARCH_STATE.yaml`
+1. 当前 evidence ledger；
+2. `research/RESEARCH_STATE.yaml`；
+3. 明确 `next_action`。
 
-如确有认知变化，再更新当前 active problem 中的：
+如果证据暗示 Hypothesis 应改变：
 
-- Hypothesis Evolution
-- Current Judgment
-- Open Gaps
-
-最后必须留下明确的：
-
-`next_action`
-
-使下一次自动任务无需人工重新解释背景即可继续。
+- 写入 `proposed_revision`；
+- 不直接改 Problem 主文件。
 
 ---
 
-## 11. 当前试运行范围
+## 13. 当前试运行范围
 
-Research Runner v0.1 只围绕：
+Research Runner v0.2 只围绕：
 
 `RP-002-02｜Business Action Layer`
 
 运行。
 
-在 v0.1 验证完成前，不自动切换到其他正式问题。
+在 v0.2 验证完成前，不自动切换到其他正式问题。
 
 成功标准：
 
-> 在用户不持续贡献新观点的情况下，AI 能基于外部证据推动 H-RP002-06 从 H0 演化为更成熟的 H1 / H2，并主动识别下一 Evidence Gap。
+> 在用户不持续贡献新观点的情况下，AI 能基于外部证据持续推进 Evidence Gap，提出可审计的 Hypothesis 修正，并通过 Weekly Synthesis 将成熟变化写回正式 Problem。
