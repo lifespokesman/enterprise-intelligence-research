@@ -1,4 +1,4 @@
-# AGENTS.md｜Enterprise AI Research Runner v0.3
+# AGENTS.md｜Enterprise AI Research Runner v0.4
 
 本仓库不是资料收藏库，而是一个**问题驱动、假设演进、证据约束**的企业 AI 研究系统。
 
@@ -321,13 +321,13 @@ Heartbeat 可以提出：
 
 ## 13. 当前试运行范围
 
-Research Runner v0.3 试运行仍只围绕：
+Research Runner v0.4 试运行仍只围绕：
 
 `RP-002-02｜Business Action Layer`
 
 运行。
 
-在 v0.3 验证完成前，不自动切换到其他正式问题。
+在 v0.4 验证完成前，不自动切换到其他正式问题。
 
 成功标准：
 
@@ -755,3 +755,150 @@ Research Finding 必须满足：
 如果做不到，即使 Evidence 数量和格式都完整，也必须标记：
 
 `RUN_STATUS: NEEDS_REVIEW`
+
+
+---
+
+## 18. Mechanism & Strategic Thesis Policy｜机制与战略洞察规则
+
+Research Runner v0.4 的目标不再只是识别“当前产品怎么做”，而是回答：
+
+> **为什么会形成这种模式？哪些是结构性约束，哪些只是当前 AI 能力不足造成的过渡形态？如果模型能力继续提升，什么仍会留下？**
+
+### 18.1 结论成熟度分级
+
+所有研究结论必须标记成熟度：
+
+- `Observation`：单个可靠来源支持的事实；
+- `Pattern`：多个独立来源重复出现的模式；
+- `Mechanism`：有理论 / 工程证据解释“为什么”；
+- `Strategic Thesis`：能区分结构性与过渡性，并对未来演化提出可证伪判断；
+- `Architecture Principle`：经过跨问题 / 工程验证与人工审核后的稳定原则。
+
+禁止从 Product Pattern 直接跳到 Strategic Thesis 或 Architecture Principle。
+
+### 18.2 Strategic Thesis 的证据门槛
+
+若要提出 `Strategic Thesis`，不得只依赖厂商产品文档。
+
+至少覆盖以下 4 个证据域中的 3 个：
+
+1. **Theory / Paper**：解释机制、授权、安全、组织或软件工程约束；
+2. **Product / Implementation**：真实产品、协议、开源实现；
+3. **Case / Engineering**：真实客户案例、公开工程实践、运行数据或失败经验；
+4. **Counter Evidence / Alternative**：能够支持另一种解释或未来路径的证据。
+
+证据域是覆盖要求，不是凑数量 KPI。弱证据不得为了满足数量被保留。
+
+### 18.3 每个战略级 Gap 必须回答 WHAT / WHY / STRUCTURAL / FUTURE
+
+#### WHAT｜发生了什么？
+
+- 当前论文、产品、案例、开源实现分别显示什么？
+- 哪些只是厂商口径，哪些是工程事实？
+
+#### WHY｜为什么？
+
+- 哪些底层机制能解释这个 Pattern？
+- 是模型能力、软件架构、分布式系统、安全授权、组织责任还是法规约束导致？
+
+#### STRUCTURAL vs TRANSITIONAL vs EMERGING
+
+必须明确分三类：
+
+- **Structural**：即使模型能力提高 10 倍仍大概率存在的约束；
+- **Transitional**：主要由当前模型能力、工程成熟度或工具限制导致，未来可能被吸收；
+- **Emerging**：AI 成为行动主体后真正新增或显著强化的机制。
+
+#### FUTURE / SO WHAT
+
+至少推演一个“模型能力显著增强”的情景：
+
+> 如果 3–5 年后模型的推理、工具调用和长程执行能力明显增强，当前结论还成立吗？
+
+最终说明这对企业 AI 的战略架构、产品路线或建设顺序意味着什么。
+
+### 18.4 必须提出 Alternative Hypothesis
+
+每个 Strategic Thesis 至少保留一个有竞争力的替代解释。
+
+例如：
+
+> 当前看到 Action Contract，不一定说明它是长期独立资产；也可能未来由 Policy Engine + API Schema + 更强模型直接承担。
+
+不能只寻找支持当前观点的证据。
+
+### 18.5 必须提出 Falsifiable Prediction｜可证伪预测
+
+Strategic Thesis 至少提出 2 条可被未来事实推翻或强化的预测。
+
+预测应包含：
+
+- 如果 Thesis 成立，未来产品 / 工程应该出现什么；
+- 如果 Alternative 成立，应该出现什么；
+- 哪些观察结果会迫使我们修正判断。
+
+禁止使用“未来 AI 会更智能”这类无法检验的表述。
+
+### 18.6 当前产品现状不等于战略终局
+
+自动研究不得把：
+
+> “当前三家厂商都这样做”
+
+直接写成：
+
+> “未来企业 AI 必须这样做”。
+
+必须检查：
+
+- 是否只是历史包袱；
+- 是否是当前模型不可靠造成的临时补丁；
+- 是否由企业治理 / 权限 / 责任 / 事务等结构性问题决定；
+- 是否存在模型能力提升后更简单的替代路线。
+
+### 18.7 Case Evidence 纪律
+
+客户案例必须区分：
+
+- `Independent Case`
+- `Vendor-published Case`
+- `Demo / Claim`
+
+厂商发布的客户故事不能自动当作独立验证；必须标记来源偏差与可验证范围。
+
+### 18.8 Strategic Finding 固定输出
+
+对于战略级 Gap，Research Finding 额外必须包含：
+
+```text
+Maturity Level
+- Observation / Pattern / Mechanism / Strategic Thesis
+
+WHAT
+- 当前事实与跨来源模式
+
+WHY
+- 底层机制
+
+STRUCTURAL
+- 模型更强后仍存在的约束
+
+TRANSITIONAL
+- 可能被更强模型 / 更好工具吸收的部分
+
+EMERGING
+- Agent 时代新增或显著强化的机制
+
+Alternative Hypothesis
+- 最强替代解释
+
+Falsifiable Predictions
+- P1
+- P2
+
+Strategic Implication
+- 对企业 AI 架构 / 产品 / 建设顺序意味着什么
+```
+
+若只完成 WHAT，没有可靠 WHY 与结构性分析，最高只能标记为 `Pattern`。
