@@ -1,4 +1,4 @@
-# AGENTS.md｜Enterprise AI Research Runner v0.2.1
+# AGENTS.md｜Enterprise AI Research Runner v0.2.2
 
 本仓库不是资料收藏库，而是一个**问题驱动、假设演进、证据约束**的企业 AI 研究系统。
 
@@ -390,3 +390,246 @@ Research Runner v0.2 只围绕：
 若语言规则未满足，任务不得标记为完整通过，应标记：
 
 `RUN_STATUS: NEEDS_REVIEW`
+
+
+---
+
+## 15. Git Delivery Policy｜Git 交付规则
+
+GitHub 的 `main` 是本仓库唯一正式状态（Single Source of Truth）。
+
+本地仓库、Codex Worktree、ChatGPT 云端修改、未来其他 AI 工具都只是工作环境，不得被视为正式版本。
+
+统一交付链路：
+
+```text
+origin/main
+→ isolated branch / worktree
+→ modify
+→ self-check
+→ commit
+→ push
+→ Pull Request
+→ Human Review
+→ Merge to main
+```
+
+### 15.1 开始任务前
+
+每次需要修改仓库的 AI 任务开始前必须：
+
+1. 执行或等价完成：
+   `git fetch origin`
+2. 确认本轮工作基线来自最新 `origin/main`；
+3. 如果当前 Worktree / branch 明显落后于 `origin/main`，必须先同步或基于最新 `origin/main` 新建工作分支；
+4. 如果无法安全同步：
+   - 停止写入；
+   - 不继续研究修改；
+   - 标记 `RUN_STATUS: NEEDS_REVIEW`；
+   - 说明同步失败原因。
+
+用户不需要为了定时任务手工维护本地 `main` 最新状态；自动任务应自行检查远程基线。
+
+### 15.2 分支与 Worktree
+
+所有 AI 写入任务必须使用独立 branch 或 Git Worktree。
+
+规则：
+
+- 一个任务使用一个独立工作分支；
+- 不同自动任务不得共享同一工作分支；
+- 分支名称应能体现任务类型和 Gap / Topic；
+- 推荐格式：
+  - `codex/research-heartbeat-<GAP-ID>-<YYYYMMDD>`
+  - `codex/weekly-synthesis-<YYYYMMDD>`
+  - `chore/<short-change>`
+
+禁止：
+
+- 直接在 `main` 上修改后 push；
+- 多个 AI 同时复用同一 branch；
+- 在未知基线状态下继续写入。
+
+### 15.3 自动提交与 Push
+
+如果任务没有产生有效修改：
+
+- 不创建 branch；
+- 不 commit；
+- 不 push；
+- 不创建 PR；
+- 明确报告 `NO_MATERIAL_UPDATE`。
+
+如果产生有效修改：
+
+1. 只提交本任务允许修改的文件；
+2. 运行 `git diff --check` 或等价检查；
+3. commit message 应简洁说明任务，例如：
+   - `research: complete GAP-003 heartbeat`
+   - `research: weekly synthesis RP-002-02`
+4. push 到远程独立分支。
+
+### 15.4 Pull Request 是唯一交付接口
+
+所有 AI 修改必须通过 Pull Request 进入 `main`。
+
+PR 必须：
+
+- `base: main`
+- `head: 当前任务分支`
+- 清楚说明本轮做了什么；
+- 列出 Changed Files；
+- 对研究任务说明 Evidence / Hypothesis / next_action 的变化；
+- 对方法或治理规则修改说明影响范围。
+
+PR 是用户的主要审核界面。
+
+用户不应被要求日常执行：
+
+- `git add`
+- `git commit`
+- `git push`
+- 手工创建 branch
+- 手工同步 Worktree
+
+除非自动交付失败且需要人工恢复。
+
+### 15.5 禁止自动 Merge
+
+AI 可以：
+
+- 创建 branch；
+- commit；
+- push；
+- 创建 Pull Request。
+
+AI 不得：
+
+- 直接 push `main`；
+- 自动 Merge PR；
+- 绕过 branch protection；
+- 自动关闭人工审核门。
+
+最终进入 `main` 必须经过 Human Review。
+
+### 15.6 多执行者协作规则
+
+本仓库可能同时由 Codex、ChatGPT 或其他 AI 工具维护。
+
+统一规则：
+
+- GitHub `main` 是唯一正式状态；
+- 所有执行者都从最新 `origin/main` 开始；
+- 所有执行者都通过独立 branch / PR 交付；
+- 同一个 Active Problem 同一时间尽量只有一个主要写入者；
+- 其他执行者若修改同一问题，应优先等待当前 PR 合并，或基于最新 `origin/main` 新建后续 PR；
+- 不通过复制本地文件、手工覆盖或私有中间版本解决冲突。
+
+发生冲突时：
+
+> 以 GitHub `main` + 已存在的开放 PR 为事实来源，不猜测哪个本地副本“更新”。
+
+---
+
+## 16. Automation Acceptance Check｜自动任务验收规则
+
+每次 Research Heartbeat / Weekly Synthesis / 自动仓库修改任务结束前，必须执行自检。
+
+### 16.1 Research Contract Check
+
+检查：
+
+1. 是否读取了最新 `AGENTS.md`；
+2. 是否读取了最新 `RESEARCH_STATE.yaml`；
+3. 是否只执行了 `next_action` 指向的一个当前任务；
+4. 是否遵守当前任务的 allow-list / deny-list；
+5. 是否只保留高价值 Evidence，或明确记录 `NO_MATERIAL_UPDATE`；
+6. 是否包含 Counter Evidence / Boundary Condition / Alternative Hypothesis（适用时）；
+7. 是否明确留下 `next_action`；
+8. 是否遵守 Language Policy。
+
+### 16.2 File Scope Check
+
+最终报告必须列出：
+
+- 实际修改文件；
+- 是否修改任何 forbidden 文件。
+
+如果修改了 forbidden 文件：
+
+`RUN_STATUS: NEEDS_REVIEW`
+
+并不得声称任务完整成功。
+
+### 16.3 Git Delivery Check
+
+如果本轮存在有效修改，必须检查：
+
+- branch 是否创建；
+- commit 是否成功；
+- push 是否成功；
+- PR 是否创建；
+- PR base 是否为 `main`；
+- 是否没有自动 Merge。
+
+如果环境无法创建 PR：
+
+- 至少完成 branch + commit + push；
+- 明确报告失败环节和远程分支名；
+- 标记 `RUN_STATUS: NEEDS_REVIEW`。
+
+### 16.4 最终状态
+
+只有以下条件全部满足，才能标记：
+
+`RUN_STATUS: PASS`
+
+- 研究协议通过；
+- 文件范围通过；
+- 语言规则通过；
+- Git Delivery 通过；
+- 没有自动 Merge；
+- 没有未说明的错误。
+
+否则：
+
+`RUN_STATUS: NEEDS_REVIEW`
+
+### 16.5 最终报告固定格式
+
+自动任务最终报告至少包含：
+
+```text
+Run Contract
+- AGENTS version
+- Active Problem
+- Executed Gap / Task
+- Evidence Count
+- proposed_revision
+- next_action
+
+File Scope
+- Changed Files
+- Forbidden Files Changed
+
+Git Delivery
+- branch
+- commit
+- push status
+- PR URL
+- merge status
+
+Acceptance
+- RUN_STATUS: PASS / NEEDS_REVIEW
+- Notes
+```
+
+对于 Research Heartbeat，还应保留：
+
+- Material Evidence 摘要；
+- 当前最大未知量；
+- 是否形成 proposed_revision。
+
+默认目标：
+
+> 用户只需要审核 Pull Request，而不是维护 Git 操作流程。
