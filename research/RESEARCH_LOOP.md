@@ -1,7 +1,7 @@
 # Enterprise AI Research Loop｜企业 AI 问题驱动的假设—验证研究闭环
 
-Version: **v2.0**  
-Updated: 2026-09-13
+Version: **v2.1**  
+Updated: 2026-09-18
 
 > 研究的基本单位不再只是“一个问题”，而是一个 **Problem + Hypothesis Package｜问题—假设包**。
 >
@@ -41,6 +41,12 @@ Theory / Product / Open Source / Case / Standard / Counter Evidence
 Mechanism Understanding
 机制理解
         ↓
+Cross-source Synthesis
+跨来源综合
+        ↓
+Research Finding
+研究发现：所以呢？
+        ↓
 Hypothesis Update
 Support / Revise / Reject / Split
         ↓
@@ -57,7 +63,13 @@ Boundary / New Problem
 
 一句话：
 
-> **先把“我现在怎么猜”保存下来，再研究“这个猜测到底对不对”，最后才决定“工程上应该怎么做”。**
+> **先把“我现在怎么猜”保存下来，再研究“这个猜测到底对不对”，把多个来源加工成可理解的 Research Finding，最后才决定“工程上应该怎么做”。**
+
+v2.1 新增一个关键区分：
+
+> **Evidence 是可审计依据，Research Finding 才是面向人的研究结果。**
+
+不再要求用户通过阅读一串 Evidence Card 自己推导“所以呢？”。
 
 ---
 
@@ -378,3 +390,122 @@ v2.0 是当前试运行方法，不宣称永久优于 v1.0。
 **升级前仓库回滚基线：** `b56caf344de02cfef30b9a7d607baf9d609615b5`。
 
 如需回滚方法，不代表要丢弃升级后形成的研究内容；优先恢复 v1 的执行规则，再人工保留已经证明有价值的 Hypothesis 资产。
+
+
+---
+
+## 11. v2.1｜Research Finding：证据到认知之间的中间层
+
+v2.0 已经解决“先有 Hypothesis，再找证据压力测试”的问题，但实践中发现：
+
+> 证据结构适合 AI 追溯，却不天然适合人阅读。
+
+如果每轮研究只产出：
+
+```text
+E-001
+E-002
+E-003
+→ proposed_revision
+```
+
+研究者仍需要自己完成一次高成本加工：
+
+> “这些论文、产品和案例放在一起，到底说明了什么？”
+
+因此 v2.1 在 Evidence 与 Hypothesis Update 之间显式加入：
+
+`Cross-source Synthesis → Research Finding`
+
+### 11.1 三层研究资产
+
+```text
+Research Finding
+人类阅读层：结论、变化、意义、未知量
+        ↓
+Cross-source Synthesis
+比较层：共同模式、差异、反例、边界
+        ↓
+Evidence Ledger
+审计层：来源、事实、机制、Effect、Confidence
+```
+
+这三层不是三个独立文件，而是同一研究包中的不同阅读深度。
+
+### 11.2 Finding 不是摘要
+
+Research Finding 不回答：
+
+> “这些材料分别讲了什么？”
+
+它回答：
+
+> “这些材料放在一起后，让我们对当前问题改变了什么判断？”
+
+因此一个合格 Finding 至少包括：
+
+- 当前问题；
+- 一句话结论；
+- 跨来源重复模式；
+- 关键差异 / 反证 / 边界；
+- 对当前 Hypothesis 的影响；
+- 对架构 / 产品 / 工程的意义；
+- 当前最大未知量与下一步。
+
+### 11.3 研究顺序改变
+
+过去容易出现：
+
+```text
+搜资料
+→ 凑 3–5 条 Evidence
+→ 填卡
+→ 总结
+```
+
+v2.1 要求：
+
+```text
+明确 Evidence Gap
+→ 研究多个来源
+→ 找共同机制 / 差异 / 反例
+→ 形成 Research Finding
+→ 再选择真正支撑 Finding 的 Evidence
+→ 更新 Hypothesis / next_action
+```
+
+证据数量不再是研究完成度指标。
+
+### 11.4 一个判断能否进入 Finding
+
+至少满足：
+
+1. 能明确映射到当前 Evidence Gap；
+2. 有可追溯 Evidence 支撑；
+3. 已区分事实、机制解释和推断；
+4. 已考虑至少一种反例、边界或替代解释；
+5. 能说清楚“这改变了原判断的什么部分”。
+
+如果只能写出材料摘要，还不能形成 Finding。
+
+### 11.5 Finding 与 Principle 的区别
+
+Finding 是：
+
+> 当前 Gap 下，被现有证据支持的最好解释。
+
+Principle 是：
+
+> 跨多个问题、多个项目和工程验证后仍稳定成立的可复用架构判断。
+
+因此：
+
+```text
+Evidence
+→ Finding
+→ Hypothesis Revision
+→ Engineering Validation
+→ Principle
+```
+
+不得从 Evidence 直接跳到 Principle。
