@@ -111,9 +111,11 @@ MCP / API / SDK 更接近：
 
 > **MCP 解决 Tool 如何被 AI 发现和调用，但不负责定义企业业务动作本身的语义、治理和执行约束。**
 
-真正可能缺失的是：
+GAP-001 之后需要进一步收窄这一判断：
 
-> **Business Action Contract + Business Action Runtime。**
+> **当前证据支持的是“稳定业务变更契约 + model-facing governance requirements”这一问题组合真实存在，但尚不足以证明所有企业都需要新增独立的 Business Action Layer、Agent Control Plane 或专门 Runtime。**
+
+这些能力可以由既有 Application Service / Command / Workflow / Policy / MCP Adapter 组合承担，也可能在高影响、跨系统、多调用者条件下值得被进一步资产化为独立 Action Contract / Registry。
 
 ---
 
@@ -247,9 +249,9 @@ Audit:
 
 ---
 
-## 6. Action Contract 与 Action Runtime 必须分离
+## 6. Action Contract 与 Action Runtime 的概念分离
 
-本轮进一步修正了最初将 `Business Action Layer / Runtime` 混为一个概念的表达。
+为避免把业务语义和执行实现混为一谈，研究上先将二者作为两个概念分析；这不代表工程上必须部署为两个独立产品或层。
 
 建议先分成：
 
@@ -766,11 +768,13 @@ Audit / Evidence
 - BPMN 与 Durable Workflow 已承担流程语义、状态持久化、检查点、重试与恢复；
 - Agent 时代显著强化的是模型控制调用带来的授权范围发现、Typed Schema、人工确认/权限、显式状态句柄、非可信元数据、输入输出校验、限流和审计控制面。
 
-### H1｜Conditional Action Layer / Agent Control Plane
+### H1｜Conditional Action Contract / Model-facing Governance Boundary
 
 > **Business Action 更准确地应被视为一种有条件的、跨调用者的受治理业务变更契约，而不是在所有企业系统中都必须新增的独立领域层。**
 
-当动作具有高影响、跨系统、审批密集、长时运行或需要在多个 Agent/应用/Workflow 之间保持稳定语义时，独立 Action Registry/Control Plane 可能值得存在，用来统一绑定、权限/确认、审计和运行时策略。对于低风险、单系统、可逆的 CRUD 类动作，强 Domain API 或 Command 加 Typed Tool Schema 仍可能足够；新增 Action Layer 可能只是重复包装。
+GAP-001 目前只支持 Agent 带来一组更强的 model-facing governance requirements：动态发现、Typed Schema、授权/确认、输入输出校验、状态句柄和审计等。它们是否应独立形成所谓 “Agent Control Plane” 尚未得到充分证据支持。
+
+当动作具有高影响、跨系统、审批密集、长时运行或需要在多个 Agent / 应用 / Workflow 之间保持稳定语义时，独立 Action Registry、专门治理边界或 Runtime 可能值得存在；对于低风险、单系统、可逆的 CRUD 类动作，强 Domain API 或 Command 加 Typed Tool Schema 仍可能足够。
 
 ### H0 → H1 变化记录
 
@@ -782,13 +786,21 @@ Audit / Evidence
 
 本轮不修改 `PRINCIPLES.md`，也不把 H1 升级为 Architecture Principle。
 
-## 16. Candidate Architecture Principle｜暂不升级
+## 16. Candidate Architecture Judgment｜暂不升级 Principle
 
-当前最接近原则的表达是：
+GAP-001 之后，原先“企业 AI 普遍需要独立 Business Action Layer”的表达需要降级和收窄。
 
-> **企业 AI 执行的核心，不是让 Agent 拥有更多 API，而是把高影响的业务状态变化建模为受治理的 Business Action。Object 描述企业有什么，Relation 描述结构，State 描述当前事实，Rule 描述约束；Action 描述企业世界允许如何被改变；Action Runtime 负责验证规则与权限并把这种改变可靠落实到现有 IT 系统；MCP、API、SDK 只是不同调用者访问这些能力的暴露机制。**
+当前更稳妥的候选判断是：
 
-该判断当前仍属于 `Working Hypothesis / Candidate Principle`，不得直接写入 `PRINCIPLES.md`。
+> **对高影响、跨系统、审批密集、长时运行或多调用者共享的业务变更，企业可能需要一个稳定、受治理的 mutation contract，使业务意图、状态迁移、授权 / 确认、审计与底层 Service / Command / Workflow 绑定解耦。这个契约是否需要表现为独立 Business Action Layer、Action Registry 或专门 Runtime，应由现有架构能力和可测收益决定。**
+
+因此当前不把 “Action Layer” 本身当作原则。下一步需要通过 Palantir 等产品机制与工程验证判断：
+
+- Ontology-native Action 是否提供超出传统 Application Service / Command / Workflow 的稳定机制；
+- model-facing governance requirements 是否需要独立层承载；
+- 哪些风险 / 协调 / 复用阈值足以支持额外抽象成本。
+
+该判断仍属于 `Working Hypothesis / Candidate Judgment`，不得直接写入 `PRINCIPLES.md`。
 
 ---
 
