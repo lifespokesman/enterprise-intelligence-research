@@ -37,18 +37,18 @@ active_hypothesis:
   statement: >
     DDD Application/Domain Service、CQRS Command 与 Workflow/Durable Runtime 已经承担
     Business Action 的大部分业务语义和可靠执行职责；Agent 时代新增或显著强化的是围绕
-    模型控制调用的一组治理与安全要求，包括授权范围发现、Typed Schema、权限/人工确认、显式状态句柄、
-    非可信元数据处理、输入输出校验、限流和审计。当前证据只能支持存在一个 model-facing governance boundary，
+    模型控制调用的一组治理与安全要求，包括授权范围发现、类型化 Schema、权限/人工确认、显式状态句柄、
+    非可信元数据处理、输入输出校验、限流和审计。当前证据只能支持存在一个面向模型的治理边界，
     不能证明必须形成独立 Agent Control Plane。独立 Business Action Layer 只在高影响、跨系统、审批密集、
     长时运行或多调用者需要稳定契约时具有成立条件；简单低风险单系统动作可由强 Domain API/Command
     加 Tool Schema 直接承担。
   proposed_revision:
     from: "H1"
-    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010"]
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014"]
     change: >
-      Palantir 证据将 H1 进一步收窄为 Ontology-native governed mutation contract：
-      Action 将对象、状态、提交条件、权限、Function/Rule binding、side effect 与版本化审计组合为跨应用复用的 operational contract，
-      但不证明必须形成独立 Action Runtime，也不提供跨系统副作用的原子回滚。
+      跨平台证据将 H1 进一步收窄为面向模型的受治理状态变更契约：
+      ServiceNow、Salesforce、SAP 都把 Agent 可见的 action/skill schema、权限/审批约束放在既有 Flow、API、Function 或 Workflow runtime 之上；
+      但不证明必须形成独立、可移植的 Action Runtime，也不提供跨系统副作用的原子回滚。
     boundary_conditions:
       - "高影响、需要统一提交条件/权限/审计的业务突变"
       - "多个 Agent/应用/Workflow 需要共享与对象/状态模型绑定的稳定契约"
@@ -99,13 +99,13 @@ evidence_gaps:
       date: "2026-09-18"
       outcome: "H1 -> proposed H1.1"
       summary: >
-        Palantir 官方文档显示 Ontology Action 是绑定对象/状态的单事务 mutation contract，
-        由提交条件、权限/读写授权、Rule/Function binding、side effects 与版本化 Action Log/metrics 共同形成跨应用复用的 operational surface；
+        Palantir 官方文档显示 Ontology Action 是绑定对象/状态的单事务状态变更契约，
+        由提交条件、权限/读写授权、Rule/Function 绑定、副作用与版本化 Action Log/metrics 共同形成跨应用复用的操作界面；
         但 Function 仍是执行绑定，Action revert 不回滚 webhook/notification，不能把该机制解释为独立 Agent Control Plane 或跨系统原子 Runtime。
 
   - id: "GAP-003"
     priority: "P1"
-    status: "active"
+    status: "provisionally_saturated"
     question: >
       ServiceNow、Salesforce、SAP 等企业平台如何让 Agent 执行受治理的业务状态修改？
       这些产品是否存在稳定业务动作契约、权限治理、审批、事务、补偿、审计和 runtime binding？
@@ -114,16 +114,20 @@ evidence_gaps:
       - "industry_case"
       - "implementation"
       - "counter_evidence"
-    material_evidence_count: 0
-    last_result: null
+    material_evidence_count: 4
+    last_result:
+      date: "2026-09-18"
+      outcome: "H1 -> proposed H1.1"
+      summary: >
+        ServiceNow、Salesforce、SAP 官方文档均显示面向 Agent 的 action/skill schema 与既有 Flow/API/Workflow、权限和审批 runtime 绑定；
+        三个平台没有共同的独立 Action Runtime 或跨系统原子补偿证据，工程收益阈值仍待验证。
 
 next_action:
-  type: "research"
+  type: "validation"
   gap: "GAP-003"
   instruction: >
-    对照 ServiceNow、Salesforce、SAP 等企业平台如何让 Agent 执行受治理的业务状态修改，
-    只保留 3–5 条真正能判断稳定业务动作契约、权限/审批、事务/补偿、审计和 runtime binding 是否跨平台重复出现的证据，
-    优先使用官方产品文档、开发者文档或公开实现，并主动寻找不需要独立 Action Layer 的反证。
+    选择一个高影响跨系统流程，比较“既有 Service/Command/Workflow + Tool Schema”与“显式 Action Contract/Registry”在权限覆盖、审计完整性、失败补偿、调用者复用和维护成本上的可测差异；
+    在没有工程验证材料时明确记录 NO_MATERIAL_UPDATE，不再扩展平台清单。
 
 candidate_questions:
   - "什么样的风险、跨系统协调和调用者复用阈值，足以证明独立 Action Registry/Runtime 优于既有 Service/Command/Workflow 组合？"
@@ -135,7 +139,7 @@ research_history:
     result: "H0 -> H1"
     material_evidence: ["E-001", "E-002", "E-003", "E-004", "E-005"]
     note: >
-      完成传统架构同构、model-facing governance requirements 增量及直接 Tool/API 反证的首轮研究；
+      完成传统架构同构、面向模型的治理要求增量及直接 Tool/API 反证的首轮研究；
       GAP-001 概念层证据暂时充分，但工程阈值仍未知，因此状态调整为 provisionally_saturated；
       下一轮转 GAP-002。
   - date: "2026-09-18"
@@ -143,10 +147,17 @@ research_history:
     result: "H1 -> proposed H1.1"
     material_evidence: ["E-006", "E-007", "E-008", "E-009", "E-010"]
     note: >
-      Palantir 官方 Action/Function 文档支持 Ontology-native governed mutation contract：
-      对象/状态绑定、提交条件、权限、函数执行绑定、side effects、审计和 metrics 是可复用机制；
-      但外部 side effects 不随 object revert 回滚，且 Action Log 不是所有写路径的通用审计，因此 GAP-002 调整为 provisionally_saturated，
+      Palantir 官方 Action/Function 文档支持 Ontology-native 受治理状态变更契约：
+      对象/状态绑定、提交条件、权限、函数执行绑定、副作用、审计和 metrics 是可复用机制；
+      但外部副作用不随 object revert 回滚，且 Action Log 不是所有写路径的通用审计，因此 GAP-002 调整为 provisionally_saturated，
       正式 H1.1 仍待 Weekly Synthesis，下一轮转 GAP-003。
+  - date: "2026-09-18"
+    gap: "GAP-003"
+    result: "H1 -> proposed H1.1"
+    material_evidence: ["E-011", "E-012", "E-013", "E-014"]
+    note: >
+      ServiceNow、Salesforce、SAP 的官方产品/开发文档重复显示面向 Agent 的 action/skill schema、权限/审批与既有 Flow/API/Workflow runtime 绑定；
+      反证显示事务、补偿和审计仍是平台特定能力，未证明通用独立 Action Runtime。GAP-003 概念层暂时充分，转入工程验证。
 
 stop_condition:
   gap:
