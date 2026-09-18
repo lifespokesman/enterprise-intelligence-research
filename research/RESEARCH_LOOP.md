@@ -1,6 +1,6 @@
 # Enterprise AI Research Loop｜企业 AI 问题驱动的假设—验证研究闭环
 
-Version: **v2.1**  
+Version: **v2.2**  
 Updated: 2026-09-18
 
 > 研究的基本单位不再只是“一个问题”，而是一个 **Problem + Hypothesis Package｜问题—假设包**。
@@ -509,3 +509,74 @@ Evidence
 ```
 
 不得从 Evidence 直接跳到 Principle。
+
+
+---
+
+## 12. v2.2｜从 Finding 到 Strategic Thesis
+
+v2.1 解决“证据可审计但人读不懂”的问题；v2.2 进一步解决：
+
+> **研究结果虽然可读，但仍可能只是产业现状归纳，缺少机制解释、未来推演和可证伪洞察。**
+
+因此，对重要问题新增四段式研究深度：
+
+```text
+WHAT
+当前发生了什么？
+        ↓
+WHY
+为什么会这样？
+        ↓
+STRUCTURAL / TRANSITIONAL / EMERGING
+什么长期存在？什么只是过渡？什么是 AI 新增？
+        ↓
+FUTURE / SO WHAT
+模型能力继续提升后，对企业 AI 战略架构意味着什么？
+```
+
+### 12.1 证据域
+
+战略级研究不要求固定“一篇论文 + 一个产品 + 一个案例”，但必须避免单一证据域。
+
+Strategic Thesis 至少覆盖 4 个证据域中的 3 个：
+
+- Theory / Paper
+- Product / Implementation
+- Case / Engineering
+- Counter Evidence / Alternative
+
+### 12.2 结论成熟度
+
+```text
+Observation
+→ Pattern
+→ Mechanism
+→ Strategic Thesis
+→ Architecture Principle
+```
+
+产品对照通常最多支持 Pattern；只有加入机制解释、替代假设、未来推演和可证伪预测，才允许进入 Strategic Thesis。
+
+### 12.3 结构性检验
+
+任何声称“企业 AI 长期需要某个机制”的判断都必须回答：
+
+> 如果模型能力提高 10 倍，这个机制仍然需要吗？
+
+重点区分：
+
+- 模型智能能吸收的问题；
+- 分布式系统 / 事务问题；
+- 权限、责任、授权、审计等治理问题；
+- 组织和法规边界。
+
+### 12.4 Strategic Thesis 必须可被推翻
+
+每个 Strategic Thesis 都必须包含：
+
+- Alternative Hypothesis；
+- 至少 2 条 Falsifiable Predictions；
+- 哪些未来观察会迫使该 Thesis 收窄或被否定。
+
+研究系统的目标不是“形成漂亮观点”，而是形成**能被未来工程和产业事实持续检验的判断**。
