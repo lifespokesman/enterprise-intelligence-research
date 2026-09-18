@@ -219,6 +219,15 @@ research_history:
       当前环境未提供可复核工程实现、公开基准或可运行测试，故不新增证据、不改变 H1.1 提案，
       下一轮继续寻找最小原型或公开实现对照。
 
+  - date: "2026-09-18"
+    gap: "GAP-004"
+    result: "Pattern -> Strategic Thesis (Candidate)"
+    material_evidence: ["E-015", "E-016", "E-017", "E-018", "E-019", "E-020"]
+    note: >
+      首次按 v0.4 使用 Theory/Paper + Product/Implementation + Case/Engineering + Counter Evidence 四域研究；
+      区分了结构性治理约束与可能被模型吸收的执行编排，并提出 ST-RP002-01、Alternative Hypothesis 与可证伪预测。
+      下一步进入双路线工程验证，不继续堆产品清单。
+
 research_depth:
   framework: "WHAT -> WHY -> STRUCTURAL/TRANSITIONAL/EMERGING -> FUTURE"
   strategic_thesis_min_domains: 3
@@ -228,16 +237,6 @@ research_depth:
     - "Mechanism"
     - "Strategic Thesis"
     - "Architecture Principle"
-
-research_history:
-  - date: "2026-09-18"
-    gap: "GAP-004"
-    result: "Pattern -> Strategic Thesis (Candidate)"
-    material_evidence: ["E-015", "E-016", "E-017", "E-018", "E-019", "E-020"]
-    note: >
-      首次按 v0.4 使用 Theory/Paper + Product/Implementation + Case/Engineering + Counter Evidence 四域研究；
-      区分了结构性治理约束与可能被模型吸收的执行编排，并提出 ST-RP002-01、Alternative Hypothesis 与可证伪预测。
-      下一步进入双路线工程验证，不继续堆产品清单。
 
 stop_condition:
   gap:
