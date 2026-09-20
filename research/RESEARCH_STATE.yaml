@@ -1,5 +1,5 @@
 version: "0.4"
-updated: "2026-09-18"
+updated: "2026-09-20"
 
 runner:
   name: "Research Runner"
@@ -44,12 +44,14 @@ active_hypothesis:
     加 Tool Schema 直接承担。
   proposed_revision:
     from: "H1"
-    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020"]
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020", "E-021"]
     change: >
       v0.4 多证据域研究进一步把 H1 从“受治理的 Action Contract”提升为候选战略判断：
       模型能力增强会逐步吸收工具选择、参数生成、部分流程编排与 glue code，
       但 Agent Identity、Delegated Authority、Policy、State Constraint、Approval、Audit 与 Provenance
-      属于企业授权与状态治理的结构性约束，不会因为模型更聪明而自然消失。
+      属于企业授权与状态治理的结构性约束，不会因为模型更聪明而自然消失；
+      合成工程验证进一步显示，在相同 Service/Workflow Runtime 下，显式契约的可测收益主要来自
+      统一治理边界、审计/provenance 与多调用者变更隔离，而不是新的事务或补偿能力。
       因此长期稳定资产更可能是“受治理能力契约（Governed Capability Contract，候选概念）”，
       独立 Action Runtime 仍只是条件性的工程选择。
     boundary_conditions:
@@ -58,7 +60,8 @@ active_hypothesis:
       - "跨系统副作用仍需 Workflow/Durable Runtime、幂等与补偿机制"
       - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
       - "若未来 Agent Identity + Policy Engine + 通用 API Schema 能覆盖高影响场景，则独立 Capability Contract 的价值应被下调"
-    unresolved_gap: "通用 API + Policy 与显式 Governed Capability Contract 在高影响、多 Agent 场景中的可测收益差异" 
+      - "本轮合成原型的治理/变更收益依赖字段模型与清单假设，尚需真实实现、并发和故障注入复现"
+    unresolved_gap: "真实多 Agent、跨团队 API 演进与故障注入下，通用 API + Policy 与显式 Governed Capability Contract 的治理收益/维护成本差异"
   strategic_thesis_candidate:
     id: "ST-RP002-01"
     maturity: "Strategic Thesis (Candidate)"
@@ -159,26 +162,26 @@ evidence_gaps:
       product_implementation: true
       case_engineering: true
       counter_evidence: true
-    material_evidence_count: 6
+    material_evidence_count: 7
     last_result:
-      date: "2026-09-18"
-      outcome: "Pattern -> Strategic Thesis (Candidate)"
+      date: "2026-09-20"
+      outcome: "Strategic Thesis (Candidate) -> conditional engineering support"
       summary: >
         Toolformer 提供模型可吸收工具选择/参数生成的反证；Agent 安全论文把 least privilege、
         complete mediation、delegated authority 与可执行工具约束识别为模型外的系统安全要求；
         Microsoft Entra Agent ID 将 Agent 身份与授权治理产品化；Engine 案例显示退款/交易/账户更新仍依赖严格测试与安全；
         SAP Joule Studio 同时展示“执行逻辑自动生成”与“权限/策略/隔离/审计继续强化”。
-        因此当前候选战略判断是：执行编排更可能变得自动生成，治理 authority 的边界更可能长期存在。
+        合成双路线工程验证显示，在共享 Service/Workflow Runtime 下，两条路线的状态迁移与补偿结果一致，
+        显式契约的收益集中在审计字段覆盖、多 Agent 复用和变更影响隔离；这支持有条件的 Governed Capability Contract，
+        但不证明需要独立 Action Runtime，也不足以升级为 Architecture Principle。
 
 next_action:
   type: "validation"
   gap: "GAP-004"
   instruction: >
-    不再继续扩展厂商清单。选择一个高影响跨系统业务动作，建立两条最小工程路线：
-    A = Agent Identity + Policy Engine + 通用 API/MCP Schema；
-    B = 显式 Governed Capability Contract + 相同底层 Service/Workflow。
-    比较授权表达、状态前置条件、审计/provenance、失败补偿、第二 Agent 复用、变更影响面与维护成本，
-    用结果检验 ST-RP002-01 与 Alternative Hypothesis。
+    不再扩展厂商清单。优先寻找可运行的公开实现或小型可审计仓库，复现本轮“审批退款 -> 订单/库存/通知”双路线，
+    加入并发、重复提交、权限撤销和部分失败注入；比较授权表达、状态前置条件、审计/provenance、失败补偿、
+    第二 Agent 复用、变更影响面与维护成本，用结果继续检验 ST-RP002-01 与 Alternative Hypothesis。
 
 candidate_questions:
   - "什么样的风险、跨系统协调和调用者复用阈值，足以证明显式 Governed Capability Contract 优于通用 API + Policy？"
@@ -227,6 +230,16 @@ research_history:
       首次按 v0.4 使用 Theory/Paper + Product/Implementation + Case/Engineering + Counter Evidence 四域研究；
       区分了结构性治理约束与可能被模型吸收的执行编排，并提出 ST-RP002-01、Alternative Hypothesis 与可证伪预测。
       下一步进入双路线工程验证，不继续堆产品清单。
+  - date: "2026-09-20"
+    gap: "GAP-004"
+    result: "conditional engineering support"
+    material_evidence: ["E-021"]
+    note: >
+      在同一底层 Service/Workflow 与补偿逻辑上运行 A（Agent Identity + Policy + 通用 API/MCP Schema）
+      与 B（显式 Governed Capability Contract）的确定性合成原型；四个场景的业务结果一致，
+      B 在原型定义的审计字段覆盖、第二 Agent 接入和前置条件变更影响面上更集中。
+      该结果支持“治理边界有条件增量价值”，但不能证明独立 Runtime、生产性能或普遍优越性；
+      GAP-004 继续保持 provisionally_saturated，下一轮寻找真实可运行实现和故障注入对照。
 
 research_depth:
   framework: "WHAT -> WHY -> STRUCTURAL/TRANSITIONAL/EMERGING -> FUTURE"
