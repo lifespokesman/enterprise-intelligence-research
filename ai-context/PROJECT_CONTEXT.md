@@ -317,10 +317,12 @@ Research Heartbeat / Weekly Synthesis 等专项任务，在完成仓库级定位
 
 ### 每次研究结束
 
-优先更新：
+按职责更新，不复制同一正文：
 
-- `NOW.md`：Active Problem、当前状态、下一步唯一动作；
-- `research/research-questions.md`：Problem / Evidence Gap / Engineering Translation / Validation；
+- `research/problems/*.md`：对应 Problem / Subproblem 的 canonical body、Hypothesis / Gap / Engineering / Validation 当前状态；
+- `research/research-questions.md`：只有 Problem ID、层级、派生关系或索引发生变化时更新，不再维护重复完整正文；
+- `NOW.md`：人工研究 Frontier、当前状态、下一步唯一动作；
+- `REPOSITORY_STATE.yaml`：只有运行面状态 / 版本发生变化时更新；
 - `PRINCIPLES.md`：只有 Candidate Principle 或原则状态发生变化时；
 - `EVOLUTION.md`：只有实质认知变化时；
 - `JUDGMENTS.md`：只有研究者明确认可且证据足够时；
