@@ -1,9 +1,11 @@
 # Paper Map｜问题目录、论文位置与阅读选择
 
 Updated: 2026-09-11  
-本文件是论文登记与选文的统一入口。当前动作以 [NOW](../NOW.md) 为准；研究方法见 [RESEARCH_LOOP](RESEARCH_LOOP.md)；论文 A/B/C 与执行方式见 [paper-review-plan](paper-review-plan.md) 和 [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)。
+本文件是论文登记与选文的统一入口。当前运行面先以 [`REPOSITORY_STATE.yaml`](../REPOSITORY_STATE.yaml) 为准，人工研究动作再读取 [NOW](../NOW.md)；研究方法见 [RESEARCH_LOOP](RESEARCH_LOOP.md)；论文 A/B/C 与执行方式见 [paper-review-plan](paper-review-plan.md) 和 [PAPER_READING_MODE](../ai-context/PAPER_READING_MODE.md)。
 
 > **本文件是 Evidence Index，不是 Reading Queue。**
+>
+> **Current-state Authority**：本文件保存论文定位与历史执行语境，不定义当前研究前沿。当前 human / automation 状态统一读取根目录 `REPOSITORY_STATE.yaml`；旧条目中的“当前 R-001”等表述若被保留，均应按其记录日期理解为历史上下文。
 
 这里的 Q / M / R 映射属于选文定位，用于说明为什么考虑某篇，不等于作者结论，也不证明论文支持项目判断。论文编号是身份，不是优先级。
 
