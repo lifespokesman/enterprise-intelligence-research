@@ -1,0 +1,53 @@
+version: "1.0"
+updated: "2026-09-23"
+purpose: "Canonical machine-readable registry for repository operating state. It does not replace problem, topic, or runner content."
+
+authority:
+  canonical_state: "REPOSITORY_STATE.yaml"
+  human_dashboard: "NOW.md"
+  context_recovery: "context/CURRENT.md"
+  research_runner_state: "research/RESEARCH_STATE.yaml"
+  long_term_problem_identity: "topics/README.md"
+
+research_planes:
+  human_frontier:
+    owner: "human_research"
+    problem_family: "RP-002"
+    frontier: "RP-002-01"
+    title: "World Model Conflict & Evolution"
+    source: "NOW.md"
+
+  automation_frontier:
+    owner: "research_runner"
+    protocol_version: "0.4"
+    problem: "RP-002-02"
+    title: "Business Action Layer"
+    active_gap: "GAP-004"
+    source: "research/RESEARCH_STATE.yaml"
+
+  context_maintenance:
+    owner: "repository_governance"
+    source: "context/TOPIC_INDEX.md"
+    active_topics:
+      - "T-001"
+      - "T-002"
+      - "T-003"
+      - "T-004"
+
+semantic_identity:
+  q_map_source: "topics/README.md"
+  rule: "Problem meanings may evolve, split, merge, or be reframed, but an existing ID must not silently acquire a different meaning."
+  allowed_relations:
+    - "refines"
+    - "splits_into"
+    - "derived_from"
+    - "reframes"
+    - "merges"
+    - "related_to"
+    - "supersedes"
+
+protocol_versions:
+  research_method: "2.2"
+  runner_protocol: "0.4"
+  repository_state_schema: "1.0"
+  context_continuity_protocol: "1.0"
