@@ -24,7 +24,7 @@ Related: Q3 Coordination / Q5 Organizational Learning / E4 Feedback-Evaluation-E
 1. **企业真实世界不仅需要进入模型，还可能被 Agent 改变。能够描述世界，并不等于已经具备安全、稳定地改变世界的机制。**
 2. **即使 Semantic / Operational / Evolution Model 有价值，如果仍要求业务人员从零人工建模，企业级生产使用门槛可能仍然过高。**
 
-因此 RP-002 当前逐渐形成三个相互关联的方向：
+因此 RP-002 当前逐渐形成四个相互关联的方向：
 
 ```text
 World → Model / Agent
@@ -35,6 +35,9 @@ AI 如何通过受治理的业务动作改变企业世界
 
 Semantic Sources / Runtime Evidence → World Model
 企业世界模型如何被低门槛地构建与持续维护
+
+World Model / Facts / Knowledge / Policy / Runtime → Task Context
+企业世界如何被动态转换为当前任务可使用的上下文
 ```
 
 对应已登记的子问题：
@@ -42,6 +45,7 @@ Semantic Sources / Runtime Evidence → World Model
 - [`RP-002-01｜Enterprise World Model Conflict & Evolution`](RP-002-01-world-model-conflict-evolution.md)
 - [`RP-002-02｜Business Action Layer：企业 AI 如何安全地改变企业世界`](RP-002-02-business-action-layer.md)
 - [`RP-002-03｜Semantic-to-Executable World Model`](RP-002-03-semantic-to-executable-world-model.md)
+- [`RP-002-04｜World Model → Task Context Runtime`](RP-002-04-world-model-to-task-context.md)
 
 公开仓只保留抽象问题，不记录私人项目来源、客户身份、系统细节或非公开证据。
 
@@ -227,6 +231,21 @@ Natural Language / Documents / Schema / API / Workflow / Trace
 
 该问题已拆入 `RP-002-03`。
 
+### AQ-002-08｜Enterprise World Model 如何转化为 Task-specific AI Context？
+
+当前工作问题：
+
+> **Ontology 以企业世界为中心组织相对稳定的业务语义，而 Context 以当前 Task 为中心动态组织相关事实、知识、权限与运行状态。二者应如何分工并建立转换机制？**
+
+当前只保留四条待验证假设：
+
+- **H1**：Ontology ≠ AI Context；Ontology 可能是 Context 的 World Model / Semantic Backbone；
+- **H2**：Context 可能是 Task-centric World Slice；
+- **H3**：Ontology / Business Runtime 与 Context Runtime 可能是不同运行循环；
+- **H4**：Ontology Evolution 是第三个、更慢的认知循环，应与对象实例状态变化严格区分。
+
+详细问题见 [`RP-002-04-world-model-to-task-context.md`](RP-002-04-world-model-to-task-context.md)。其中 Context Engine / Context Runtime 目前只作为候选机制名称，不预设其已经构成独立架构层或产品类别。
+
 ---
 
 ## 5. Engineering Questions｜架构收敛后再启动
@@ -240,6 +259,7 @@ Natural Language / Documents / Schema / API / Workflow / Trace
 - **EQ-002-05**：Ontology / Semantic Model 应由专家建设、AI 自动发现还是运行时动态生成？如何校验？
 - **EQ-002-06**：Direct Tool / API 与 Business Action Runtime 两种执行模式，在 Prompt 复杂度、接口变更影响、权限治理、多 Agent 复用和 Trace 可解释性上有什么差异？
 - **EQ-002-07**：从 SOP + Schema + API + Permission + Trace 自动生成 Semantic / Operational 候选模型，与人工建模相比在成本、准确率、治理风险和维护成本上有什么差异？
+- **EQ-002-08**：Ontology / Facts / Knowledge / Policy / Agent Runtime 如何共同生成 Task-specific Context？Retrieve / Resolve / Filter / Authorize / Assemble 是否形成稳定独立工程边界？
 
 ---
 
@@ -389,7 +409,7 @@ Structured / Executable World Model
 5. 再进入 AQ-002-02 做边界表；
 6. 最后处理 AQ-002-03 的传统数据架构与 AI 架构演进关系。
 
-`RP-002-02 Business Action Layer` 与 `RP-002-03 Semantic-to-Executable World Model` 都作为已经注册的派生研究方向保存，不要求当前立即展开。
+`RP-002-02 Business Action Layer`、`RP-002-03 Semantic-to-Executable World Model` 与 `RP-002-04 World Model → Task Context Runtime` 都作为已经注册的派生研究方向保存，不要求当前立即展开。
 
 真正继续 `RP-002-03` 时，先做一个最小验证：
 
