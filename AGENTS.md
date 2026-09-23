@@ -38,7 +38,7 @@
 - `research/RESEARCH_STATE.yaml`：Research Runner 机器运行态；
 - `context/CURRENT.md`：新会话恢复视图；
 - `topics/README.md`：Q1–Q5 长期问题身份；
-- `research/problems/*.md`：问题正文。
+- `research/problems/*.md`：每个 Problem ID 的唯一 canonical body。
 
 若这些视图看起来不一致，先判断是否属于不同 `research_planes`，不要自行猜测哪个“全局 Active Problem”才是真的。
 
@@ -63,6 +63,14 @@ Q1–Q5 的当前权威定义以 `topics/README.md` 为准。
 > **问题可以演化，但 ID 不应偷偷换意思。**
 
 如果新研究对象已超出原问题含义，优先创建 RP / 子问题并建立演化关系。若原问题本身需要实质重构，应在 `EVOLUTION.md` 显式记录，而不是静默覆盖历史身份。
+
+### Historical Context｜历史状态不追写
+
+Paper Card、Evidence Card、Checkpoint、Git History 可以保留**当时**的 Active Problem / Hypothesis / Research Context，不要求追随当前 Frontier 重写。
+
+若历史文件中的“current / 当前”可能被误解，应补充 Historical Context / Current Pointer，而不是把过去的 R-001、H1 等直接改成今天的 RP / Hypothesis。
+
+当前运行状态只由 `REPOSITORY_STATE.yaml` 及其声明的当前视图负责。
 
 ---
 
