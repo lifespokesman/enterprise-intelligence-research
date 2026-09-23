@@ -150,9 +150,23 @@ A useful distinction:
 - [`industry/cases/`](industry/cases/)
 - [`industry/products/`](industry/products/)
 
+### Context continuity
+
+- [`context/CURRENT.md`](context/CURRENT.md) — repository-level current state for fast cross-session recovery
+- [`context/TOPIC_INDEX.md`](context/TOPIC_INDEX.md) — lightweight routing index for long-lived topics
+- [`context/topics/`](context/topics/) — current state of a small number of long-lived topics
+- [`context/checkpoints/`](context/checkpoints/) — delta logs for meaningful cognitive or project-state changes
+- [`context/README.md`](context/README.md) — schemas, update rules, progressive loading, and compaction
+
+The context layer does **not** replace Questions, Hypotheses, Research, or Evidence:
+
+`Checkpoint = change event` · `Topic = current state` · `Question = unknown` · `Hypothesis = testable belief` · `Research / Evidence = support and challenge`.
+
+New AI sessions should use **progressive context loading**: start with `AGENTS.md → context/CURRENT.md → context/TOPIC_INDEX.md → 1–3 relevant Topic States`, and only then drill into Problems, Hypotheses, Checkpoints, Research, or Evidence as needed.
+
 ### AI context
 
-- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)
+- [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md) — stable project background; no longer the default full-session bootstrap
 - [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)
 
 ## Bilingual Publication Policy

@@ -298,15 +298,21 @@ Principle 状态：Candidate / Supported / Stable / Revised / Deprecated。
 
 ### AI 默认加载
 
-1. 本文件 `PROJECT_CONTEXT.md`
-2. `NOW.md`
-3. `research/RESEARCH_LOOP.md`
-4. `research/research-questions.md`
-5. 当前任务相关文件
+跨会话恢复现在以 Context Continuity Layer 为默认入口：
 
-论文任务再读 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务再读 `research/reading-list.md`。
+1. `AGENTS.md`
+2. `context/CURRENT.md`
+3. `context/TOPIC_INDEX.md`
+4. 当前任务最相关的 1–3 个 Topic State
+5. 信息不足时，再按 Topic 链接下钻到 Problem / Hypothesis / Checkpoint / Research / Evidence
 
-不要每次无差别读取整个仓库。
+本文件 `PROJECT_CONTEXT.md` 继续保存相对稳定的项目背景与研究边界，但**不再要求每个新会话默认全文加载**。
+
+Research Heartbeat / Weekly Synthesis 等专项任务，在完成仓库级定位后，还必须继续遵守 `AGENTS.md` 中 Research Runner 的专项读取顺序。
+
+论文任务按需读取 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务按需读取 `research/reading-list.md`。
+
+核心原则：**Progressive Context Loading｜先少量上下文，不够再展开。**
 
 ### 每次研究结束
 
@@ -335,4 +341,4 @@ Principle 状态：Candidate / Supported / Stable / Revised / Deprecated。
 - 任何公开结论都不得依赖非公开材料才能成立。
 - AI Proposal 不自动变成研究者 Judgment 或 Stable Principle。
 
-_Last updated: 2026-09-11_
+_Last updated: 2026-09-23_
