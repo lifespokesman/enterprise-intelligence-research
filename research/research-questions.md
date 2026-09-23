@@ -632,6 +632,32 @@ H-RP002-05 再增加一条不同维度：**平台形态用于判断建设起点�
 
 ---
 
+### AQ-002-08｜World Model → Task Context Runtime
+
+> **企业业务世界模型如何被动态转换成面向当前任务的 AI Context，以及 Ontology、Context Runtime、Agent Runtime、Action 与模型演化之间应该如何分工？**
+
+该问题不是简单比较“Ontology 与 Context 的区别”，而是研究从 World-centric Enterprise Representation 到 Task-centric Runtime Context 的转换机制。
+
+**Working Hypotheses（全部待验证）**：
+
+- **H-RP002-08A / H1**：Ontology ≠ AI Context；Ontology 可能是 Context 的 World Model / Semantic Backbone；
+- **H-RP002-08B / H2**：Context 可能是围绕 Task 动态生成的相关世界切片，由 World + Knowledge + Runtime + Identity / Policy 共同组成；
+- **H-RP002-08C / H3**：Ontology / Business Runtime 与 Context Runtime 可能是不同运行循环，并通过 Action → New Fact → Next Context 连接；
+- **H-RP002-08D / H4**：Ontology Evolution 是更慢的模型认知循环，应与对象实例 / 状态变化区分。
+
+**核心待验证边界**：
+
+1. Ontology 在 Context 构建中承担语义解释、对象定位、关系遍历、规则 / Action discovery 的哪些职责？
+2. RAG、KG、Data Platform、Memory、Policy、Tool / API 分别向 Context 提供什么？
+3. Retrieve / Resolve / Filter / Authorize / Assemble 是否需要形成独立 Context Engine / Runtime，还是只是 Agent Runtime 与既有服务的组合职责？
+4. Action 后的新事实怎样进入下一轮 Context；什么条件下才应升级为 Ontology Evolution？
+
+**关系**：Parent = RP-002；Related = RP-002-01 / -02 / -03、E1、E3、G2。该问题不新建 Problem Family，也不改变当前唯一 Active Problem。
+
+**Problem File**：[`problems/RP-002-04-world-model-to-task-context.md`](problems/RP-002-04-world-model-to-task-context.md)。
+
+---
+
 # RP-003｜Agent Experience → Organizational Learning
 
 **Core Problem**  

@@ -1,6 +1,6 @@
 # RESEARCH_MAP｜长期研究地图
 
-Updated: 2026-09-16
+Updated: 2026-09-23
 
 > 本文件只回答三个问题：**长期在研究什么？每条主线当前推进到哪里？当前真正的研究前沿是什么？**
 >
@@ -142,6 +142,7 @@ RP-002 当前已经发生一次关键推进：
 - 不同企业数字化起点下的 AI Context 建设路径；
 - AI Context Readiness 的诊断框架；
 - Canonical Ontology vs Shared Core + Domain View；
+- **World Model → Task Context：Ontology、Facts、Knowledge、Policy 与 Agent Runtime 如何共同生成任务上下文（RP-002-04）**；
 - 谁拥有最终模型变更裁决权。
 
 它们进入 Backlog，不代表删除；只有当前 Frontier 产生新证据后，再决定是否提升。
