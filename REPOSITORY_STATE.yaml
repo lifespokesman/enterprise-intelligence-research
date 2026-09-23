@@ -8,6 +8,8 @@ authority:
   context_recovery: "context/CURRENT.md"
   research_runner_state: "research/RESEARCH_STATE.yaml"
   long_term_problem_identity: "topics/README.md"
+  problem_index: "research/research-questions.md"
+  problem_body_root: "research/problems/"
 
 research_planes:
   human_frontier:
