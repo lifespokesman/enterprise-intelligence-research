@@ -149,6 +149,10 @@ Q1–Q5 是长期问题地图，但真正执行研究时，基本单位是一个
 
 ### 给 AI 的长期上下文
 
+- [`AGENTS.md`](AGENTS.md)：Bootstrap、任务路由与最小治理规则
+- [`REPOSITORY_STATE.yaml`](REPOSITORY_STATE.yaml)：机器可读的 canonical repository state
+- [`context/CURRENT.md`](context/CURRENT.md)：跨会话当前状态恢复入口
+- [`context/TOPIC_INDEX.md`](context/TOPIC_INDEX.md)：长期 Topic 的轻量路由索引
 - [`ai-context/PROJECT_CONTEXT.md`](ai-context/PROJECT_CONTEXT.md)：研究目标、边界、概念与研究纪律
 - [`ai-context/PAPER_READING_MODE.md`](ai-context/PAPER_READING_MODE.md)：A/B/C 论文阅读模式与 Part E Engineering Bridge
 
