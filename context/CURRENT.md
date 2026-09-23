@@ -4,7 +4,7 @@ Updated: 2026-09-23
 
 > 本文件只回答：**一个新的 AI 第一次进入仓库时，当前最值得知道的少数状态是什么？**
 >
-> 它不是第二个 README，也不替代 `NOW.md`、`RESEARCH_STATE.yaml` 或 Topic State。
+> 它不是第二个 README，也不替代 `REPOSITORY_STATE.yaml`、`NOW.md`、`RESEARCH_STATE.yaml` 或 Topic State。\n>\n> 机器需要判断“当前状态属于哪个运行面”时，先读取根目录 `REPOSITORY_STATE.yaml`；本文件负责把这些状态转换为新会话可快速恢复的人类可读视图。
 
 ---
 
@@ -79,10 +79,11 @@ Conversation
 
 ```text
 1. AGENTS.md
-2. context/CURRENT.md
-3. context/TOPIC_INDEX.md
-4. 与任务最相关的 1–3 个 Topic
-5. 信息不足时，再读：
+2. REPOSITORY_STATE.yaml
+3. context/CURRENT.md
+4. context/TOPIC_INDEX.md
+5. 与任务最相关的 1–3 个 Topic
+6. 信息不足时，再读：
    Question / Hypothesis / 最近 Checkpoint / Research / Evidence
 ```
 
@@ -104,6 +105,6 @@ Research Runner Heartbeat / Weekly Synthesis 仍需同时遵守 AGENTS 中各自
 ## 6. 最近关键变化
 
 - 2026-09-23：新增 RP-002-04，区分 World Model 与 Task Context。
-- 2026-09-23：建立最小 Context Continuity Layer，使跨会话状态可由 Git 恢复。
+- 2026-09-23：建立最小 Context Continuity Layer，使跨会话状态可由 Git 恢复。\n- 2026-09-23：新增 `REPOSITORY_STATE.yaml`，显式区分 human frontier、automation frontier 与 context maintenance 三个运行面。
 
 最近 Checkpoint：[`CP-20260923-001`](checkpoints/2026-09/CP-20260923-001-context-continuity-layer.md)

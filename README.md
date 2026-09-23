@@ -192,7 +192,7 @@ Working notes, cognitive evolution, paper walkthroughs, and active research stat
 
 ## Status
 
-Initialized on **2026-09-04**. On **2026-09-11**, the research method shifted from sequential paper progression toward a **problem-driven research loop**. The current Active Problem is R-001: how to design Human–AI division of labor, decision rights, and feedback around high-value enterprise judgment tasks. P-002 is now treated as candidate evidence for that problem rather than a mandatory “second paper.”
+Initialized on **2026-09-04**. On **2026-09-11**, the research method shifted from sequential paper progression toward a **problem-driven research loop**. The current human research Problem Family is **RP-002**, with **RP-002-01｜World Model Conflict & Evolution** as the human research frontier. Research Runner v0.4 is separately piloting **RP-002-02｜Business Action Layer**. These are different operating planes rather than competing definitions of one global “active problem”; the machine-readable registry is `REPOSITORY_STATE.yaml`.
 
 ---
 
