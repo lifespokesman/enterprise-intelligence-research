@@ -80,7 +80,7 @@ Q1–Q5 的当前权威定义以 `topics/README.md` 为准。它们是长期问�
 | **RP-004 Agent Capability & Authority** | Agent 能调用工具后，能力、权限、人控、责任怎样组合？ | Candidate | 暂无 |
 | **RP-005 Enterprise Capability Boundary** | 哪些能力应内部化，哪些可以由 AI 动态发现和外部调用？ | Backlog | 暂无 |
 
-详细问题树仍见 [`research/research-questions.md`](research/research-questions.md)。
+问题 ID、层级与关系索引见 [`research/research-questions.md`](research/research-questions.md)；每个 RP / 子问题的当前完整正文以 [`research/problems/`](research/problems/) 中对应问题卡为 canonical body。
 
 ---
 
@@ -174,8 +174,8 @@ RP-002 当前已经发生一次关键推进：
 - [`NOW.md`](NOW.md)：当前研究驾驶舱，只保留“现在在哪里、下一步做什么”；
 - [`RESEARCH_MAP.md`](RESEARCH_MAP.md)：长期研究地图、问题族与当前 Frontier；
 - [`EVOLUTION.md`](EVOLUTION.md)：只记录真正改变问题定义、假设或研究方向的认知变化；
-- [`research/research-questions.md`](research/research-questions.md)：详细问题树与历史问题内容；
-- [`research/problems/`](research/problems/)：重要 Problem / Subproblem 的详细问题卡；
+- [`research/research-questions.md`](research/research-questions.md)：问题 ID、层级、关系与历史索引；
+- [`research/problems/`](research/problems/)：每个 Problem / Subproblem 的当前 canonical body；
 - [`JUDGMENTS.md`](JUDGMENTS.md)：阶段性稳定判断；
 - [`PRINCIPLES.md`](PRINCIPLES.md)：经过证据与验证后可复用的架构 / 方法原则。
 

@@ -162,7 +162,7 @@ The context layer does **not** replace Questions, Hypotheses, Research, or Evide
 
 `Checkpoint = change event` · `Topic = current state` · `Question = unknown` · `Hypothesis = testable belief` · `Research / Evidence = support and challenge`.
 
-New AI sessions should use **progressive context loading**: start with `AGENTS.md → context/CURRENT.md → context/TOPIC_INDEX.md → 1–3 relevant Topic States`, and only then drill into Problems, Hypotheses, Checkpoints, Research, or Evidence as needed.
+New AI sessions should use **progressive context loading**: start with `AGENTS.md → REPOSITORY_STATE.yaml → context/CURRENT.md → context/TOPIC_INDEX.md → 1–3 relevant Topic States`, and only then drill into Problems, Hypotheses, Checkpoints, Research, or Evidence as needed.
 
 ### AI context
 

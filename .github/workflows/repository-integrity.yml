@@ -11,5 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install integrity-check dependencies
+        run: python3 -m pip install --disable-pip-version-check PyYAML==6.0.2
       - name: Check repository state and links
         run: python3 scripts/check_repository_state.py

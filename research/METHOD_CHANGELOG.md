@@ -123,10 +123,72 @@ v2.0 被视为**可逆的研究方法试验**，不是不可修改的制度。
 
 ### Related Files
 
-- `research/RESEARCH_LOOP.md`：v2.0 正式执行规则；
+- `research/RESEARCH_LOOP.md`：当前 v2.2 正式执行规则；
 - `research/research-questions.md`：Problem Map 与具体 Hypothesis；
-- `NOW.md`：当前 Active Problem 和下一步；
+- `NOW.md`：当前人工研究前沿和下一步；
+- `REPOSITORY_STATE.yaml`：当前方法版本与各运行面版本注册；
 - `EVOLUTION.md`：若该方法长期证明有效，再视需要把此次变化纳入长期认知演进主记录。
+
+---
+ 
+## v2.1｜Research Finding：在 Evidence 与正式认知之间增加人类可读研究发现
+
+Date: 2026-09-18  
+Origin: `Co-developed`  
+Source Commit: `28333a0e15b567874296d5a52a8797aca6e554b0`
+
+### Trigger
+
+v2.0 已经能够保存 H0 → Evidence → H1，但 Research Runner 实践暴露出一个新的问题：Evidence Card 很适合审计，却不适合研究者快速理解“这轮研究到底改变了什么”。
+
+### Shift
+
+在 Evidence 与 Hypothesis Update 之间增加：
+
+`Cross-source Synthesis → Research Finding`
+
+Research Finding 负责回答：
+
+- 本轮问题是什么；
+- 多个来源共同说明了什么；
+- 有哪些差异、反例和边界；
+- 对原 Hypothesis 有什么影响；
+- 对架构 / 工程意味着什么；
+- 下一步最大未知量是什么。
+
+核心变化：
+
+> **Evidence 是可审计依据，Research Finding 才是面向人的研究结果。**
+
+v2.1 不改变 Evidence 的可追溯要求，也不允许 Finding 超出 Evidence 支持范围。
+
+---
+
+## v2.2｜Strategic Thesis：从当前 Pattern 推进到可证伪的长期判断
+
+Date: 2026-09-18  
+Origin: `Co-developed`  
+Source Commit: `b5dc5d833f072acf236355b418f0179aa7a861b9`
+
+### Trigger
+
+v2.1 改善了可读性，但跨产品 / 论文 / 案例的 Finding 仍可能停留在“当前业界怎么做”，缺少对结构性约束、阶段性实现与未来演化的区分。
+
+### Shift
+
+在成熟 Finding 之后增加 **Strategic Thesis (Candidate)**：
+
+`Evidence → Pattern → Mechanism → Strategic Thesis → Engineering / Validation → Principle`
+
+Strategic Thesis 必须：
+
+- 使用多证据域，而不是单一厂商文档；
+- 明确 Alternative Hypothesis；
+- 区分结构性机制与当前技术阶段形成的实现；
+- 提出能够被未来事实推翻或收窄的预测；
+- 在证据不足时停留为 Candidate，不自动升级为 Architecture Principle。
+
+v2.2 的目标不是增加“战略口号”，而是让长期架构判断具有证据边界和可证伪性。
 
 ---
 
@@ -135,4 +197,6 @@ v2.0 被视为**可逆的研究方法试验**，不是不可修改的制度。
 | Version | Date | Core | Status |
 |---|---|---|---|
 | v1.0 | 2026-09-11 | Problem → Evidence → Mechanism → Engineering Hypothesis → Validation → Principle | Historical baseline |
-| **v2.0** | **2026-09-13** | Signal → Problem → H0 / Candidate Path → Evidence → H1 → Engineering Validation → Principle | **Current / Trial** |
+| v2.0 | 2026-09-13 | Signal → Problem → H0 / Candidate Path → Evidence → H1 → Engineering Validation → Principle | Historical method stage |
+| v2.1 | 2026-09-18 | Evidence → Cross-source Synthesis → Research Finding → Hypothesis Update | Historical method stage |
+| **v2.2** | **2026-09-18** | Finding → Pattern / Mechanism → Strategic Thesis → Validation → Principle | **Current / Trial** |

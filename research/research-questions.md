@@ -7,6 +7,17 @@ Updated: 2026-09-17
 
 完整研究闭环见 [`RESEARCH_LOOP.md`](RESEARCH_LOOP.md)。论文、产品、案例、开源项目、标准和分析报告都是 Evidence Provider，不构成独立阅读队列。
 
+## Authority Notice｜正文权威
+
+本文件负责维护 **Problem Map、CQ / AQ / EQ / VQ 的 ID、层级、关系与索引**；它不再作为同一 Problem ID 的第二份权威正文。
+
+- 每个 RP / 子问题的**当前完整正文与当前状态**，以 `research/problems/*.md` 中对应问题卡为唯一 canonical body；
+- 本文件中已经存在的历史长段落暂不批量迁移，后续在相关问题被再次修改时逐步收敛为索引 / 摘要；
+- 从本规则生效后，不再向本文件新增与 `research/problems/*.md` 重复的完整问题正文；
+- `RESEARCH_MAP.md` 只保存 Problem Family / Frontier / 关系视图，不承担问题正文。
+
+核心原则：**Single Canonical Body per ID；索引可以有多个，正文权威只有一个。**
+
 ---
 
 ## 1. Problem Map 的基本结构
