@@ -6,7 +6,9 @@ Updated: 2026-09-11
 
 ## 新会话短指令
 
-> 请读取 GitHub 仓库 `lifespokesman/enterprise-intelligence-research`，依次读取 `ai-context/PROJECT_CONTEXT.md`、`NOW.md`、`research/RESEARCH_LOOP.md`、`research/research-questions.md`、`research/paper-review-plan.md`、`ai-context/PAPER_READING_MODE.md`。
+> 请读取 GitHub 仓库 `lifespokesman/enterprise-intelligence-research`，先按仓库 Bootstrap 恢复当前状态：`AGENTS.md → REPOSITORY_STATE.yaml → context/CURRENT.md → context/TOPIC_INDEX.md → 1–3 个最相关 Topic State`。
+>
+> 然后读取 `ai-context/PAPER_READING_MODE.md`、`research/paper-review-plan.md`、当前 Problem 的 canonical body；只有背景不足时再读取 `ai-context/PROJECT_CONTEXT.md` / `research/RESEARCH_LOOP.md`。
 >
 > 本次材料：<论文 / URL / PDF>。
 >
@@ -14,7 +16,7 @@ Updated: 2026-09-11
 >
 > 如果是 A 类，再按 Part A–E 推进；如果是 B 类，只做定向理解与简版 Engineering Bridge；如果是 C 类，登记价值与升级条件后停止。
 
-如果当前还没有清晰 Active Problem，先帮助研究者把问题写成一句可研究、可工程翻译的问题，再决定是否需要这篇论文。
+如果 `REPOSITORY_STATE.yaml` 已有 human frontier，先判断论文与该问题的关系；只有当前任务明确脱离现有问题体系时，才帮助研究者提出新的候选问题。不要从历史 Paper Card 或 reading-list 推断当前 Active Problem。
 
 ---
 
@@ -22,13 +24,15 @@ Updated: 2026-09-11
 
 按需读取：
 
-1. `PROJECT_CONTEXT.md`：项目定义、证据纪律与公开边界；
-2. `NOW.md`：当前唯一动作；
-3. `RESEARCH_LOOP.md`：问题 → 原理的主闭环；
-4. `research-questions.md`：当前 Concrete Problem 与证据缺口；
-5. `paper-review-plan.md`：A / B / C 与完成标准；
-6. 当前论文原文；
-7. 只有选文或比较材料时，再读 `reading-list.md`。
+1. `AGENTS.md`：Bootstrap 与任务路由；
+2. `REPOSITORY_STATE.yaml`：当前 human / automation / context 运行面；
+3. `context/CURRENT.md` + `context/TOPIC_INDEX.md`：恢复当前相关主线；
+4. 当前任务最相关的 1–3 个 Topic State；
+5. 当前 Problem 的 `research/problems/*.md` canonical body；
+6. `paper-review-plan.md`：A / B / C 与完成标准；
+7. 当前论文原文；
+8. 只有方法或背景不足时，再读 `RESEARCH_LOOP.md` / `PROJECT_CONTEXT.md`；
+9. 只有选文或比较材料时，再读 `reading-list.md`。
 
 不要无差别加载整个仓库。
 
