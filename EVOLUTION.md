@@ -799,4 +799,82 @@ Audit / Feedback
 
 ---
 
-_Last updated: 2026-09-17_
+## EV-012｜从“扩展本体分类”转向“World Model → Task Context 转换机制”
+
+Date: 2026-09-23  
+Origin: User Insight / Co-developed  
+Status: Candidate｜问题定义变化；待外部证据验证
+
+### Before｜此前认知
+
+围绕企业业务本体，曾尝试使用“静态本体 / 动态本体 / 本体演化”来组织 Object、Relation、Rule、State、Event、Action 以及 AI 基于运行事实完善模型的关系。
+
+这种表达有助于观察企业世界的稳定结构、动态变化和长期演化，但也容易把三个不同层级的问题继续塞进 Ontology 分类本身。
+
+### Trigger｜触发
+
+进一步分析发现，Ontology 与 Agent 实际运行所需 Context 虽然共享对象、状态、规则、权限等内容，但组织信息的起点明显不同：
+
+- Ontology 更接近以企业世界本身为中心的 World-centric View；
+- Context 更接近以当前任务为中心的 Task-centric View。
+
+Session、用户即时意图、Agent Plan、短期 Memory、Tool State、Runtime State 等信息也很难被合理解释为企业业务 Ontology 本身。
+
+因此问题从“是否需要新的本体分类”转向：
+
+> **企业业务世界模型如何被动态转换成当前 Task 可使用的 AI Context？**
+
+### Shift｜关键转折
+
+当前形成三个需要分开验证的循环：
+
+1. **Business / Ontology Runtime**：对象实例、状态、事件、规则与 Action 如何描述并改变企业现实；
+2. **Context Runtime（候选概念）**：Task 如何选择相关对象、事实、知识、权限与运行状态并组装 Context；
+3. **Ontology Evolution**：运行事实持续暴露模型解释缺口后，何时修改正式世界模型。
+
+该变化同时要求严格区分：
+
+> **Object Instance / State Change ≠ Ontology Change。**
+
+### Now｜当前假设
+
+当前只形成四条待验证假设：
+
+- H1：Ontology ≠ AI Context；Ontology 可能是 Context 的 World Model / Semantic Backbone；
+- H2：Context 可能是 Task-centric World Slice；
+- H3：Ontology / Business Runtime 与 Context Runtime 可能是两个不同循环；
+- H4：Ontology Evolution 是更慢的第三循环，应由模型无法解释现实的证据触发，而不是由每次状态变化触发。
+
+Context Engine / Context Runtime 暂时只是 candidate mechanism，不升级为独立 Layer / Platform / Runtime 结论。
+
+### Why It Matters｜为什么重要
+
+这次变化把“企业本体要包含更多什么元素”的问题，提升为“企业世界表达如何在 Agent 运行时被消费”的架构问题，也把 RP-002 中此前相对分散的三个方向连接起来：
+
+~~~text
+企业世界如何表达？ → Ontology / World Model
+当前任务如何理解世界？ → Task Context
+AI 如何改变世界？ → Action / Tool / Policy
+世界模型错误后如何更新？ → Ontology Evolution
+~~~
+
+因此新增 RP-002-04，但不新增新的 Problem Family，也不改变当前 Research Runner v0.4 的执行前沿。
+
+### Open Question｜仍未解决
+
+1. World Model 与 Task Context 是否是跨理论、产品和工程实践都稳定存在的边界？
+2. Retrieve / Resolve / Filter / Authorize / Assemble 是否形成独立 Context Runtime，还是 Agent Runtime 与既有 Semantic / Data / Policy 服务的组合职责？
+3. Action → New Fact → Next Context 与 Ontology Evolution 之间的触发边界如何定义？
+4. 哪些产品 / 案例证明复杂业务 Agent 需要显式世界模型，哪些反例表明强 Runtime Context 足以替代预建 Ontology？
+
+### Impact｜影响
+
+- 新增 research/problems/RP-002-04-world-model-to-task-context.md；
+- RP-002 母问题新增 World Model → Task Context 转换方向；
+- research/research-questions.md 登记 AQ-002-08 及 H1–H4；
+- RESEARCH_MAP.md 将该问题列入 RP-002 Backlog，不抢占当前 Frontier；
+- 不修改 JUDGMENTS.md / PRINCIPLES.md。
+
+---
+
+_Last updated: 2026-09-23_
