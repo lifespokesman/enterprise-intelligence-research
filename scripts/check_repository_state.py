@@ -18,7 +18,7 @@ now = read("NOW.md")
 runner = read("research/RESEARCH_STATE.yaml")
 topics = read("topics/README.md")
 research_map = read("RESEARCH_MAP.md")
-readme = read("README.md")
+readme = read("README.md")\nreadme_zh = read("README.zh-CN.md")
 
 required_state_tokens = [
     'canonical_state: "REPOSITORY_STATE.yaml"',
