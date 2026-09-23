@@ -1,5 +1,8 @@
 # Context Continuity Layer｜会话上下文持续化层
 
+Version: **v1.0**  
+Updated: 2026-09-23
+
 > 目标：让不同 ChatGPT / Codex / AI 会话不依赖完整聊天历史，也能恢复“现在认为是什么、为什么、下一步是什么”。
 
 核心原则：
@@ -20,7 +23,8 @@
 | Question | 还不知道什么？ | 是 |
 | Hypothesis | 当前猜测 / 待验证判断是什么？ | 是 |
 | Research / Evidence | 为什么形成这个判断？有哪些支撑、反例和边界？ | 是 |
-| `REPOSITORY_STATE.yaml` | 当前不同运行面的机器可读状态是什么？ | 是，Canonical State Registry |\n| `NOW.md` | 当前人工研究前沿与下一步研究动作是什么？ | 是，研究驾驶舱 |
+| `REPOSITORY_STATE.yaml` | 当前不同运行面的机器可读状态是什么？ | 是，Canonical State Registry |
+| `NOW.md` | 当前人工研究前沿与下一步研究动作是什么？ | 是，研究驾驶舱 |
 | `context/CURRENT.md` | 整个仓库当前最值得恢复的少数工作状态是什么？ | 是，跨会话入口 |
 
 `CURRENT.md` 不替代 `NOW.md`。前者面向**仓库级恢复与多执行器协作**，后者面向**研究前沿管理**。
