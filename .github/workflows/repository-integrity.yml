@@ -1,0 +1,15 @@
+name: Repository Integrity
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  repository-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check repository state and links
+        run: python3 scripts/check_repository_state.py
