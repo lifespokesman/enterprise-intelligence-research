@@ -902,3 +902,161 @@ Strategic Implication
 ```
 
 若只完成 WHAT，没有可靠 WHY 与结构性分析，最高只能标记为 `Pattern`。
+
+---
+
+## 19. Context Continuity Protocol｜会话上下文持续化协议
+
+本仓库中的 ChatGPT、Codex 与其他 AI 会话都是临时运行环境，不应依赖完整聊天历史作为长期状态数据库。
+
+长期状态使用：
+
+```text
+Conversation
+→ Checkpoint
+→ Topic State
+→ Context Routing
+→ New Task
+```
+
+详细 Schema 与边界见 `context/README.md`。
+
+### 19.1 Context Loading Protocol
+
+除 Research Runner 等已有专项协议外，新的仓库任务默认按以下顺序恢复上下文：
+
+1. 读取最新 `AGENTS.md`；
+2. 读取 `context/CURRENT.md`；
+3. 读取 `context/TOPIC_INDEX.md`；
+4. 根据任务目标识别最相关的 **1–3 个 Topic State**；
+5. 只有 Topic 信息不足时，才继续读取：
+   - 相关 Question / Problem；
+   - Hypothesis；
+   - 最近必要的 Checkpoint；
+   - Research / Evidence；
+   - 原始论文、产品、案例或工程材料。
+
+核心原则：
+
+> **Progressive Context Loading：先加载最小足够上下文，不足再逐层展开。**
+
+禁止把“保险起见扫描整个仓库”作为默认启动方式。
+
+如果任务属于 Research Heartbeat / Weekly Synthesis，在完成上述仓库级定位后，仍必须继续遵守本文件第 3 节及对应 Research Runner 的专项读取与写权限规则。
+
+### 19.2 CURRENT 与 NOW 的职责
+
+- `context/CURRENT.md`：整个仓库当前最值得恢复的少数主线、近期变化和多执行器运行态；
+- `NOW.md`：当前研究驾驶舱，只回答当前研究前沿、Working Hypothesis 与下一步研究动作；
+- `research/RESEARCH_STATE.yaml`：Research Runner 的机器运行态。
+
+三者不得互相复制成大文档。
+
+若三者表面上指向不同问题，先判断它们是否分别描述“仓库主线 / 人工研究前沿 / 自动化试运行对象”，不要自动视为冲突。
+
+### 19.3 Checkpoint Protocol
+
+只有当一轮工作产生**值得跨会话长期保留的状态变化**时，才创建 Checkpoint。
+
+Checkpoint 必须记录相对于此前状态的 Delta，重点包括：
+
+- Trigger；
+- 新增认识；
+- 修正认识；
+- 被否定 / 降级的认识；
+- 新决策；
+- 新问题 / 假设；
+- 影响的 Topic / Question / Hypothesis；
+- Next。
+
+Checkpoint 不得：
+
+- 大篇幅复制对话；
+- 写流水账摘要；
+- 重复 Topic 正文；
+- 为了“每轮都有产物”制造无意义记录。
+
+ID 使用 `CP-YYYYMMDD-NNN`，按月存放于 `context/checkpoints/YYYY-MM/`。
+
+### 19.4 Topic Update Protocol
+
+Topic 是长期主题的**当前有效状态**，不是 append-only 历史日志。
+
+新 Checkpoint 产生后：
+
+```text
+原 Topic State
++ 新 Checkpoint
+↓
+判断：新增 / 修正 / 覆盖 / 冲突 / 待验证
+↓
+更新 Topic 当前状态
+```
+
+Topic 中只保留当前仍有效的核心问题、认识、架构判断、决策、开放缺口和最近少量关键变化。
+
+历史演变由 Checkpoint / EVOLUTION / Git history 承担。
+
+普通一次性问题不创建 Topic。创建新 Topic 前必须先检查是否：
+
+1. 已有高度相关 Topic；
+2. 只是已有 Topic 的演进；
+3. 只是一个 Question / Hypothesis；
+4. 确实是跨多次会话、未来会反复调用的长期对象。
+
+### 19.5 Context Write-back Protocol
+
+任务结束前执行一次轻量判断：
+
+**A. 没有长期状态变化**
+
+- 不创建 Checkpoint；
+- 不强制更新 Topic；
+- 按原任务规则提交必要文件即可。
+
+**B. 有长期状态变化**
+
+1. 创建 Checkpoint；
+2. 更新受影响 Topic State；
+3. 必要时更新 `context/CURRENT.md`；
+4. 若研究未知发生变化，再更新 Question / Hypothesis；
+5. 若正式研究前沿发生变化，再按原规则更新 `NOW.md` / `RESEARCH_STATE.yaml`；
+6. 只有重大认知转折才进入 `EVOLUTION.md`。
+
+不要因为一轮讨论同时触碰多个文件，就机械地全部更新。
+
+### 19.6 Compaction 原则
+
+Checkpoint 允许持续积累，但 Active Context 必须保持小。
+
+当某 Topic 的历史 Checkpoint 已明显增加 Context Retrieval 成本时：
+
+```text
+Checkpoint History
+→ 提炼仍有效状态
+→ 重写 Topic State
+→ 旧 Checkpoint 保留
+→ 日常任务默认不再读取旧历史
+```
+
+不设置“满 5 个 / 10 个必须合并”的机械阈值。
+
+判断标准只有一个：
+
+> **历史变化记录是否已经开始妨碍快速恢复当前状态。**
+
+### 19.7 Context Layer 验收
+
+完成跨会话状态修改后，至少检查：
+
+- 新会话是否能通过 `AGENTS → CURRENT → TOPIC_INDEX → 1–3 Topics` 恢复主要状态；
+- 是否仍需要无差别扫描全仓库；
+- Topic 是否只保存当前状态，没有演化成第二套问题库；
+- Checkpoint 是否只记录 Delta；
+- `CURRENT.md` 是否仍保持轻量；
+- 是否避免把普通一次性工作 Topic 化。
+
+本轮机制的目标不是保存所有讨论，而是：
+
+> **即使完整聊天记录不可用，也能从仓库恢复“我们现在认为是什么、为什么、下一步是什么”。**
+
