@@ -301,14 +301,15 @@ Principle 状态：Candidate / Supported / Stable / Revised / Deprecated。
 跨会话恢复现在以 Context Continuity Layer 为默认入口：
 
 1. `AGENTS.md`
-2. `context/CURRENT.md`
-3. `context/TOPIC_INDEX.md`
-4. 当前任务最相关的 1–3 个 Topic State
-5. 信息不足时，再按 Topic 链接下钻到 Problem / Hypothesis / Checkpoint / Research / Evidence
+2. `REPOSITORY_STATE.yaml`
+3. `context/CURRENT.md`
+4. `context/TOPIC_INDEX.md`
+5. 当前任务最相关的 1–3 个 Topic State
+6. 信息不足时，再按 Topic 链接下钻到 Problem / Hypothesis / Checkpoint / Research / Evidence
 
 本文件 `PROJECT_CONTEXT.md` 继续保存相对稳定的项目背景与研究边界，但**不再要求每个新会话默认全文加载**。
 
-Research Heartbeat / Weekly Synthesis 等专项任务，在完成仓库级定位后，还必须继续遵守 `AGENTS.md` 中 Research Runner 的专项读取顺序。
+Research Heartbeat / Weekly Synthesis 等专项任务，在完成仓库级定位后，还必须继续读取 `ops/research-runner.md` 并遵守 Research Runner 的专项协议。
 
 论文任务按需读取 `research/paper-review-plan.md` 与 `ai-context/PAPER_READING_MODE.md`；选文任务按需读取 `research/reading-list.md`。
 
