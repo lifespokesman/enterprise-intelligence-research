@@ -199,7 +199,7 @@ Q1–Q5 是长期问题地图，但真正执行研究时，基本单位是一个
 
 ## 当前状态
 
-仓库于 **2026-09-04** 初始化。2026-09-11 研究方法从“按论文顺序推进”进一步转向 **Problem-driven Research Loop**。当前 Active Problem 是 R-001：高价值企业判断任务中 Human / AI 的分工、决策权与反馈如何设计。P-002 是该问题的候选证据，而不是必须按编号读完的“第二篇论文”。
+仓库于 **2026-09-04** 初始化。2026-09-11 研究方法从“按论文顺序推进”进一步转向 **Problem-driven Research Loop**。当前人工研究 Problem Family 为 **RP-002**，人工研究前沿为 **RP-002-01｜World Model Conflict & Evolution**。Research Runner v0.4 另行试运行 **RP-002-02｜Business Action Layer**。二者属于不同运行面，不再用一个模糊的“全局 Active Problem”强行覆盖；机器可读状态以根目录 `REPOSITORY_STATE.yaml` 为准。
 
 ---
 
