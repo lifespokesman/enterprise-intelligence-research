@@ -10,7 +10,7 @@ Updated: 2026-09-23
 
 > 本文件只回答：**现在研究什么、为什么是它、下一步只做什么。**
 >
-> 长期研究地图与问题族关系见 [`RESEARCH_MAP.md`](RESEARCH_MAP.md)。详细问题树见 [`research/research-questions.md`](research/research-questions.md)。
+> 长期研究地图与问题族关系见 [`RESEARCH_MAP.md`](RESEARCH_MAP.md)。问题 ID / 层级 / 关系索引见 [`research/research-questions.md`](research/research-questions.md)；当前问题正文以对应的 [`research/problems/`](research/problems/) 问题卡为准。
 
 ---
 
