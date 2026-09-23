@@ -1,6 +1,12 @@
+---
+view: "human_research_dashboard"
+problem_family: "RP-002"
+frontier: "RP-002-01"
+---
+
 # NOW｜当前研究驾驶舱
 
-Updated: 2026-09-16
+Updated: 2026-09-23
 
 > 本文件只回答：**现在研究什么、为什么是它、下一步只做什么。**
 >
@@ -10,7 +16,9 @@ Updated: 2026-09-16
 
 ## 1. Current Theme｜当前长期主题
 
-**Q3｜AI 如何获得对企业真实世界的可计算、可验证理解？**
+**Q3｜Human-Agent 的协调机制**
+
+当前聚焦：**企业世界表达、World Model 一致性，以及 Shared Context / Enterprise World Model 作为 Human-Agent 协调基础的作用。**
 
 当前研究不是一般的数据治理问题，而是：
 
