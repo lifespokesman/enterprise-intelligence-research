@@ -1,6 +1,6 @@
 # RESEARCH_MAP｜长期研究地图
 
-Updated: 2026-09-23
+Updated: 2026-09-29
 
 > 本文件只回答三个问题：**长期在研究什么？每条主线当前推进到哪里？当前人工研究前沿是什么？**
 >
@@ -42,7 +42,7 @@ Frontier
 |---|---|---|
 | **Q1** | 当 Human 与 AI 具有不同认知优势和局限后，企业的 Decision Rights 应按什么原则重新配置？ | RP-001 / RP-004 |
 | **Q2** | 当 AI 可以获得决策权，但无法像人一样承担职业、社会和法律后果时，责任、风险与 Authority / Accountability 最终锚定在哪里？ | RP-004 |
-| **Q3** | Human、Agent、Software、Asset 如何形成稳定协作？Shared Context / Enterprise World Model 能否成为新的协调基础？ | **RP-001 / RP-002** |
+| **Q3** | Human、Agent、Software、Asset 如何形成稳定协作？Shared Context / Enterprise World Model 能否成为新的协调基础？ | **RP-001 / RP-002 / RP-006** |
 | **Q4** | AI 降低能力发现、协商、协调、监督与验证成本后，企业能力边界如何变化？ | RP-005 |
 | **Q5** | Agent 的局部经验如何转化为组织长期学习与演化能力？ | RP-003 / RP-002 |
 
@@ -79,6 +79,7 @@ Q1–Q5 的当前权威定义以 `topics/README.md` 为准。它们是长期问�
 | **RP-003 Agent Organizational Learning** | Agent 的局部运行经验如何沉淀为可保留、可复用、可验证的组织能力？ | Candidate | 暂无 |
 | **RP-004 Agent Capability & Authority** | Agent 能调用工具后，能力、权限、人控、责任怎样组合？ | Candidate | 暂无 |
 | **RP-005 Enterprise Capability Boundary** | 哪些能力应内部化，哪些可以由 AI 动态发现和外部调用？ | Backlog | 暂无 |
+| **RP-006 Enterprise Agent Harness Runtime** | 长程 Agent 如何持续执行、保持状态、恢复、隔离、编排并接受企业控制；Harness 与 Context / Action / Governance / Environment 如何划界？ | Candidate / Exploratory | 暂无；先验证 Harness 不变量与 Environment 边界 |
 
 问题 ID、层级与关系索引见 [`research/research-questions.md`](research/research-questions.md)；每个 RP / 子问题的当前完整正文以 [`research/problems/`](research/problems/) 中对应问题卡为 canonical body。
 
