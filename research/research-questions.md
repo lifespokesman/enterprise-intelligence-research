@@ -1,6 +1,6 @@
 # Problem Map｜企业 AI 问题地图
 
-Updated: 2026-09-17  
+Updated: 2026-09-29  
 本文件用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
 
 > **知识管理的基本单位从“论文 / 对话 / 资料”切换为“问题”。**
@@ -71,6 +71,7 @@ Q1–Q5 仍然是长期组织问题地图；RP 是真正执行研究时的阶段
 | **RP-003** | Agent 的局部运行经验如何变成可保留、可复用、可验证的组织长期能力？ | Q5 | E4 / G4 | AP-004 | Candidate |
 | **RP-004** | Agent 有能力调用工具以后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？ | Q2 / Q1 | E3；G2 / G3 / G4 | AP-003 | Candidate |
 | **RP-005** | AI 降低发现、调用和协调能力的成本后，哪些能力仍应企业内部化，哪些可以动态外部调用？ | Q4 | E3；G2 | 尚无 | Backlog |
+| **RP-006** | 当 Agent 进入长程、可恢复、可隔离、多环境执行后，Harness / Agent Runtime 应承担什么稳定职责，并与 Context、Action、Governance、Environment 如何划界？ | 主 Q3；关联 Q2 / Q5 | E1；关联 E3 / E4 / G2 / G3 / G4 | 尚无 | Candidate / Exploratory |
 
 原则：
 
@@ -733,6 +734,40 @@ AI 降低发现、调用和协调能力的成本后，哪些能力仍应企业�
 **Mappings**：Q4；E3 / G2。  
 **Evidence Gap**：交易成本理论、治理理论与公开产业案例。  
 **Status**：Backlog。
+
+---
+
+# RP-006｜Enterprise Agent Harness Runtime
+
+**Core Problem**  
+当 Agent 从一次模型调用升级为需要持续观察、规划、调用工具、执行动作、保持状态、恢复任务并在受控环境中长期运行的执行主体时，企业需要什么样的 Harness / Agent Runtime 机制？这些机制与 Task Context、Business Action、Security / Governance、Execution Environment 以及 Runtime Feedback 应如何划分边界？
+
+**Mappings**：主 Q3；关联 Q2 / Q5；E1，关联 E3 / E4 / G2 / G3 / G4。  
+**Derived From**：RP-002-04 World Model → Task Context Runtime。  
+**Related To**：RP-002-02 Business Action Layer / RP-004 Effective Agency / RP-003 Organizational Learning。  
+**Status**：Candidate / Exploratory；不改变当前 Active Problem 与 Human / Automation Frontier。
+
+### Registered Questions
+
+- **CQ-006-01**：Harness 相对于 Model API / Workflow / Agent Framework 新增解决什么结构性问题？
+- **CQ-006-02**：Agent Loop、Context、Tool、Environment、State、Orchestration、Control、Observability 中，哪些是稳定 Harness / Runtime 职责？
+- **AQ-006-01**：Harness 与 Execution Environment / Sandbox 应如何划分，是否值得形成可替换 Runtime Provider？
+- **AQ-006-02**：Multi-Agent 的 Context isolation、permission inheritance、parallel execution、failure recovery、state sharing 应由 Harness 如何承载？
+- **AQ-006-03**：Desktop / Web / Collaboration Client / API 等 Entry 与 Harness 是否存在稳定解耦边界？
+- **EQ-006-01**：个人 Harness 企业化后，Identity / Tenant / Policy / Approval / Isolation / Persistence / Recovery / Quota / Audit / Cost / SLA 中哪些是结构性新增要求？
+- **EQ-006-02**：Harness 与 AI Gateway / Model Serving / GPU Runtime / Token-Cost / Resource Scheduling 的资源边界是什么？
+- **VQ-006-01**：能否建立 `Task Characteristics → Harness Runtime Pattern`，并明确哪些任务无需 Harness、哪些需要 durable / isolated / distributed runtime？
+
+### Working Hypotheses
+
+- **H-RP006-01**：Harness 可能更接近“受控 Agent 执行系统”，而不是更多 Agent 功能的集合；
+- **H-RP006-02**：较成熟实现可能倾向 Harness / Environment Separation，但低风险本地任务可能构成反例；
+- **H-RP006-03**：企业化主要复杂度可能来自 Control + Operations，而不仅是 Agent Loop；
+- **H-RP006-04**：不存在统一最佳 Harness，Runtime Pattern 可能由任务时长、动作风险、环境、并行、持久化、隔离、规模与资源模型共同决定。
+
+以上全部为 Working Hypothesis，不进入 `JUDGMENTS.md` / `PRINCIPLES.md`。
+
+**Problem File**：[`problems/RP-006-enterprise-agent-harness-runtime.md`](problems/RP-006-enterprise-agent-harness-runtime.md)。
 
 ---
 
