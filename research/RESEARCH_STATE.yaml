@@ -1,5 +1,5 @@
 version: "0.4"
-updated: "2026-09-20"
+updated: "2026-09-29"
 
 runner:
   name: "Research Runner"
@@ -44,7 +44,7 @@ active_hypothesis:
     加 Tool Schema 直接承担。
   proposed_revision:
     from: "H1"
-    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020", "E-021"]
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020", "E-021", "E-022"]
     change: >
       v0.4 多证据域研究进一步把 H1 从“受治理的 Action Contract”提升为候选战略判断：
       模型能力增强会逐步吸收工具选择、参数生成、部分流程编排与 glue code，
@@ -61,6 +61,7 @@ active_hypothesis:
       - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
       - "若未来 Agent Identity + Policy Engine + 通用 API Schema 能覆盖高影响场景，则独立 Capability Contract 的价值应被下调"
       - "本轮合成原型的治理/变更收益依赖字段模型与清单假设，尚需真实实现、并发和故障注入复现"
+      - "Temporal 公开实现支持既有 Durable Workflow 承担补偿/并发/超时，但未提供通用 API + Policy 与显式契约的治理成本对照"
     unresolved_gap: "真实多 Agent、跨团队 API 演进与故障注入下，通用 API + Policy 与显式 Governed Capability Contract 的治理收益/维护成本差异"
   strategic_thesis_candidate:
     id: "ST-RP002-01"
@@ -162,18 +163,19 @@ evidence_gaps:
       product_implementation: true
       case_engineering: true
       counter_evidence: true
-    material_evidence_count: 7
+    material_evidence_count: 8
     last_result:
-      date: "2026-09-20"
-      outcome: "Strategic Thesis (Candidate) -> conditional engineering support"
+      date: "2026-09-29"
+      outcome: "conditional engineering support -> runtime boundary narrowed"
       summary: >
         Toolformer 提供模型可吸收工具选择/参数生成的反证；Agent 安全论文把 least privilege、
         complete mediation、delegated authority 与可执行工具约束识别为模型外的系统安全要求；
         Microsoft Entra Agent ID 将 Agent 身份与授权治理产品化；Engine 案例显示退款/交易/账户更新仍依赖严格测试与安全；
         SAP Joule Studio 同时展示“执行逻辑自动生成”与“权限/策略/隔离/审计继续强化”。
-        合成双路线工程验证显示，在共享 Service/Workflow Runtime 下，两条路线的状态迁移与补偿结果一致，
+        合成双路线工程验证显示，在共享 Service/Workflow Runtime 下，两条路线的状态迁移与补偿结果一致；
+        Temporal 官方公开 Saga/Mutex 示例进一步显示，
         显式契约的收益集中在审计字段覆盖、多 Agent 复用和变更影响隔离；这支持有条件的 Governed Capability Contract，
-        但不证明需要独立 Action Runtime，也不足以升级为 Architecture Principle。
+        但不证明需要独立 Action Runtime，也不足以升级为 Architecture Principle；本轮未完成外部仓库本地测试运行。
 
 next_action:
   type: "validation"
@@ -240,6 +242,16 @@ research_history:
       B 在原型定义的审计字段覆盖、第二 Agent 接入和前置条件变更影响面上更集中。
       该结果支持“治理边界有条件增量价值”，但不能证明独立 Runtime、生产性能或普遍优越性；
       GAP-004 继续保持 provisionally_saturated，下一轮寻找真实可运行实现和故障注入对照。
+  - date: "2026-09-29"
+    gap: "GAP-004"
+    result: "conditional engineering support -> runtime boundary narrowed"
+    material_evidence: ["E-022"]
+    note: >
+      审计 Temporal 官方 TypeScript samples-typescript 的 Saga 与 Mutex 示例：
+      跨服务补偿、并发串行化和超时释放均由 Workflow / Activity Runtime 实现，
+      进一步支持可靠执行职责属于既有 Durable Runtime，并收窄独立 Action Runtime 的主张；
+      但示例未提供 Agent Identity + Policy 与显式 Governed Capability Contract 的治理成本对照，
+      且本轮未完成本地测试运行，因此 GAP-004 继续保持 provisionally_saturated。
 
 research_depth:
   framework: "WHAT -> WHY -> STRUCTURAL/TRANSITIONAL/EMERGING -> FUTURE"
