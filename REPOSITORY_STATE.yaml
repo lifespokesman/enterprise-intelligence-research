@@ -7,6 +7,7 @@ authority:
   human_dashboard: "NOW.md"
   context_recovery: "context/CURRENT.md"
   research_runner_state: "research/RESEARCH_STATE.yaml"
+  official_engineering_learning_queue: "learning/official-engineering/source-queue.md"
   long_term_problem_identity: "topics/README.md"
   problem_index: "research/research-questions.md"
   problem_body_root: "research/problems/"
@@ -53,3 +54,14 @@ protocol_versions:
   runner_protocol: "0.4"
   repository_state_schema: "1.0"
   context_continuity_protocol: "1.0"
+  official_engineering_learning_protocol: "0.1"
+
+learning_streams:
+  official_engineering:
+    owner: "knowledge_learning"
+    protocol_version: "0.1"
+    protocol: "ops/official-engineering-learning.md"
+    queue: "learning/official-engineering/source-queue.md"
+    notes_root: "learning/official-engineering/notes/"
+    human_confirmation_required: true
+    research_bridge: "candidate-only; no automatic Evidence / Hypothesis / Principle writes"

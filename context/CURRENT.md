@@ -91,6 +91,10 @@ Conversation
 
 Research Runner Heartbeat / Weekly Synthesis 仍需继续读取 `ops/research-runner.md`，并遵守其中的专项读取、写权限与验收协议。
 
+### 独立学习流｜Official Engineering Knowledge
+
+仓库另有一条独立的官方工程知识学习流，协议见 [`ops/official-engineering-learning.md`](../ops/official-engineering-learning.md)，候选队列见 [`learning/official-engineering/source-queue.md`](../learning/official-engineering/source-queue.md)。它只负责发现、筛选和支持人类理解 OpenAI / Anthropic 官方工程资料；`SELECTED`、`HUMAN_UNDERSTOOD`、`APPLIED` 和知识卡写入都需要研究者确认。它不修改 Research Runner、正式 Problem、Hypothesis、Evidence、JUDGMENTS 或 PRINCIPLES。
+
 ---
 
 ## 5. 当前不要做
