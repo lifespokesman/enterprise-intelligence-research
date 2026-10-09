@@ -516,3 +516,80 @@ Harness / Agent Runtime
 - Agent plan 与 durable commitment 是否混淆；
 - Prompt instruction 与 enforceable policy 是否混淆；
 - human approval UI 与真正的 delegated authority / accountability 是否混淆。
+
+---
+
+## 12. 2026-10-09｜需求侧增量：Business Task 与 Agent 执行组织（Working Hypothesis，非新 Problem）
+
+### 12.1 为什么属于 RP-006
+
+本轮将 VQ-006-01 的 `Business Outcome / Constraint → Task Characteristics → Runtime Pattern` 进一步检验为一个**架构选型方法**，不将「任务中心平台」预设为新基础设施，也不覆盖既有 H-RP006-04、H-RP006-05。相关：RP-002-04（Task Context）、RP-002-02（Action）、RP-004（Authority）、Q3（协调）。
+
+### 12.2 关键主体概念与关系矩阵
+
+| 主体 | 职责／解决的问题 | 常见实现／关系 | 独立建设是否必要／替代方式／争议 |
+|---|---|---|---|
+| Business Application | 领域交互、规则、事实与权威状态；承接业务责任 | SoR、领域服务、API；可发起/验收任务 | 既有企业常必需其**能力**，但不必新建应用；不能一概退化为 Agent Tool |
+| Agent | 对不确定目标动态判断、选工具和行动 | LLM+工具+循环；在 Harness/Workflow 内执行 | 可用规则、单次 LLM、服务或人工替代；不自动拥有审批权 |
+| Agent Harness | Agent 循环、上下文装配、工具调用和控制钩子 | SDK loop、代码、图状态机；调用 Runtime 能力 | **功能条件性必要**；与 Runtime 重叠，不等于必须独立服务 |
+| Agent Runtime | 执行状态、隔离、持久化、恢复、并发与资源 | SDK、Workflow、容器/沙箱、托管服务 | 对短任务可轻量内嵌；对长任务可复用既有 durable engine |
+| Agent Workspace | 人机任务可视化入口；或执行文件/代码的工作空间（需拆分） | 业务 UI/任务列表；沙箱/文件系统 | 两种 Workspace 不同义；无需统一 Agent 门户 |
+| Master-Agent | 开放任务的规划、委派和综合 | manager-as-tool、动态 handoff、代码 orchestration | 可选模式；不能因「Master」自动取得业务授权 |
+| Sub-Agent | 隔离上下文、专业处理、并行子工作 | as-tool、handoff、worker | 仅在专业化/并行收益超过协调成本时使用；可用函数/服务替代 |
+| Workflow（关键对照） | 已知业务过程、等待、人审、持久协调 | BPMN / durable workflow | 不是新 Agent 组件；Agent 可作为流程内局部活动 |
+
+**四种关系不可混同**：业务关系（责任与权威状态归 Business Owner/SoR）、执行关系（Agent 或 Workflow 组织任务）、运行关系（Harness/Runtime/Workflow 可复用基础设施）、治理关系（Policy/Identity/Approval/Audit 的真实强制执行点）。Tool invocation 是技术调用，不等于通过业务前置条件、授权、事务及审计后的正式业务变更。
+
+### 12.3 五个身份／生命周期对象（候选词汇，不要求统一模型）
+
+- `Business Task`：业务目标、结果验收、责任归属、风险与状态；可由人、流程、系统、Agent 混合完成。
+- `Workflow Instance`：一个明确流程定义的一次持久执行；可承载一个任务或多个业务任务。
+- `Agent Definition`：策略、模型、工具与执行配置模板；不是运行中的主体授权。
+- `Agent Instance / Run`：某一执行主体及一次具体执行尝试；一个业务任务可跨多个 Run、重试、人工等待。
+- `Session`：对话／记忆连续性标识；跨轮上下文不等于业务任务的权威状态。各产品对 Instance/Run 的命名不一致，此处仅用于比较。
+
+### 12.4 需求侧任务分类与最低充分实现（Working Analysis）
+
+| 任务情形 | 最低充分候选方式 | 何时追加机制 |
+|---|---|---|
+| A 确定性查询／写字段 | 现有 App / API / Rule / Command | 无须默认 Agent；写入遵守现有 Policy 与 SoR |
+| B 知识／认知分析 | 搜索/RAG + LLM，必要时单 Agent | 需要多轮工具选择、环境操作才用 Harness |
+| C 固定流程的智能判断 | BPMN/Workflow + AI 节点 | 判断局部开放时嵌 Agent；流程审批权不随之迁移 |
+| D 开放多步骤研究／执行 | 单 Agent + 轻量状态管理 | 复杂并行/专业隔离的净收益明确时才 Master/Sub；长程运行才加 durable |
+| E 长期事件触发／高风险跨系统任务 | Event + Workflow / Domain App + 受限 Agent | 引入幂等、补偿、审批、跨系统审计与恢复；只有既有设施不能承载时再研究独立 Task Control |
+
+**建议的需求侧推导顺序**：Business Goal → Accepted Outcome → Constraint / Risk → AI Applicability → Business Task → Execution Requirements → Organization Pattern → Technical Capabilities。此为**分析流程而非规定平台拓扑**。
+
+### 12.5 H1–H6 对既有假设的映射与反驳路径
+
+| 本轮候选 | 映射／治理判断 | 边界与反证 |
+|---|---|---|
+| H1 Task 比 Agent 更适合需求侧入口 | 精炼 VQ-006-01 与 H-RP006-04，不新增 H | 简单问答的 Task 抽象仅增加负担 |
+| H2 Business Task ≠ Run / Session / Workflow Instance | RP-006 生命周期 × RP-002-04 Task Context；保留 Working Hypothesis | 单次短调用可一一对应，无需独立存储 |
+| H3 Master ≠ Business Authority | RP-004 Authority + AQ-006-02；不新增 H | 业务明确授权的 Master 可以发起受限写动作，但授权来自外部 |
+| H4 Harness ≠ Business Workflow / SoR | H-RP006-01/05 + RP-002-02；既有边界精炼 | 同产品可以承载多项职责，不强制物理拆分 |
+| H5 Workspace 非唯一入口 | AQ-006-03；不新增 H | 人机协作密集场景工作台仍有价值 |
+| H6 关键可能是 Control / Execution / Authority / Accountability 分离 | RP-004 × RP-006 跨问题关系；仅作为治理假设 | 当业务规则简单且低风险，分离为新控制平台没有净收益 |
+
+### 12.6 四个反例与平台化停止条件
+
+1. **简单知识问答**：一次检索与模型输出即可；统一 Business Task 平台通常是重新包装。
+2. **成熟 BPM 审批**：BPM 已有状态、人审与稽核，AI 只做局部判断；新 Task Controller 极可能重复建设。
+3. **研究型 Agent**：结果是报告，无正式业务状态写入；Harness + 版本化产物/验收常已充分。
+4. **跨系统高风险长期任务**：有多次 Run、审批、部分失败与业务写入；需要跨参与者的 task correlation、权限、幂等、恢复、验收，但可以首先复用既有 Workflow/SoR，不直接推出独立平台。
+
+**候选采用阈值**：只有跨系统任务无法被既有流程一致标识和追踪、存在多执行者长等待/责任交接、严格证据与审计一致性要求，且复用收益能覆盖新组件维护、迁移与治理成本时，才考虑独立任务治理层。技术委派**永远不等于**业务授权转移，Agent 宣称完成**永远不等于**业务验收完成。
+
+### 12.7 小样本原始资料校验与证据限制（2026-10-09）
+
+- [OpenAI Agents SDK — Agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/)：LLM/代码编排并存，manager-as-tool 与 handoff 是两种可选模式；**产品机制证据**，非 Master 必需性证明。
+- [OpenAI Agents SDK — Running agents](https://openai.github.io/openai-agents-python/running_agents/)：Session/continuation 有不同状态路径；跨等待恢复提供 Temporal、Dapr、Restate、DBOS 集成；**反对 Harness 必须独占 durable orchestration**。
+- [Camunda — AI agents](https://docs.camunda.io/docs/components/agentic-orchestration/ai-agents/)：LLM 选工具，BPMN 执行活动/重试/人工任务；**支持 Workflow 内含 Agent 的替代路径**，不证明企业实际 ROI。
+- [LangGraph — Thinking in LangGraph](https://docs.langchain.com/oss/javascript/langgraph/thinking-in-langgraph)：checkpoint + interrupt + resume 展示另一种长任务组织方式；只证明实现可行。
+- 仓内已有：RP-002-02 的 GAP-001 传统 Service/Command/Workflow 对照；RP-006 的 H-RP006-05 模型/Harness 机制迁移；RP-002-04 的任务上下文变量。以上均不能支持「统一 Task Control Plane 是行业必需品」。
+
+**待补证据**：跨企业案例中谁拥有任务正式状态、授权撤销后委派是否仍执行、业务验收与 Run 完成率差距、独立 Task Controller 对可靠性和总成本的净增益。禁止在缺这些对照前升格 Judgment/Principle。
+
+**最小可证伪比较**：同一跨系统任务对比 (A) BPM + AI 局部节点、(B) 单 Agent + domain APIs + durable integration、(C) 独立 Task Controller + Agent；固定业务验收与权限规则，测端到端完成、重复副作用、审批/恢复、审计缺口、开发与运维成本。对简单问答与报告任务做负例控制。
+
+**治理决定**：本轮不新建 RP、H 或 Research Plan；不改变 Q3 身份、RP-002-01 人工 Frontier、RP-002-02 Runner、H-RP006-04/05 既有结论状态；后续仅在对照证据显示无法被既有问题解释时重新判断。
