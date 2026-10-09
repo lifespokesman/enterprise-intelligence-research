@@ -2,7 +2,7 @@
 topic_id: T-001
 title: Enterprise World Model & Context
 status: active
-updated: 2026-09-23
+updated: 2026-10-09
 keywords:
   - ontology
   - world model
@@ -18,6 +18,7 @@ related_questions:
   - RP-002-01
   - RP-002-03
   - RP-002-04
+  - RP-006
 related_hypotheses: []
 ---
 
@@ -38,6 +39,7 @@ related_hypotheses: []
 3. World Model / Facts / Knowledge / Policy / Runtime 如何共同生成任务 Context？
 4. Context Runtime 是否形成独立工程边界，还是 Agent Runtime + Semantic / Data / Policy 的组合职责？
 5. Action 产生 New Fact 后，何时只更新实例 / Context，何时需要触发 Ontology Evolution？
+6. 不同 Task / Risk / Environment / Information Dependency 在多大程度上改变 Context 要求，以及何时共享 Context 机制才有净价值？
 
 ---
 
@@ -54,6 +56,7 @@ related_hypotheses: []
   3. 更慢的 Ontology Evolution。
 - “Context Engine / Context Runtime”目前只是 candidate mechanism，尚未被证据证明为独立 Layer / Platform / Runtime。
 - 世界模型应被视为可被运行事实持续挑战的当前可执行解释，而不是最终真相。
+- **新增 Working View（未验证）**：企业 AI 配置可从 Business Outcome / Constraint → Task / AI Applicability → Context Requirement 倒推；同一个世界表达对不同任务产生不同信息依赖与治理要求，不因 Agent 数量增加就预设独立知识库或统一 Context Platform。
 
 ---
 
@@ -72,6 +75,7 @@ related_hypotheses: []
 - `research/problems/RP-002-01-world-model-conflict-evolution.md`
 - `research/problems/RP-002-03-semantic-to-executable-world-model.md`
 - `research/problems/RP-002-04-world-model-to-task-context.md`
+- `research/problems/RP-006-enterprise-agent-harness-runtime.md`
 - `RESEARCH_MAP.md`
 - `EVOLUTION.md`：EV-012
 - `NOW.md`
@@ -85,11 +89,13 @@ related_hypotheses: []
 - Context Provenance / Freshness / Permission / Evidence 如何随上下文进入 Agent？
 - Expected World ≠ Observed World 的冲突分类是否稳定存在？
 - 哪些反例说明强 Runtime Context 可以替代预建 Ontology？
+- 任务差异是否真的要求专属 Context 机制；共享式与应用内组合式何时各自更优？
 
 ---
 
 # Recent Changes
 
+- **2026-10-09**：由业务结果与任务约束倒推 Context 的条件性补充，见 [CP-20261009-001](../checkpoints/2026-10/CP-20261009-001-outcome-driven-agent-config.md)；归属 RP-002-04（H2 精炼），与 RP-006 联动，未改变 Frontier。
 - **2026-09-23**：问题从“继续扩展 Ontology 分类”转向“World Model → Task Context 转换机制”，见 `EVOLUTION.md#EV-012`。
 - **2026-09-23**：Context Continuity Layer 建立后，本 Topic 成为跨会话恢复入口；研究细节仍保留在 RP 文件。
 

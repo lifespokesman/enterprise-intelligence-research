@@ -204,6 +204,24 @@ Identity / Policy
 
 这里的“World Slice”是**工作抽象**，不是已经验证的行业术语。
 
+### 2026-10-09 增量｜由业务任务与风险倒推 Context 配置（H2 精炼，非新增平行假设）
+
+本轮外部 Signal 触发一个需求侧修正：**先明确业务结果、约束与具体任务是否适合 AI，再判断模型需要什么 Context**；而不是以“已经有统一知识库 / Ontology / Context 平台”作为 Agent 设计起点。
+
+在不改变 H2 身份的前提下，增加一组待验证的 Context 选择变量：
+
+- **Task / Goal**：要做知识解释、跨系统分析、长程产出还是高风险状态修改；
+- **Information Dependency**：需要历史知识、当前业务事实、业务语义、运行过程状态中的哪些组合；
+- **Freshness / Provenance**：允许多旧的事实、怎样追溯依据与冲突；
+- **Identity / Risk / Responsibility**：能看什么、能依据什么做判断、能否产生高影响动作；
+- **Environment / Execution State**：中途是否需要读取文件、工具结果、检查点或外部环境变化。
+
+候选机制为 `Business Outcome / Constraints → Task → Context Requirements → Retrieve / Query / Resolve / Filter / Assemble`。这是一条需求推导启发式，**不是必须建设 Context Engine 的论证**，更不是说所有信息必须注入 Prompt；部分信息应维持为外部事实查询、受限工具结果与可强制执行的 Policy。
+
+**反向解释：** 对大量低风险、事实依赖简单的任务，模型原生长上下文、直接 API 查询或简单 RAG 已足够；跨任务共享 Context 基础设施未必比应用内轻量组合更有价值。共享机制只有在多个任务之间带来净复用、治理或一致性收益，且不会显著损害安全域隔离、时延和自治时才值得考虑。
+
+**连接：** RP-006 / VQ-006-01 比较不同任务的 Model / Harness / Context 配置；RP-004 负责 Authority 与 Accountability 的决定权；RP-003 负责结果反馈如何形成组织长期能力。此处仅精炼 H2 的需求条件，不把 Business Outcome 重新定义为 RP-002-04 的独立母问题。
+
 ### H3｜Ontology / Business Runtime 与 Context Runtime 是两个不同循环
 
 **当前假设 / 待验证：**
