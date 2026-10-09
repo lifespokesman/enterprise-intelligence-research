@@ -1,6 +1,6 @@
 # Problem Map｜企业 AI 问题地图
 
-Updated: 2026-09-29  
+Updated: 2026-10-09  
 本文件用于管理**问题之间的层级、派生关系、证据、架构翻译与工程验证**。
 
 > **知识管理的基本单位从“论文 / 对话 / 资料”切换为“问题”。**
@@ -72,6 +72,22 @@ Q1–Q5 仍然是长期组织问题地图；RP 是真正执行研究时的阶段
 | **RP-004** | Agent 有能力调用工具以后，Business Validity、Capability、Authority、Human Control 与 Accountability 应如何组合？ | Q2 / Q1 | E3；G2 / G3 / G4 | AP-003 | Candidate |
 | **RP-005** | AI 降低发现、调用和协调能力的成本后，哪些能力仍应企业内部化，哪些可以动态外部调用？ | Q4 | E3；G2 | 尚无 | Backlog |
 | **RP-006** | 当 Agent 进入长程、可恢复、可隔离、多环境执行后，Harness / Agent Runtime 应承担什么稳定职责，并与 Context、Action、Governance、Environment 如何划界？ | 主 Q3；关联 Q2 / Q5 | E1；关联 E3 / E4 / G2 / G3 / G4 | 尚无 | Candidate / Exploratory |
+
+### Cross-cutting Question｜AI 接管业务操作后，企业控制边界还剩什么？
+
+当前不新增 RP，先作为 RP-002-02 × RP-004 × RP-006 的跨域问题登记：
+
+> **当 AI 接管传统业务系统中的信息获取、理解、判断和操作后，哪些企业运行职责可以被概率性智能吸收，哪些职责必须继续由确定性系统、制度与责任主体承担？**
+
+当前工作假设 `H-RP002-07｜Enterprise Control Anchors` 提出四类候选锚点：
+
+- `System of Record → Reality Anchor`；
+- `Policy / Authority → Constraint Anchor`；
+- `Workflow / Durable Execution → Commitment / Execution Anchor`；
+- `Human / Organization → Accountability Anchor`；
+- `Agent / Harness → Cognitive / Adaptive Coordination`。
+
+该假设的 canonical body 暂记录在 `research/problems/RP-002-02-business-action-layer.md`，RP-006 只维护 Harness 边界映射。当前不改变任何 Problem Family 的 Frontier，也不升级为 Principle。
 
 原则：
 

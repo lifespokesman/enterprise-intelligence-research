@@ -1,6 +1,6 @@
 # CURRENT｜仓库当前上下文入口
 
-Updated: 2026-09-23
+Updated: 2026-10-09
 
 > 本文件只回答：**一个新的 AI 第一次进入仓库时，当前最值得知道的少数状态是什么？**
 >
@@ -106,6 +106,7 @@ Research Runner Heartbeat / Weekly Synthesis 仍需继续读取 `ops/research-ru
 
 ## 6. 最近关键变化
 
+- 2026-10-09：在 RP-002-02 × RP-004 × RP-006 交叉处新增 `H-RP002-07｜Enterprise Control Anchors`：提出 AI 可能吸收 Cognitive / Interaction / Adaptive Coordination，而 SoR、Policy、Durable Workflow、Human Responsibility 分别承担 Reality / Constraint / Commitment / Accountability Anchor；当前仅为待验证假设，不改变 Frontier。
 - 2026-09-23：新增 RP-002-04，区分 World Model 与 Task Context。
 - 2026-09-23：建立最小 Context Continuity Layer，使跨会话状态可由 Git 恢复。
 - 2026-09-23：新增 `REPOSITORY_STATE.yaml`，显式区分 human frontier、automation frontier 与 context maintenance 三个运行面。

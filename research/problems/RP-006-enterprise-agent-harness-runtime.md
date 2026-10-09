@@ -427,3 +427,44 @@ Trigger
 第一轮可以选择少量公开实现作为 Evidence Provider，例如 Codex、DeepSeek Harness、OpenHands 等，同时必须加入至少一种不同实现路线与 Counter Evidence。
 
 在这一步之前，不展开完整 Multi-Agent、Enterprise Control Plane 或 AI Resource Operation 研究。
+
+
+---
+
+## 12. Cross-cutting Boundary｜Harness 是认知执行中心，但不是最终权威
+
+RP-006 与 RP-002-02 新增的 `H-RP002-07｜Enterprise Control Anchors` 形成一个重要边界：
+
+> **Harness 可以承载 Agent 的持续观察、理解、判断、规划和工具调用，但不应因此默认成为企业正式事实、授权规则、过程承诺或最终责任的唯一权威。**
+
+候选分工：
+
+```text
+System of Record
+= Reality Anchor
+
+Policy / Authority
+= Constraint Anchor
+
+Workflow / Durable Execution
+= Commitment / Execution Anchor
+
+Human / Organization
+= Accountability Anchor
+
+Harness / Agent Runtime
+= Cognitive / Adaptive Coordination
+```
+
+这一关系为 `CQ-006-02｜Harness 是否存在稳定不变量？` 增加一个反向判断标准：
+
+> **如果某项职责要求成为跨 Agent、跨模型、跨会话仍然有效的正式企业事实、约束、承诺或责任，它更可能属于 Harness 外部的权威机制，Harness 负责读取、调用、enforce hook 或记录，而不应自动拥有其定义权。**
+
+但这仍需验证。AI-native 系统可能把 Workflow、Policy Enforcement、State Store 等机制内嵌进统一 Runtime，因此“逻辑职责分离”不等于“必须物理组件分离”。
+
+后续研究 Harness 时应额外检查：
+
+- Harness-owned state 与 authoritative business state 是否混淆；
+- Agent plan 与 durable commitment 是否混淆；
+- Prompt instruction 与 enforceable policy 是否混淆；
+- human approval UI 与真正的 delegated authority / accountability 是否混淆。
