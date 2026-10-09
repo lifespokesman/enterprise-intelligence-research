@@ -88,3 +88,13 @@ related_hypotheses:
 # Next
 
 > 寻找可运行公开实现或小型可审计仓库，加入并发、重复提交、权限撤销和部分失败注入，对比通用 API + Policy 与显式 Governed Capability Contract。
+
+---
+
+## 2026-10-09｜Business Task 与 Agent 执行控制边界（探索性增量）
+
+**当前工作判断，非已验证原则：** Business Task 是一个用于澄清业务结果、验收、责任和跨执行者状态的**需求侧分析对象**，不应因它有解释力就升级成独立 Task Platform。原有 Domain Service / Command / BPM / System of Record 仍承担正式业务状态和确定性流程；Agent 的规划、委派或工具调用不自动取得业务批准权。
+
+与 [RP-006 增量 §12](../../research/problems/RP-006-enterprise-agent-harness-runtime.md) 关联：一个 Business Task 可能跨多个 Agent Run、Session、Workflow Instance 与人工审批；但简单查询或局部 AI 审核场景不需要统一任务控制层。判断独立任务治理是否有净收益，首先检查既有 BPM/SoR 能否提供任务相关性、权限、状态、证据、幂等与验收。
+
+**开放缺口**：跨系统高风险长任务中，Business Task 的权威状态到底由谁持有？Agent Run 完成与业务验收之间怎样关联？该增量 `related_to RP-006 / RP-004`，不修改 H-RP002-06 的条件性契约结论、不修改 Runner Frontier。
