@@ -584,3 +584,71 @@ RP-002-04 假设：
 > **先用理论 + 至少两类产品 / 工程实现验证“World Model 与 Task Context 是否存在稳定边界”，同时寻找把二者合并建模的反例。**
 
 在 Gap A 之前，不继续扩展完整 Context Platform 架构。
+
+
+---
+
+## 2026-10-12 增量｜Ontology → Task Context → Controlled Action 的接口与验证
+
+**性质：** 对 H1–H4 的工程细化，不新增问题族或正式 Hypothesis ID；关联 RP-002-02（Action 契约与执行）、RP-002-03（语义辅助建模）、RP-002-01（证据与演化）、RP-004（授权）、RP-006（Harness）。所有建议均为待验证候选。
+
+### 1. 从本体物化转向任务可完成性
+
+由自然语言生成 Object / Relation / State / Rule 并物化为数据库，只说明构建了一种结构表示，不能证明业务语义完整、任务有足够事实、Action 具备执行约束，更不能证明结果有效。候选路线是 **Business Outcome / Task → Decision / Evidence Requirements → Semantic Model / Data Queries → Governed Action → State Feedback**；同时保留数据驱动、领域驱动的反向校验，不主张任何任务都必须建设 Ontology。
+
+职责区分用于**诊断而非新增部署层**：Model 负责概率性判断；Context 是当前任务可用信息的运行时产物；Harness 负责任务循环、调用和状态组织；Ontology / Business 负责业务语义与能力映射。正式数据可由分布式 System of Record 持有，规则可由 Domain Service、Workflow、IAM、Policy 执行。统一业务语义不意味着物理集中事实、规则和执行权。
+
+### 2. 三组候选语义接口（尚非标准 API）
+
+| 接口 | 输入/输出问题 | 最小候选操作 | 边界 |
+|---|---|---|---|
+| Metadata / Discovery | 当前业务概念和能力有哪些？ | describe_object_type、list_available_actions | 需权限过滤、版本与适用范围；不要求把完整 Schema 放进 Prompt |
+| Query / Facts | 此任务能读哪些对象、关系、状态和证据？ | search_objects、get_object、get_linked_objects | 按身份授权，返回来源、时间和事实版本；不能把检索缓存冒充权威现状 |
+| Action / Capability | 能请求什么业务变化，结果如何？ | describe_action、validate_action、invoke_action、get_action_result | Model-facing Tool Schema 不等于服务器 Business Execution Contract |
+
+**工作假设：** 治理后的机器可读定义（JSON Schema、DSL、元数据注册表、代码/规则组合等）可以按调用者需要投影成查询、文档、工具 Schema 与部分校验；但业务复杂逻辑和跨系统副作用仍需权威服务实现。是否采用 YAML、动态工具发现或独立语义服务，应由 POC 比较决定，不应提前选型。
+
+### 3. Action Contract 与可信执行
+
+Action 候选契约至少记录：业务含义、作用对象、参数、前置条件、授权来源、状态版本、审批要求、实现引用、幂等、结果/异常状态、审计与后置条件。模型只能**提出请求**；Harness 组织调用；服务器从可信凭据建立 actor / delegation 上下文，并在实际执行点再次执行权限、状态、前置条件和审批校验。
+
+必须分别管理 **Ontology Schema Version**（契约兼容）和 **Object State Version**（并发状态）。对跨系统动作不假定原子事务；研究幂等键、乐观锁、Outbox、补偿、对账及人工接管。结果不能只有布尔值；至少需要区分 accepted、pending_approval、executing、succeeded、rejected、failed、partially_completed、unknown。**调用超时不等于未执行**；Dry Run 不可代替提交时校验。
+
+### 4. 三层验证与四类故障诊断（不可混为一谈）
+
+| 验证层 | 主要问题 | 判据 |
+|---|---|---|
+| L1 本体正确性 | 结构、语义、映射和约束是否反映目标业务？ | 专家走查、真实/脱敏样例、权威规则对照 |
+| L2 任务可完成性 | Agent + Context + 查询 + Action 是否完成给定任务？ | 固定任务集、工具及动作轨迹、最终任务断言 |
+| L3 业务结果有效性 | 执行后是否带来真实业务价值？ | 业务指标、试点对照和责任人复盘 |
+
+定位 L2 失败时，选择最有区分力的实验：**T1 理想上下文**（隔离检索因素，不能证明模型全面可靠）；**T2 本体可表达性**（分别看 Schema、语义、数据映射、运行可获取性）；**T3 专家相同接口走查**（辨别任务/能力与 Agent 使用偏差）；**T4 绕过模型的 Action 正反请求**（权限、状态并发、重复提交、超时与审计）。记录任务/期望结果、实际 Context、来源与新鲜度、工具 Schema 和调用、Action 状态、版本及可见 Trace；不把不可观察的模型内部推理当证据。
+
+模型/Agent 失败**不自动意味着本体错误**。本体变更根据不变量违反、证据强度、影响和最小修复路径决定，不设置“必须两个任务复现”的机械阈值。修复候选包括 Schema、实例、数据映射、Context 策略、Harness、Policy、Action 服务，而不是全部归入 Ontology Evolution。
+
+### 5. Palantir 官方材料初步核查（产品事实与推论分开）
+
+- **官方文档支持：** Ontology MCP 在 Developer Console 中把 Object Types、Action Types、Query Functions 作为 MCP 工具暴露，并区分供外部 Agent 使用的 Ontology MCP 与面向建设者的 Palantir MCP。来源：https://www.palantir.com/docs/foundry/ontology-mcp
+- **官方文档支持：** Ontology MCP 继承应用 OAuth 2.0、范围限制及用户/服务主体的底层资源权限。来源：https://www.palantir.com/docs/foundry/ontology-mcp/authentication-and-authorization
+- **官方文档支持：** Ontology 中 Object / Link 有代码绑定，Functions 可查询对象与关系；具体运行差异需分 API 版本核查。来源：https://www.palantir.com/docs/foundry/functions/functions-on-objects
+- **研究解释，尚未验证：** 这些机制提示 Palantir 的差异不只是“有 MCP”，而是将语义、对象查询、函数、动作和授权联结为消费接口；不能据此推定自动建模质量、外部事务一致性、Webhook/Writeback 的全部语义或任意业务规则可自动执行。Action 类型、Webhook 副作用与一致性仍待更细官方资料核查和 POC。
+
+### 6. 最小 POC 任务卡（合成场景，无真实监管规则）
+
+模拟“检测结论和业务状态一致性检查；疑似异常生成复核任务”。预备合成 Object / Relation、两版定义、两版对象状态、权限角色、受控动作假实现和固定任务期望结果。
+
+| 编号 | 输入与操作 | 预期可观察输出 | 失败判定 |
+|---|---|---|---|
+| P1 定义投影 | 修改 Action 参数并生成工具、校验和文档 | 差异报告、版本号、兼容性判断 | 三者不一致或旧客户端静默误用 |
+| P2 查询语义 | 从任务要求查询对象、关系、来源 | 正确对象集、来源与事实时间 | 无法表达/查询，或访问未授权事实 |
+| P3 动作控制 | 合法、非法、越权、状态竞争、重复和超时调用 | 明确拒绝/审批/执行状态、审计、幂等结果 | 绕过权限/状态检查或超时重复副作用 |
+| P4 诊断 | 注入关系、映射、检索、Tool 描述、Action 故障 | T1–T4 对照轨迹及候选根因 | 将所有失败无依据归因本体 |
+| P5 任务回归 | 先 3–5 个代表任务，扩大到 15–20 个 | L1/L2 断言及单独的 L3 指标草案 | Action 成功却误报业务目标完成 |
+
+### 7. 未解决的研究边界与下一步
+
+1. **官方资料：** Palantir 的 Actions、Functions、Webhook、Writeback、审批及副作用的执行边界，尤其与传统 Command / Domain Service / Durable Workflow 的差异。
+2. **架构实验：** 固定工具 vs 动态发现；独立语义服务 vs 直接领域 API；模型可见 Tool Contract 与服务端完整契约的同步收益与成本。
+3. **业务验证：** 任务驱动建模是否比仅描述对象的自然语言建模更能提升 L2 / L3，及 Action 粒度在复杂流程中何时越界。
+
+本增量不改变 RP-002-04 的原有 H1–H4、Frontier、研究运行面或正式原则。避免与已有 H-RP002-07 编号出现混用：此处**不分配新 Hypothesis ID**；如后续独立建卡，先检查现有 ID 注册与冲突。
