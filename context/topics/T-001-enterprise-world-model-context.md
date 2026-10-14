@@ -2,7 +2,7 @@
 topic_id: T-001
 title: Enterprise World Model & Context
 status: active
-updated: 2026-10-09
+updated: 2026-10-14
 keywords:
   - ontology
   - world model
@@ -40,6 +40,7 @@ related_hypotheses: []
 4. Context Runtime 是否形成独立工程边界，还是 Agent Runtime + Semantic / Data / Policy 的组合职责？
 5. Action 产生 New Fact 后，何时只更新实例 / Context，何时需要触发 Ontology Evolution？
 6. 不同 Task / Risk / Environment / Information Dependency 在多大程度上改变 Context 要求，以及何时共享 Context 机制才有净价值？
+7. 多 Agent 的 Context / Semantic Silo 如何在共享核心语义、授权上下文和合法部门视图之间取得平衡？
 
 ---
 
@@ -57,6 +58,7 @@ related_hypotheses: []
 - “Context Engine / Context Runtime”目前只是 candidate mechanism，尚未被证据证明为独立 Layer / Platform / Runtime。
 - 世界模型应被视为可被运行事实持续挑战的当前可执行解释，而不是最终真相。
 - **新增 Working View（未验证）**：企业 AI 配置可从 Business Outcome / Constraint → Task / AI Applicability → Context Requirement 倒推；同一个世界表达对不同任务产生不同信息依赖与治理要求，不因 Agent 数量增加就预设独立知识库或统一 Context Platform。
+- **2026-10-14 Working View**：Context Silo（重复事实装配/检索）与 Semantic Silo（对象/状态/规则解释不一致）是可并存的诊断维度；共享企业语义核心不要求单一 Ontology 实例或统一 RAG。Action 后的实例事实更新与 Ontology 版本演化仍必须分开。
 
 ---
 
@@ -94,6 +96,8 @@ related_hypotheses: []
 ---
 
 # Recent Changes
+
+- **2026-10-14**：来自脱敏 Field Signal 的多 Agent 智能烟囱问题：T-001 只吸收 Context/Semantic 差量，业务变更能力复用由 T-002 / RP-002-02 持有；见 [CP-20261014-001](../checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。仍非跨行业事实，不改变当前 Frontier。
 
 - **2026-10-09**：由业务结果与任务约束倒推 Context 的条件性补充，见 [CP-20261009-001](../checkpoints/2026-10/CP-20261009-001-outcome-driven-agent-config.md)；归属 RP-002-04（H2 精炼），与 RP-006 联动，未改变 Frontier。
 - **2026-09-23**：问题从“继续扩展 Ontology 分类”转向“World Model → Task Context 转换机制”，见 `EVOLUTION.md#EV-012`。

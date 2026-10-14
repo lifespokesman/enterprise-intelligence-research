@@ -2,7 +2,7 @@
 topic_id: T-002
 title: Business Action & Governed Capability
 status: active
-updated: 2026-09-23
+updated: 2026-10-14
 keywords:
   - action
   - capability
@@ -36,6 +36,7 @@ related_hypotheses:
 2. 长期稳定资产更可能是独立 Action Runtime、Governed Capability Contract，还是 Policy + API / MCP Schema？
 3. 哪些风险、跨系统协调和多调用者复用阈值，足以让显式 Capability Contract 产生净价值？
 4. Agent Identity、Delegated Authority、Policy、Approval、Audit、Provenance 应分别由谁承担？
+5. 多 Agent / 多部门出现的 Capability / Action Silo，何时值得通过共享契约治理，何时只是正常领域边界？
 
 ---
 
@@ -49,6 +50,7 @@ related_hypotheses:
 - 当前战略候选判断是 **Governed Capability Contract** 可能比“独立 Action Runtime”更稳定；但它仍只是候选概念。
 - 跨系统副作用、补偿、幂等、长时运行仍主要需要 Workflow / Durable Runtime 一类工程机制。
 - 简单、低风险、单系统、可逆 CRUD 可以继续由 Domain API / Command + Tool Schema 承担。
+- **2026-10-14 Working View（未验证）**：Agent 多样化可能带来 Context / Semantic / Capability / Governance 多维重复；共享 Action 的价值是跨调用者统一**业务变更语义、授权与执行结果**，而不是把 MCP/API 换名。Governance 横贯多个层面；不预设 Silo 必然分阶段迁移。
 
 ---
 
@@ -80,6 +82,8 @@ related_hypotheses:
 
 # Recent Changes
 
+- **2026-10-14**：将“AI 智能烟囱”路由到现有 RP-002-02（H-RP002-06 refinement）；区分 Context / Semantic / Action / Governance 并列诊断维度、广义 Capability 与状态变更 Action，以及能力关系图和实际调用循环；见 [CP-20261014-001](../checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。
+
 - 2026-09-18 ～ 2026-09-20：研究从“Business Action Layer 是否需要存在”收敛到“治理边界是否需要显式契约”，并形成 ST-RP002-01。
 - 当前 Research Runner v0.4 正围绕该 Topic 的工程验证试运行。
 
@@ -98,3 +102,12 @@ related_hypotheses:
 与 [RP-006 增量 §12](../../research/problems/RP-006-enterprise-agent-harness-runtime.md) 关联：一个 Business Task 可能跨多个 Agent Run、Session、Workflow Instance 与人工审批；但简单查询或局部 AI 审核场景不需要统一任务控制层。判断独立任务治理是否有净收益，首先检查既有 BPM/SoR 能否提供任务相关性、权限、状态、证据、幂等与验收。
 
 **开放缺口**：跨系统高风险长任务中，Business Task 的权威状态到底由谁持有？Agent Run 完成与业务验收之间怎样关联？该增量 `related_to RP-006 / RP-004`，不修改 H-RP002-06 的条件性契约结论、不修改 Runner Frontier。
+
+---
+
+## 2026-10-14｜多 Agent 共享能力的条件性边界
+
+- 不新增“Agent Silo” Problem Family：核心差量是 Business Action 的跨调用者复用问题；详见 [RP-002-02 §20](../../research/problems/RP-002-02-business-action-layer.md)。
+- 不把每个查询/计算 Tool 等同于 Business Mutation Action，也不把 Action Definition / Runtime 逻辑分离理解为必须独立部署。
+- 继续保留替代路线：共享 Domain API + Tool Schema + Policy；只有在真实授权/状态一致性/跨调用者演进治理净收益明确时，才进一步考虑显式 Governed Capability Contract。
+- 后续采用 GAP-004 的两调用者、故障与版本演进对照验证；不修改 Runner 或人工研究前沿。

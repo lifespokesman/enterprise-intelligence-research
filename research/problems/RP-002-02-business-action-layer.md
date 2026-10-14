@@ -1090,3 +1090,90 @@ Agent / Harness
 5. **Counter Evidence**：有没有场景表明上述四类 Anchor 可被合并、替换或完全由新的 AI-native runtime 重构？
 
 如果这些机制跨多种架构持续出现，再判断是否值得上升为更稳定的 Architecture Principle 或新的问题演化。
+
+---
+
+## 20. 2026-10-14｜AI 智能烟囱：从共享语义转向跨 Agent 的受治理能力复用
+
+**性质：** 抽象化 Field Signal → Cognitive Reframing → Existing Problem Evolution / H-RP002-06 refinement。相关 RP-002-03/04、RP-004、RP-006、RP-003，Topic T-001/T-002，Q3/Q5（关联 Q2）。**不新增 RP / Hypothesis ID，不改变 Frontier。**
+
+### 20.1 证据等级与本轮新增量
+
+- **Field Signal**：多个业务单元可能各自建设检索/知识、专业 Agent、接口适配；统一 AI 网关或模型服务并不自动使业务事实、语义与行动能力可复用。这只是从非公开场景脱敏而来的问题来源，**不是普遍企业事实或正式 Evidence**。
+- **Existing Repository Evidence**：GAP-001（DDD Application Service / CQRS Command / BPMN）、GAP-002（Palantir Ontology Action / Function）、GAP-004（受治理能力契约的条件性价值、合成双路线试验）以及 RP-002-04（Task Context ≠ Ontology）已经讨论了大多数机制。本轮不重复论证它们是“AI 新发明”。
+- **New Working Hypothesis（未验证）**：多 Agent 规模化时，重复建设的主要损耗可能不是单纯接口数量，而是**共享语义与业务状态变更能力被不同调用者重复解释、封装和治理**。这是 H-RP002-06 中“跨调用者复用”动因的深化；**不证明各类烟囱依次迁移或必有独立 Action 平台**。
+
+### 20.2 Silo 是可并存的诊断维度，不是线性历史
+
+| 候选维度 | 可观察症状 | 研究归属 | 限定 |
+|---|---|---|---|
+| Context Silo | 同一来源被重复检索、装配、授权，事实版本不一致 | RP-002-04 / T-001 | 共享来源不等于所有任务使用单一知识库或上下文 |
+| Semantic Silo | 相同业务对象/状态/规则出现冲突定义 | RP-002-01/03/04 | 共享核心与合法领域视图、版本差异可以共存 |
+| Capability / Action Silo | 等价业务意图被各 Agent 分别包装为 API / MCP Tool / Skill，并出现不同前置条件、结果语义 | **RP-002-02 / H-RP002-06** | 查询/计算与有副作用的业务状态改变，不应混为一类 |
+| Governance Silo | Identity / Delegation / Policy / Approval / Audit 无法跨调用者一致执行或关联 | RP-004 × RP-002-02 × RP-006 | **横向治理缺口**，既可单独观测也可与前几类叠加 |
+| Execution / Runtime Silo（对照） | 长时状态、恢复、隔离、计量重复建设 | RP-006 | 共享与故障隔离、安全域之间需要取舍 |
+
+这些维度可并存；“Context → Semantic → Action → Governance”更适合用作排查问题的路径，**不应断言为单向演化链**。MCP 或 Agent 框架标准化可以降低调用接入成本，但不自动统一业务语义和执行权；也可能通过联邦语义、现有领域服务与治理策略组合避免中心化。
+
+### 20.3 再次收紧 Business Action 的边界
+
+既有 H-RP002-06 的核心是 **Governed Business Mutation Contract**。因此：
+- **Business Capability（广义）**：可供多调用者消费的 Query / Analysis / Command 等能力；不一定改变业务状态。
+- **Business Action（本问题重点）**：具有业务意图、目标对象、可执行前置条件、授权与可核验结果的**正式业务变更 / 承诺**。不能把所有查询、计算、生成操作都直接记作 mutation Action。
+- **Governed Capability Contract（候选稳定资产）**：可由现有 Domain Service / Command / Workflow 配合 Schema、Policy、审计实现，**不天然要求独立 Registry / Runtime**。
+- **MCP Tool / API / Skill** 负责不同层面的发现、调用、实现/任务程序表达；Workflow 则持有过程承诺与持久协调。Agent Planning 不等于业务审批。
+
+**Definition / Runtime 分离是逻辑职责，不是强制部署拆分**：契约声明 Business Intent、Object、State Version / Preconditions、Policy / Approval Requirement、Expected Transition / Result、Audit Obligation；权威服务与 IAM、Policy、Workflow、SoR 在**实际执行点**强制验证授权与状态，落实幂等、执行、补偿、审计和结果。Agent/Harness 可提出和组织动作，但 Prompt 声称获得批准不等于真实授权。必须区分 accepted、pending approval、succeeded、failed、partial、unknown；超时不等于未执行。
+
+**Ontology-native Action 并非必须物理合并企业所有 Action**。它可提供对象/状态语义绑定和发现，也可以让现有 Domain Command 通过映射形成共同消费接口。没有达成语义与权责共识时，“统一 Registry”反而可能放大耦合。
+
+### 20.4 分开表达能力关系与运行调用
+
+**A｜Capability Architecture（逻辑依赖图，不是执行时序，也非平台部署图）**
+
+~~~text
+Authoritative Enterprise Facts / Systems of Record
+  ├── inform → Ontology / Shared Semantic Core
+  ├── supply → Task Context (scope: task + identity + freshness)
+  └── change ← Governed Action → Domain Command / Workflow
+Ontology / Semantic Views → describe objects, states, constraints
+Business Capability Contract → describe discoverable / permitted effects
+Policy / Authority / Audit → constrain Context, Action and Runtime across layers
+Agent / Harness / Existing Application → consume those capabilities conditionally
+~~~
+
+**B｜Runtime Execution Loop（也允许不用 Agent）**
+
+~~~text
+Goal / Event / Existing Workflow
+  → determine whether AI reasoning is appropriate
+  → Agent / Harness OR deterministic Application / Workflow
+  → assemble authorized Task Context, current facts and semantic views
+  → propose / select a governed capability or Action
+  → server-side authorization, state and precondition check, approval
+  → Domain Command / Workflow / Action executor
+  → authoritative state change + event + execution evidence
+  → refresh facts / next Task Context
+  → (if justified) propose Ontology / Policy changes for separate review
+~~~
+
+故 World → Ontology → Action → Agent/Runtime → World 仅可作为**候选能力关联的省略表达**，不能被当作实际运行顺序。Object State Change ≠ Ontology Schema Evolution；Action accepted ≠ Business Outcome accepted；Run success ≠ 业务验收。
+
+### 20.5 厚薄 Agent、三模块与反向解释
+
+**Thin Agent 是条件性方向，不是必然趋势**：跨 Agent 稳定的业务契约、权限和权威事实可以从私有 Prompt/Tool 封装中分离；但专用规划、专业知识、局部缓存、长程执行环境可能保留在某些 Agent 中。简单单系统任务可直接 Domain API + Policy；安全域隔离可能要求多个独立组件。
+
+“AI Runtime Infrastructure / Business Semantic & Action Infrastructure / Professional Intelligence Service”仅记为**Field-derived candidate decomposition**，用来核查运行、语义/动作与专业服务三种需求，不直接提升为行业通用参考架构。Policy/Authority 是跨层约束，SoR 与业务责任不自动归属新 AI 平台。
+
+### 20.6 最小反驳性验证（复用 GAP-004，不新增研究轨道）
+
+在合成两调用者、同一受治理状态变更的任务中，固定目标、后端、身份授权和审批，比较：
+- A：各 Agent 独立 API / Tool 适配、共同使用现有 IAM；
+- B：共享 Domain API + Tool Schema + Policy，但无额外 Action Contract；
+- C：共享版本化 Governed Capability / Action Contract，绑定同一 Domain Service / Workflow。
+
+注入第二 Agent 接入、Schema 演进、权限撤销、重复提交、并发状态冲突、部分失败。比较**重复实现量、语义分歧、越权和重复副作用、审计完整性、业务验收、建设与维护成本**；如 B 与 C 效果相同、C 成本更高，收窄显式契约价值；如部门间差异源于合法政策差异，不能称作待消除的“烟囱”。这是**验证设计，不是新实验结果 / Evidence**。
+
+**Open Questions**：Ontology Action 与 Domain Action 的可替代阈值；共享语义与领域视图的边界；Action Definition / Policy Enforcement / Workflow / SoR 的状态权威；Agent 变薄的收益阈值；Business Task / Run / Action Result / Outcome 如何接入 RP-003 的组织学习闭环。
+
+**治理决定**：本轮是 RP-002-02 的 existing problem evolution 与 H-RP002-06 / ST-RP002-01 的条件性补充；不改变 RP-002-01 Human Frontier、RP-002-02 Runner、GAP-004 下一步，不创建新问题族、Hypothesis ID、证据卡、独立层或正式 Principle。

@@ -1,6 +1,6 @@
 # CURRENT｜仓库当前上下文入口
 
-Updated: 2026-10-09
+Updated: 2026-10-14
 
 > 本文件只回答：**一个新的 AI 第一次进入仓库时，当前最值得知道的少数状态是什么？**
 >
@@ -31,6 +31,7 @@ Updated: 2026-10-09
 - 传统 Application Service / Command / Workflow 已承担大量业务动作与可靠执行职责；
 - Agent 时代更可能强化受治理能力契约、Identity、Delegated Authority、Policy、Approval、Audit、Provenance 等边界；
 - 独立 Action Runtime 仍是条件性工程选择，不是既定长期架构。
+- 2026-10-14 新增“AI 智能烟囱”诊断视角：Context、Semantic、Capability/Action、Governance 可并存；Business Action 的**跨 Agent 业务契约复用**是待验证增量，不意味着必须建设独立 Action 中间层。见 T-002 / RP-002-02 §20。
 
 相关 Topic：[`T-002`](topics/T-002-business-action-capability.md)
 
@@ -109,6 +110,8 @@ Research Runner Heartbeat / Weekly Synthesis 仍需继续读取 `ops/research-ru
 ---
 
 ## 6. 最近关键变化
+
+- 2026-10-14：脱敏 Field Signal 触发“AI 智能烟囱”与跨 Agent 的 Business Action 复用问题。已纳入 RP-002-02 / H-RP002-06 条件性补充，并区分能力关系图与 Runtime 执行循环；见 [CP-20261014-001](checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。不改变 RP-002-01 人工前沿与 Runner。
 
 - 2026-10-09：在 RP-002-02 × RP-004 × RP-006 交叉处新增 `H-RP002-07｜Enterprise Control Anchors`：提出 AI 可能吸收 Cognitive / Interaction / Adaptive Coordination，而 SoR、Policy、Durable Workflow、Human Responsibility 分别承担 Reality / Constraint / Commitment / Accountability Anchor；当前仅为待验证假设，不改变 Frontier。
 - 2026-09-23：新增 RP-002-04，区分 World Model 与 Task Context。
