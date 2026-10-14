@@ -89,6 +89,10 @@ Q1–Q5 仍然是长期组织问题地图；RP 是真正执行研究时的阶段
 
 该假设的 canonical body 暂记录在 `research/problems/RP-002-02-business-action-layer.md`，RP-006 只维护 Harness 边界映射。当前不改变任何 Problem Family 的 Frontier，也不升级为 Principle。
 
+### 2026-10-14｜“AI 智能烟囱”与跨 Agent 业务能力复用（索引，非新 RP）
+
+脱敏 Field Signal 引出一个待验证关系：Context / Semantic / Capability-Action / Governance Silo 可以并存，并非必然线性迁移；RP-002-02 的 H-RP002-06 需要进一步检验多 Agent / 多部门共享**受治理业务变更契约**的净收益。映射：**RP-002-02 ↔ RP-002-04（Task Context）↔ RP-002-03（Ontology/Operational Model）↔ RP-004（Authority）↔ RP-006（Harness）**，反馈接 RP-003 / Q5；归 T-002 主持、T-001 协同。详细正文仅在 [RP-002-02 §20](problems/RP-002-02-business-action-layer.md)，变化日志在 [CP-20261014-001](../context/checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。不新增 Hypothesis ID / Problem Family / Frontier。
+
 原则：
 
 - 只有反复出现、影响架构设计、需要持续外部证据的问题才升级为 RP；
