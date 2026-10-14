@@ -14,7 +14,6 @@ related_questions:
   - RP-003
 related_hypotheses:
   - H-RP002-06
-  - ST-RP002-01
 ---
 
 # Trigger
