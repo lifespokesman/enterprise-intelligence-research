@@ -1176,4 +1176,15 @@ Goal / Event / Existing Workflow
 
 **Open Questions**：Ontology Action 与 Domain Action 的可替代阈值；共享语义与领域视图的边界；Action Definition / Policy Enforcement / Workflow / SoR 的状态权威；Agent 变薄的收益阈值；Business Task / Run / Action Result / Outcome 如何接入 RP-003 的组织学习闭环。
 
+### 20.7｜组织级任务分工交叉引用（2026-10-15）
+
+本轮新增的脱敏 Field Signal 将 Business Action 放回更小的分析单元：Business Task / Decision Point / Governed Action。RP-006 §13 负责研究人、确定性软件和 Agent 的执行主体选择，以及执行、决策、监督、绩效和审计责任的区分；本文件继续负责有副作用的业务状态改变契约、前置条件、授权/确认、结果和审计边界。
+
+因此：
+
+- Agent 发起或执行 Action 不等于拥有 Decision Right 或 Accountability；
+- Action accepted / succeeded 不等于 Business Outcome accepted；
+- L1 能力测试、L2 任务完成和 L3 真实业务结果需要分开验证；
+- 传统 Domain Service / Command / Workflow + IAM / Policy / SoR 仍是必须保留的对照路线，不因组织增量自动推出独立 Action Runtime。
+
 **治理决定**：本轮是 RP-002-02 的 existing problem evolution 与 H-RP002-06 / ST-RP002-01 的条件性补充；不改变 RP-002-01 Human Frontier、RP-002-02 Runner、GAP-004 下一步，不创建新问题族、Hypothesis ID、证据卡、独立层或正式 Principle。

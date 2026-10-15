@@ -593,3 +593,91 @@ Harness / Agent Runtime
 **最小可证伪比较**：同一跨系统任务对比 (A) BPM + AI 局部节点、(B) 单 Agent + domain APIs + durable integration、(C) 独立 Task Controller + Agent；固定业务验收与权限规则，测端到端完成、重复副作用、审批/恢复、审计缺口、开发与运维成本。对简单问答与报告任务做负例控制。
 
 **治理决定**：本轮不新建 RP、H 或 Research Plan；不改变 Q3 身份、RP-002-01 人工 Frontier、RP-002-02 Runner、H-RP006-04/05 既有结论状态；后续仅在对照证据显示无法被既有问题解释时重新判断。
+
+---
+
+## 13. 2026-10-15｜组织级人—确定性软件—Agent 任务分工（Field Signal → Working Hypotheses）
+
+### 13.1 Placement Decision｜本轮新增量与既有内容
+
+- **Existing**：Business Task ≠ Agent Run / Session / Workflow Instance、Business Outcome / Constraint → Task Characteristics → Runtime Pattern、Agent/Harness 不自动获得业务授权，以及 Workflow / SoR / Policy / Human Responsibility 的控制锚点，已在本文件与 RP-002-02 / RP-004 的既有研究中登记。
+- **Delta**：本轮把需求侧问题进一步落到组织运行：同一业务流程内按 Task / Decision Point / Governed Action 选择人、确定性软件与 Agent，并分别配置执行、决策、监督、绩效和审计责任。
+- **证据状态**：输入是脱敏 Field Signal，只支持问题重述、反例设计和验证方案；不构成公开 Evidence，也不支持“人工开发消失”“Agent 主导组织运行”或“独立 Business Runtime 必需”等结论。
+- **治理决定**：不新增 RP、Topic 或正式 Hypothesis ID；以下候选项均标为 Working Hypothesis / Open Question / Validation，并通过既有 H-RP006-03/04/05、VQ-006-01、RP-002-02、RP-004、RP-003/Q5 去重。
+
+### 13.2 最小分析单元｜执行主体与权责主体是两个维度
+
+三种粗分模式（人驱动确定性业务、AI 辅助的人类业务、AI 主导任务）不能把完整流程硬归入单一类别。同一流程可以在不同任务片段、决策点和动作上混合三者：
+
+| 分析对象 | 要回答的问题 | 可选执行主体 | 必须另外核对的权责 |
+|---|---|---|---|
+| Business Task | 要达成什么可验收的业务结果？ | 人、确定性软件、Agent，或混合协作 | Business Owner、风险、结果验收 |
+| Decision Point | 哪个判断需要谁作出？ | 人判断、规则判断、Agent 辅助或受限判断 | Decision / Authority Holder 与授权范围 |
+| Governed Action | 哪个动作会改变业务状态或产生副作用？ | 业务服务、Workflow、Agent 发起或人工操作 | 真实身份、前置条件、批准、审计与可恢复性 |
+
+候选职责词汇为：Initiator（提出目标）、Performer（实际执行步骤）、Decision / Authority Holder（有权批准关键动作）、Business Owner / Accountable Party（对结果、制度运行和异常处理负责）、Verifier / Auditor（核验过程证据与结果）。这些是分析维度，不要求形成五种独立岗位或五套系统。
+
+因此必须保持：
+
+> **执行主体 ≠ 授权主体 ≠ 决策权持有者 ≠ 业务责任主体。**
+> Agent 可以执行步骤或发起受治理动作，但不会因为执行、对话中的确认或 Run 成功而自动获得审批权或归责主体资格。
+
+### 13.3 任务分配变量｜先找最低充分的执行方式
+
+在既有 Business Outcome → Task Characteristics → Runtime Pattern 之后，补入组织决策变量：
+
+1. **规则确定性**：规则是否明确、可测试并可持续维护；
+2. **事实可获得性**：事实来源是否权威、可访问、足够新且合法；
+3. **认知复杂度**：是否需要语义理解、综合判断或开放探索；
+4. **风险与可逆性**：错误后果、撤销、恢复与补偿成本；
+5. **授权与责任**：是否存在指定决策者，哪些动作可委托、哪些必须人审；
+6. **任务规模与经济性**：频率、吞吐量、人工耗时、AI 与监督的总成本；
+7. **交互密度**：更适合对话、结构化界面、办公待办还是后台执行。
+
+候选推导顺序更新为：
+
+Business Goal → Accepted Outcome → Constraint / Risk → AI Applicability → Business Task / Decision Point / Governed Action → Execution + Authority Requirements → Organization Pattern → Technical Capabilities
+
+这是需求分析顺序，不是规定平台拓扑。传统软件、既有 IAM / BPM / Domain Service、通用 AI 编程和受限 Agent 都是候选基线；“能由 Agent 完成”不足以证明应交给 Agent。
+
+### 13.4 组织机制增量｜不能缩减为 Runtime 功能
+
+- **岗位与管理**：AI 可能减少资料整理和重复操作，也可能增加异常处理、证据核验、规则维护和责任交接。管理机制需要明确 Business Owner、规则 Owner 与 AI/System Owner，防止审核退化为只看摘要后点击批准。
+- **授权与责任**：Capability ≠ Delegated Authority ≠ Decision Right ≠ Accountability。可执行委派至少要限定发起人、代理主体、目的、资源、动作、时间/风险范围、确认门槛和撤销方式，并在服务端强制执行；聊天中的“已确认”不能代替可信凭据。
+- **监督与审计**：证据应能关联 Business Task、Agent Run、Workflow Instance、业务状态变更、事实来源与版本、规则依据、授权确认、异常重试、最终验收和 accepted / pending approval / succeeded / failed / partial / unknown 状态。以可复核事实和动作结果为中心，不要求保留不可观察的完整模型推理文本。
+- **交互入口**：部分场景的页面可以转向核验、关键授权、待办、异常处置和结果观察；复杂编辑、密集比较、批量专业判断和熟悉流程的普通办公待办仍可能优于聊天或独立 AI 专家入口。
+- **评价与绩效**：岗位责任、管理制度、绩效考核、组织治理和运行证据不能被包装成新增 Runtime 功能。应分别观察业务结果、人的授权/监督/异常处理贡献，以及 Agent/System 的可靠执行指标。
+- **平台反例**：任何组织级平台候选都要同时经受“传统软件已足够”“现有 IAM/BPM/Domain Service 已足够”“通用 AI 编程已足够”的对照；首次生成成功或 Agent 调用量增长不能单独证明平台壁垒。
+
+### 13.5 评价边界｜L1、L2、L3 不能相互替代
+
+| 层级 | 评价对象 | 例子 | 不能推出的结论 |
+|---|---|---|---|
+| **L1 能力/技术** | 模型、语义、工具和软件能力是否按断言工作 | Schema/规则正确性、接口调用、权限拒绝、恢复与审计字段 | 不能推出任务已完成或业务有效 |
+| **L2 任务/运行** | 给定业务任务是否端到端完成并可接管 | 完成率、人工介入、差错、越权、重复副作用、恢复、交付周期 | 不能推出长期业务价值或组织效率 |
+| **L3 真实业务结果** | 在业务约束下是否产生净改善 | 质量、时效、合规、总成本、用户体验和责任人验收 | 不能由一次合成演示或 Run success 代替 |
+
+### 13.6 Working Hypotheses、反例与最小验证
+
+以下均不分配新正式 ID：
+
+- **Task-level allocation**：按 Task / Decision / Action 选择最低充分执行方式，可能比以增加 Agent 为目标更能改善质量、成本和问责；反例是开放式一次性任务，任务治理增加负担。
+- **Selective verification surface**：部分 UI 可能转向核验、授权和例外入口；反例是高密度专业编辑、财务批量核对和复杂图形操作。
+- **Governance-constrained Runtime value**：稳定价值可能更依赖持续任务、授权、权威状态、恢复和审计；成熟 BPM / IAM / Domain Service 组合可能已经足够，未必需要独立 Business Runtime。
+- **Management/evaluation co-evolution**：只沿用人头、工时或单据量可能误判效率与风险；轻量任务也可能不值得承担复杂归因成本。
+- **Application-generation reuse**：AI 降低首次开发工作量不等于降低长期运营、集成与治理总成本；第二个场景的复用净收益才是必要检验。
+
+最小可证伪验证：
+
+1. **V1｜三类任务基线**：比较规则确定性×任务复杂度×业务风险的三类合成任务，分别采用 (A) 传统 Workflow、(B) AI 辅助、(C) 受限 Agent + 既有 Policy / Workflow / SoR，固定业务规则与验收口径，测业务结果、人工介入、差错、越权、审计完整性、单位结果成本和交互体验。若 A 更优，保留“无需 Agent”结论。
+2. **V2｜有意义的人类监督**：比较“摘要 + 批准按钮”和“摘要 + 原始证据 + 规则依据 + 异常标记”，注入错误摘要与不完整证据，测真实错误发现率，而不是只测点击速度。
+3. **V3｜跨运行时连续性**：模拟 Agent 准备、用户授权、Workflow 等待、审批事件和后续通知，关联 Business Task / Workflow Instance / Agent Run / 业务状态并测试恢复；优先复用已有 BPM / SoR，不为验证先建统一 Task Controller。
+4. **V4｜应用生成复用（可选）**：比较通用 AI 编程 + 现有业务 API 与结构化领域语义 + 公共服务路线在第二个轻量场景的重复实现、权限缺陷、维护成本和业务验收。
+
+验证的正确结论可以是**无需 Agent、无需独立 Business Runtime 或无需新的审批入口**；若现有系统已承载控制与责任，应把新增抽象的维护、迁移和治理成本计入判断。
+
+### 13.7 关系与停止点
+
+本节与 RP-002-02 的 Business Action / Control Anchors、RP-004 的 Authority / Accountability / Human Control、RP-003/Q5 的结果反馈与组织学习相连；RP-006 只负责把任务分配和运行模式接到这些既有边界，不重新定义它们。
+
+本轮不修改 Q1–Q5 身份、人工研究 Frontier、Research Runner、JUDGMENTS.md 或 PRINCIPLES.md，不新增独立 Operating Model / Task Control / Business Runtime 层。后续先从 V1 或 V2 选择一个有区分力的验证，并继续保留传统软件和无需 Agent 的反例。
