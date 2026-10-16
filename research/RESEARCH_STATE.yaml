@@ -1,5 +1,5 @@
 version: "0.4"
-updated: "2026-09-20"
+updated: "2026-10-16"
 
 runner:
   name: "Research Runner"
@@ -44,7 +44,7 @@ active_hypothesis:
     加 Tool Schema 直接承担。
   proposed_revision:
     from: "H1"
-    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020", "E-021"]
+    triggered_by: ["E-006", "E-007", "E-008", "E-009", "E-010", "E-011", "E-012", "E-013", "E-014", "E-015", "E-016", "E-017", "E-018", "E-019", "E-020", "E-021", "E-022"]
     change: >
       v0.4 多证据域研究进一步把 H1 从“受治理的 Action Contract”提升为候选战略判断：
       模型能力增强会逐步吸收工具选择、参数生成、部分流程编排与 glue code，
@@ -61,6 +61,7 @@ active_hypothesis:
       - "低风险、单系统、可逆 CRUD 可继续使用 Domain API/Command + Tool Schema"
       - "若未来 Agent Identity + Policy Engine + 通用 API Schema 能覆盖高影响场景，则独立 Capability Contract 的价值应被下调"
       - "本轮合成原型的治理/变更收益依赖字段模型与清单假设，尚需真实实现、并发和故障注入复现"
+      - "Commerce Changeset 是单一 Google Sheets 数据面的单路线实现；公开测试未覆盖并发、权限撤销、重复提交、跨系统补偿或双路线维护成本"
     unresolved_gap: "真实多 Agent、跨团队 API 演进与故障注入下，通用 API + Policy 与显式 Governed Capability Contract 的治理收益/维护成本差异"
   strategic_thesis_candidate:
     id: "ST-RP002-01"
@@ -162,10 +163,10 @@ evidence_gaps:
       product_implementation: true
       case_engineering: true
       counter_evidence: true
-    material_evidence_count: 7
+    material_evidence_count: 8
     last_result:
-      date: "2026-09-20"
-      outcome: "Strategic Thesis (Candidate) -> conditional engineering support"
+      date: "2026-10-16"
+      outcome: "public implementation validation: conditional support + governance boundary"
       summary: >
         Toolformer 提供模型可吸收工具选择/参数生成的反证；Agent 安全论文把 least privilege、
         complete mediation、delegated authority 与可执行工具约束识别为模型外的系统安全要求；
@@ -174,6 +175,8 @@ evidence_gaps:
         合成双路线工程验证显示，在共享 Service/Workflow Runtime 下，两条路线的状态迁移与补偿结果一致，
         显式契约的收益集中在审计字段覆盖、多 Agent 复用和变更影响隔离；这支持有条件的 Governed Capability Contract，
         但不证明需要独立 Action Runtime，也不足以升级为 Architecture Principle。
+        新增的 Commerce Changeset 固定提交复核显示，公开实现可以在现有 API 之上落地策略、CIBA、scope 隔离、
+        写后读回和审计回执；但其单一数据面、非原子去重和缺少并发/撤销/双路线测试，继续把结论限制在治理边界而非独立 Runtime。
 
 next_action:
   type: "validation"
@@ -240,6 +243,17 @@ research_history:
       B 在原型定义的审计字段覆盖、第二 Agent 接入和前置条件变更影响面上更集中。
       该结果支持“治理边界有条件增量价值”，但不能证明独立 Runtime、生产性能或普遍优越性；
       GAP-004 继续保持 provisionally_saturated，下一轮寻找真实可运行实现和故障注入对照。
+  - date: "2026-10-16"
+    gap: "GAP-004"
+    result: "public implementation validation: conditional support + governance boundary"
+    material_evidence: ["E-022"]
+    note: >
+      基于最新 origin/main 建立独立分支，固定复核 jeffgreendesign/commerce-changeset 提交
+      7b0040dfb74c68dd83a97d6a6e1ae74865419aa。其公开实现与源码/测试显示，多 Agent 商务写操作可在现有
+      Google Sheets API 之上叠加策略评估、CIBA 审批、按 Agent scope 隔离、写后读回和 SHA-256 审计回执；
+      2 个测试文件、17 个断言通过，类型检查通过，Lint 无错误但有 2 个 warning。该实现明确承认非原子
+      check-then-append，且未覆盖并发、权限撤销、重复提交、跨系统补偿或双路线维护成本，因此只支持治理边界，
+      不改变 GAP-004 的 provisionally_saturated 状态，下一步仍为业务流程级双路线验证或 NO_MATERIAL_UPDATE。
 
 research_depth:
   framework: "WHAT -> WHY -> STRUCTURAL/TRANSITIONAL/EMERGING -> FUTURE"
