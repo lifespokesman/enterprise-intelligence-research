@@ -652,3 +652,33 @@ Action 候选契约至少记录：业务含义、作用对象、参数、前置�
 3. **业务验证：** 任务驱动建模是否比仅描述对象的自然语言建模更能提升 L2 / L3，及 Action 粒度在复杂流程中何时越界。
 
 本增量不改变 RP-002-04 的原有 H1–H4、Frontier、研究运行面或正式原则。避免与已有 H-RP002-07 编号出现混用：此处**不分配新 Hypothesis ID**；如后续独立建卡，先检查现有 ID 注册与冲突。
+
+## 2026-10-20 增量｜语义优先的适用阈值与 Task Context 的真实可用性
+
+**来源及状态：** 脱敏 Field Signal → Working Hypothesis Refinement；只细化已有 H1/H2 与 2026-10-12 接口验证，不新增 H-ID 或 Ontology 平台假设。相关的业务路线矩阵与 A/B/C 实验由 [RP-006 §13](RP-006-enterprise-agent-harness-runtime.md) 承载。
+
+### 从本体定义到任务可用信息之间仍有缺口
+
+`Ontology Definition ≠ Object Instance ≠ Authoritative SoR ≠ Task Context ≠ Agent Run State`。即使 AI 已生成 Object / Relation / Rule 并物化数据库，也不能由此推断：组织身份与成员实例正确、实时事实可查、用户有读取权限、业务动作可提交、任务验收已通过。
+
+在合成申请场景中，应分别检验：
+
+1. **Schema / Meaning**：组织、人员、项目及关系是否被表达且可区分业务差异；
+2. **Source Binding**：当前实例来自哪个权威业务系统，是否有事实版本、更新时间和冲突解释；
+3. **Task Resolution**：给定任务与身份，能否动态解析所需对象、属性、关联和证据；
+4. **Authorized Access**：是否在查询/装配阶段按身份与 Policy 裁剪，不以提示词替代权限；
+5. **Action Availability**：工具可见不等于可授权执行，业务服务仍要校验状态/委托/审批；
+6. **Task vs. Business Outcome**：上下文回答正确、Agent 调用成功，与正式 SoR 状态和组织验收分别记录。
+
+### 共享语义的候选收益不在单次 Schema 物化
+
+| 条件 | 候选最小路径 | 语义资产何时值得扩张 |
+|---|---|---|
+| 单一领域、对象权威明确、应用/API 健全 | Domain Model/API + 直接授权事实查询 | 暂无证据时不建独立 Ontology |
+| 两个以上应用对同一对象反复解释且定义冲突 | 对照共享 Domain Contract、数据字典和 Ontology | 后者对上下文组装、变更与治理的**净收益**可复现时 |
+| 多 Agent 反复检索跨系统事实，且需要按任务裁剪 | 先优化可访问的查询/授权契约和任务映射 | 动态语义发现比显式 API 编排降低总成本时 |
+| 现有事实来源不明、实例无权威性 | 先补 SoR / Source Mapping / 数据质量 | 不因语义平台存在就制造第二套“真相” |
+
+**反向解释：** 复用共享 Domain API / Policy / Schema Registry 可能已足够；Ontology-first 在已有成熟语义资产及生成工具时也可能更快。应以 Task 2 新业务的增量开发、对象/连接器复用、语义错误、数据新鲜度、授权正确性、修改传播和维护总成本反驳，而不是以静态 Schema 数量证明价值。Ontology 与 Domain Model 可互补，不应被伪装成相互排斥的技术信仰。
+
+此研究不把 Context Engine 定义为新层；只有发现稳定、重复、跨任务且难由已有 Domain API / Query Service / Agent Runtime 承担的 Context 组装义务，才研究独立部署的必要性。保留 RP-002-04 原有 H1–H4 和 Gap A/B/C 顺序。
