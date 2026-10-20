@@ -593,3 +593,74 @@ Harness / Agent Runtime
 **最小可证伪比较**：同一跨系统任务对比 (A) BPM + AI 局部节点、(B) 单 Agent + domain APIs + durable integration、(C) 独立 Task Controller + Agent；固定业务验收与权限规则，测端到端完成、重复副作用、审批/恢复、审计缺口、开发与运维成本。对简单问答与报告任务做负例控制。
 
 **治理决定**：本轮不新建 RP、H 或 Research Plan；不改变 Q3 身份、RP-002-01 人工 Frontier、RP-002-02 Runner、H-RP006-04/05 既有结论状态；后续仅在对照证据显示无法被既有问题解释时重新判断。
+
+## 13. 2026-10-20｜从业务结果选择应用、语义与任务执行路径（Field Signal → Working Analysis）
+
+**本轮实质修正：** 既有 §12 已要求以 Business Task 而非 Agent 产品作为需求侧入口，但尚未充分区分**产品/需求起点、业务能力生产与复用、交互方式**。把「先建 Ontology」「先生成 App」「优先聊天」说成两三套互斥架构，会混淆不同决策：Task-first 不是纯 Agent，Application-first 不是手工编码，Ontology 也是可选的软件工程能力，Domain Model 同样具有语义。本增量**不推翻 §12 的 Task-driven 选型，而是扩展其选择空间**；不主张行业通用优胜路线。
+
+### 13.1 三个独立决策维度及权威边界
+
+| 决策维度 | 候选路线 | 不应推导出的结论 |
+|---|---|---|
+| 需求与产品组织 | **Task-first**：先定义结果、约束、最小交互；**Application-first**：优先确立领域应用的完整生命周期 | Task-first ≠ 对话入口 / 独立 Agent；应用优先 ≠ 不考虑任务 |
+| 能力生产与复用 | **Semantic/Ontology-assisted**：跨应用对象、关系、规则与事实绑定；**Domain-engineering-first**：领域状态、服务、命令、稳定 API | Ontology ≠ DB Schema；Domain Model ≠ 无语义；两者可混合 |
+| 交互与执行入口 | 自然语言 / 核验卡片、表单、统一待办、批处理、事件、既有系统 UI | 自然语言 ≠ Ontology；同一任务的不同动作可使用不同入口 |
+
+**Runtime Pattern** 是以上判断在 Task Duration、Risk、State、Authority、Isolation 等约束下进一步得到的配置，不是第四个必须独立建设的平台。一个可行组合是：**Task-first 交互设计 + Application/SoR 权威后端 + 按需 Semantic Task Context + 局部 Agent**。
+
+建议的需求侧推导（待验证）：
+
+`Business Outcome → Accepted Result → Constraints / Risk → Task / Decision / Action Decomposition → Human / Deterministic Software / Agent Allocation → Minimum Sufficient Capabilities → Interaction & Runtime Pattern → Validation`。
+
+**判定顺序：** 先确认是否需要正式记录/写入、权威事实源、审批/责任；再检查既有 Domain API / Workflow / IAM 是否可复用；只有跨系统同义冲突、重复建模与动态 Context 成本可测时才考虑扩大共享语义资产。Agent 的一次 Run 成功不等于正式业务验收。
+
+### 13.2 按业务模式的最小充分路线矩阵（候选，非选型标准）
+
+| 场景与约束 | 起始路径 | 不优先引入 / 后续触发条件 |
+|---|---|---|
+| 单次资料研究、无正式写入 | 检索 / LLM + 人工核验 | 不先建 SoR / Ontology / 持久 Agent 平台；有长期状态责任再升级 |
+| 低频、资料非结构化、目标清楚 | Task-first 辅助整理 + 原系统 API / 表单 + 核验卡片 | 不强制纯对话；无正式状态时先补最小 Domain Service |
+| 高频、规则稳定、可批量 | 规则 / Workflow / 确定性应用优先 | 不逐笔使用 Agent；出现跨系统语义分歧才补共享映射 |
+| 单部门独立申请 / 工单 / 费用业务，长期正式记录 | 最小 Domain App / SoR + 受控 API；Agent 可选 | 不预建全企业 Ontology；第二应用重复对象/规则再检验抽取 |
+| 已有成熟业务系统，界面难用或材料难输入 | 原 SoR + AI 预填 / 查询 / 异常辅助 | 不新造第二份业务状态；只在跨域事实冲突时增语义能力 |
+| 多应用共享人员/项目/资产，但定义冲突 | 共享领域契约/语义映射 + 源系统绑定 + Task Context | 若既有领域 API / 数据字典足够，不建设独立 Ontology 平台 |
+| 无可信事实源，又需要正式审批写入 | 最小 Domain Service + IAM / Workflow，再选择 AI 入口 | Agent 对话不能自行创建具有正式效力的权威事实 |
+| 高风险跨部门、长等待、部分失败 | 现有 SoR + Policy / IAM + Durable Workflow + 受限 Agent | 不让 Harness 独占审批/状态；跨域复用显著才加语义 / Action 契约 |
+
+**停止扩张规则：** 第一条业务路径尚未完成、源系统不可确定、复用收益不清时，不扩大 Ontology；多个应用尚未出现重复语义/接口成本时，不急于建设共享层；批量/确定性方式已更好满足 SLA 时，不为使用 AI 而增加对话或 Agent Loop。平台沉没成本、政策与迁移成本也可能使理论上的最轻路线并非实际最低总成本。
+
+### 13.3 Human / Software / Agent 按动作分工，不按流程贴单一标签
+
+| Task / Decision / Action | 候选执行者 | 必须保留的控制点 |
+|---|---|---|
+| 非结构化意图与材料整理 | Agent 或人 | 来源、缺失信息、人工核验 |
+| 字段合法性、金额/公式、状态前置条件 | 确定性软件 | 版本化规则、测试、服务端重验 |
+| 行为身份和委托范围 | IAM / Business Authority | 服务端鉴权、最小权限 |
+| 正式业务提交 | 用户显式确认 + Domain Command / Action | 可见后果、幂等、状态与授权校验；确认本身不是授权 |
+| 审批人归属、等待、超时、恢复 | Workflow / Durable Service | 过程权威状态、关联与审计 |
+| 审批结论 | 获授权人或制度允许的自动化规则 | 责任锚点，不由 Agent 声称批准 |
+| 异常解释与建议 | Agent + 人 | 置信边界、升级通道 |
+| 正式对象/交易状态 | SoR / Domain Service | 并发、一致性、可追溯 |
+
+本表只按职责分工，**不强制物理拆分组件**。低频审批宜复用统一待办，专业复杂审查可再考虑嵌入 AI 辅助；页面是否减少由完成效率、差错与用户选择决定，不预设“聊天替代页面”。
+
+### 13.4 三路线、双任务反驳实验（不新增 Research Plan）
+
+用公开/合成数据，固定模型与算力预算、后端与制度规则、风险约束、UI 最低可用性、身份和审批验收，以及共同测试环境。**任务 1**：独立申请，有创建/确认/审批与状态追踪；**任务 2**：另一领域应用复用相同组织、人员、项目对象，并故意引入一个可解释的语义差异。
+
+- **A｜Domain App-first**：Domain App / SoR / API → MCP/Tool → 可选 Agent；
+- **B｜Semantic-first**：共享语义对象、事实与规则映射 → Task Context / Action 映射 → 应用 / Agent；
+- **C｜Hybrid-on-demand**：先做 Task 1 最小领域闭环；Task 2 出现重复/冲突后才抽取共享语义或领域契约。
+
+三组均需实现**相同正式业务结果与治理要求**，不能只拿 A 的生产就绪系统对比 B 的 Schema 原型。分开计量应用生成、身份/审批/通知接入、集成调试、测试与持续维护，比较：
+
+1. 首条**真实可完成的业务闭环**耗时、人工专家介入与返工；
+2. 越权/审批绕过、重复副作用、状态未知和故障后恢复；
+3. 第二应用对象/接口/语义复用率、冲突和跨团队协调成本；
+4. 规则升级后变更半径、回归结果与总维护成本；
+5. 用户实际完成时间、差错、核验负担与对话/表单/批量偏好；
+6. Agent Run 成功率与 SoR 业务验收成功率是否发生分离。
+
+**反证与架构收缩：** 若 A 在两个任务中相同或更好、Domain API + Policy 足够，则不引入独立 Ontology；若 B/C 仅在 Task 2 起显著降低可复现总成本，才讨论共享语义规模化；若对话更慢或更易误确认，不以聊天实现 Task-first；若所有路线主要耗时均来自标准身份、流程、待办、通知接入，则优先研究**应用集成契约和示例工程**而非新 Runtime/Plane。
+
+**证据与归属：** 这是从脱敏 Field Signal 抽象的 Working Analysis / 实验设计，不是公开 Evidence 或生产 ROI。Semantic / Context 边界由 [RP-002-04](RP-002-04-world-model-to-task-context.md) 持有；Domain API、Action 与应用集成契约由 [RP-002-02](RP-002-02-business-action-layer.md) 持有；Authority 属 RP-004；任务运行选择及本矩阵由 RP-006 持有。复用既有 GAP-004 的治理故障测试，不把它改写为三路线完整实验结果；下一步先在 Task 1 测出完整闭环，再用 Task 2 检验共享语义的边际收益。不新增 RP/H-ID、平台层，不改 Frontier 或 Runner。

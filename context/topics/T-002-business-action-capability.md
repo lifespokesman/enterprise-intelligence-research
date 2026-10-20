@@ -2,7 +2,7 @@
 topic_id: T-002
 title: Business Action & Governed Capability
 status: active
-updated: 2026-10-14
+updated: 2026-10-20
 keywords:
   - action
   - capability
@@ -50,6 +50,7 @@ related_hypotheses:
 - 当前战略候选判断是 **Governed Capability Contract** 可能比“独立 Action Runtime”更稳定；但它仍只是候选概念。
 - 跨系统副作用、补偿、幂等、长时运行仍主要需要 Workflow / Durable Runtime 一类工程机制。
 - 简单、低风险、单系统、可逆 CRUD 可以继续由 Domain API / Command + Tool Schema 承担。
+- **2026-10-20 Working View（未验证）**：应用/API 可由 AI 快速生成不等于可进入组织正式运行；最小可信接入还须实现 IAM/Delegation、Workflow、待办/通知、Deep Link、业务状态对账、幂等和可测试的集成契约。此问题不等同于新增 Action Runtime，已有领域平台可能已充分。
 - **2026-10-14 Working View（未验证）**：Agent 多样化可能带来 Context / Semantic / Capability / Governance 多维重复；共享 Action 的价值是跨调用者统一**业务变更语义、授权与执行结果**，而不是把 MCP/API 换名。Governance 横贯多个层面；不预设 Silo 必然分阶段迁移。
 
 ---
@@ -81,6 +82,8 @@ related_hypotheses:
 ---
 
 # Recent Changes
+
+- **2026-10-20**：补充 AI 生成应用的身份/委托、流程、待办、通知、深链、状态对账与故障恢复的**标准应用集成契约**假设；先复用 IAM/BPM/SoR/应用服务，按成本与正确性验证，**不新建平台层**。见 [RP-002-02 §21](../../research/problems/RP-002-02-business-action-layer.md) 与 [CP-20261020-001](../checkpoints/2026-10/CP-20261020-001-application-semantic-task-path-selection.md)。
 
 - **2026-10-14**：将“AI 智能烟囱”路由到现有 RP-002-02（H-RP002-06 refinement）；区分 Context / Semantic / Action / Governance 并列诊断维度、广义 Capability 与状态变更 Action，以及能力关系图和实际调用循环；见 [CP-20261014-001](../checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。
 

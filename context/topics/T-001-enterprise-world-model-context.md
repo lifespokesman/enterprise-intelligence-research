@@ -2,7 +2,7 @@
 topic_id: T-001
 title: Enterprise World Model & Context
 status: active
-updated: 2026-10-14
+updated: 2026-10-20
 keywords:
   - ontology
   - world model
@@ -58,6 +58,7 @@ related_hypotheses: []
 - “Context Engine / Context Runtime”目前只是 candidate mechanism，尚未被证据证明为独立 Layer / Platform / Runtime。
 - 世界模型应被视为可被运行事实持续挑战的当前可执行解释，而不是最终真相。
 - **新增 Working View（未验证）**：企业 AI 配置可从 Business Outcome / Constraint → Task / AI Applicability → Context Requirement 倒推；同一个世界表达对不同任务产生不同信息依赖与治理要求，不因 Agent 数量增加就预设独立知识库或统一 Context Platform。
+- **2026-10-20 Working View（未验证）**：独立领域应用可先复用 SoR / Domain API；只有第二应用重复建模、对象语义冲突或 Task Context 装配成本出现可测净收益时才扩大共享 Ontology。Schema 物化不等于存在可授权的事实实例和运行时上下文；Task-first 不等于聊天入口。
 - **2026-10-14 Working View**：Context Silo（重复事实装配/检索）与 Semantic Silo（对象/状态/规则解释不一致）是可并存的诊断维度；共享企业语义核心不要求单一 Ontology 实例或统一 RAG。Action 后的实例事实更新与 Ontology 版本演化仍必须分开。
 
 ---
@@ -96,6 +97,8 @@ related_hypotheses: []
 ---
 
 # Recent Changes
+
+- **2026-10-20**：由「本体优先/应用优先」的抽象对照转向**共享语义何时对第二应用产生净收益**：优先验证实例/事实源绑定、授权动态 Task Context，并以已有 Domain API/数据字典为反例；参见 [RP-002-04](../../research/problems/RP-002-04-world-model-to-task-context.md) 与 [CP-20261020-001](../checkpoints/2026-10/CP-20261020-001-application-semantic-task-path-selection.md)。仅为 Working Analysis。
 
 - **2026-10-14**：来自脱敏 Field Signal 的多 Agent 智能烟囱问题：T-001 只吸收 Context/Semantic 差量，业务变更能力复用由 T-002 / RP-002-02 持有；见 [CP-20261014-001](../checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。仍非跨行业事实，不改变当前 Frontier。
 
