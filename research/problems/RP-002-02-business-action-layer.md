@@ -1177,3 +1177,37 @@ Goal / Event / Existing Workflow
 **Open Questions**：Ontology Action 与 Domain Action 的可替代阈值；共享语义与领域视图的边界；Action Definition / Policy Enforcement / Workflow / SoR 的状态权威；Agent 变薄的收益阈值；Business Task / Run / Action Result / Outcome 如何接入 RP-003 的组织学习闭环。
 
 **治理决定**：本轮是 RP-002-02 的 existing problem evolution 与 H-RP002-06 / ST-RP002-01 的条件性补充；不改变 RP-002-01 Human Frontier、RP-002-02 Runner、GAP-004 下一步，不创建新问题族、Hypothesis ID、证据卡、独立层或正式 Principle。
+
+## 21. 2026-10-20｜AI 生成业务应用的标准集成契约（Working Hypothesis）
+
+**归属：** 继承 H-RP002-06「受治理业务变更契约」与 §20 的跨调用者复用，不另起 Business Application Platform / Action Runtime，也不混同 GAP-004 的两调用者契约试验。关联 [RP-006 §13](RP-006-enterprise-agent-harness-runtime.md) 三路线业务闭环对照。
+
+### 21.1 新增的是交付瓶颈假说，不是新的必建平台
+
+脱敏原型观察仅提示：AI 能较快生成页面、表结构、服务和 MCP Adapter，但从「可演示」到「组织内可正常使用」可能主要卡在**标准应用接入契约**。尚不能推断软件生成普遍已成为小成本、工程设计不再重要，或应用优先路线一定胜过语义优先路线。
+
+| 集成契约 | 应具有的可验收行为 | 常见假阳性 |
+|---|---|---|
+| Identity / Delegation | 真实用户、应用/服务主体、Agent 委托令牌与范围；服务端执行点鉴权 | 前端登录成功或 Prompt 声明「代表用户」 |
+| Domain SoR / API | 正式对象 ID、版本、读写状态权威、并发与业务前置条件 | MCP 参数校验通过就视为正式写入 |
+| Workflow / Approval | 审批实例、归属、人审/超时、回调、重入、业务状态对账 | Agent 自称已批或 Workflow 任务已派发 |
+| Todo / Notification | 业务事件驱动待办创建/完成、消息重试、幂等与结果回写 | 消息已读 = 业务已办 |
+| Card / Deep Link / SSO | 指向确定业务/任务 ID 的跳转、重入和权限失败路径 | 有 URL 就能打开正确授权的业务页面 |
+| Failure / Recovery | 超时未知、重复提交、部分成功、事件重放、补偿、审计 Trace | HTTP 200 或工具返回成功 = 业务结果验收 |
+| App Contract / Test Fixture | 机器可读接口、权限声明、事件规范、SDK/示例、模拟身份、端到端契约测试 | 文档/API 数量多 = 可扩展交付 |
+
+**边界：** Domain Service、IAM、BPM、通知中心与已有应用注册机制可能足以提供这些能力。MCP/Tool Schema 是模型调用表述，**不能代替**服务端 Policy、事务和正式状态。通知/待办是业务生命周期的一部分，不能被简单归为 UI 装饰。
+
+### 21.2 如何证伪「集成契约比新增 Tool 更决定交付成本」
+
+在 RP-006 Task 1 固定申请/审批的同一端到端验收，分别记录代码/页面生成、身份与委托、流程、待办通知、深链、错误恢复、授权/一致性测试的工时和返工；随后使用标准契约 + 最小可运行 SDK/测试模板复刻第二个轻量应用，比较首次接入和后续增量成本。
+
+- **支持信号**：多次实现中跨产品的身份、审批、待办/通知、深链接入稳定主导交付时长；标准测试契约显著减少出错和返工，且未引入过重维护。
+- **反例**：已有平台 SDK 已使接入近零成本、复杂业务规则仍主导交付；或新增契约比复用现有 API 的净维护成本更高。
+- **禁止跳跃**：接口机读程度的提高**可能**帮助 AI 工程代理，不证明「增加一个 MCP 层」能自动修复企业应用集成，更不证明应该创建独立 App Control Plane。
+
+### 21.3 复用与证据限制
+
+此处的问题是「App/API 生成之后如何达到可验收的生产接入」，与 H-RP002-06 的 Action mutation 语义相关但不等同。已有 GAP-004 继续验证**两个调用者共享 Action 契约**；本增量在同一个合成场景中增加**应用级接入成本分项**，不声称已经完成实验。治理与责任归 RP-004，Runtime/Task 选择归 RP-006，语义复用净收益归 RP-002-04。
+
+本次只登记 Working Hypothesis，无新的正式 Hypothesis ID、GAP、Architecture Plane、Judgment 或 Principle；脱敏观察不可当作公开证据。
