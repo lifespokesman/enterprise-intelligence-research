@@ -61,3 +61,83 @@ Queue status: pilot; no item is marked `HUMAN_UNDERSTOOD` or `APPLIED`.
 - 候选池变化：新增 OE-007–OE-009；未修改既有条目状态，未创建知识卡，未标记 `HUMAN_UNDERSTOOD` 或 `APPLIED`。
 
 
+
+## Verified watch candidates (2026-11-05)
+
+本轮基于最新 `origin/main`；OE-012–OE-018 已被历史学习分支使用（含 PR #29），保留编号，不复制未合并条目，不复用 ID。发现时间为 2026-11-05；下列资料首次发布为 2026-11-02，不写成本轮运行日发表。推荐不等于人类 `SELECTED`。
+
+| ID | Publisher | Verified title | Official URL | Published / version | Axes | Verification / last checked | AI priority | Status | Increment / reading boundary |
+|---|---|---|---|---|---|---|---|---|---|
+| OE-019 | Anthropic | *Message threads* | <https://platform.claude.com/docs/en/build-with-claude/message-threads> | 2026-11-02：官方 release notes 首次发布；beta `message-threads-2026-08-12` 是标头版本，非发布日期；文档未列独立更新日期 | Context; Harness / Runtime; Agent / Workflow | 2026-11-05：完整指南与官方 release notes 交叉核验；<https://platform.claude.com/docs/en/release-notes/overview> | P1 | AI_ANALYZED | **NEWLY_PUBLISHED**：相对 OE-003 的上下文组织和 OE-005 的组件解耦，新增“传输增量 / 推理缓存 / 应用持久历史”三种职责的明确边界，以及并发与故障恢复协议。精读至能解释 cache expiry、并发冲突、compact 和 fallback；约 30–40 分钟。candidate：RP-002-04 H3 / RP-006，见下 |
+
+## Latest watch (2026-11-05)
+
+### 1. 本周最值得学习的问题
+
+`AI_EXPLANATION`：服务端记住上一轮，是否就意味着 Agent 已获得可靠记忆？应把请求传输、推理缓存、可恢复历史、业务权威状态分别归责，再谈是否需要独立 Context Runtime。
+
+### 2. 唯一主推荐 OE-019：Message threads
+
+来源与日期见上表。首次发布依据 release notes；8 月 beta 标头不能反推公开发布时间；没有版本差异基线，不标 `UPDATED`。
+
+**Part A｜Source Understanding**
+
+- `SOURCE_CLAIM`：随着 tool loop 历史增长，反复发送完整历史造成客户端开销和网络上传成本；message threads 允许后续请求仅发送新增消息。原文解决传输和继续会话问题，不宣称减少模型所需的逻辑上下文或提供业务事务。
+- `SOURCE_MECHANISM`：首轮携带完整历史并创建 thread；响应以消息 `id` 作为下一轮的 `previous_message_id`。后续只提交新增消息并省略 system/tools（沿用创建值），其余固定字段须与首轮一致；服务端重建完整上下文给模型。工具循环是说明案例。
+- `SOURCE_CLAIM`：这是 ephemeral cache，不是 durable history storage。未解决跨缓存丢失的持久恢复、业务事实权威性、授权撤销后的事实刷新，也没有证明企业 ROI。
+
+**Part B｜Mechanism Reconstruction**
+
+- `SOURCE_MECHANISM`：thread 只追加；每个响应 id 只能续接一次，重复续接 / 仍在执行分别返回 400 `thread_already_continued` / `thread_continue_in_flight`。最后请求后 5 分钟过期；404 `thread_not_found` 时用客户端完整历史创建新 thread。SDK helper 对这些情况可自动重放一次，但仅在对象内存里保留历史，进程外持久化仍由应用负责。
+- `SOURCE_MECHANISM`：thread 与 prompt caching 解决不同问题：前者减少上传，后者复用推理侧前缀计算；prompt caching 的缓存范围仍由 `cache_control` 决定。thread ID 本身不会免除输入 token 计费。thread 内不能替换旧消息；压缩需要应用生成摘要并用摘要新建 thread；on-demand compaction 不受支持。
+- `AI_EXPLANATION`：可理解成“由服务端暂存的续接副本”：ID 是续接定位符，并非可靠任务档案。依赖客户端持久化、模型上下文上限、配置一致性、API beta 与请求调度；ID 丢失、并发写入、过时权限信息或错误重放都可能使继续会话失败。
+
+**Part C｜Architecture Variables**
+
+- `AI_EXPLANATION`：适合历史大、轮次多、客户端上行受限且可串行推进的任务；短问答收益可能不足。替代路线是完整历史请求加 prompt caching，或由应用数据库/现有 workflow 持有检查点。
+- `SOURCE_MECHANISM`：文档要求保留客户端历史并处理冲突与 fallback。`AI_EXPLANATION`：因此应同时观察上传量、input/cache token、thread conflict、cache miss 与恢复结果，而非只看端到端延迟。
+- `RESEARCH_INFERENCE`：持久历史、业务副作用幂等和授权检查仍需分别设计；恢复对话不证明外部操作可安全重试。维护负担包括两份历史的一致性、压缩边界、API 变更、日志隐私和恢复测试。`SOURCE_MECHANISM`：原文明确非 ZDR eligible，内存加密保存且最后使用后不超过 1 小时删除；无 list/read/delete thread API。`RESEARCH_INFERENCE`：部署时仍需核验租户和日志访问策略，不能由“ephemeral”推断合规。
+- `RESEARCH_INFERENCE`：“临时缓存 ≠ 持久权威状态”可能是结构性职责约束；具体 beta 标头、冲突接口和压缩限制是当前实现条件，不能当稳定层定义。增量传输主要针对传输成本，并非单纯补偿模型智力不足。
+
+**Part D｜Enterprise Translation**
+
+- `RESEARCH_INFERENCE`：Context 对应本轮供模型消费的历史；Harness 负责追加、配置与冲突处理；应用 / 既有 Workflow 持有恢复档案；SoR 持有正式业务结果。这里是逻辑职责候选，不要求物理拆成四套服务。
+- `RESEARCH_INFERENCE`：假设退款操作已经提交而响应丢失，恢复 thread 只能恢复对话路径；仍需查询 SoR、核对幂等键与当前权限再决定下一动作。此例为虚构边界测试，不是作者报告的案例。
+
+**Part E｜Human Learning Packet**
+
+- 需掌握四项：增量传输、prompt caching、持久检查点、压缩/恢复后的有效上下文。前置知识：Messages/tool loop、HTTP 并发与重试、缓存失效、基本 token 计费。
+- 三个核心学习 / 自测问题：①只发新增 tool result 后，上传字节、模型看到的历史、计费 token 分别怎样变化？为什么不能用网络优化推断推理成本同比下降？②两个 worker 同时续接同一 thread，遇到冲突或缓存失效时，谁保存哪份有效历史、如何恢复？③虚构退款已入账但回复超时，为什么恢复对话不等于可以再退款一次？应查什么状态与权限？
+- 读完应能用自己的话解释这四种状态由谁负责，并画出正常续接、缓存失效和重复副作用风险三条路径；不必背 API 参数。能回答即停止精读，再决定是否做公开小实验。
+- `HUMAN_TAKEAWAY`：尚未形成，等待研究者亲自回答和确认。AI 分析不改变人类学习状态。
+
+**Part F｜Candidate Research Bridge**
+
+- `RESEARCH_INFERENCE`：候选关联 RP-002-04 H3（Context Runtime 与业务循环分工）及 RP-006（运行职责与持久状态）。这项实现补充并收窄“服务端会话状态意味着独立 Context Runtime”的推断：实现传输续接也可能无需独立持久任务服务；不能据此证明 H3 或某种固定部署边界成立。
+- 待验证问题：客户端持久历史 + ephemeral thread 相比每轮完整历史，在固定模型、上下文内容和权限约束下，能否减少传输成本，同时保持缓存丢失、并发冲突和业务写入超时后的正确恢复？
+- 公开验证方向：合成工具循环分别使用两种续接方式，注入缓存失效、双 worker 和写入后超时；比较上传字节、token/费用、恢复成功率与重复副作用；以外部状态断言验收。只登记候选，不创建实验、正式 Problem/Hypothesis 或 Evidence Ledger。
+
+### 3. 可选参考资料
+
+本轮不增加可选参考资料。优先完成主推荐的机制边界自测，避免重复上轮评估专题。
+
+### 4. 暂不推荐与排除原因
+
+- Anthropic Engineering 索引仍以 OE-010 为最新文章，已有条目，不重复登记；OE-016–OE-018 已在 PR #29 分析，本轮不重复推荐评估专题。
+- OpenAI Developers Blog 索引的 skills、MCP、Codex workflow 文章与既有队列交叉，缺乏本轮优先级增量，不批量收录；本轮没有仅因“过难”排除已核验候选。
+- Claude release notes 的近期模型、区域、限额等公告未选作机制精读；不将发布公告本身当架构增量。未逐篇证明所有产品公告均无价值。
+- OpenAI `Scaling Git at OpenAI` 本轮因 TLS EOF 未取得可核验正文，撤出草稿，不登记标题/日期为已核验；OpenAI Engineering 覆盖不完整。成功核验 Developers Blog、Anthropic Engineering 与 Claude release notes / 指南（指南及 release notes 使用官方 `.md` 路径读取）。网页搜索工具没有返回可用结果，随后直接读取官方原文。不能据此宣称四站没有其他新文；没有差异证据的页面不归类为 `UPDATED`。
+
+### 5. 候选池变化与筛选
+
+评分 1–5，前四项越高越优先；Learning Cost 越高越费力。Novelty 只相对已登记队列，不代表研究者已掌握旧资料。
+
+| Candidate | Relevance | Mechanism Depth | Architecture Value | Novelty | Learning Cost | Decision |
+|---|---|---|---|---|---|---|
+| OE-019 | 5 | 4 | 5 | 5 | 2 | 唯一主推荐，30–40 分钟 |
+
+本轮新增 `NEWLY_PUBLISHED` 1 条 `AI_ANALYZED`，新增 `FOUNDATIONAL` 0、实质 `UPDATED` 0；OE-006 继续 `NEEDS_REVIEW`，未做本轮来源升级。旧条目状态不变。保留历史分支 ID；没有知识卡、人工确认状态或正式研究状态写入。
+
+### 6. 下一步
+
+先回答 OE-019 的三个自测问题，特别是“服务端续接与业务恢复”边界；人工确认后才讨论是否深入候选 Research Bridge。不要仅因存在 thread ID 就增加 Context Runtime 或迁移业务状态。
