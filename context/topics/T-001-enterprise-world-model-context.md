@@ -2,7 +2,7 @@
 topic_id: T-001
 title: Enterprise World Model & Context
 status: active
-updated: 2026-10-20
+updated: 2026-11-06
 keywords:
   - ontology
   - world model
@@ -41,6 +41,7 @@ related_hypotheses: []
 5. Action 产生 New Fact 后，何时只更新实例 / Context，何时需要触发 Ontology Evolution？
 6. 不同 Task / Risk / Environment / Information Dependency 在多大程度上改变 Context 要求，以及何时共享 Context 机制才有净价值？
 7. 多 Agent 的 Context / Semantic Silo 如何在共享核心语义、授权上下文和合法部门视图之间取得平衡？
+8. 业务世界模型与 Application / Agent / Model / Tool / Runtime 的 IT 运行模型何时需要显式分域与映射？何时领域 API / CMDB / Workflow 已足够？
 
 ---
 
@@ -58,6 +59,7 @@ related_hypotheses: []
 - “Context Engine / Context Runtime”目前只是 candidate mechanism，尚未被证据证明为独立 Layer / Platform / Runtime。
 - 世界模型应被视为可被运行事实持续挑战的当前可执行解释，而不是最终真相。
 - **新增 Working View（未验证）**：企业 AI 配置可从 Business Outcome / Constraint → Task / AI Applicability → Context Requirement 倒推；同一个世界表达对不同任务产生不同信息依赖与治理要求，不因 Agent 数量增加就预设独立知识库或统一 Context Platform。
+- **2026-11-06 Working View（未验证）**：不要将 Application 与 Agent 视为互斥并列的业务本体对象。Business Outcome / Task / Action 属需求侧视角，Application / Agent 的能力角色与软件运行形态应分轴分析；可用 Task–Capability–Execution 关联业务世界与 IT 运维模型，不预设统一大本体或新增控制平台。已有 SoR、BPM、IAM、API、CMDB 可能充分；详细的 Task → Runtime/Infrastructure 需求映射归 [RP-006 §14](../../research/problems/RP-006-enterprise-agent-harness-runtime.md)。
 - **2026-10-20 Working View（未验证）**：独立领域应用可先复用 SoR / Domain API；只有第二应用重复建模、对象语义冲突或 Task Context 装配成本出现可测净收益时才扩大共享 Ontology。Schema 物化不等于存在可授权的事实实例和运行时上下文；Task-first 不等于聊天入口。
 - **2026-10-14 Working View**：Context Silo（重复事实装配/检索）与 Semantic Silo（对象/状态/规则解释不一致）是可并存的诊断维度；共享企业语义核心不要求单一 Ontology 实例或统一 RAG。Action 后的实例事实更新与 Ontology 版本演化仍必须分开。
 
@@ -98,6 +100,7 @@ related_hypotheses: []
 
 # Recent Changes
 
+- **2026-11-06**：补充“业务世界对象 ≠ IT 运行对象”的条件性分域视角，并明确 Application/Agent 不互斥、Task 相对稳定性待验证；不新建 Topic/RP/H-ID/本体平台。见 [CP-20261106-001](../checkpoints/2026-11/CP-20261106-001-task-actors-infrastructure.md)、[RP-006 §14](../../research/problems/RP-006-enterprise-agent-harness-runtime.md)。
 - **2026-10-20**：由「本体优先/应用优先」的抽象对照转向**共享语义何时对第二应用产生净收益**：优先验证实例/事实源绑定、授权动态 Task Context，并以已有 Domain API/数据字典为反例；参见 [RP-002-04](../../research/problems/RP-002-04-world-model-to-task-context.md) 与 [CP-20261020-001](../checkpoints/2026-10/CP-20261020-001-application-semantic-task-path-selection.md)。仅为 Working Analysis。
 
 - **2026-10-14**：来自脱敏 Field Signal 的多 Agent 智能烟囱问题：T-001 只吸收 Context/Semantic 差量，业务变更能力复用由 T-002 / RP-002-02 持有；见 [CP-20261014-001](../checkpoints/2026-10/CP-20261014-001-ai-intelligence-silo-action-reuse.md)。仍非跨行业事实，不改变当前 Frontier。
