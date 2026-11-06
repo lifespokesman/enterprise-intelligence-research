@@ -664,3 +664,91 @@ Harness / Agent Runtime
 **反证与架构收缩：** 若 A 在两个任务中相同或更好、Domain API + Policy 足够，则不引入独立 Ontology；若 B/C 仅在 Task 2 起显著降低可复现总成本，才讨论共享语义规模化；若对话更慢或更易误确认，不以聊天实现 Task-first；若所有路线主要耗时均来自标准身份、流程、待办、通知接入，则优先研究**应用集成契约和示例工程**而非新 Runtime/Plane。
 
 **证据与归属：** 这是从脱敏 Field Signal 抽象的 Working Analysis / 实验设计，不是公开 Evidence 或生产 ROI。Semantic / Context 边界由 [RP-002-04](RP-002-04-world-model-to-task-context.md) 持有；Domain API、Action 与应用集成契约由 [RP-002-02](RP-002-02-business-action-layer.md) 持有；Authority 属 RP-004；任务运行选择及本矩阵由 RP-006 持有。复用既有 GAP-004 的治理故障测试，不把它改写为三路线完整实验结果；下一步先在 Task 1 测出完整闭环，再用 Task 2 检验共享语义的边际收益。不新增 RP/H-ID、平台层，不改 Frontier 或 Runner。
+## 14. 2026-11-06｜从业务对象与执行主体倒推企业 AI 基础架构（Cognitive Reframing / Working Analysis）
+
+**来源与证据等级**：抽象的需求侧思考（User Input / Inference / Hypothesis），不是公开工程事实、产品事实或已验证行业共识。本节精炼 §12–§13 的 `Business Outcome → Task Characteristics → Minimum Sufficient Capabilities`，不新增 RP/H-ID、独立技术层或正式架构原则，也不改变 RP-002-01 人工研究前沿、RP-002-02 Runner。
+
+### 14.1 真正新增的分析问题与此前已覆盖的部分
+
+**已被既有研究覆盖**：
+- §12 已把 Business Task 定位为需求侧分析对象，不预设 Task Platform；一个 Task 可由 Human / Software / Agent 协作完成；
+- §13 已把 Task-first、Domain Application、Semantic/Ontology、交互入口拆成可独立选择的维度；
+- RP-002-04 已要求由 Task / Risk / Information Dependency 推导 Context，并允许无独立 Ontology 的轻量路线；
+- RP-002-02 已区分 Business Action 与传统 Application Service / Command / Workflow，不预设新 Action Runtime。
+
+**本次待检验增量**：传统基础架构规划通常把 Application/业务系统工作负载及其治理作为主要输入；出现 Agent 类型的执行工作负载后，是否应进一步显式区分**业务世界中需要完成什么**与**信息化运行世界中由谁、用什么机制提供和执行能力**，从而把 AI 能力选型变为可解释的需求推导，而非预设“智算/本体/Harness/Agent 平台”清单。
+
+**重要修正**：“Application 与 Agent 是企业两类并列且互斥的本体对象/执行主体”这一说法过强。Agent 本身可能实现为一个 Application、嵌入既有应用、由 Workflow 调度，甚至只是短时模型调用。更适合把 **(a) 业务执行角色** 与 **(b) 软件/运行时工作负载** 作为相交但不等价的两个轴。Application 既可能是被动的 Capability Provider / SoR，也可能通过事件和规则主动执行；Agent 的自主性也受任务、授权和运行环境约束。
+
+### 14.2 候选概念边界（不是统一强制本体）
+
+| 概念 | 研究中用于回答的问题 | 应避免的混淆 |
+|---|---|---|
+| Business Object / Event / State | 哪类现实业务事物发生了什么变化？ | 业务对象不等于数据库表；实例变化不等于 Ontology Evolution |
+| Business Outcome / Acceptance | 什么才算业务成功，谁有权验收？ | Agent Run 完成不等于业务成功 |
+| Business Task | 为结果需要完成哪一项可界定的工作？ | Task 可能随组织重构变化，不必成为统一任务平台的持久实体 |
+| Business Action / Policy | 允许对业务对象请求何种改变，受什么约束？ | Action definition 不等于可执行 API / 已获授权 |
+| Human / Business Owner | 谁负责判断、授权、验收与后果？ | 有人点击确认不等于权限天然合法 |
+| Application / Domain Service / Workflow | 哪些既有系统提供事实、规则、命令和确定性协调？ | 不应将所有 Application 统称自治 Execution Actor |
+| Agent / Agent Run | 哪些开放性判断或任务操作需要模型主导的执行循环？ | Agent 是软件形态/执行角色，不自动取得业务责任 |
+| IT Operational Object | 哪些应用实例、Agent definition/run、模型部署、工具、资源和策略需要运维？ | IT 运行资源 ≠ 现实业务对象；目录 ≠ 权威运行态 |
+
+**候选术语约束**：
+- `Execution Actor` 仅在主体确实可以发起/实施某种行为、且明确代理身份/授权时使用；`Capability Provider`、`Execution Mechanism`、`System of Record` 是不同角色，并非总能互换。
+- `Business Task` 可以作为**分析与跨方案比较单位**，但其稳定性相对于 Application/Agent 只是待验证假设；更稳定的可能是业务结果与验收约束，而任务划分也可能改变。
+- 不强制要求将业务本体与 IT 运行本体物理合并。可以使用分域模型，以 `Task ↔ Capability/Contract ↔ Execution Binding ↔ Operational Run/Resource` 关联；各自业务事实/运行状态仍由相应 SoR、Domain Service、Workflow 和 Control Plane 持有。关系映射不意味着一个巨大 Ontology 平台。
+
+### 14.3 需求到基础架构的最小充分推导（候选，不是施工顺序）
+
+```text
+Business Goal / Accepted Outcome / Organization & Legal Constraints
+               ↕
+Business Object / Task / Decision / Action / Policy
+               ↓
+Allocation: Human / Deterministic Software / Agent / Mixed
+               ↓
+Required Capability & Control:
+  Evidence / Facts / Semantic / Context | API / Action / IAM / Policy
+  State / Recovery / Approval / Trace | Model / Tool / Environment
+               ↓
+Reuse Existing SoR / Workflow / Data / IAM / Cloud / API First
+               ↓
+Only the Verified Gaps → Incremental AI/IT Infrastructure
+               ↓
+Observable Outcome & Feedback → Reconsider Task and Capability
+```
+
+这里的 `定 → 用 → 管 → 建` 是**售前与架构需求论证顺序**，并非要求工程先完成整个业务建模再部署资源。安全合规、基础设施国产化/迁移、现网约束、预算、运维 SLA 也可能是独立的正当建设驱动，而非都必须由单个 Agent Task 推导。路线应允许从底层现实约束反向迭代。
+
+| 场景或反例 | 首先验证的最低充分方式 | **不应直接推导**出的建设 |
+|---|---|---|
+| 简单知识问答/单轮模型 API | 已授权数据/文档检索 + 现有模型服务 + 人工核验 | 统一 Ontology、独立 Harness、私有 GPU |
+| 规则明确的状态修改/审批 | 既有 Domain API、Command、IAM、Workflow / SoR | Agent、统一 Task Controller、单独 Action Runtime |
+| 长程跨系统、需人工等待与故障恢复 | 既有 SoR/Workflow + 受限 Agent + 幂等/审计；按失败模式选 durable state | 所有场景专有 Harness 平台；把 Agent 状态当业务权威状态 |
+| 多应用语义不一致 | 先测 Domain Contract / API / 数据字典的协调能力，再测共享语义净收益 | 大一统企业 Ontology |
+| 算力扩容、信创迁移、基础设施资源运营 | IT Operational Object / 资产、利用率、合规、运维 SLA、容量预测 | 为证明合理性而杜撰 Agent Business Task |
+
+**必要能力 ≠ 必须新建平台**：Agent 可能新增/强化任务生命周期、可恢复执行、状态与上下文隔离、工具治理、委托权限、运行审计及成本配额；其实现仍可能由已有 Workflow、API Gateway、IAM、Model API、Container 和监控能力扩展。显式需求要先与存量能力比对，并标注重用、补齐或新建。
+
+### 14.4 与 Ontology / Context / Action 的横向关系
+
+此处只登记**分域与映射问题**，不改写 RP-002 的 canonical 解释：
+
+- **Business-world model**：描述业务对象、关系、状态、事件、规则、动作以及责任等；其建模边界由业务目标、监管约束和领域专家共同限定。
+- **IT-operation model**：描述 Application/Agent/Model/Tool/Deployment/Runtime/Resource/Execution 与它们的运行约束；其状态可来自 CMDB、编排/监控/计量系统等。
+- **Task Context**：在一次具体任务中按身份、权限、时效和来源组装事实/知识/运行状态；既不等于全部 Ontology，也不意味着将状态复制入模型 Prompt。
+- **Action & Control**：Ontology 的动作语义不能自动生成执行权限、事务一致性或可恢复性；应以可信系统的授权和执行契约为准。
+
+**开放问题**：何时分域模型之间的 `Task/Capability/Execution` 关系产生真实复用与治理收益，何时它只是另一个维护负担？单一业务流程中的普通领域对象可同时具有业务与 IT 视角；领域划分是治理选择，不是形而上的绝对边界。
+
+### 14.5 可反驳假设、替代解释与验证方式
+
+**候选 H-A（精炼 H-RP006-04，不新编号）**：引入 Agent 执行工作负载后，基础架构需求分类需要增加条件性运行/控制能力。**替代**：既有应用/工作流/运维平台扩展即足够，无须独立 AI 基础设施类别。**验证**：对相同任务逐项映射新增状态、恢复、授权、成本与隔离要求，记录现有设施覆盖率和新增机制带来的净改进。
+
+**候选 H-B（精炼 §12 Task-led 分析）**：采用 `Outcome/Acceptance → Task → Actor/Mechanism → Capability` 能减少组件先行的无谓建设。**替代**：合规迁移/容量运营/数据治理等任务不以 Agent 为入口，技术约束可能先于业务任务。**验证**：同一批知识、确定性事务、长程高风险、纯 IT 运营场景，对比“预设 AI 技术栈”与“任务/现有能力缺口”两种规划法的过度建设、必需能力遗漏、总成本、变更复杂度；保持业务结果和合规要求一致。
+
+**候选 H-C（跨 RP-002-04 / RP-002-02 关系，不新编号）**：业务世界与 IT 运行世界分域表达、通过 Task/Capability/Execution 关联，有助于避免语义与运行状态混淆。**替代**：单领域 Domain Model + Schema/API/CMDB 已充分，无需显式跨域本体。**验证**：同一业务任务跨两个应用/执行者运行时，比较领域模型单独实现与分域关联在对象识别、运行追踪、授权回溯、维护/同步成本的差异。
+
+**证据状态**：以上均是 Working Hypothesis / Test Design；尚无本轮新增 Source Fact 或生产验证结果，不创建 Evidence Card，不进入 `JUDGMENTS.md` / `PRINCIPLES.md`。本轮不重复 §13 的 A/B/C 三路线实验；下一步优先给既有双任务对照加上“角色划分 × 运行需求 × IT 资源映射”记录列，外加一个纯基础设施迁移负例。若结果表明传统设施已足够或模型映射增加成本，应主动收缩本假设。
+
+**归属决定**：本节仅作为 RP-006 下的跨域需求推导视角；RP-002-04 持有 Ontology → Task Context 问题，RP-002-02 持有受治理 Action，RP-004 持有 Authority/Accountability，RP-006 持有 Task → Runtime/Infrastructure Pattern。未证明出现现有问题域无法容纳的新长期 Problem，不新增 RP-007 / 独立 Topic / 平台层。
