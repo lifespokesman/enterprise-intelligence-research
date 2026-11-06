@@ -141,3 +141,80 @@ Queue status: pilot; no item is marked `HUMAN_UNDERSTOOD` or `APPLIED`.
 ### 6. 下一步
 
 先回答 OE-019 的三个自测问题，特别是“服务端续接与业务恢复”边界；人工确认后才讨论是否深入候选 Research Bridge。不要仅因存在 thread ID 就增加 Context Runtime 或迁移业务状态。
+
+## Verified watch candidates (2026-11-06)
+
+本轮在官方 OpenAI 工程来源中核验到两篇与当前学习优先级有实质增量的资料；Anthropic 官方工程索引未发现高于既有 OE-010 的新机制文章。OE-019 保留，不重复推荐。以下日期均按官方页面标注；本轮运行日为 2026-11-06。
+
+| ID | Publisher | Verified title | Official URL | Published / version | Axes | Source verification / last checked | AI priority | Status | Increment / reading boundary |
+|---|---|---|---|---|---|---|---|---|---|
+| OE-020 | OpenAI | *A thousand fewer paths to root* | <https://openai.com/index/a-thousand-fewer-paths-to-root/> | 2026-11-04 | Agent / Workflow; Harness / Runtime; Evaluation / Security | 2026-11-06：官方 OpenAI 工程文章标题、正文与页面日期核验 | P1 | AI_ANALYZED | **NEWLY_PUBLISHED**：展示自主漏洞研究系统如何把规划、代码检索、沙箱执行、并行探索、漏洞复现与人工确认接成可审计流水线；相对 OE-007 增加“安全研究工作流的验证闭环”和“隔离环境中的可重复证据”机制。精读约 35–45 分钟。candidate：T-002 / RP-002-02 与 RP-006，见下 |
+| OE-021 | OpenAI | *Scaling Git at OpenAI* | <https://openai.com/index/scaling-git-at-openai/> | 2026-11-02 | Harness / Runtime; Agent / Workflow; Evaluation / Security | 2026-11-06：官方 OpenAI 工程文章标题、正文与页面日期核验 | P2 | AI_ANALYZED | **NEWLY_PUBLISHED**：说明 Pando 如何用虚拟文件系统、按需加载、分层缓存和服务端 Git 操作支撑 agent-scale 代码工作；适合短读以理解运行时基础设施与工作负载耦合，不替代 OE-020 的安全机制精读。 |
+
+### 1. 本周最值得学习的问题
+
+`AI_EXPLANATION`：当 Agent 被允许执行真实安全研究时，可靠性来自模型能力，还是来自可重复的执行环境、工具边界、并行控制和漏洞证据闭环？应把“发现了疑似问题”与“生成了可复核、可修复的安全证据”分开。
+
+### 2. 唯一主推荐 OE-020：A thousand fewer paths to root
+
+**Part A｜Source Understanding**
+
+- `SOURCE_CLAIM`：文章介绍 OpenAI 如何把模型用于大规模漏洞发现与修复支持，目标是减少攻击者可利用的路径，并强调系统输出需要安全研究者验证。
+- `SOURCE_MECHANISM`：系统将自然语言目标拆成研究任务，调用代码搜索、分析和执行工具，在隔离环境中运行候选利用或测试，保存中间工件，再把结果交给后续验证和人工审查。
+- `SOURCE_CLAIM`：原文没有证明所有发现都是真实漏洞，也没有给出通用企业 ROI、跨组织治理标准或无需人工的生产授权结论。
+
+**Part B｜Mechanism Reconstruction**
+
+- `SOURCE_MECHANISM`：核心链路是任务规划 → 代码与依赖定位 → 沙箱内实验 → 并行假设探索 → 复现 / 证据收集 → 人工确认；每一步都通过工具输出和可保存工件衔接。
+- `AI_EXPLANATION`：安全 Agent 的“答案”不是一段自然语言，而是可重跑的实验记录、触发条件、影响范围和修复线索。并行化提高覆盖面，但也要求隔离工作区、预算和结果合并规则。
+- `SOURCE_MECHANISM`：模型、工具、执行环境和人类研究者共同构成系统；任一组件都不能单独承担漏洞真实性判断。
+- `AI_EXPLANATION`：容易误解之处是把“能执行代码”当成“能安全改变系统”。文章描述的是受控研究环境中的证据生产，不是把未审查的 Agent 直接授予生产权限。
+
+**Part C｜Architecture Variables**
+
+- `RESEARCH_INFERENCE`：关键变量包括沙箱与生产环境的可达性、网络出口、凭据注入、工作区隔离、并行任务预算、工件留存、复现成功率、人工确认点和修复后的回归验证。
+- `SOURCE_MECHANISM`：隔离执行与工具链使研究过程可重复；`AI_EXPLANATION`：这比单纯增加 prompt guardrail 更接近结构性安全约束。
+- `RESEARCH_INFERENCE`：并行探索是条件性优化，依赖任务可分解、实验相互隔离和结果可合并；对高度耦合或有共享副作用的任务，串行工作流可能更可靠。
+- 替代方案包括传统静态分析、人工代码审查、固定安全扫描和受限 workflow。具体成本需按覆盖率、误报率、执行预算与修复周期比较，不能从文章案例直接外推企业效果。
+
+**Part D｜企业架构候选映射**
+
+- `RESEARCH_INFERENCE`：Business Application 提供待研究资产与修复入口；Agent 负责提出和排序假设；Harness 负责任务分解、工具调用、工件关联和重试；Runtime / Sandbox 负责可达性与副作用边界；Governance 负责凭据、审批、审计和人工确认。
+- `RESEARCH_INFERENCE`：虚构例子：Agent 发现支付服务的疑似越权路径后，必须在脱敏副本中复现，生成最小证据包，经安全研究者确认后才允许创建修复变更；发现本身不能成为生产写操作授权。
+- 这些是职责映射候选，不代表作者提出了企业分层架构。
+
+**Part E｜Human Learning Packet**
+
+- 三个核心概念：受控实验环境与生产环境的差异；从疑似发现到可复核证据的验证闭环；并行 Agent 的隔离、预算和工件合并。
+- 前置知识：基本软件供应链与漏洞生命周期、沙箱 / 网络出口 / 凭据边界、代码执行和回归测试。
+- 自测问题：①为什么模型生成了看似有效的 exploit 仍不能算漏洞确认？需要哪些可重复证据？②两个并行 Agent 修改同一工作区时，如何防止互相污染并保留可审计来源？③修复补丁已经通过单次测试，为什么仍需在独立环境做回归和权限检查？
+- `HUMAN_TAKEAWAY`：研究者读完应能用自己的话画出“规划—执行—证据—人工确认—修复验证”五段流程，并指出每段的权限边界；尚未形成，等待研究者回答。
+
+**Part F｜Candidate Research Bridge**
+
+- `RESEARCH_INFERENCE`：候选关联 T-002 / RP-002-02（Governed Capability 的执行与责任边界）及 RP-006（Harness / Runtime 的可恢复、可审计控制回路）。文章可能支持“能力契约必须包含执行环境和证据要求”的候选方向，也可能收窄仅靠 tool schema 解释安全性的假设。
+- 待验证问题：在相同模型和任务预算下，加入隔离工作区、可重放工件和人工确认门槛，是否能提高漏洞发现结果的复现率并降低未经授权副作用？
+- 公开验证方向：使用合成代码仓与固定漏洞任务，对比裸工具调用、单 Agent 沙箱和并行隔离流水线；记录复现率、误报率、工件完整性、权限越界尝试与修复回归结果。只登记候选，不创建 Evidence Ledger 或正式 Hypothesis。
+
+### 3. 可选参考资料
+
+- **OE-021｜Scaling Git at OpenAI**：短读 15–20 分钟。重点看虚拟 checkout、按需文件获取、服务端 changeset 与缓存如何改变 Agent Harness 的 I/O 和恢复变量；适用于理解 Agent 工作负载对 Runtime 基础设施的反向约束。不要把 Pando 的规模条件外推成一般企业必需架构。
+
+### 4. 暂不推荐资料及排除原因
+
+- Anthropic 既有工程文章与 OE-019 / OE-010 内容重叠，本轮没有核验到更高增量的新文章，避免重复登记。
+- OpenAI 近期产品公告、模型发布和区域 / 限额说明缺少本轮所需的 Agent 机制深度，未作为学习资料。
+- 未把任何未能稳定取得官方正文或日期的搜索结果写入队列；未将厂商案例转写为通用原则。
+
+### 5. 候选池变化与筛选
+
+| Candidate | Relevance | Mechanism Depth | Architecture Value | Novelty | Learning Cost | Decision |
+|---|---:|---:|---:|---:|---:|---|
+| OE-020 | 5 | 5 | 5 | 5 | 3 | 唯一主推荐，35–45 分钟 |
+| OE-021 | 4 | 4 | 5 | 5 | 3 | 可选短读，15–20 分钟 |
+
+本轮新增 `NEWLY_PUBLISHED` 2 条，`FOUNDATIONAL` 0，`UPDATED` 0。没有修改既有状态，没有创建知识卡，没有标记 `HUMAN_UNDERSTOOD` 或 `APPLIED`。
+
+### 6. 下一步学习建议
+
+先完成 OE-020 的三个自测问题，特别是“疑似发现为何不等于安全证据”和“并行探索怎样保持隔离与可审计”。随后按需要短读 OE-021，比较 Agent 运行时的安全边界与 I/O / 状态基础设施约束。
